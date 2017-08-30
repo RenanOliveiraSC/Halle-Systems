@@ -11,7 +11,6 @@ public class GrupoPn {
 	}
 
 	public GrupoPn(Integer codigo, String nome, TipoPn tipoPn) {
-		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.tipoPn = tipoPn;
