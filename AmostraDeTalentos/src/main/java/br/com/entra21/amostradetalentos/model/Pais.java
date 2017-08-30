@@ -6,11 +6,9 @@ public class Pais {
 	private String nome;
 
 	public Pais() {
-		super();
 	}
 
 	public Pais(Integer codigo, String nome) {
-		super();
 		this.codigo = codigo;
 		this.nome = nome;
 	}
