@@ -18,9 +18,9 @@ public abstract class Item_Servico {
 	private double qtdePorVenda;
 	private String observacao;
 	private String anexo;
-	
-	
+
 	public Item_Servico() {
+		super();
 	}
 
 	public Item_Servico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
@@ -43,7 +43,7 @@ public abstract class Item_Servico {
 		this.qtdePorVenda = qtdePorVenda;
 		this.observacao = observacao;
 		this.anexo = anexo;
-		
+
 	}
 
 	public String getAnexo() {
