@@ -17,7 +17,7 @@ public abstract class Item_Servico {
 	private String nomeUnidadeDeVenda;
 	private double qtdePorVenda;
 	private String observacao;
-
+	private String anexo;
 	
 	
 	public Item_Servico() {
@@ -26,7 +26,7 @@ public abstract class Item_Servico {
 	public Item_Servico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
 			double unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
 			String nomeUnidadeVenda, double unidadeDeVenda, double porUnidadeDeVenda, String nomeUnidadeDeVenda,
-			double qtdePorVenda, String observacao) {
+			double qtdePorVenda, String observacao, String anexo) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.familia = familia;
@@ -42,6 +42,16 @@ public abstract class Item_Servico {
 		this.nomeUnidadeDeVenda = nomeUnidadeDeVenda;
 		this.qtdePorVenda = qtdePorVenda;
 		this.observacao = observacao;
+		this.anexo = anexo;
+		
+	}
+
+	public String getAnexo() {
+		return anexo;
+	}
+
+	public void setAnexo(String anexo) {
+		this.anexo = anexo;
 	}
 
 	public Integer getCodigo() {
