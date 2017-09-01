@@ -1,15 +1,15 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class TipoPn {
+public class TipoFornecedor {
 
 	private Integer codigo;
 	private String nome;
 
-	public TipoPn() {
+	public TipoFornecedor() {
 		super();
 	}
 
-	public TipoPn(Integer codigo, String nome) {
+	public TipoFornecedor(Integer codigo, String nome) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;

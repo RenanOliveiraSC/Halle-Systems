@@ -1,27 +1,18 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class GrupoPn {
+public class TipoCliente {
 
 	private Integer codigo;
 	private String nome;
-	private TipoPn tipoPn;
 
-	public GrupoPn() {
-
+	public TipoCliente() {
+		super();
 	}
 
-	public GrupoPn(Integer codigo, String nome, TipoPn tipoPn) {
+	public TipoCliente(Integer codigo, String nome) {
+		super();
 		this.codigo = codigo;
 		this.nome = nome;
-		this.tipoPn = tipoPn;
-	}
-
-	public TipoPn getTipoPn() {
-		return tipoPn;
-	}
-
-	public void setTipoPn(TipoPn tipoPn) {
-		this.tipoPn = tipoPn;
 	}
 
 	public Integer getCodigo() {
