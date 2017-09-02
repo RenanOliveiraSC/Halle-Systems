@@ -1,13 +1,13 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class Item extends Item_Servico {
+public class Produto extends ProdutoServico {
 
 	private double estoqueMax;
 	private double estoqueMin;
 	private double deposito;
 	private Fabricante fabricante;
 
-	public Item(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
+	public Produto(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
 			double unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
 			String nomeUnidadeVenda, double unidadeDeVenda, double porUnidadeDeVenda, String nomeUnidadeDeVenda,
 			double qtdePorVenda, String observacao, String anexo, double estoqueMax, double estoqueMin, double deposito,
@@ -21,7 +21,7 @@ public class Item extends Item_Servico {
 		this.fabricante = fabricante;
 	}
 
-	public Item() {
+	public Produto() {
 		super();
 	}
 

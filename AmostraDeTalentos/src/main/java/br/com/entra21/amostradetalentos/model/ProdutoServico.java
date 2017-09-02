@@ -1,6 +1,6 @@
 package br.com.entra21.amostradetalentos.model;
 
-public abstract class Item_Servico {
+public abstract class ProdutoServico {
 
 	private Integer codigo;
 	private String descricao;
@@ -19,11 +19,11 @@ public abstract class Item_Servico {
 	private String observacao;
 	private String anexo;
 
-	public Item_Servico() {
+	public ProdutoServico() {
 		super();
 	}
 
-	public Item_Servico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
+	public ProdutoServico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
 			double unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
 			String nomeUnidadeVenda, double unidadeDeVenda, double porUnidadeDeVenda, String nomeUnidadeDeVenda,
 			double qtdePorVenda, String observacao, String anexo) {

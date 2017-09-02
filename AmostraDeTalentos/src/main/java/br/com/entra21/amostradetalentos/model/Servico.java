@@ -1,6 +1,6 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class Servico extends Item_Servico {
+public class Servico extends ProdutoServico {
 
 	public Servico() {
 		super();

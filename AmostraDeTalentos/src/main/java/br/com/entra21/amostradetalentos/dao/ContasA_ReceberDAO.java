@@ -1,5 +1,5 @@
 package br.com.entra21.amostradetalentos.dao;
 
-public class TipoPnDAO {
+public class ContasA_ReceberDAO {
 
 }
