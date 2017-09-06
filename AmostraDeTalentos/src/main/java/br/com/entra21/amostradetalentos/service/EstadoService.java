@@ -28,7 +28,7 @@ public class EstadoService {
 		}
 	}
 
-	public List<Estado> listarCachorros() throws SQLException {
+	public List<Estado> listarEstados() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new EstadoDAO(con).lista();
 		}

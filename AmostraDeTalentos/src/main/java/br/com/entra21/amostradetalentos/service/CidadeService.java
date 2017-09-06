@@ -29,7 +29,7 @@ public class CidadeService {
 		}
 	}
 
-	public List<Cidade> listarCachorros() throws SQLException {
+	public List<Cidade> listarCidades() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new CidadeDAO(con).lista();
 		}
