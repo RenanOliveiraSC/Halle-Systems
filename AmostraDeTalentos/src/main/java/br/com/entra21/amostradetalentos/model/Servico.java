@@ -7,7 +7,7 @@ public class Servico extends ProdutoServico {
 	}
 
 	public Servico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
-			double unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
+			String unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
 			String nomeUnidadeVenda, double unidadeDeVenda, double porUnidadeDeVenda, String nomeUnidadeDeVenda,
 			double qtdePorVenda, String observacao, String anexo) {
 		super(codigo, descricao, familia, ativo, listaDePreco, unidadeDeCompra, porUnidadeDeCompra, nomeUnidadeDeCompra,

@@ -7,9 +7,8 @@ public abstract class ProdutoServico {
 	private Familia familia;
 	private boolean ativo;
 	private ListaDePreco listaDePreco;
-	private double unidadeDeCompra;
+	private String unidadeDeCompra;
 	private double porUnidadeDeCompra;
-	private String nomeUnidadeDeCompra;
 	private double qtdePorCompra;
 	private String nomeUnidadeVenda;
 	private double unidadeDeVenda;
@@ -24,7 +23,7 @@ public abstract class ProdutoServico {
 	}
 
 	public ProdutoServico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
-			double unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
+			String unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
 			String nomeUnidadeVenda, double unidadeDeVenda, double porUnidadeDeVenda, String nomeUnidadeDeVenda,
 			double qtdePorVenda, String observacao, String anexo) {
 		this.codigo = codigo;
@@ -34,7 +33,6 @@ public abstract class ProdutoServico {
 		this.listaDePreco = listaDePreco;
 		this.unidadeDeCompra = unidadeDeCompra;
 		this.porUnidadeDeCompra = porUnidadeDeCompra;
-		this.nomeUnidadeDeCompra = nomeUnidadeDeCompra;
 		this.qtdePorCompra = qtdePorCompra;
 		this.nomeUnidadeVenda = nomeUnidadeVenda;
 		this.unidadeDeVenda = unidadeDeVenda;
@@ -94,11 +92,11 @@ public abstract class ProdutoServico {
 		this.listaDePreco = listaDePreco;
 	}
 
-	public double getUnidadeDeCompra() {
+	public String getUnidadeDeCompra() {
 		return unidadeDeCompra;
 	}
 
-	public void setUnidadeDeCompra(double unidadeDeCompra) {
+	public void setUnidadeDeCompra(String unidadeDeCompra) {
 		this.unidadeDeCompra = unidadeDeCompra;
 	}
 
@@ -108,14 +106,6 @@ public abstract class ProdutoServico {
 
 	public void setPorUnidadeDeCompra(double porUnidadeDeCompra) {
 		this.porUnidadeDeCompra = porUnidadeDeCompra;
-	}
-
-	public String getNomeUnidadeDeCompra() {
-		return nomeUnidadeDeCompra;
-	}
-
-	public void setNomeUnidadeDeCompra(String nomeUnidadeDeCompra) {
-		this.nomeUnidadeDeCompra = nomeUnidadeDeCompra;
 	}
 
 	public double getQtdePorCompra() {

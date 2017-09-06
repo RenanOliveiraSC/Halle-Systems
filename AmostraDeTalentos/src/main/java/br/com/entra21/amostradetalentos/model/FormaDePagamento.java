@@ -1,37 +1,39 @@
 package br.com.entra21.amostradetalentos.model;
 
 public class FormaDePagamento {
-	
-	
-	private int forma_codigo;
-	private String forma_nome;
-	
-	
-	public FormaDePagamento(int forma_codigo, String forma_nome) {
+
+	private Integer codigo;
+	private String forma;
+
+	public FormaDePagamento(Integer codigo, String forma) {
 		super();
-		this.forma_codigo = forma_codigo;
-		this.forma_nome = forma_nome;
+		this.codigo = codigo;
+		this.forma = forma;
 	}
 
-
-	public int getForma_codigo() {
-		return forma_codigo;
+	public FormaDePagamento(String forma) {
+		super();
+		this.forma = forma;
 	}
 
-
-	public void setForma_codigo(int forma_codigo) {
-		this.forma_codigo = forma_codigo;
+	public FormaDePagamento() {
+		super();
 	}
 
-
-	public String getForma_nome() {
-		return forma_nome;
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-
-	public void setForma_nome(String forma_nome) {
-		this.forma_nome = forma_nome;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
-	
-	
+
+	public String getForma() {
+		return forma;
+	}
+
+	public void setForma(String forma) {
+		this.forma = forma;
+	}
+
 }

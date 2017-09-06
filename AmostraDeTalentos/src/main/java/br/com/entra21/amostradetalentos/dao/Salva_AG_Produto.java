@@ -1,8 +1,7 @@
 package br.com.entra21.amostradetalentos.dao;
 
-public class TipoClienteDAO {
+public class Salva_AG_Produto {
 
 	private int codigo;
-	private String tipoNome;
-
+	private int agendaCodigo;
 }

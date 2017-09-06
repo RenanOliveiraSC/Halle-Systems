@@ -1,5 +1,5 @@
 package br.com.entra21.amostradetalentos.dao;
 
-public class TipoUsuarioDAO {
+public class Nota_de_Compra {
 
 }

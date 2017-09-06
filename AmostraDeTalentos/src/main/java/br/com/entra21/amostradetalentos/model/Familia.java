@@ -1,33 +1,39 @@
 package br.com.entra21.amostradetalentos.model;
 
 public class Familia {
-	
-	
-	private int fam_codigo;
-	private String fam_nome;
-	
-	public Familia(int fam_codigo, String fam_nome) {
+
+	private Integer codigo;
+	private String nome;
+
+	public Familia(Integer codigo, String nome) {
 		super();
-		this.fam_codigo = fam_codigo;
-		this.fam_nome = fam_nome;
+		this.codigo = codigo;
+		this.nome = nome;
 	}
 
-	public int getFam_codigo() {
-		return fam_codigo;
+	public Familia(String nome) {
+		super();
+		this.nome = nome;
 	}
 
-	public void setFam_codigo(int fam_codigo) {
-		this.fam_codigo = fam_codigo;
+	public Familia() {
+		super();
 	}
 
-	public String getFam_nome() {
-		return fam_nome;
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void setFam_nome(String fam_nome) {
-		this.fam_nome = fam_nome;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
-	
-	
-	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 }
