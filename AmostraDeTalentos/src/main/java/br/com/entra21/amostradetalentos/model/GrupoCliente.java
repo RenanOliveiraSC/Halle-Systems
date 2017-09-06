@@ -1,15 +1,15 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class TipoCliente {
+public class GrupoCliente {
 
 	private Integer codigo;
 	private String nome;
 
-	public TipoCliente() {
+	public GrupoCliente() {
 		super();
 	}
 
-	public TipoCliente(Integer codigo, String nome) {
+	public GrupoCliente(Integer codigo, String nome) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
