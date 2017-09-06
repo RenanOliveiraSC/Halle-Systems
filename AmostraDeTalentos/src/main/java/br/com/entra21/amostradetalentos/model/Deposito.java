@@ -3,30 +3,25 @@ package br.com.entra21.amostradetalentos.model;
 public class Deposito {
 	
 	
-	private int dep_codigo;
-	private String dep_nome;
-	
-	public Deposito(int dep_codigo, String dep_nome) {
+	private int codigo;
+	private String nome;
+	public Deposito(int codigo, String nome) {
 		super();
-		this.dep_codigo = dep_codigo;
-		this.dep_nome = dep_nome;
+		this.codigo = codigo;
+		this.nome = nome;
 	}
-
-	public int getDep_codigo() {
-		return dep_codigo;
+	public int getCodigo() {
+		return codigo;
 	}
-
-	public void setDep_codigo(int dep_codigo) {
-		this.dep_codigo = dep_codigo;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-
-	public String getDep_nome() {
-		return dep_nome;
+	public String getNome() {
+		return nome;
 	}
-
-	public void setDep_nome(String dep_nome) {
-		this.dep_nome = dep_nome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
-	
+		
 }

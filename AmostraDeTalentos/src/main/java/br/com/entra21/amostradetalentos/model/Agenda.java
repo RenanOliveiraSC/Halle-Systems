@@ -6,120 +6,116 @@ import java.util.Date;
 public class Agenda {
 	
 	
-	private int ag_codigo;
-	private String ag_observacao;
-	private Date ag_data_do_sistema;
-	private Date ag_data_de_inicio;
-	private Date ag_data_de_termino;
-	private Time ag_hora_inicio;
-	private Time ag_hora_termino;
-	private String ag_lembrete;
-	private String ag_aviso;
-	private String ag_ativo;
-	private String ag_fechado;
-	private String ag_ser_codigo;
-	private String ag_atribuido_para;
-	
-	public Agenda(int ag_codigo, String ag_observacao, Date ag_data_do_sistema, Date ag_data_de_inicio, Date ag_data_de_termino,
-			Time ag_hora_inicio, Time ag_hora_termino, String ag_lembrete, String ag_aviso, String ag_ativo, String ag_fechado, String ag_ser_codigo, 
-			String ag_atribuido_para) {
-		
-		this.ag_codigo = ag_codigo;
-		this.ag_observacao = ag_observacao;
-		this.ag_data_do_sistema = ag_data_do_sistema;
-		this.ag_data_de_inicio = ag_data_de_inicio;
-		this.ag_data_de_termino = ag_data_de_termino;
-		this.ag_hora_inicio = ag_hora_inicio;
-		this.ag_hora_termino = ag_hora_termino;
-		this.ag_lembrete = ag_lembrete;
-		this.ag_aviso = ag_aviso;
-		this.ag_ativo = ag_ativo;
-		this.ag_fechado = ag_fechado;
-		this.ag_ser_codigo = ag_ser_codigo;
-		this.ag_atribuido_para = ag_atribuido_para;
-		
-	}
-	public int getAg_codigo() {
-		return ag_codigo;
-	}
-	public void setAg_codigo(int ag_codigo) {
-		this.ag_codigo = ag_codigo;
-	}
-	public String getAg_observacao() {
-		return ag_observacao;
-	}
-	public void setAg_observacao(String ag_observacao) {
-		this.ag_observacao = ag_observacao;
-	}
-	public Date getAg_data_do_sistema() {
-		return ag_data_do_sistema;
-	}
-	public void setAg_data_do_sistema(Date ag_data_do_sistema) {
-		this.ag_data_do_sistema = ag_data_do_sistema;
-	}
-	public Date getAg_data_de_inicio() {
-		return ag_data_de_inicio;
-	}
-	public void setAg_data_de_inicio(Date ag_data_de_inicio) {
-		this.ag_data_de_inicio = ag_data_de_inicio;
-	}
-	public Date getAg_data_de_termino() {
-		return ag_data_de_termino;
-	}
-	public void setAg_data_de_termino(Date ag_data_de_termino) {
-		this.ag_data_de_termino = ag_data_de_termino;
-	}
-	public Time getAg_hora_inicio() {
-		return ag_hora_inicio;
-	}
-	public void setAg_hora_inicio(Time ag_hora_inicio) {
-		this.ag_hora_inicio = ag_hora_inicio;
-	}
-	public Time getAg_hora_termino() {
-		return ag_hora_termino;
-	}
-	public void setAg_hora_termino(Time ag_hora_termino) {
-		this.ag_hora_termino = ag_hora_termino;
-	}
-	public String getAg_lembrete() {
-		return ag_lembrete;
-	}
-	public void setAg_lembrete(String ag_lembrete) {
-		this.ag_lembrete = ag_lembrete;
-	}
-	public String getAg_aviso() {
-		return ag_aviso;
-	}
-	public void setAg_aviso(String ag_aviso) {
-		this.ag_aviso = ag_aviso;
-	}
-	public String getAg_ativo() {
-		return ag_ativo;
-	}
-	public void setAg_ativo(String ag_ativo) {
-		this.ag_ativo = ag_ativo;
-	}
-	public String getAg_fechado() {
-		return ag_fechado;
-	}
-	public void setAg_fechado(String ag_fechado) {
-		this.ag_fechado = ag_fechado;
-	}
-	public String getAg_ser_codigo() {
-		return ag_ser_codigo;
-	}
-	public void setAg_ser_codigo(String ag_ser_codigo) {
-		this.ag_ser_codigo = ag_ser_codigo;
-	}
-	public String getAg_atribuido_para() {
-		return ag_atribuido_para;
-	}
-	public void setAg_atribuido_para(String ag_atribuido_para) {
-		this.ag_atribuido_para = ag_atribuido_para;
+	private int codigo;
+	private String observacao;
+	private Date data_do_sistema;
+	private Date data_de_inicio;
+	private Date data_de_termino;
+	private Time hora_inicio;
+	private Time hora_termino;
+	private String lembrete;
+	private String aviso;
+	private String ativo;
+	private String fechado;
+	private String ser_codigo;
+	private String atribuido_para;
+	public Agenda(int codigo, String observacao, Date data_do_sistema, Date data_de_inicio, Date data_de_termino,
+			Time hora_inicio, Time hora_termino, String lembrete, String aviso, String ativo, String fechado,
+			String ser_codigo, String atribuido_para) {
+		super();
+		this.codigo = codigo;
+		this.observacao = observacao;
+		this.data_do_sistema = data_do_sistema;
+		this.data_de_inicio = data_de_inicio;
+		this.data_de_termino = data_de_termino;
+		this.hora_inicio = hora_inicio;
+		this.hora_termino = hora_termino;
+		this.lembrete = lembrete;
+		this.aviso = aviso;
+		this.ativo = ativo;
+		this.fechado = fechado;
+		this.ser_codigo = ser_codigo;
+		this.atribuido_para = atribuido_para;
 	}
 	
-	
-	
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public String getObservacao() {
+		return observacao;
+	}
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+	public Date getData_do_sistema() {
+		return data_do_sistema;
+	}
+	public void setData_do_sistema(Date data_do_sistema) {
+		this.data_do_sistema = data_do_sistema;
+	}
+	public Date getData_de_inicio() {
+		return data_de_inicio;
+	}
+	public void setData_de_inicio(Date data_de_inicio) {
+		this.data_de_inicio = data_de_inicio;
+	}
+	public Date getData_de_termino() {
+		return data_de_termino;
+	}
+	public void setData_de_termino(Date data_de_termino) {
+		this.data_de_termino = data_de_termino;
+	}
+	public Time getHora_inicio() {
+		return hora_inicio;
+	}
+	public void setHora_inicio(Time hora_inicio) {
+		this.hora_inicio = hora_inicio;
+	}
+	public Time getHora_termino() {
+		return hora_termino;
+	}
+	public void setHora_termino(Time hora_termino) {
+		this.hora_termino = hora_termino;
+	}
+	public String getLembrete() {
+		return lembrete;
+	}
+	public void setLembrete(String lembrete) {
+		this.lembrete = lembrete;
+	}
+	public String getAviso() {
+		return aviso;
+	}
+	public void setAviso(String aviso) {
+		this.aviso = aviso;
+	}
+	public String getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(String ativo) {
+		this.ativo = ativo;
+	}
+	public String getFechado() {
+		return fechado;
+	}
+	public void setFechado(String fechado) {
+		this.fechado = fechado;
+	}
+	public String getSer_codigo() {
+		return ser_codigo;
+	}
+	public void setSer_codigo(String ser_codigo) {
+		this.ser_codigo = ser_codigo;
+	}
+	public String getAtribuido_para() {
+		return atribuido_para;
+	}
+	public void setAtribuido_para(String atribuido_para) {
+		this.atribuido_para = atribuido_para;
+	}
 	
 	
 }
