@@ -14,6 +14,13 @@ public class Estado {
 		this.sigla = sigla;
 		this.pais = pais;
 	}
+	
+	public Estado(Integer codigo, String nome, String sigla) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.sigla = sigla;
+	}
 
 	public Estado() {
 		super();
