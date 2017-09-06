@@ -1,6 +1,6 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class Forncedor {
+public class Fornecedor {
 
 	private Integer codigo;
 	private String nome;
@@ -13,11 +13,11 @@ public class Forncedor {
 	private String email;
 	private ContaContabil contaContabil;
 
-	public Forncedor() {
+	public Fornecedor() {
 		super();
 	}
 
-	public Forncedor(Integer codigo, String nome, TipoFornecedor tipoFornecedor, String contato, String cnpj,
+	public Fornecedor(Integer codigo, String nome, TipoFornecedor tipoFornecedor, String contato, String cnpj,
 			Endereco endereco, String telefone, String celular, String email, ContaContabil contaContabil) {
 		this.codigo = codigo;
 		this.nome = nome;
@@ -31,7 +31,7 @@ public class Forncedor {
 		this.contaContabil = contaContabil;
 	}
 
-	public Forncedor(String nome, TipoFornecedor tipoFornecedor, String contato, String cnpj, Endereco endereco,
+	public Fornecedor(String nome, TipoFornecedor tipoFornecedor, String contato, String cnpj, Endereco endereco,
 			String telefone, String celular, String email, ContaContabil contaContabil) {
 		this.nome = nome;
 		this.tipoFornecedor = tipoFornecedor;
