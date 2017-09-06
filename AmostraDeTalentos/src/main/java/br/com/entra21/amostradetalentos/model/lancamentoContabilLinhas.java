@@ -5,96 +5,67 @@ import java.util.Date;
 public class lancamentoContabilLinhas {
 
 	
-	private int lcl_codigo;
-	private int lcl_lc_codigo;
-	private String lcl_cod_conta;
-	private String lcl_debito;
-	private String lcl_credito;
-	private Date lcl_data_lancamento;
-	private String lcl_observacao;
-	
-	
-	public lancamentoContabilLinhas(int lcl_codigo, int lcl_lc_codigo, String lcl_cod_conta, String lcl_debito,
-			String lcl_credito, Date lcl_data_lancamento, String lcl_observacao) {
+	private int codigo;
+	private int lc_codigo;
+	private String cod_conta;
+	private String debito;
+	private String credito;
+	private Date data_lancamento;
+	private String observacao;
+	public lancamentoContabilLinhas(int codigo, int lc_codigo, String cod_conta, String debito, String credito,
+			Date data_lancamento, String observacao) {
 		super();
-		this.lcl_codigo = lcl_codigo;
-		this.lcl_lc_codigo = lcl_lc_codigo;
-		this.lcl_cod_conta = lcl_cod_conta;
-		this.lcl_debito = lcl_debito;
-		this.lcl_credito = lcl_credito;
-		this.lcl_data_lancamento = lcl_data_lancamento;
-		this.lcl_observacao = lcl_observacao;
+		this.codigo = codigo;
+		this.lc_codigo = lc_codigo;
+		this.cod_conta = cod_conta;
+		this.debito = debito;
+		this.credito = credito;
+		this.data_lancamento = data_lancamento;
+		this.observacao = observacao;
 	}
-
-
-	public int getLcl_codigo() {
-		return lcl_codigo;
+	public int getCodigo() {
+		return codigo;
 	}
-
-
-	public void setLcl_codigo(int lcl_codigo) {
-		this.lcl_codigo = lcl_codigo;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-
-
-	public int getLcl_lc_codigo() {
-		return lcl_lc_codigo;
+	public int getLc_codigo() {
+		return lc_codigo;
 	}
-
-
-	public void setLcl_lc_codigo(int lcl_lc_codigo) {
-		this.lcl_lc_codigo = lcl_lc_codigo;
+	public void setLc_codigo(int lc_codigo) {
+		this.lc_codigo = lc_codigo;
 	}
-
-
-	public String getLcl_cod_conta() {
-		return lcl_cod_conta;
+	public String getCod_conta() {
+		return cod_conta;
 	}
-
-
-	public void setLcl_cod_conta(String lcl_cod_conta) {
-		this.lcl_cod_conta = lcl_cod_conta;
+	public void setCod_conta(String cod_conta) {
+		this.cod_conta = cod_conta;
 	}
-
-
-	public String getLcl_debito() {
-		return lcl_debito;
+	public String getDebito() {
+		return debito;
 	}
-
-
-	public void setLcl_debito(String lcl_debito) {
-		this.lcl_debito = lcl_debito;
+	public void setDebito(String debito) {
+		this.debito = debito;
 	}
-
-
-	public String getLcl_credito() {
-		return lcl_credito;
+	public String getCredito() {
+		return credito;
 	}
-
-
-	public void setLcl_credito(String lcl_credito) {
-		this.lcl_credito = lcl_credito;
+	public void setCredito(String credito) {
+		this.credito = credito;
 	}
-
-
-	public Date getLcl_data_lancamento() {
-		return lcl_data_lancamento;
+	public Date getData_lancamento() {
+		return data_lancamento;
 	}
-
-
-	public void setLcl_data_lancamento(Date lcl_data_lancamento) {
-		this.lcl_data_lancamento = lcl_data_lancamento;
+	public void setData_lancamento(Date data_lancamento) {
+		this.data_lancamento = data_lancamento;
 	}
-
-
-	public String getLcl_observacao() {
-		return lcl_observacao;
+	public String getObservacao() {
+		return observacao;
 	}
-
-
-	public void setLcl_observacao(String lcl_observacao) {
-		this.lcl_observacao = lcl_observacao;
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 	
 	
+		
 }

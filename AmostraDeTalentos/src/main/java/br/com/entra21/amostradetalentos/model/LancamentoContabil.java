@@ -4,62 +4,50 @@ import java.util.Date;
 
 public class LancamentoContabil {
 
-	private int lc_codigo;
-	private String lc_car_codigo;
-	private String lc_cap_codigo;
-	private Date lc_data_lancamento;
-	private String lc_observacao;
-	
-	public LancamentoContabil(int lc_codigo, String lc_car_codigo, String lc_cap_codigo, Date lc_data_lancamento,
-			String lc_observacao) {
+	private int codigo;
+	private String car_codigo;
+	private String cap_codigo;
+	private Date data_lancamento;
+	private String observacao;
+	public LancamentoContabil(int codigo, String car_codigo, String cap_codigo, Date data_lancamento,
+			String observacao) {
 		super();
-		this.lc_codigo = lc_codigo;
-		this.lc_car_codigo = lc_car_codigo;
-		this.lc_cap_codigo = lc_cap_codigo;
-		this.lc_data_lancamento = lc_data_lancamento;
-		this.lc_observacao = lc_observacao;
+		this.codigo = codigo;
+		this.car_codigo = car_codigo;
+		this.cap_codigo = cap_codigo;
+		this.data_lancamento = data_lancamento;
+		this.observacao = observacao;
 	}
-
-	public int getLc_codigo() {
-		return lc_codigo;
+	public int getCodigo() {
+		return codigo;
 	}
-
-	public void setLc_codigo(int lc_codigo) {
-		this.lc_codigo = lc_codigo;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-
-	public String getLc_car_codigo() {
-		return lc_car_codigo;
+	public String getCar_codigo() {
+		return car_codigo;
 	}
-
-	public void setLc_car_codigo(String lc_car_codigo) {
-		this.lc_car_codigo = lc_car_codigo;
+	public void setCar_codigo(String car_codigo) {
+		this.car_codigo = car_codigo;
 	}
-
-	public String getLc_cap_codigo() {
-		return lc_cap_codigo;
+	public String getCap_codigo() {
+		return cap_codigo;
 	}
-
-	public void setLc_cap_codigo(String lc_cap_codigo) {
-		this.lc_cap_codigo = lc_cap_codigo;
+	public void setCap_codigo(String cap_codigo) {
+		this.cap_codigo = cap_codigo;
 	}
-
-	public Date getLc_data_lancamento() {
-		return lc_data_lancamento;
+	public Date getData_lancamento() {
+		return data_lancamento;
 	}
-
-	public void setLc_data_lancamento(Date lc_data_lancamento) {
-		this.lc_data_lancamento = lc_data_lancamento;
+	public void setData_lancamento(Date data_lancamento) {
+		this.data_lancamento = data_lancamento;
 	}
-
-	public String getLc_observacao() {
-		return lc_observacao;
+	public String getObservacao() {
+		return observacao;
 	}
-
-	public void setLc_observacao(String lc_observacao) {
-		this.lc_observacao = lc_observacao;
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 	
-	
-	
+		
 }

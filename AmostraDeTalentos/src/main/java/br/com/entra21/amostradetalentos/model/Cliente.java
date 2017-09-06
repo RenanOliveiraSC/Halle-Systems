@@ -5,127 +5,125 @@ import java.util.Date;
 public class Cliente {
 	
 	
-	private int cli_cliente;
-	private String cli_nome;
-	private String cli_sobrenome;
-	private int cli_grupo;
-	private int cli_limite_de_credito;
-	private String cli_cpf;
-	private String cli_endereco;
-	private String cli_telefone;
-	private String cli_celular;
-	private String cli_email;
-	private Date cli_data_nascimento;
-	private String cli_sexo;
-	private String cli_profissao;
-	private int cli_pai_mae;
-	
-	
-	public Cliente(int cli_cliente, String cli_nome, String cli_sobrenome, int cli_grupo, int cli_limite_de_credito,
-			String cli_cpf, String cli_endereco, String cli_telefone, String cli_celular, String cli_email,
-			Date cli_data_nascimento, String cli_sexo, String cli_profissao, int cli_pai_mae) {
+	private int cliente;
+	private String nome;
+	private String sobrenome;
+	private int grupo;
+	private int limite_de_credito;
+	private String cpf;
+	private String endereco;
+	private String elefone;
+	private String celular;
+	private String email;
+	private Date data_nascimento;
+	private String sexo;
+	private String profissao;
+	private int pai_mae;
+	public Cliente(int cliente, String nome, String sobrenome, int grupo, int limite_de_credito, String cpf,
+			String endereco, String elefone, String celular, String email, Date data_nascimento, String sexo,
+			String profissao, int pai_mae) {
 		super();
-		this.cli_cliente = cli_cliente;
-		this.cli_nome = cli_nome;
-		this.cli_sobrenome = cli_sobrenome;
-		this.cli_grupo = cli_grupo;
-		this.cli_limite_de_credito = cli_limite_de_credito;
-		this.cli_cpf = cli_cpf;
-		this.cli_endereco = cli_endereco;
-		this.cli_telefone = cli_telefone;
-		this.cli_celular = cli_celular;
-		this.cli_email = cli_email;
-		this.cli_data_nascimento = cli_data_nascimento;
-		this.cli_sexo = cli_sexo;
-		this.cli_profissao = cli_profissao;
-		this.cli_pai_mae = cli_pai_mae;
+		this.cliente = cliente;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.grupo = grupo;
+		this.limite_de_credito = limite_de_credito;
+		this.cpf = cpf;
+		this.endereco = endereco;
+		this.elefone = elefone;
+		this.celular = celular;
+		this.email = email;
+		this.data_nascimento = data_nascimento;
+		this.sexo = sexo;
+		this.profissao = profissao;
+		this.pai_mae = pai_mae;
 	}
 	
-	public int getCli_cliente() {
-		return cli_cliente;
+	public int getCliente() {
+		return cliente;
 	}
-	public void setCli_cliente(int cli_cliente) {
-		this.cli_cliente = cli_cliente;
+	public void setCliente(int cliente) {
+		this.cliente = cliente;
 	}
-	public String getCli_nome() {
-		return cli_nome;
+	public String getNome() {
+		return nome;
 	}
-	public void setCli_nome(String cli_nome) {
-		this.cli_nome = cli_nome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public String getCli_sobrenome() {
-		return cli_sobrenome;
+	public String getSobrenome() {
+		return sobrenome;
 	}
-	public void setCli_sobrenome(String cli_sobrenome) {
-		this.cli_sobrenome = cli_sobrenome;
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
 	}
-	public int getCli_grupo() {
-		return cli_grupo;
+	public int getGrupo() {
+		return grupo;
 	}
-	public void setCli_grupo(int cli_grupo) {
-		this.cli_grupo = cli_grupo;
+	public void setGrupo(int grupo) {
+		this.grupo = grupo;
 	}
-	public int getCli_limite_de_credito() {
-		return cli_limite_de_credito;
+	public int getLimite_de_credito() {
+		return limite_de_credito;
 	}
-	public void setCli_limite_de_credito(int cli_limite_de_credito) {
-		this.cli_limite_de_credito = cli_limite_de_credito;
+	public void setLimite_de_credito(int limite_de_credito) {
+		this.limite_de_credito = limite_de_credito;
 	}
-	public String getCli_cpf() {
-		return cli_cpf;
+	public String getCpf() {
+		return cpf;
 	}
-	public void setCli_cpf(String cli_cpf) {
-		this.cli_cpf = cli_cpf;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
-	public String getCli_endereco() {
-		return cli_endereco;
+	public String getEndereco() {
+		return endereco;
 	}
-	public void setCli_endereco(String cli_endereco) {
-		this.cli_endereco = cli_endereco;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
-	public String getCli_telefone() {
-		return cli_telefone;
+	public String getElefone() {
+		return elefone;
 	}
-	public void setCli_telefone(String cli_telefone) {
-		this.cli_telefone = cli_telefone;
+	public void setElefone(String elefone) {
+		this.elefone = elefone;
 	}
-	public String getCli_celular() {
-		return cli_celular;
+	public String getCelular() {
+		return celular;
 	}
-	public void setCli_celular(String cli_celular) {
-		this.cli_celular = cli_celular;
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
-	public String getCli_email() {
-		return cli_email;
+	public String getEmail() {
+		return email;
 	}
-	public void setCli_email(String cli_email) {
-		this.cli_email = cli_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public Date getCli_data_nascimento() {
-		return cli_data_nascimento;
+	public Date getData_nascimento() {
+		return data_nascimento;
 	}
-	public void setCli_data_nascimento(Date cli_data_nascimento) {
-		this.cli_data_nascimento = cli_data_nascimento;
+	public void setData_nascimento(Date data_nascimento) {
+		this.data_nascimento = data_nascimento;
 	}
-	public String getCli_sexo() {
-		return cli_sexo;
+	public String getSexo() {
+		return sexo;
 	}
-	public void setCli_sexo(String cli_sexo) {
-		this.cli_sexo = cli_sexo;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
-	public String getCli_profissao() {
-		return cli_profissao;
+	public String getProfissao() {
+		return profissao;
 	}
-	public void setCli_profissao(String cli_profissao) {
-		this.cli_profissao = cli_profissao;
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
 	}
-	public int getCli_pai_mae() {
-		return cli_pai_mae;
+	public int getPai_mae() {
+		return pai_mae;
 	}
-	public void setCli_pai_mae(int cli_pai_mae) {
-		this.cli_pai_mae = cli_pai_mae;
+	public void setPai_mae(int pai_mae) {
+		this.pai_mae = pai_mae;
 	}
 	
 	
-	
+		
 }

@@ -2,9 +2,13 @@ package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.entra21.amostradetalentos.model.Cidade;
+import br.com.entra21.amostradetalentos.model.Estado;
 
 public class CidadeDAO {
 
@@ -14,17 +18,18 @@ public class CidadeDAO {
 		this.con = con;
 	}
 	
-	public boolean inserir(String nome) throws SQLException{
-		String sql = "INSERT INTO CIDADE (CID_CODIGO, CID_NOME) VALUES (SEQ_CIDADE.nextval, ?, CID_ESTADO_CODIGO)";
+	public boolean inserir(String nome, Estado estado) throws SQLException{
+		String sql = "INSERT INTO CIDADE (CID_CODIGO, CID_NOME, CID_EST_CODIGO) VALUES (SEQ_CIDADE.NEXTVAL, ?, ?);";
 		 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
-		 
+		statement.setInt(2, estado.getCodigo());
+		
 		return statement.executeUpdate() > 0;
 	}
 	
 	public boolean alterar(int id, String nome) throws SQLException{
-		String sql = "UPDATE ESTADO SET EST_NOME = ? WHERE EST_CODIGO = ?";
+		String sql = "UPDATE CIDADE SET CID_NOME = ? WHERE CID_CODIGO = ?";
 		 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
@@ -34,7 +39,7 @@ public class CidadeDAO {
 	}
 	
 	public boolean excluir(int id) throws SQLException{
-		String sql = "DELETE ESTADO WHERE EST_CODIGO = ?";
+		String sql = "DELETE CIDADE WHERE CID_CODIGO = ?";
 		 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, id);
@@ -42,23 +47,23 @@ public class CidadeDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-//	public List<Pais> lista() throws SQLException {
-//		List<Pais> paises = new ArrayList<>();
-//
-//		String sql = "select * from ESTADO";
-//		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-//			stmt.execute();
-//			try (ResultSet rs = stmt.getResultSet()) {
-//				while (rs.next()) {
-//					int id = rs.getInt("pai_codigo");
-//					String nome = rs.getString("pai_nome");
-//					Pais pais = new Pais(id, nome);
-//					paises.add(pais);
-//				}
-//			}
-//		}
-//
-//		return paises;
-//
-//	}	
+	public List<Cidade> lista() throws SQLException {
+		List<Cidade> lCidade = new ArrayList<>();
+
+		String sql = "select * from CIDADE";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("CID_CODIGO");
+					String nome = rs.getString("CID_NOME");
+					Cidade cidade = new Cidade(id, nome);
+					lCidade.add(cidade);
+				}
+			}
+		}
+
+		return lCidade;
+
+	}	
 }

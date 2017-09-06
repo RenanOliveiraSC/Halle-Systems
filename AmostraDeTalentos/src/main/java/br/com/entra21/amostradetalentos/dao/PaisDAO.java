@@ -45,24 +45,24 @@ public class PaisDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-//	public List<Pais> lista() throws SQLException {
-//		List<Pais> paises = new ArrayList<>();
-//
-//		String sql = "select * from PAIS";
-//		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-//			stmt.execute();
-//			try (ResultSet rs = stmt.getResultSet()) {
-//				while (rs.next()) {
-//					int id = rs.getInt("pai_codigo");
-//					String nome = rs.getString("pai_nome");
-//					Pais pais = new Pais(id, nome);
-//					paises.add(pais);
-//				}
-//			}
-//		}
-//
-//		return paises;
-//
-//	}
+	public List<Pais> lista() throws SQLException {
+		List<Pais> paises = new ArrayList<>();
+
+		String sql = "select * from PAIS";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("PAIS_CODIGO");
+					String nome = rs.getString("PAIS_NOME");
+					Pais pais = new Pais(id, nome);
+					paises.add(pais);
+				}
+			}
+		}
+
+		return paises;
+
+	}
 
 }

@@ -4,133 +4,109 @@ import java.util.Date;
 
 public class NotaDeCompra {
 
-	private int ntc_codigo;
-	private int car_cod_fornecedor;
-	private int car_cod_item;
-	private String car_quantidade_item;
-	private String car_preco_item;
-	private String car_cod_tipo_pagamento;
-	private String car_total;
-	private Date car_data_lancamento;
-	private String car_obs;
-	private String car_anexo;
-	private String num_da_note;
-	private String ntc_desconto;
-	
-	public NotaDeCompra(int ntc_codigo, int car_cod_fornecedor, int car_cod_item, String car_quantidade_item,
-			String car_preco_item, String car_cod_tipo_pagamento, String car_total, Date car_data_lancamento,
-			String car_obs, String car_anexo, String num_da_note, String ntc_desconto) {
+	private int codigo;
+	private int cod_fornecedor;
+	private int cod_item;
+	private String quantidade_item;
+	private String preco_item;
+	private String cod_tipo_pagamento;
+	private String total;
+	private Date data_lancamento;
+	private String obs;
+	private String anexo;
+	private String num_da_nota;
+	private String desconto;
+	public NotaDeCompra(int codigo, int cod_fornecedor, int cod_item, String quantidade_item, String preco_item,
+			String cod_tipo_pagamento, String total, Date data_lancamento, String obs, String anexo, String num_da_nota,
+			String desconto) {
 		super();
-		this.ntc_codigo = ntc_codigo;
-		this.car_cod_fornecedor = car_cod_fornecedor;
-		this.car_cod_item = car_cod_item;
-		this.car_quantidade_item = car_quantidade_item;
-		this.car_preco_item = car_preco_item;
-		this.car_cod_tipo_pagamento = car_cod_tipo_pagamento;
-		this.car_total = car_total;
-		this.car_data_lancamento = car_data_lancamento;
-		this.car_obs = car_obs;
-		this.car_anexo = car_anexo;
-		this.num_da_note = num_da_note;
-		this.ntc_desconto = ntc_desconto;
+		this.codigo = codigo;
+		this.cod_fornecedor = cod_fornecedor;
+		this.cod_item = cod_item;
+		this.quantidade_item = quantidade_item;
+		this.preco_item = preco_item;
+		this.cod_tipo_pagamento = cod_tipo_pagamento;
+		this.total = total;
+		this.data_lancamento = data_lancamento;
+		this.obs = obs;
+		this.anexo = anexo;
+		this.num_da_nota = num_da_nota;
+		this.desconto = desconto;
 	}
-
-	public int getNtc_codigo() {
-		return ntc_codigo;
+	public int getCodigo() {
+		return codigo;
 	}
-
-	public void setNtc_codigo(int ntc_codigo) {
-		this.ntc_codigo = ntc_codigo;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-
-	public int getCar_cod_fornecedor() {
-		return car_cod_fornecedor;
+	public int getCod_fornecedor() {
+		return cod_fornecedor;
 	}
-
-	public void setCar_cod_fornecedor(int car_cod_fornecedor) {
-		this.car_cod_fornecedor = car_cod_fornecedor;
+	public void setCod_fornecedor(int cod_fornecedor) {
+		this.cod_fornecedor = cod_fornecedor;
 	}
-
-	public int getCar_cod_item() {
-		return car_cod_item;
+	public int getCod_item() {
+		return cod_item;
 	}
-
-	public void setCar_cod_item(int car_cod_item) {
-		this.car_cod_item = car_cod_item;
+	public void setCod_item(int cod_item) {
+		this.cod_item = cod_item;
 	}
-
-	public String getCar_quantidade_item() {
-		return car_quantidade_item;
+	public String getQuantidade_item() {
+		return quantidade_item;
 	}
-
-	public void setCar_quantidade_item(String car_quantidade_item) {
-		this.car_quantidade_item = car_quantidade_item;
+	public void setQuantidade_item(String quantidade_item) {
+		this.quantidade_item = quantidade_item;
 	}
-
-	public String getCar_preco_item() {
-		return car_preco_item;
+	public String getPreco_item() {
+		return preco_item;
 	}
-
-	public void setCar_preco_item(String car_preco_item) {
-		this.car_preco_item = car_preco_item;
+	public void setPreco_item(String preco_item) {
+		this.preco_item = preco_item;
 	}
-
-	public String getCar_cod_tipo_pagamento() {
-		return car_cod_tipo_pagamento;
+	public String getCod_tipo_pagamento() {
+		return cod_tipo_pagamento;
 	}
-
-	public void setCar_cod_tipo_pagamento(String car_cod_tipo_pagamento) {
-		this.car_cod_tipo_pagamento = car_cod_tipo_pagamento;
+	public void setCod_tipo_pagamento(String cod_tipo_pagamento) {
+		this.cod_tipo_pagamento = cod_tipo_pagamento;
 	}
-
-	public String getCar_total() {
-		return car_total;
+	public String getTotal() {
+		return total;
 	}
-
-	public void setCar_total(String car_total) {
-		this.car_total = car_total;
+	public void setTotal(String total) {
+		this.total = total;
 	}
-
-	public Date getCar_data_lancamento() {
-		return car_data_lancamento;
+	public Date getData_lancamento() {
+		return data_lancamento;
 	}
-
-	public void setCar_data_lancamento(Date car_data_lancamento) {
-		this.car_data_lancamento = car_data_lancamento;
+	public void setData_lancamento(Date data_lancamento) {
+		this.data_lancamento = data_lancamento;
 	}
-
-	public String getCar_obs() {
-		return car_obs;
+	public String getObs() {
+		return obs;
 	}
-
-	public void setCar_obs(String car_obs) {
-		this.car_obs = car_obs;
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
-
-	public String getCar_anexo() {
-		return car_anexo;
+	public String getAnexo() {
+		return anexo;
 	}
-
-	public void setCar_anexo(String car_anexo) {
-		this.car_anexo = car_anexo;
+	public void setAnexo(String anexo) {
+		this.anexo = anexo;
 	}
-
-	public String getNum_da_note() {
-		return num_da_note;
+	public String getNum_da_nota() {
+		return num_da_nota;
 	}
-
-	public void setNum_da_note(String num_da_note) {
-		this.num_da_note = num_da_note;
+	public void setNum_da_nota(String num_da_nota) {
+		this.num_da_nota = num_da_nota;
 	}
-
-	public String getNtc_desconto() {
-		return ntc_desconto;
+	public String getDesconto() {
+		return desconto;
 	}
-
-	public void setNtc_desconto(String ntc_desconto) {
-		this.ntc_desconto = ntc_desconto;
+	public void setDesconto(String desconto) {
+		this.desconto = desconto;
 	}
 	
+		
 	
 	
 }

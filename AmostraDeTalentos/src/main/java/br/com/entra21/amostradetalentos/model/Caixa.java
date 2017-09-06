@@ -2,33 +2,39 @@ package br.com.entra21.amostradetalentos.model;
 
 public class Caixa {
 	
-	private int cx_codigo;
-	private String cx_ag_codigo;
-	private int cx_forma_codigo;
+	private int codigo;
+	private String ag_codigo;
+	private int forma_codigo;
 	
-	public Caixa(int cx_codigo, String cx_ag_codigo, int cx_forma_codigo) {
-		this.cx_codigo = cx_codigo;
-		this.cx_ag_codigo = cx_ag_codigo;
-		this.cx_forma_codigo = cx_forma_codigo;
+	public Caixa(int codigo, String ag_codigo, int forma_codigo) {
+		super();
+		this.codigo = codigo;
+		this.ag_codigo = ag_codigo;
+		this.forma_codigo = forma_codigo;
 	}
-	
-	public int getCx_codigo() {
-		return cx_codigo;
+
+	public int getCodigo() {
+		return codigo;
 	}
-	public void setCx_codigo(int cx_codigo) {
-		this.cx_codigo = cx_codigo;
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-	public String getCx_ag_codigo() {
-		return cx_ag_codigo;
+
+	public String getAg_codigo() {
+		return ag_codigo;
 	}
-	public void setCx_ag_codigo(String cx_ag_codigo) {
-		this.cx_ag_codigo = cx_ag_codigo;
+
+	public void setAg_codigo(String ag_codigo) {
+		this.ag_codigo = ag_codigo;
 	}
-	public int getCx_forma_codigo() {
-		return cx_forma_codigo;
+
+	public int getForma_codigo() {
+		return forma_codigo;
 	}
-	public void setCx_forma_codigo(int cx_forma_codigo) {
-		this.cx_forma_codigo = cx_forma_codigo;
+
+	public void setForma_codigo(int forma_codigo) {
+		this.forma_codigo = forma_codigo;
 	}
 	
 	
