@@ -4,16 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class FabricanteDAO {
+public class FamiliaDAO {
 
 	private final Connection con;
 
-	public FabricanteDAO(Connection con) {
+	public FamiliaDAO(Connection con) {
 		this.con = con;
 	}
 
 	public boolean inserir(String nome) throws SQLException {
-		String sql = "INSERT INTO FABRICANTE (FAB_CODIGO, FAB_NOME) VALUES (SEQ_FABRICANTE.NEXTVAL,?)";
+		String sql = "INSERT INTO FAMILIA (FAM_CODIGO, FAM_NOME) VALUES (SEQ_FAMILIA.NEXTVAL,?)";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
@@ -22,7 +22,7 @@ public class FabricanteDAO {
 	}
 
 	public boolean alterar(int id, String nome) throws SQLException {
-		String sql = "UPDATE FABRICANTE SET FAB_NOME = ? WHERE FAB_CODIGO = ?";
+		String sql = "UPDATE FAMILIA SET FAM_NOME = ? WHERE FAM_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
@@ -32,7 +32,7 @@ public class FabricanteDAO {
 	}
 
 	public boolean excluir(int id) throws SQLException {
-		String sql = "DELETE FABRICANTE WHERE FAB_CODIGO = ?";
+		String sql = "DELETE FAMILIA WHERE FAM_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, id);
