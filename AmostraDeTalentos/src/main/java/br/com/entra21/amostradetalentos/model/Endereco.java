@@ -24,6 +24,18 @@ public class Endereco {
 		this.cidade = cidade;
 	}
 
+	public Endereco(int codigo, String tipo_de_logradouro, String rua, int rua_numero, String complemento, String cep,
+			String bairro) {
+		super();
+		this.codigo = codigo;
+		this.tipo_de_logradouro = tipo_de_logradouro;
+		this.rua = rua;
+		this.rua_numero = rua_numero;
+		this.complemento = complemento;
+		this.cep = cep;
+		this.bairro = bairro;
+	}
+
 	public int getCodigo() {
 		return codigo;
 	}

@@ -7,9 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.entra21.amostradetalentos.model.Cidade;
 import br.com.entra21.amostradetalentos.model.Endereco;
-import br.com.entra21.amostradetalentos.model.Pais;
 
 public class EnderecoDAO {
 
@@ -54,7 +52,7 @@ public class EnderecoDAO {
 	}
 
 	public List<Endereco> lista() throws SQLException {
-		List<Endereco> paises = new ArrayList<>();
+		List<Endereco> lEndereco = new ArrayList<>();
 
 		String sql = "select * from ENDERECO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -64,29 +62,18 @@ public class EnderecoDAO {
 					int codigo = rs.getInt("END_CODIGO");
 					String tipo_de_logradouro = rs.getString("END_TIPO_DE_LOUGRADOURO");
 					String rua = rs.getString("END_RUA");
-					String rua_numero = rs.getString("END_RUA_NUMERO");
+					int rua_numero = rs.getInt("END_RUA_NUMERO");
 					String complemento = rs.getString("END_COMPLEMENTO");
 					String cep = rs.getString("END_CEP");
 					String bairro = rs.getString("END_BAIRRO");
-					Cidade cidade = rs.getCidade("END_CID_CODIGO");
 					
-//					END_CODIGO, END_TIPO_DE_LOUGRADOURO, END_RUA, END_RUA_NUMERO, END_COMPLEMENTO, END_CEP, END_BAIRRO, END_CID_CODIGO
-//					this.codigo = codigo;
-//					this.tipo_de_logradouro = tipo_de_logradouro;
-//					this.rua = rua;
-//					this.rua_numero = rua_numero;
-//					this.complemento = complemento;
-//					this.cep = cep;
-//					this.bairro = bairro;
-//					this.cidade = cidade;
-					
-					Endereco endereco = new Endereco(codigo, tipo_de_logradouro, rua_numero, rua_numero, complemento, cep, bairro, cidade);
-					paises.add(endereco);
+					Endereco endereco = new Endereco(codigo, tipo_de_logradouro, rua, rua_numero, complemento, cep, bairro);
+					lEndereco.add(endereco);
 				}
 			}
 		}
 
-		return paises;
+		return lEndereco;
 
 	}
 }
