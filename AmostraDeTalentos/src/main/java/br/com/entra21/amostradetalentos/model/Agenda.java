@@ -8,28 +8,28 @@ public class Agenda {
 	
 	private int codigo;
 	private String observacao;
-	private Date data_do_sistema;
-	private Date data_de_inicio;
-	private Date data_de_termino;
-	private Time hora_inicio;
-	private Time hora_termino;
+	private Date dataSistema;
+	private Date dataInicio;
+	private Date dataTermino;
+	private Time horaInicio;
+	private Time horaTermino;
 	private String lembrete;
 	private String aviso;
 	private String ativo;
 	private String fechado;
 	private String ser_codigo;
 	private String atribuido_para;
-	public Agenda(int codigo, String observacao, Date data_do_sistema, Date data_de_inicio, Date data_de_termino,
-			Time hora_inicio, Time hora_termino, String lembrete, String aviso, String ativo, String fechado,
+	public Agenda(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino,
+			Time horaInicio, Time horaTermino, String lembrete, String aviso, String ativo, String fechado,
 			String ser_codigo, String atribuido_para) {
 		super();
 		this.codigo = codigo;
 		this.observacao = observacao;
-		this.data_do_sistema = data_do_sistema;
-		this.data_de_inicio = data_de_inicio;
-		this.data_de_termino = data_de_termino;
-		this.hora_inicio = hora_inicio;
-		this.hora_termino = hora_termino;
+		this.dataSistema = dataSistema;
+		this.dataInicio = dataInicio;
+		this.dataTermino = dataTermino;
+		this.horaInicio = horaInicio;
+		this.horaTermino = horaTermino;
 		this.lembrete = lembrete;
 		this.aviso = aviso;
 		this.ativo = ativo;
@@ -51,34 +51,34 @@ public class Agenda {
 		this.observacao = observacao;
 	}
 	public Date getData_do_sistema() {
-		return data_do_sistema;
+		return dataSistema;
 	}
-	public void setData_do_sistema(Date data_do_sistema) {
-		this.data_do_sistema = data_do_sistema;
+	public void setData_do_sistema(Date dataSistema) {
+		this.dataSistema = dataSistema;
 	}
 	public Date getData_de_inicio() {
-		return data_de_inicio;
+		return dataInicio;
 	}
-	public void setData_de_inicio(Date data_de_inicio) {
-		this.data_de_inicio = data_de_inicio;
+	public void setData_de_inicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 	public Date getData_de_termino() {
-		return data_de_termino;
+		return dataTermino;
 	}
-	public void setData_de_termino(Date data_de_termino) {
-		this.data_de_termino = data_de_termino;
+	public void setData_de_termino(Date dataTermino) {
+		this.dataTermino = dataTermino;
 	}
 	public Time getHora_inicio() {
-		return hora_inicio;
+		return horaInicio;
 	}
-	public void setHora_inicio(Time hora_inicio) {
-		this.hora_inicio = hora_inicio;
+	public void setHora_inicio(Time horaInicio) {
+		this.horaInicio = horaInicio;
 	}
 	public Time getHora_termino() {
-		return hora_termino;
+		return horaTermino;
 	}
-	public void setHora_termino(Time hora_termino) {
-		this.hora_termino = hora_termino;
+	public void setHora_termino(Time horaTermino) {
+		this.horaTermino = horaTermino;
 	}
 	public String getLembrete() {
 		return lembrete;

@@ -13,13 +13,14 @@ public class EnderecoService {
 
 	public void inserir(String nome, Estado estado) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new EnderecoDAO(con).inserir(Endereco );
+			Endereco endereco = new Endereco();
+			new EnderecoDAO(con).inserir(endereco);
 		}
 	}
 
-	public void alterar(Integer codigo, String nome) throws SQLException {
+	public void alterar(Integer codigo, String bairro) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new EnderecoDAO(con).alterar(codigo, nome);
+			new EnderecoDAO(con).alterarBairro(codigo, bairro);
 		}
 	}
 

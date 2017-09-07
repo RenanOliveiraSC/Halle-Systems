@@ -2,7 +2,7 @@ package br.com.entra21.amostradetalentos.model;
 
 import java.util.Date;
 
-public class lancamentoContabilLinhas {
+public class LancamentoContabilLinhas {
 
 	
 	private int codigo;
@@ -12,7 +12,7 @@ public class lancamentoContabilLinhas {
 	private String credito;
 	private Date data_lancamento;
 	private String observacao;
-	public lancamentoContabilLinhas(int codigo, int lc_codigo, String cod_conta, String debito, String credito,
+	public LancamentoContabilLinhas(int codigo, int lc_codigo, String cod_conta, String debito, String credito,
 			Date data_lancamento, String observacao) {
 		super();
 		this.codigo = codigo;

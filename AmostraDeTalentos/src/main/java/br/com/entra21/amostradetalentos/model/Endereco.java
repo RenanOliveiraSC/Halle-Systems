@@ -11,6 +11,10 @@ public class Endereco {
 	private String bairro;
 	private Cidade cidade;
 
+	public Endereco() {
+
+	}
+
 	public Endereco(int codigo, String tipo_de_logradouro, String rua, int rua_numero, String complemento, String cep,
 			String bairro, Cidade cidade) {
 		super();
@@ -99,7 +103,5 @@ public class Endereco {
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
-
-	
 
 }
