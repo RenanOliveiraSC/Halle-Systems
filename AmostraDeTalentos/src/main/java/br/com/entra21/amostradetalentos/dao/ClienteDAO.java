@@ -34,5 +34,6 @@ public class ClienteDAO {
 		statement.setInt(12, cliente.getEndereco().getCodigo());
 
 		return statement.executeUpdate() > 0;
+
 	}
 }
