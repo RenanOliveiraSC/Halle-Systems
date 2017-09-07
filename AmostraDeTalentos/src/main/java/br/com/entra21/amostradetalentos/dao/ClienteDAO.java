@@ -34,6 +34,111 @@ public class ClienteDAO {
 		statement.setInt(12, cliente.getEndereco().getCodigo());
 
 		return statement.executeUpdate() > 0;
-
 	}
+
+	public boolean alterarNome(int id, String nome) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_NOME = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, nome);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreNome(int id, String sobreNome) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_SOBRENOME = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, sobreNome);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreCpf(int id, String cpf) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_CPF = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, cpf);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreTelefone(int id, String telefone) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_TELEFONE = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, telefone);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreCelular(int id, String celular) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_CELULAR = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, celular);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreEmail(int id, String email) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_EMAIL = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, email);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreDataNascimento(int id, String dataNascimento) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_DATA_NASCIMENTO = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, dataNascimento);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreSexo(int id, String sexo) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_SEXO = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, sexo);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarsobreProfissao(int id, String profissao) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_PROFISSAO = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, profissao);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarPaiMae(int id, String paiMae) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_PAI_MAE = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, paiMae);
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarGrupoCliente(int id, GrupoCliente grupoCliente) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_GRU_CODIGO = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, grupoCliente.getCodigo());
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarEndereco(int id, Endereco endereco) throws SQLException {
+		String sql = "UPDATE CLIENTE SET CLI_END_CODIGO = ? WHERE CLI_CODIGO = ?";
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, endereco.getCodigo());
+		statement.setInt(2, id);
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean excluir(int id) throws SQLException {
+		String sql = "DELETE CLIENTE WHERE CLI_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
 }
