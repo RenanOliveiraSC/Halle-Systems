@@ -17,33 +17,33 @@ public class CidadeDAO {
 	public CidadeDAO(Connection con) {
 		this.con = con;
 	}
-	
-	public boolean inserir(String nome, Estado estado) throws SQLException{
+
+	public boolean inserir(String nome, Estado estado) throws SQLException {
 		String sql = "INSERT INTO CIDADE (CID_CODIGO, CID_NOME, CID_EST_CODIGO) VALUES (SEQ_CIDADE.NEXTVAL, ?, ?);";
-		 
+
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
 		statement.setInt(2, estado.getCodigo());
-		
+
 		return statement.executeUpdate() > 0;
 	}
-	
-	public boolean alterar(int id, String nome) throws SQLException{
+
+	public boolean alterar(int id, String nome) throws SQLException {
 		String sql = "UPDATE CIDADE SET CID_NOME = ? WHERE CID_CODIGO = ?";
-		 
+
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
 		statement.setInt(2, id);
-		 
+
 		return statement.executeUpdate() > 0;
 	}
-	
-	public boolean excluir(int id) throws SQLException{
+
+	public boolean excluir(int id) throws SQLException {
 		String sql = "DELETE CIDADE WHERE CID_CODIGO = ?";
-		 
+
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, id);
-		 
+
 		return statement.executeUpdate() > 0;
 	}
 
@@ -65,5 +65,5 @@ public class CidadeDAO {
 
 		return lCidade;
 
-	}	
+	}
 }

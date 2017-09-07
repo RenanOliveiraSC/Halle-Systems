@@ -2,7 +2,12 @@ package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.com.entra21.amostradetalentos.model.Familia;
 
 public class FamiliaDAO {
 
@@ -38,5 +43,25 @@ public class FamiliaDAO {
 		statement.setInt(1, id);
 
 		return statement.executeUpdate() > 0;
+	}
+
+	public List<Familia> lista() throws SQLException {
+		List<Familia> lFamilia = new ArrayList<>();
+
+		String sql = "select * from FAMILIA";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("FAM_CODIGO");
+					String nome = rs.getString("FAM_NOME");
+					Familia familia = new Familia(id, nome);
+					lFamilia.add(familia);
+				}
+			}
+		}
+
+		return lFamilia;
+
 	}
 }
