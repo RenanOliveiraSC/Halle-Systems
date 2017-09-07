@@ -65,4 +65,5 @@ public class FuncionarioDAO {
 		statement.setInt(2, id);
 		return statement.executeUpdate() > 0;
 	}
+
 }
