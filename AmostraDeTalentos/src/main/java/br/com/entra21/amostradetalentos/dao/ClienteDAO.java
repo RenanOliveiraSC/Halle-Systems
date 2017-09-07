@@ -1,6 +1,7 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -16,7 +17,7 @@ public class ClienteDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Cliente cliente, GrupoCliente tipoCliente, Endereco endereco) throws SQLException {
+	public boolean inserir(Cliente cliente, GrupoCliente grupocliente, Endereco endereco) throws SQLException {
 		String sql = "INSERT INTO CLIENTE (CLI_CODIGO, CLI_NOME, CLI_SOBRENOME, CLI_CPF, CLI_TELEFONE, CLI_CELULAR, CLI_EMAIL, CLI_DATA_NASCIMENTO, CLI_SEXO, CLI_PROFISSAO, CLI_PAI_MAE, CLI_GRU_CODIGO, CLI_END_CODIGO) VALUES (SEQ_CLIENTE.NEXTVAL, ?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, cliente.getNome());
@@ -25,8 +26,12 @@ public class ClienteDAO {
 		statement.setString(4, cliente.getTelefone());
 		statement.setString(5, cliente.getCelular());
 		statement.setString(6, cliente.getEmail());
-		statement.setInt(7, cliente.getGrupocliente().getCodigo());
-		statement.setInt(8, cliente.getEndereco().getCodigo());
+		statement.setDate(7, new Date(cliente.getData_nascimento().getTime()));
+		statement.setString(8, cliente.getSexo());
+		statement.setString(9, cliente.getProfissao());
+		statement.setInt(10, cliente.getPai_mae());
+		statement.setInt(11, cliente.getGrupocliente().getCodigo());
+		statement.setInt(12, cliente.getEndereco().getCodigo());
 
 		return statement.executeUpdate() > 0;
 	}
