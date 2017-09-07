@@ -5,17 +5,17 @@ import java.util.Date;
 public class LancamentoContabil {
 
 	private int codigo;
-	private String car_codigo;
-	private String cap_codigo;
-	private Date data_lancamento;
+	private String contasAReceberCodigo;
+	private String contasAPagarCodigo;
+	private Date dataLancamento;
 	private String observacao;
-	public LancamentoContabil(int codigo, String car_codigo, String cap_codigo, Date data_lancamento,
+	public LancamentoContabil(int codigo, String contasAReceberCodigo, String contasAPagarCodigo, Date dataLancamento,
 			String observacao) {
 		super();
 		this.codigo = codigo;
-		this.car_codigo = car_codigo;
-		this.cap_codigo = cap_codigo;
-		this.data_lancamento = data_lancamento;
+		this.contasAReceberCodigo = contasAReceberCodigo;
+		this.contasAPagarCodigo = contasAPagarCodigo;
+		this.dataLancamento = dataLancamento;
 		this.observacao = observacao;
 	}
 	public int getCodigo() {
@@ -25,22 +25,22 @@ public class LancamentoContabil {
 		this.codigo = codigo;
 	}
 	public String getCar_codigo() {
-		return car_codigo;
+		return contasAReceberCodigo;
 	}
-	public void setCar_codigo(String car_codigo) {
-		this.car_codigo = car_codigo;
+	public void setCar_codigo(String contasAReceberCodigo) {
+		this.contasAReceberCodigo = contasAReceberCodigo;
 	}
 	public String getCap_codigo() {
-		return cap_codigo;
+		return contasAPagarCodigo;
 	}
-	public void setCap_codigo(String cap_codigo) {
-		this.cap_codigo = cap_codigo;
+	public void setCap_codigo(String contasAPagarCodigo) {
+		this.contasAPagarCodigo = contasAPagarCodigo;
 	}
 	public Date getData_lancamento() {
-		return data_lancamento;
+		return dataLancamento;
 	}
-	public void setData_lancamento(Date data_lancamento) {
-		this.data_lancamento = data_lancamento;
+	public void setData_lancamento(Date dataLancamento) {
+		this.dataLancamento = dataLancamento;
 	}
 	public String getObservacao() {
 		return observacao;

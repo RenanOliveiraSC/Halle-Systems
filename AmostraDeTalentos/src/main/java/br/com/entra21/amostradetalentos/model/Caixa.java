@@ -3,14 +3,14 @@ package br.com.entra21.amostradetalentos.model;
 public class Caixa {
 	
 	private int codigo;
-	private String ag_codigo;
-	private int forma_codigo;
+	private Agenda agenda;
+	private FormaDePagamento formaDePagamento;
 	
-	public Caixa(int codigo, String ag_codigo, int forma_codigo) {
+	public Caixa(int codigo, Agenda agenda, FormaDePagamento formaDePagamento) {
 		super();
 		this.codigo = codigo;
-		this.ag_codigo = ag_codigo;
-		this.forma_codigo = forma_codigo;
+		this.agenda = agenda;
+		this.formaDePagamento = formaDePagamento;
 	}
 
 	public int getCodigo() {
@@ -21,20 +21,20 @@ public class Caixa {
 		this.codigo = codigo;
 	}
 
-	public String getAg_codigo() {
-		return ag_codigo;
+	public Agenda getAgenda() {
+		return agenda;
 	}
 
-	public void setAg_codigo(String ag_codigo) {
-		this.ag_codigo = ag_codigo;
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
 	}
 
-	public int getForma_codigo() {
-		return forma_codigo;
+	public FormaDePagamento getForma_codigo() {
+		return formaDePagamento;
 	}
 
-	public void setForma_codigo(int forma_codigo) {
-		this.forma_codigo = forma_codigo;
+	public void setForma_codigo(FormaDePagamento formaDePagamento) {
+		this.formaDePagamento = formaDePagamento;
 	}
 	
 	

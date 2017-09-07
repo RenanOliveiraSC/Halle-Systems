@@ -6,21 +6,21 @@ public class LancamentoContabilLinhas {
 
 	
 	private int codigo;
-	private int lc_codigo;
-	private String cod_conta;
+	private int lancamentoCodigo;
+	private String codigoConta;
 	private String debito;
 	private String credito;
-	private Date data_lancamento;
+	private Date dataLancamento;
 	private String observacao;
-	public LancamentoContabilLinhas(int codigo, int lc_codigo, String cod_conta, String debito, String credito,
-			Date data_lancamento, String observacao) {
+	public LancamentoContabilLinhas(int codigo, int lancamentoCodigo, String codigoConta, String debito, String credito,
+			Date dataLancamento, String observacao) {
 		super();
 		this.codigo = codigo;
-		this.lc_codigo = lc_codigo;
-		this.cod_conta = cod_conta;
+		this.lancamentoCodigo = lancamentoCodigo;
+		this.codigoConta = codigoConta;
 		this.debito = debito;
 		this.credito = credito;
-		this.data_lancamento = data_lancamento;
+		this.dataLancamento = dataLancamento;
 		this.observacao = observacao;
 	}
 	public int getCodigo() {
@@ -30,16 +30,16 @@ public class LancamentoContabilLinhas {
 		this.codigo = codigo;
 	}
 	public int getLc_codigo() {
-		return lc_codigo;
+		return lancamentoCodigo;
 	}
-	public void setLc_codigo(int lc_codigo) {
-		this.lc_codigo = lc_codigo;
+	public void setLc_codigo(int lancamentoCodigo) {
+		this.lancamentoCodigo = lancamentoCodigo;
 	}
 	public String getCod_conta() {
-		return cod_conta;
+		return codigoConta;
 	}
-	public void setCod_conta(String cod_conta) {
-		this.cod_conta = cod_conta;
+	public void setCod_conta(String codigoConta) {
+		this.codigoConta = codigoConta;
 	}
 	public String getDebito() {
 		return debito;
@@ -54,10 +54,10 @@ public class LancamentoContabilLinhas {
 		this.credito = credito;
 	}
 	public Date getData_lancamento() {
-		return data_lancamento;
+		return dataLancamento;
 	}
-	public void setData_lancamento(Date data_lancamento) {
-		this.data_lancamento = data_lancamento;
+	public void setData_lancamento(Date dataLancamento) {
+		this.dataLancamento = dataLancamento;
 	}
 	public String getObservacao() {
 		return observacao;

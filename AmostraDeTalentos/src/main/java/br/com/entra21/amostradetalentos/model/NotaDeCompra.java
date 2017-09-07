@@ -5,32 +5,33 @@ import java.util.Date;
 public class NotaDeCompra {
 
 	private int codigo;
-	private int cod_fornecedor;
-	private int cod_item;
-	private String quantidade_item;
-	private String preco_item;
-	private String cod_tipo_pagamento;
+	private int codFornecedor;
+	private int codProduto;
+	private String quantidadeProduto;
+	private String precoProduto;
+	private String codTipoPagamento;
 	private String total;
-	private Date data_lancamento;
+	private Date dataLancamento;
 	private String obs;
 	private String anexo;
-	private String num_da_nota;
+	private String numNota;
 	private String desconto;
-	public NotaDeCompra(int codigo, int cod_fornecedor, int cod_item, String quantidade_item, String preco_item,
-			String cod_tipo_pagamento, String total, Date data_lancamento, String obs, String anexo, String num_da_nota,
+	
+	public NotaDeCompra(int codigo, int codFornecedor, int codProduto, String quantidadeProduto, String precoProduto,
+			String codTipoPagamento, String total, Date dataLancamento, String obs, String anexo, String numNota,
 			String desconto) {
 		super();
 		this.codigo = codigo;
-		this.cod_fornecedor = cod_fornecedor;
-		this.cod_item = cod_item;
-		this.quantidade_item = quantidade_item;
-		this.preco_item = preco_item;
-		this.cod_tipo_pagamento = cod_tipo_pagamento;
+		this.codFornecedor = codFornecedor;
+		this.codProduto = codProduto;
+		this.quantidadeProduto = quantidadeProduto;
+		this.precoProduto = precoProduto;
+		this.codTipoPagamento = codTipoPagamento;
 		this.total = total;
-		this.data_lancamento = data_lancamento;
+		this.dataLancamento = dataLancamento;
 		this.obs = obs;
 		this.anexo = anexo;
-		this.num_da_nota = num_da_nota;
+		this.numNota = numNota;
 		this.desconto = desconto;
 	}
 	public int getCodigo() {
@@ -40,34 +41,34 @@ public class NotaDeCompra {
 		this.codigo = codigo;
 	}
 	public int getCod_fornecedor() {
-		return cod_fornecedor;
+		return codFornecedor;
 	}
-	public void setCod_fornecedor(int cod_fornecedor) {
-		this.cod_fornecedor = cod_fornecedor;
+	public void setCod_fornecedor(int codFornecedor) {
+		this.codFornecedor = codFornecedor;
 	}
 	public int getCod_item() {
-		return cod_item;
+		return codProduto;
 	}
-	public void setCod_item(int cod_item) {
-		this.cod_item = cod_item;
+	public void setCod_item(int codProduto) {
+		this.codProduto = codProduto;
 	}
 	public String getQuantidade_item() {
-		return quantidade_item;
+		return quantidadeProduto;
 	}
-	public void setQuantidade_item(String quantidade_item) {
-		this.quantidade_item = quantidade_item;
+	public void setQuantidade_item(String quantidadeProduto) {
+		this.quantidadeProduto = quantidadeProduto;
 	}
 	public String getPreco_item() {
-		return preco_item;
+		return precoProduto;
 	}
-	public void setPreco_item(String preco_item) {
-		this.preco_item = preco_item;
+	public void setPreco_item(String precoProduto) {
+		this.precoProduto = precoProduto;
 	}
 	public String getCod_tipo_pagamento() {
-		return cod_tipo_pagamento;
+		return codTipoPagamento;
 	}
-	public void setCod_tipo_pagamento(String cod_tipo_pagamento) {
-		this.cod_tipo_pagamento = cod_tipo_pagamento;
+	public void setCod_tipo_pagamento(String codTipoPagamento) {
+		this.codTipoPagamento = codTipoPagamento;
 	}
 	public String getTotal() {
 		return total;
@@ -76,10 +77,10 @@ public class NotaDeCompra {
 		this.total = total;
 	}
 	public Date getData_lancamento() {
-		return data_lancamento;
+		return dataLancamento;
 	}
-	public void setData_lancamento(Date data_lancamento) {
-		this.data_lancamento = data_lancamento;
+	public void setData_lancamento(Date dataLancamento) {
+		this.dataLancamento = dataLancamento;
 	}
 	public String getObs() {
 		return obs;
@@ -94,10 +95,10 @@ public class NotaDeCompra {
 		this.anexo = anexo;
 	}
 	public String getNum_da_nota() {
-		return num_da_nota;
+		return numNota;
 	}
-	public void setNum_da_nota(String num_da_nota) {
-		this.num_da_nota = num_da_nota;
+	public void setNum_da_nota(String numNota) {
+		this.numNota = numNota;
 	}
 	public String getDesconto() {
 		return desconto;
