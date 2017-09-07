@@ -1,22 +1,22 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class TipoUsuario {
+public class TipoFuncionario {
 
 	private Integer codigo;
 	private String nome;
 
-	public TipoUsuario(Integer codigo, String nome) {
+	public TipoFuncionario(Integer codigo, String nome) {
 
 		this.codigo = codigo;
 		this.nome = nome;
 	}
 
-	public TipoUsuario(String nome) {
+	public TipoFuncionario(String nome) {
 
 		this.nome = nome;
 	}
 
-	public TipoUsuario() {
+	public TipoFuncionario() {
 
 	}
 
