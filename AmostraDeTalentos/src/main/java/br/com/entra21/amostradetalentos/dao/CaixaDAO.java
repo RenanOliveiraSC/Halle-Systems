@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.entra21.amostradetalentos.model.Pais;
+import br.com.entra21.amostradetalentos.model.Agenda;
+import br.com.entra21.amostradetalentos.model.FormaDePagamento;
+import br.com.entra21.amostradetalentos.model.Caixa;
 
 public class CaixaDAO {
 
@@ -17,27 +19,18 @@ public class CaixaDAO {
 		this.con = con;
 	}
 	
-	public boolean inserir(String nome) throws SQLException{
-		String sql = "INSERT INTO PAIS (PAIS_CODIGO, PAIS_NOME) VALUES (SEQ_PAIS.nextval, ?)";
+	public boolean inserir(Agenda agenda, FormaDePagamento formaDePagamento) throws SQLException{
+		String sql = "INSERT INTO CAIXA (CX_CODIGO, CX_AG_CODIGO, CX_FORMA_CODIGO) VALUES (SEQ_CAIXA.nextval, ?, ?)";
 		 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, nome);
-		 
-		return statement.executeUpdate() > 0;
-	}
-	
-	public boolean alterar(int id, String nome) throws SQLException{
-		String sql = "UPDATE PAIS SET PAIS_NOME = ? WHERE PAIS_CODIGO = ?";
-		 
-		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, nome);
-		statement.setInt(2, id);
+		statement.setInt(1, agenda.getCodigo());
+		statement.setInt(2, formaDePagamento.getCodigo());
 		 
 		return statement.executeUpdate() > 0;
 	}
 	
 	public boolean excluir(int id) throws SQLException{
-		String sql = "DELETE PAIS WHERE PAIS_CODIGO = ?";
+		String sql = "DELETE CAIXA WHERE CX_CODIGO = ?";
 		 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, id);
@@ -45,23 +38,23 @@ public class CaixaDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Pais> lista() throws SQLException {
-		List<Pais> paises = new ArrayList<>();
-
-		String sql = "select * from PAIS";
-		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-			stmt.execute();
-			try (ResultSet rs = stmt.getResultSet()) {
-				while (rs.next()) {
-					int id = rs.getInt("PAIS_CODIGO");
-					String nome = rs.getString("PAIS_NOME");
-					Pais pais = new Pais(id, nome);
-					paises.add(pais);
-				}
-			}
-		}
-
-		return paises;
-
-	}
+//	public List<Caixa> lista() throws SQLException {
+//		List<Caixa> lCaixa = new ArrayList<>();
+//
+//		String sql = "select * from CAIXA";
+//		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+//			stmt.execute();
+//			try (ResultSet rs = stmt.getResultSet()) {
+//				while (rs.next()) {
+//					int id = rs.getInt("CX_CODIGO");
+//					String nome = rs.getString("CX_AG_CODIGO");
+//					Caixa caixa = new Caixa(id, null, null);
+//					lCaixa.add(caixa);
+//				}
+//			}
+//		}
+//
+//		return lCaixa;
+//
+//	}
 }

@@ -6,22 +6,22 @@ public class Contas_A_Receber {
 	
 	
 	private int ccodigo;
-	private int cx_codigo;
-	private Date data_lancamento;
+	private Caixa caixa;
+	private Date dataLancamento;
 	private int dias_de_atraso;
 	private Double saldo;
 	private Double desconto;
-	private Double agamento_total;
-	public Contas_A_Receber(int ccodigo, int cx_codigo, Date data_lancamento, int dias_de_atraso, Double saldo,
-			Double desconto, Double agamento_total) {
+	private Double pagamentoTotal;
+	public Contas_A_Receber(int ccodigo, Caixa caixa, Date dataLancamento, int dias_de_atraso, Double saldo,
+			Double desconto, Double pagamentoTotal) {
 		super();
 		this.ccodigo = ccodigo;
-		this.cx_codigo = cx_codigo;
-		this.data_lancamento = data_lancamento;
+		this.caixa = caixa;
+		this.dataLancamento = dataLancamento;
 		this.dias_de_atraso = dias_de_atraso;
 		this.saldo = saldo;
 		this.desconto = desconto;
-		this.agamento_total = agamento_total;
+		this.pagamentoTotal = pagamentoTotal;
 	}
 	public int getCcodigo() {
 		return ccodigo;
@@ -29,17 +29,17 @@ public class Contas_A_Receber {
 	public void setCcodigo(int ccodigo) {
 		this.ccodigo = ccodigo;
 	}
-	public int getCx_codigo() {
-		return cx_codigo;
+	public Caixa getCaixa() {
+		return caixa;
 	}
-	public void setCx_codigo(int cx_codigo) {
-		this.cx_codigo = cx_codigo;
+	public void setCaixa(Caixa caixa) {
+		this.caixa = caixa;
 	}
 	public Date getData_lancamento() {
-		return data_lancamento;
+		return dataLancamento;
 	}
-	public void setData_lancamento(Date data_lancamento) {
-		this.data_lancamento = data_lancamento;
+	public void setData_lancamento(Date dataLancamento) {
+		this.dataLancamento = dataLancamento;
 	}
 	public int getDias_de_atraso() {
 		return dias_de_atraso;
@@ -60,10 +60,10 @@ public class Contas_A_Receber {
 		this.desconto = desconto;
 	}
 	public Double getAgamento_total() {
-		return agamento_total;
+		return pagamentoTotal;
 	}
-	public void setAgamento_total(Double agamento_total) {
-		this.agamento_total = agamento_total;
+	public void setAgamento_total(Double pagamentoTotal) {
+		this.pagamentoTotal = pagamentoTotal;
 	}
 	
 		

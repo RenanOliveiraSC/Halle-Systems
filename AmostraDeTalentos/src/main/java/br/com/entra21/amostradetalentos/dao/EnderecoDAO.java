@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.model.Endereco;
+import br.com.entra21.amostradetalentos.model.Estado;
+import br.com.entra21.amostradetalentos.model.Pais;
+import br.com.entra21.amostradetalentos.model.Cidade;
 
 public class EnderecoDAO {
 
@@ -54,11 +57,22 @@ public class EnderecoDAO {
 	public List<Endereco> lista() throws SQLException {
 		List<Endereco> lEndereco = new ArrayList<>();
 
-		String sql = "select * from ENDERECO";
+		String sql = "select * from ENDERECO E INNER JOIN CIDADE C ON E.END_CODIGO = C.CID_CODIGO "
+				+ "INNER JOIN ESTADO ES ON ES.EST_CODIGO = C.CID_CODIGO "
+				+ "INNER JOIN PAIS P ON ES.EST_PAIS_COD = P.PAIS_CODIGO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
+					String nomePais = rs.getString("PAIS_NOME");
+
+					String nomeEstado = rs.getString("EST_NOME");
+					String sigla = rs.getString("EST_SIGLA");
+					int codPais = rs.getInt("EST_PAIS_CODIGO");
+
+					String nomeCid = rs.getString("CID_NOME");
+					int codEstado = rs.getInt("CID_EST_CODIGO");
+
 					int codigo = rs.getInt("END_CODIGO");
 					String tipo_de_logradouro = rs.getString("END_TIPO_DE_LOUGRADOURO");
 					String rua = rs.getString("END_RUA");
@@ -66,8 +80,16 @@ public class EnderecoDAO {
 					String complemento = rs.getString("END_COMPLEMENTO");
 					String cep = rs.getString("END_CEP");
 					String bairro = rs.getString("END_BAIRRO");
-					
-					Endereco endereco = new Endereco(codigo, tipo_de_logradouro, rua, rua_numero, complemento, cep, bairro);
+					int codCidade = rs.getInt("END_CID_CODIGO");
+
+					Pais pais = new Pais(codPais, nomePais);
+
+					Estado estado = new Estado(codEstado, nomeEstado, sigla, pais);
+
+					Cidade cidade = new Cidade(codCidade, nomeCid, estado);
+
+					Endereco endereco = new Endereco(codigo, tipo_de_logradouro, rua, rua_numero, complemento, cep,
+							bairro, cidade);
 					lEndereco.add(endereco);
 				}
 			}
