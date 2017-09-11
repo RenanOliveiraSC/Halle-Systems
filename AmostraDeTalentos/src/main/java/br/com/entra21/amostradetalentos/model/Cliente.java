@@ -7,7 +7,7 @@ public class Cliente {
 	private int cliente;
 	private String nome;
 	private String sobrenome;
-	private GrupoCliente grupocliente;
+	private TipoCliente grupocliente;
 	private int limite_de_credito;
 	private String cpf;
 	private Endereco endereco;
@@ -19,7 +19,7 @@ public class Cliente {
 	private String profissao;
 	private int pai_mae;
 
-	public Cliente(int cliente, String nome, String sobrenome, GrupoCliente grupocliente, int limite_de_credito,
+	public Cliente(int cliente, String nome, String sobrenome, TipoCliente grupocliente, int limite_de_credito,
 			String cpf, Endereco endereco, String telefone, String celular, String email, Date data_nascimento,
 			String sexo, String profissao, int pai_mae) {
 		super();
@@ -63,11 +63,11 @@ public class Cliente {
 		this.sobrenome = sobrenome;
 	}
 
-	public GrupoCliente getGrupocliente() {
+	public TipoCliente getGrupocliente() {
 		return grupocliente;
 	}
 
-	public void setGrupocliente(GrupoCliente grupocliente) {
+	public void setGrupocliente(TipoCliente grupocliente) {
 		this.grupocliente = grupocliente;
 	}
 
