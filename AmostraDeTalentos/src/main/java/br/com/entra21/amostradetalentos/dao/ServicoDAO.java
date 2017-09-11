@@ -22,23 +22,22 @@ public class ServicoDAO {
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, servico.getDescricao());
-		statement.setString(2, servico.getP);
 
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterar(int id, String nome) throws SQLException {
-		String sql = "UPDATE ESTADO SET EST_NOME = ? WHERE EST_CODIGO = ?";
-
-		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, nome);
-		statement.setInt(2, id);
-
-		return statement.executeUpdate() > 0;
-	}
+//	public boolean alterar(int id, String nome) throws SQLException {
+//		String sql = "UPDATE ESTADO SET EST_NOME = ? WHERE EST_CODIGO = ?";
+//
+//		PreparedStatement statement = con.prepareStatement(sql);
+//		statement.setString(1, nome);
+//		statement.setInt(2, id);
+//
+//		return statement.executeUpdate() > 0;
+//	}
 
 	public boolean excluir(int id) throws SQLException {
-		String sql = "DELETE ESTADO WHERE EST_CODIGO = ?";
+		String sql = "DELETE SERVICO WHERE SER_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, id);
@@ -46,8 +45,8 @@ public class ServicoDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Estado> lista() throws SQLException {
-		List<Estado> lEstados = new ArrayList<>();
+	public List<Servico> lista() throws SQLException {
+		List<Servico> lServico = new ArrayList<>();
 
 		String sql = "select * from ESTADO E INNER JOIN PAIS P ON E.EST_PAIS_CODIGO = P.PAIS_CODIGO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -61,15 +60,12 @@ public class ServicoDAO {
 					String sigla = rs.getString("EST_SIGLA");
 					int idPais = rs.getInt("EST_PAIS_CODIGO");
 
-					Pais pais = new Pais(idPais, nomePais);
-
-					Estado estado = new Estado(idEst, nomeEst, sigla, pais);
-					lEstados.add(estado);
+					
 				}
 			}
 		}
 
-		return lEstados;
+		return lServico;
 
 	}
 }
