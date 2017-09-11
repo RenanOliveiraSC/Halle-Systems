@@ -14,8 +14,8 @@ public class ConnectionPoolOracle {
 	public ConnectionPoolOracle() throws SQLException {
 		OracleConnectionPoolDataSource ocpds = new OracleConnectionPoolDataSource();
 		ocpds.setURL("jdbc:oracle:thin:@localhost:1521:xe");
-		ocpds.setUser("");
-		ocpds.setPassword("halle");
+		ocpds.setUser("USU_AMOSTRA");
+		ocpds.setPassword("novasenha");
 		pool = ocpds.getPooledConnection();
 	}
 
