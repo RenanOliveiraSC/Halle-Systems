@@ -9,13 +9,13 @@ public class Contas_a_Pagar {
 	private FormaDePagamento formaDePagamento;
 	private Date dataLancamento;
 	private int diasAtraso;
-	private String total;
+	private Double total;
 	private Double saldo;
 	private Double desconto;
 	private Double pagamentoTotal;
 
 	public Contas_a_Pagar(int codigo, Fornecedor fornecedor, FormaDePagamento formaDePagamento, Date dataLancamento,
-			int diasAtraso, String total, Double saldo, Double desconto, Double pagamentoTotal) {
+			int diasAtraso, Double total, Double saldo, Double desconto, Double pagamentoTotal) {
 		super();
 		this.codigo = codigo;
 		this.fornecedor = fornecedor;
@@ -27,9 +27,9 @@ public class Contas_a_Pagar {
 		this.desconto = desconto;
 		this.pagamentoTotal = pagamentoTotal;
 	}
-	
+
 	public Contas_a_Pagar() {
-		
+
 	}
 
 	public int getCodigo() {
@@ -64,6 +64,14 @@ public class Contas_a_Pagar {
 		this.dataLancamento = dataLancamento;
 	}
 
+	public FormaDePagamento getFormaDePagamento() {
+		return formaDePagamento;
+	}
+
+	public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+		this.formaDePagamento = formaDePagamento;
+	}
+
 	public int getDiasAtraso() {
 		return diasAtraso;
 	}
@@ -72,11 +80,11 @@ public class Contas_a_Pagar {
 		this.diasAtraso = diasAtraso;
 	}
 
-	public String getTotal() {
+	public Double getTotal() {
 		return total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(Double total) {
 		this.total = total;
 	}
 
