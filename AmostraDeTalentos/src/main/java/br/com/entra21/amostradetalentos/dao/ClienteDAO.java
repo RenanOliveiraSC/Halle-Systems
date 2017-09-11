@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.Endereco;
-import br.com.entra21.amostradetalentos.model.GrupoCliente;
+import br.com.entra21.amostradetalentos.model.TipoCliente;
 
 public class ClienteDAO {
 
@@ -17,7 +17,7 @@ public class ClienteDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Cliente cliente, GrupoCliente grupocliente, Endereco endereco) throws SQLException {
+	public boolean inserir(Cliente cliente, TipoCliente grupocliente, Endereco endereco) throws SQLException {
 		String sql = "INSERT INTO CLIENTE (CLI_CODIGO, CLI_NOME, CLI_SOBRENOME, CLI_CPF, CLI_TELEFONE, CLI_CELULAR, CLI_EMAIL, CLI_DATA_NASCIMENTO, CLI_SEXO, CLI_PROFISSAO, CLI_PAI_MAE, CLI_GRU_CODIGO, CLI_END_CODIGO) VALUES (SEQ_CLIENTE.NEXTVAL, ?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, cliente.getNome());
@@ -116,7 +116,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarGrupoCliente(int id, GrupoCliente grupoCliente) throws SQLException {
+	public boolean alterarGrupoCliente(int id, TipoCliente grupoCliente) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_GRU_CODIGO = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, grupoCliente.getCodigo());
