@@ -11,14 +11,13 @@ public class Fornecedor {
 	private String telefone;
 	private String celular;
 	private String email;
-	private ContaContabil contaContabil;
 
 	public Fornecedor() {
 		super();
 	}
 
 	public Fornecedor(Integer codigo, String nome, TipoFornecedor tipoFornecedor, String contato, String cnpj,
-			Endereco endereco, String telefone, String celular, String email, ContaContabil contaContabil) {
+			Endereco endereco, String telefone, String celular, String email) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.tipoFornecedor = tipoFornecedor;
@@ -28,11 +27,10 @@ public class Fornecedor {
 		this.telefone = telefone;
 		this.celular = celular;
 		this.email = email;
-		this.contaContabil = contaContabil;
 	}
 
 	public Fornecedor(String nome, TipoFornecedor tipoFornecedor, String contato, String cnpj, Endereco endereco,
-			String telefone, String celular, String email, ContaContabil contaContabil) {
+			String telefone, String celular, String email) {
 		this.nome = nome;
 		this.tipoFornecedor = tipoFornecedor;
 		this.contato = contato;
@@ -41,7 +39,6 @@ public class Fornecedor {
 		this.telefone = telefone;
 		this.celular = celular;
 		this.email = email;
-		this.contaContabil = contaContabil;
 	}
 
 	public Integer getCodigo() {
@@ -114,14 +111,6 @@ public class Fornecedor {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public ContaContabil getContaContabil() {
-		return contaContabil;
-	}
-
-	public void setContaContabil(ContaContabil contaContabil) {
-		this.contaContabil = contaContabil;
 	}
 
 }
