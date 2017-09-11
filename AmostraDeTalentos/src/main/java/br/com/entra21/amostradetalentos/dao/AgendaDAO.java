@@ -16,7 +16,7 @@ public class AgendaDAO {
 	}
 	
 	public boolean inserir(Agenda agenda) throws SQLException{
-		String sql = "INSERT INTO AGENDA (AG_CODIGO, AG_OBSERVACAO, AG_DATA_DO_SISTEMA, AG_DATA_DE_INICIO, AG_DATA_DE_TERMINO, AG_HORA_INICIO, AG_HORA_TERMINO, AG_LEMBRETE, AG_AVISO, AG_ATIVO, AG_FECHADO, AG_SER_CODIGO) VALUES (SEQ_AGENDA.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql =  "INSERT INTO AGENDA (AG_CODIGO, AG_OBSERVACAO, AG_DATA_DO_SISTEMA, AG_DATA_DE_INICIO, AG_DATA_DE_TERMINO, AG_HORA_INICIO, AG_HORA_TERMINO, AG_LEMBRETE, AG_AVISO, AG_ATIVO, AG_FECHADO, AG_SER_CODIGO) VALUES (SEQ_AGENDA.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, agenda.getObservacao());
