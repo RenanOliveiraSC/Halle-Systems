@@ -12,7 +12,7 @@ import br.com.entra21.amostradetalentos.model.Deposito;
 
 public class DepositoDAO {
 	
-	private final Connection con;
+	private final Connection con; 
 
 	public DepositoDAO(Connection con) {
 		this.con = con;
