@@ -206,9 +206,7 @@ public class ProdutoDAO {
 				while (rs.next()) {
 					int id = rs.getInt("PRO_CODIGO");
 					String descricao = rs.getString("PRO_DESCRICAO");
-					
 					Produto produto = new Produto(id, descricao);
-					
 					lProduto.add(produto);
 				}
 			}
