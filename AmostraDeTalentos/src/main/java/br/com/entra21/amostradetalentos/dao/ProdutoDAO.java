@@ -52,6 +52,16 @@ public class ProdutoDAO {
 		return statement.executeUpdate() > 0;
 	}
 
+	public boolean alterarFamilia(int id, String familia) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_FAM_CODIGO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, familia);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
 	public boolean excluir(int id) throws SQLException {
 		String sql = "DELETE PRODUTO WHERE PRO_CODIGO = ?";
 
