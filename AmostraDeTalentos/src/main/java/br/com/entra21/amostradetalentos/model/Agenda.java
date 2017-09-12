@@ -16,10 +16,11 @@ public class Agenda {
 	private String aviso;
 	private String ativo;
 	private String fechado;
+	private Servico servico;
 
 	public Agenda(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino, Time horaInicio,
 			Time horaTermino, String lembrete, String aviso, String ativo, String fechado, String ser_codigo,
-			String atribuido_para) {
+			String atribuido_para, Servico servico) {
 		super();
 		this.codigo = codigo;
 		this.observacao = observacao;
@@ -32,6 +33,7 @@ public class Agenda {
 		this.aviso = aviso;
 		this.ativo = ativo;
 		this.fechado = fechado;
+		this.servico = servico;
 	}
 
 	public int getCodigo() {
@@ -120,6 +122,14 @@ public class Agenda {
 
 	public void setFechado(String fechado) {
 		this.fechado = fechado;
+	}
+
+	public Servico getServico() {
+		return servico;
+	}
+
+	public void setServico(Servico servico) {
+		this.servico = servico;
 	}
 
 }
