@@ -19,6 +19,8 @@ public class LancamentoContabil {
 		this.dataLancamento = dataLancamento;
 		this.observacao = observacao;
 	}
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}
