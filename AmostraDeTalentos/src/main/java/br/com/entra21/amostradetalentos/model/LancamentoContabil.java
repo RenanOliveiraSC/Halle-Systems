@@ -10,7 +10,6 @@ public class LancamentoContabil {
 	private Date dataLancamento;
 	private String observacao;
 	
-	
 	public LancamentoContabil(int codigo, Contas_a_Receber contasAReceber, Contas_a_Pagar contasAPagar, Date dataLancamento,
 			String observacao) {
 		super();
