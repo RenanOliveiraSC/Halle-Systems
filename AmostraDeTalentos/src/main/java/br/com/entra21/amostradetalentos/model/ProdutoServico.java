@@ -7,13 +7,12 @@ public abstract class ProdutoServico {
 	private Familia familia;
 	private boolean ativo;
 	private ListaDePreco listaDePreco;
-	private String unidadeDeCompra;
+	private double preco;
+	private String nomeUnidadeDeCompra;
 	private double porUnidadeDeCompra;
 	private double qtdePorCompra;
 	private String nomeUnidadeVenda;
-	private double unidadeDeVenda;
 	private double porUnidadeDeVenda;
-	private String nomeUnidadeDeVenda;
 	private double qtdePorVenda;
 	private String observacao;
 	private String anexo;
@@ -23,33 +22,22 @@ public abstract class ProdutoServico {
 	}
 
 	public ProdutoServico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
-			String unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
-			String nomeUnidadeVenda, double unidadeDeVenda, double porUnidadeDeVenda, String nomeUnidadeDeVenda,
-			double qtdePorVenda, String observacao, String anexo) {
+			double preco, String nomeUnidadeDeCompra, double porUnidadeDeCompra, double qtdePorCompra,
+			String nomeUnidadeVenda, double porUnidadeDeVenda, double qtdePorVenda, String observacao, String anexo) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.familia = familia;
 		this.ativo = ativo;
 		this.listaDePreco = listaDePreco;
-		this.unidadeDeCompra = unidadeDeCompra;
+		this.nomeUnidadeDeCompra = nomeUnidadeDeCompra;
 		this.porUnidadeDeCompra = porUnidadeDeCompra;
 		this.qtdePorCompra = qtdePorCompra;
 		this.nomeUnidadeVenda = nomeUnidadeVenda;
-		this.unidadeDeVenda = unidadeDeVenda;
 		this.porUnidadeDeVenda = porUnidadeDeVenda;
-		this.nomeUnidadeDeVenda = nomeUnidadeDeVenda;
 		this.qtdePorVenda = qtdePorVenda;
 		this.observacao = observacao;
 		this.anexo = anexo;
 
-	}
-
-	public String getAnexo() {
-		return anexo;
-	}
-
-	public void setAnexo(String anexo) {
-		this.anexo = anexo;
 	}
 
 	public Integer getCodigo() {
@@ -92,12 +80,20 @@ public abstract class ProdutoServico {
 		this.listaDePreco = listaDePreco;
 	}
 
-	public String getUnidadeDeCompra() {
-		return unidadeDeCompra;
+	public double getPreco() {
+		return preco;
 	}
 
-	public void setUnidadeDeCompra(String unidadeDeCompra) {
-		this.unidadeDeCompra = unidadeDeCompra;
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public String getNomeUnidadeDeCompra() {
+		return nomeUnidadeDeCompra;
+	}
+
+	public void setNomeUnidadeDeCompra(String nomeUnidadeDeCompra) {
+		this.nomeUnidadeDeCompra = nomeUnidadeDeCompra;
 	}
 
 	public double getPorUnidadeDeCompra() {
@@ -124,28 +120,12 @@ public abstract class ProdutoServico {
 		this.nomeUnidadeVenda = nomeUnidadeVenda;
 	}
 
-	public double getUnidadeDeVenda() {
-		return unidadeDeVenda;
-	}
-
-	public void setUnidadeDeVenda(double unidadeDeVenda) {
-		this.unidadeDeVenda = unidadeDeVenda;
-	}
-
 	public double getPorUnidadeDeVenda() {
 		return porUnidadeDeVenda;
 	}
 
 	public void setPorUnidadeDeVenda(double porUnidadeDeVenda) {
 		this.porUnidadeDeVenda = porUnidadeDeVenda;
-	}
-
-	public String getNomeUnidadeDeVenda() {
-		return nomeUnidadeDeVenda;
-	}
-
-	public void setNomeUnidadeDeVenda(String nomeUnidadeDeVenda) {
-		this.nomeUnidadeDeVenda = nomeUnidadeDeVenda;
 	}
 
 	public double getQtdePorVenda() {
@@ -162,6 +142,14 @@ public abstract class ProdutoServico {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+
+	public String getAnexo() {
+		return anexo;
+	}
+
+	public void setAnexo(String anexo) {
+		this.anexo = anexo;
 	}
 
 }
