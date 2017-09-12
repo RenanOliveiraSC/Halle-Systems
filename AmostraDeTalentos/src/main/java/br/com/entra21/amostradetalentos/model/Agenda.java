@@ -14,11 +14,11 @@ public class Agenda {
 	private Time horaTermino;
 	private String lembrete;
 	private String aviso;
-	private String ativo;
-	private String fechado;
+	private boolean ativo;
+	private boolean fechado;
 
 	public Agenda(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino, Time horaInicio,
-			Time horaTermino, String lembrete, String aviso, String ativo, String fechado, String ser_codigo,
+			Time horaTermino, String lembrete, String aviso, boolean ativo, boolean fechado, String ser_codigo,
 			String atribuido_para) {
 		super();
 		this.codigo = codigo;
@@ -106,19 +106,19 @@ public class Agenda {
 		this.aviso = aviso;
 	}
 
-	public String getAtivo() {
+	public boolean getAtivo() {
 		return ativo;
 	}
 
-	public void setAtivo(String ativo) {
+	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	public String getFechado() {
+	public boolean getFechado() {
 		return fechado;
 	}
 
-	public void setFechado(String fechado) {
+	public void setFechado(boolean fechado) {
 		this.fechado = fechado;
 	}
 
