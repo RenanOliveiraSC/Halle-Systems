@@ -18,8 +18,7 @@ public class Agenda {
 	private boolean fechado;
 
 	public Agenda(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino, Time horaInicio,
-			Time horaTermino, String lembrete, String aviso, boolean ativo, boolean fechado, String ser_codigo,
-			String atribuido_para) {
+			Time horaTermino, String lembrete, String aviso, boolean ativo, boolean fechado) {
 		super();
 		this.codigo = codigo;
 		this.observacao = observacao;
@@ -121,5 +120,4 @@ public class Agenda {
 	public void setFechado(boolean fechado) {
 		this.fechado = fechado;
 	}
-
 }
