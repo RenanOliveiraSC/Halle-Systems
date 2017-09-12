@@ -26,6 +26,11 @@ public class Estado {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "Codigo: " + this.codigo + " Nome: " + this.nome + " Sigla: " + this.sigla + " País: " + this.pais.getNome();
+	}
+	
 	public Integer getCodigo() {
 		return codigo;
 	}

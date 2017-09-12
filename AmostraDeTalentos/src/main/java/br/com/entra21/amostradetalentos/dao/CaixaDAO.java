@@ -38,23 +38,23 @@ public class CaixaDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-//	public List<Caixa> lista() throws SQLException {
-//		List<Caixa> lCaixa = new ArrayList<>();
-//
-//		String sql = "select * from CAIXA";
-//		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-//			stmt.execute();
-//			try (ResultSet rs = stmt.getResultSet()) {
-//				while (rs.next()) {
-//					int id = rs.getInt("CX_CODIGO");
-//					String nome = rs.getString("CX_AG_CODIGO");
-//					Caixa caixa = new Caixa(id, null, null);
-//					lCaixa.add(caixa);
-//				}
-//			}
-//		}
-//
-//		return lCaixa;
-//
-//	}
+	public List<Caixa> lista() throws SQLException {
+		List<Caixa> lCaixa = new ArrayList<>();
+
+		String sql = "select * from CAIXA";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("CX_CODIGO");
+					String nome = rs.getString("CX_AG_CODIGO");
+					Caixa caixa = new Caixa(id, null, null);
+					lCaixa.add(caixa);
+				}
+			}
+		}
+
+		return lCaixa;
+
+	}
 }

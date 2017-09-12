@@ -49,7 +49,7 @@ public class EstadoDAO {
 	public List<Estado> lista() throws SQLException {
 		List<Estado> lEstados = new ArrayList<>();
 
-		String sql = "select * from ESTADO E INNER JOIN PAIS P ON ES.EST_PAIS_COD = P.PAIS_CODIGO";
+		String sql = "select * from ESTADO E INNER JOIN PAIS P ON E.EST_PAIS_CODIGO = P.PAIS_CODIGO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
@@ -59,7 +59,7 @@ public class EstadoDAO {
 					int idEst = rs.getInt("EST_CODIGO");
 					String nomeEst = rs.getString("EST_NOME");
 					String sigla = rs.getString("EST_SIGLA");
-					int idPais = rs.getInt("EST_PAIS_COD");
+					int idPais = rs.getInt("EST_PAIS_CODIGO");
 
 					Pais pais = new Pais(idPais, nomePais);
 
