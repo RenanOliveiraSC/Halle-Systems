@@ -13,4 +13,5 @@ public class Servico extends ProdutoServico {
 		super(codigo, descricao, familia, ativo, listaDePreco, preco, nomeUnidadeDeCompra, porUnidadeDeCompra,
 				qtdePorCompra, nomeUnidadeVenda, porunidadeDeVenda, qtdePorVenda, observacao, anexo);
 	}
+
 }
