@@ -5,28 +5,28 @@ import java.util.Date;
 public class NotaDeCompra {
 
 	private int codigo;
-	private int codFornecedor;
-	private int codProduto;
-	private String quantidadeProduto;
-	private String precoProduto;
-	private String codTipoPagamento;
-	private String total;
+	private Fornecedor fornecedor;
+	private Produto produto;
+	private double quantidadeProduto;
+	private double precoProduto;
+	private FormaDePagamento formaDePagamento;
+	private double total;
 	private Date dataLancamento;
 	private String obs;
 	private String anexo;
 	private String numNota;
-	private String desconto;
-	
-	public NotaDeCompra(int codigo, int codFornecedor, int codProduto, String quantidadeProduto, String precoProduto,
-			String codTipoPagamento, String total, Date dataLancamento, String obs, String anexo, String numNota,
-			String desconto) {
+	private double desconto;
+
+	public NotaDeCompra(int codigo, Fornecedor fornecedor, Produto produto, double quantidadeProduto,
+			double precoProduto, FormaDePagamento formaDePagamento, double total, Date dataLancamento, String obs,
+			String anexo, String numNota, double desconto) {
 		super();
 		this.codigo = codigo;
-		this.codFornecedor = codFornecedor;
-		this.codProduto = codProduto;
+		this.fornecedor = fornecedor;
+		this.produto = produto;
 		this.quantidadeProduto = quantidadeProduto;
 		this.precoProduto = precoProduto;
-		this.codTipoPagamento = codTipoPagamento;
+		this.formaDePagamento = formaDePagamento;
 		this.total = total;
 		this.dataLancamento = dataLancamento;
 		this.obs = obs;
@@ -34,80 +34,101 @@ public class NotaDeCompra {
 		this.numNota = numNota;
 		this.desconto = desconto;
 	}
+
 	public int getCodigo() {
 		return codigo;
 	}
+
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public int getCod_fornecedor() {
-		return codFornecedor;
+
+	public Fornecedor getFornecedor() {
+		return fornecedor;
 	}
-	public void setCod_fornecedor(int codFornecedor) {
-		this.codFornecedor = codFornecedor;
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
-	public int getCod_item() {
-		return codProduto;
+
+	public Produto getProduto() {
+		return produto;
 	}
-	public void setCod_item(int codProduto) {
-		this.codProduto = codProduto;
+
+	public void setCod_item(Produto produto) {
+		this.produto = produto;
 	}
-	public String getQuantidade_item() {
+
+	public double getQuantidade_item() {
 		return quantidadeProduto;
 	}
-	public void setQuantidade_item(String quantidadeProduto) {
+
+	public void setQuantidade_item(double quantidadeProduto) {
 		this.quantidadeProduto = quantidadeProduto;
 	}
-	public String getPreco_item() {
+
+	public double getPrecoProduto() {
 		return precoProduto;
 	}
-	public void setPreco_item(String precoProduto) {
+
+	public void setPrecoProduto(double precoProduto) {
 		this.precoProduto = precoProduto;
 	}
-	public String getCod_tipo_pagamento() {
-		return codTipoPagamento;
+
+	public FormaDePagamento getFormaDePagamento() {
+		return formaDePagamento;
 	}
-	public void setCod_tipo_pagamento(String codTipoPagamento) {
-		this.codTipoPagamento = codTipoPagamento;
+
+	public void setCod_tipo_pagamento(FormaDePagamento formaDePagamento) {
+		this.formaDePagamento = formaDePagamento;
 	}
-	public String getTotal() {
+
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(String total) {
+
+	public void setTotal(double total) {
 		this.total = total;
 	}
+
 	public Date getData_lancamento() {
 		return dataLancamento;
 	}
+
 	public void setData_lancamento(Date dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
+
 	public String getObs() {
 		return obs;
 	}
+
 	public void setObs(String obs) {
 		this.obs = obs;
 	}
+
 	public String getAnexo() {
 		return anexo;
 	}
+
 	public void setAnexo(String anexo) {
 		this.anexo = anexo;
 	}
+
 	public String getNum_da_nota() {
 		return numNota;
 	}
+
 	public void setNum_da_nota(String numNota) {
 		this.numNota = numNota;
 	}
-	public String getDesconto() {
+
+	public double getDesconto() {
 		return desconto;
 	}
-	public void setDesconto(String desconto) {
+
+	public void setDesconto(double desconto) {
 		this.desconto = desconto;
 	}
-	
-		
-	
-	
+
 }
