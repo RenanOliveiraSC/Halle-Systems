@@ -39,7 +39,7 @@ public class AgendaDAO {
 		return statement.executeUpdate() > 0;
 	}
 	
-	public boolean alterar(int id, String bairro) throws SQLException {
+	public  boolean alterar(int id, String bairro) throws SQLException {
 		String sql = "UPDATE ENDERECO SET END_BAIRRO = ? WHERE END_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
