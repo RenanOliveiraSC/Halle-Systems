@@ -40,11 +40,11 @@ public class Contas_a_Receber {
 		this.caixa = caixa;
 	}
 
-	public Date getData_lancamento() {
+	public Date getDatalancamento() {
 		return dataLancamento;
 	}
 
-	public void setData_lancamento(Date dataLancamento) {
+	public void setDatalancamento(Date dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 
@@ -72,11 +72,11 @@ public class Contas_a_Receber {
 		this.desconto = desconto;
 	}
 
-	public Double getAgamento_total() {
+	public Double getPagamento_total() {
 		return pagamentoTotal;
 	}
 
-	public void setAgamento_total(Double pagamentoTotal) {
+	public void setPagamento_total(Double pagamentoTotal) {
 		this.pagamentoTotal = pagamentoTotal;
 	}
 
