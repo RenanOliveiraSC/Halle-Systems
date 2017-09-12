@@ -35,7 +35,6 @@ public class NotaDeCompraDAO {
 		
 		
 		
-		
 		return statement.executeUpdate() > 0;
 	}
 
