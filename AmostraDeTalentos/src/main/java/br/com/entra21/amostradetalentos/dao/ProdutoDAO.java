@@ -52,11 +52,131 @@ public class ProdutoDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarFamilia(int id, String familia) throws SQLException {
+	public boolean alterarFamilia(int id, int familia) throws SQLException {
 		String sql = "UPDATE PRODUTO SET PRO_FAM_CODIGO = ? WHERE PRO_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, familia);
+		statement.setInt(1, familia);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarListaDePreco(int id, int listaDePreco) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_COD_LISTADEPRECO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, listaDePreco);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarPreco(int id, double preco) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_PRECO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setDouble(1, preco);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarNomeUnidadeCompra(int id, String nomeUnidadeCompra) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_NOME_UNIDADE_COMPRA = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, nomeUnidadeCompra);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarPorUnidadeDeCompra(int id, double PorUnidadeDeCompra) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_PORUNIDADE_DE_VENDA = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setDouble(1, PorUnidadeDeCompra);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarQtdePorUnidadeDeCompra(int id, double QtdePorUnidadeDeCompra) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_QTDE_POR_VENDA = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setDouble(1, QtdePorUnidadeDeCompra);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarObservacao(int id, String Observacao) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_OBSERVACAO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, Observacao);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarEstoqueMin(int id, double EstoqueMin) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_ESTOQUE_MIN = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setDouble(1, EstoqueMin);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarEstoqueMax(int id, double EstoqueMax) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_ESTOQUE_MAX = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setDouble(1, EstoqueMax);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarAtivo(int id, float ativo) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_ATIVO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setFloat(1, ativo);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarAnexo(int id, String anexo) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_ANEXO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, anexo);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarFabCodigo(int id, int fabCodigo) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_FAB_CODIGO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setFloat(1, fabCodigo);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
+	public boolean alterarDeposito(int id, int deposito) throws SQLException {
+		String sql = "UPDATE PRODUTO SET PRO_COD_DEPOSITO = ? WHERE PRO_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setFloat(1, deposito);
 		statement.setInt(2, id);
 
 		return statement.executeUpdate() > 0;

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entra21.amostradetalentos.model.Estado;
+import br.com.entra21.amostradetalentos.model.Pais;
 import br.com.entra21.amostradetalentos.model.Servico;
 
 public class ServicoDAO {
@@ -22,6 +24,10 @@ public class ServicoDAO {
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, servico.getDescricao());
+<<<<<<< HEAD
+		statement.setDouble(2, servico.getPreco());
+=======
+>>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 
 		return statement.executeUpdate() > 0;
 	}
