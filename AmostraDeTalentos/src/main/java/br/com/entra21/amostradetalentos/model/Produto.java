@@ -4,29 +4,28 @@ public class Produto extends ProdutoServico {
 
 	private double estoqueMax;
 	private double estoqueMin;
-	private double deposito;
+	private Deposito deposito;
 	private Fabricante fabricante;
 
-	public Produto(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
-			String unidadeDeCompra, double porUnidadeDeCompra, String nomeUnidadeDeCompra, double qtdePorCompra,
-			String nomeUnidadeVenda, double unidadeDeVenda, double porUnidadeDeVenda, String nomeUnidadeDeVenda,
-			double qtdePorVenda, String observacao, String anexo, double estoqueMax, double estoqueMin, double deposito,
-			Fabricante fabricante) {
-		super(codigo, descricao, familia, ativo, listaDePreco, unidadeDeCompra, porUnidadeDeCompra, nomeUnidadeDeCompra,
-				qtdePorCompra, nomeUnidadeVenda, unidadeDeVenda, porUnidadeDeVenda, nomeUnidadeDeVenda, qtdePorVenda,
-				observacao, anexo);
-		this.estoqueMax = estoqueMax;
-		this.estoqueMin = estoqueMin;
-		this.deposito = deposito;
-		this.fabricante = fabricante;
+	public double getEstoqueMax() {
+		return estoqueMax;
 	}
 
 	public Produto() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public double getEstoqueMax() {
-		return estoqueMax;
+	public Produto(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
+			double preco, String nomeUnidadeDeCompra, double porUnidadeDeCompra, double qtdePorCompra,
+			String nomeUnidadeVenda, double porUnidadeDeVenda, double qtdePorVenda, String observacao, String anexo,
+			double estoqueMax, double estoqueMin, Deposito deposito, Fabricante fabricante) {
+		super(codigo, descricao, familia, ativo, listaDePreco, preco, nomeUnidadeDeCompra, porUnidadeDeCompra,
+				qtdePorCompra, nomeUnidadeVenda, porUnidadeDeVenda, qtdePorVenda, observacao, anexo);
+		this.estoqueMax = estoqueMax;
+		this.estoqueMin = estoqueMin;
+		this.deposito = deposito;
+		this.fabricante = fabricante;
 	}
 
 	public void setEstoqueMax(double estoqueMax) {
@@ -41,11 +40,11 @@ public class Produto extends ProdutoServico {
 		this.estoqueMin = estoqueMin;
 	}
 
-	public double getDeposito() {
+	public Deposito getDeposito() {
 		return deposito;
 	}
 
-	public void setDeposito(double deposito) {
+	public void setDeposito(Deposito deposito) {
 		this.deposito = deposito;
 	}
 
