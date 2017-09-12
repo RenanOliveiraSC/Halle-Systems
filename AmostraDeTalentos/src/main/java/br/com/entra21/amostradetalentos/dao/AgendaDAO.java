@@ -27,8 +27,8 @@ public class AgendaDAO {
 		statement.setTime(6, agenda.getHora_termino());
 		statement.setString(7, agenda.getLembrete());
 		statement.setString(8, agenda.getAviso());
-		statement.setString(9, agenda.getAtivo());
-		statement.setString(10, agenda.getFechado());
+		statement.setBoolean(9, agenda.getAtivo());
+		statement.setBoolean(10, agenda.getFechado());
 		statement.setInt(11, agenda.getServico().getCodigo());
 				
 		return statement.executeUpdate() > 0;
