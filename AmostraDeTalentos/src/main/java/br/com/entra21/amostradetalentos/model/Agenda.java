@@ -122,4 +122,12 @@ public class Agenda {
 	public void setFechado(Boolean fechado) {
 		this.fechado = fechado;
 	}
+
+	public Servico getServico() {
+		return servico;
+	}
+
+	public void setServico(Servico servico) {
+		this.servico = servico;
+	}
 }
