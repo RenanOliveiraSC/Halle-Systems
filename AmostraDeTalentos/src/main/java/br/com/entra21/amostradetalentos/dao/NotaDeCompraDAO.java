@@ -1,6 +1,7 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,12 +21,21 @@ public class NotaDeCompraDAO {
 	}
 	
 	public boolean inserir(NotaDeCompra notaDeCompra) throws SQLException {
-		String sql = "INSERT INTO NOTA_DE_COMPRA (NTC_CODIGO, NTC_QTDE, EST_SIGLA, EST_PAIS_CODIGO) VALUES (SEQ_ESTADO.NEXTVAL, ?, ?, 1);";
+		String sql = "INSERT INTO NOTA_DE_COMPRA (NTC_CODIGO, NTC_QTDE, NTC_PRECO_ITEM, NTC_VALOR_TOTAL, NTC_DATA_LANCAMENTO, NTC_OBSERVACAO, NTC_ANEXO, NTC_NUMERO_NOTA, NTC_DESCONTO, NTC_FOR_CODIGO, NTC_PRO_CODIGO, NTC_FORMA_CODIGO) VALUES (SEQ_ESTADO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, nome);
-		statement.setString(2, sigla);
-
+		statement.setInt(1, notaDeCompra.getCodigo());
+		statement.setDouble(2, notaDeCompra.getQuantidade_item());
+		statement.setDouble(3, notaDeCompra.getPrecoProduto());
+		statement.setDouble(4, notaDeCompra.getTotal());
+		statement.setDate(5, (Date)notaDeCompra.getData_lancamento());
+		statement.setString(6, notaDeCompra.getObs());
+		statement.setString(7, notaDeCompra.getAnexo());
+		statement.setString(8, notaDeCompra.getNum_da_nota());
+		
+		
+		
+		
 		return statement.executeUpdate() > 0;
 	}
 
