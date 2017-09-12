@@ -2,12 +2,7 @@ package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.sql.Date;
 
 import br.com.entra21.amostradetalentos.model.Agenda;
@@ -26,6 +21,7 @@ public class AgendaDAO {
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, agenda.getObservacao());
 		statement.setDate(2, (Date)agenda.getData_do_sistema());
+		/*_______________________________________________________*/
 		statement.setDate(3, (Date)agenda.getData_de_inicio());
 		statement.setDate(4, (Date)agenda.getData_de_termino());
 		statement.setTime(5, agenda.getHora_inicio());
@@ -34,13 +30,14 @@ public class AgendaDAO {
 		statement.setString(8, agenda.getAviso());
 		statement.setBoolean(9, agenda.getAtivo());
 		statement.setBoolean(10, agenda.getFechado());
+		/*________________________________________________________*/
 		statement.setInt(11, agenda.getServico().getCodigo());
 				
 		return statement.executeUpdate() > 0;
 	}
 	
-	public  boolean alterar(int id, String bairro) throws SQLException {
-		String sql = "UPDATE ENDERECO SET END_BAIRRO = ? WHERE END_CODIGO = ?";
+	public  boolean alterarObservacao(int id, String bairro) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_OBSERVACAO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, bairro);
