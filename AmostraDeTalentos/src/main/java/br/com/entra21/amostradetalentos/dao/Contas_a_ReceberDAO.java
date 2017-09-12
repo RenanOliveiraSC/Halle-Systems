@@ -20,12 +20,12 @@ public class Contas_a_ReceberDAO {
 		String sql = "INSERT INTO Contas_a_Pagar(CAR_CODIGO, CAR_CX_CODIGO, CAR_DATA_LANCAMENTO, CAR_DIAS_DE_ATRASO, CAR_SALDO, CAR_DECONTO, CAR_PAGAMENTO_TOTAL) VALUES (SEQ_Contas_a_Pagar.NEXTVAL, ?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, aReceber.getCaixa().getCodigo());
-		statement.setDate(2, (Date) aReceber.getDataLancamento());
+		statement.setDate(2, (Date) aReceber.getDatalancamento());
 		statement.setInt(3, aReceber.getDias_de_atraso());
 		statement.setDouble(4, aReceber.getSaldo());
 		statement.setDouble(5, aReceber.getDesconto());
-		statement.setDouble(6, aReceber.getPagamentoTotal());
+		statement.setDouble(6, aReceber.getPagamento_total());
 		return statement.executeUpdate() > 0;
-		
+
 	}
 }
