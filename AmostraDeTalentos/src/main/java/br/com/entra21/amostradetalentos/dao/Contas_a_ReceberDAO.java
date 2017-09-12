@@ -25,7 +25,7 @@ public class Contas_a_ReceberDAO {
 		statement.setDouble(4, aReceber.getSaldo());
 		statement.setDouble(5, aReceber.getDesconto());
 		statement.setDouble(6, aReceber.getPagamento_total());
-		return statement.executeUpdate() > 0;
 
+		return statement.executeUpdate() > 0;
 	}
 }
