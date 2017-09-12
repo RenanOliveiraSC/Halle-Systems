@@ -14,12 +14,12 @@ public class Agenda {
 	private Time horaTermino;
 	private String lembrete;
 	private String aviso;
-	private String ativo;
-	private String fechado;
+	private Boolean ativo;
+	private Boolean fechado;
 	private Servico servico;
 
 	public Agenda(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino, Time horaInicio,
-			Time horaTermino, String lembrete, String aviso, String ativo, String fechado, String ser_codigo,
+			Time horaTermino, String lembrete, String aviso, Boolean ativo, Boolean fechado, String ser_codigo,
 			String atribuido_para, Servico servico) {
 		super();
 		this.codigo = codigo;
@@ -33,7 +33,6 @@ public class Agenda {
 		this.aviso = aviso;
 		this.ativo = ativo;
 		this.fechado = fechado;
-		this.servico = servico;
 	}
 
 	public int getCodigo() {
@@ -108,19 +107,19 @@ public class Agenda {
 		this.aviso = aviso;
 	}
 
-	public String getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 
-	public void setAtivo(String ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 
-	public String getFechado() {
+	public Boolean getFechado() {
 		return fechado;
 	}
 
-	public void setFechado(String fechado) {
+	public void setFechado(Boolean fechado) {
 		this.fechado = fechado;
 	}
 
@@ -131,5 +130,4 @@ public class Agenda {
 	public void setServico(Servico servico) {
 		this.servico = servico;
 	}
-
 }

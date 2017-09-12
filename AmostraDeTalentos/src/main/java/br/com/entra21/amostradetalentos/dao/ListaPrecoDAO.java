@@ -11,7 +11,7 @@ import br.com.entra21.amostradetalentos.model.ListaDePreco;
 
 public class ListaPrecoDAO {
 	
-private final Connection con;
+    private final Connection con;
 	
 	public ListaPrecoDAO(Connection con) {
 		this.con = con;
