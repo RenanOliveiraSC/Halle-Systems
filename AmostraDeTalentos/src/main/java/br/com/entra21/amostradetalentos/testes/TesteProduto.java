@@ -13,8 +13,8 @@ public class TesteProduto {
 		ProdutoService produtoService = new ProdutoService();
 
 		List<Produto> lProduto = produtoService.listarProdutos();
-		for (Produto est : lProduto) {
-			System.out.println(est);
+		for (Produto prod : lProduto) {
+			System.out.println(prod.toString());
 		}
 	}
 }

@@ -1,21 +1,27 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 
 import br.com.entra21.amostradetalentos.model.Agenda;
 
 public class AgendaDAO {
 	
+<<<<<<< HEAD
     private final Connection con;
 	
 	public AgendaDAO(Connection con) {
@@ -82,6 +88,12 @@ public class AgendaDAO {
 
 		return lListaDePreco;
 
+=======
+   	private final Connection con;
+
+	public AgendaDAO(Connection con) {
+		this.con = con;
+>>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 	}
 	
 	public boolean inserir(Agenda agenda) throws SQLException{
@@ -89,28 +101,147 @@ public class AgendaDAO {
 		 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, agenda.getObservacao());
-		statement.setDate(2, (Date)agenda.getData_do_sistema());
-		statement.setDate(3, (Date)agenda.getData_de_inicio());
-		statement.setDate(4, (Date)agenda.getData_de_termino());
-		statement.setTime(5, agenda.getHora_inicio());
-		statement.setTime(6, agenda.getHora_termino());
+		statement.setDate(2, (Date)agenda.getDataSistema());
+		statement.setDate(3, (Date)agenda.getDataInicio());
+		statement.setDate(4, (Date)agenda.getDataTermino());
+		statement.setTime(5, agenda.getHoraInicio());
+		statement.setTime(6, agenda.getHoraTermino());
 		statement.setString(7, agenda.getLembrete());
 		statement.setString(8, agenda.getAviso());
 		statement.setBoolean(9, agenda.getAtivo());
 		statement.setBoolean(10, agenda.getFechado());
-		statement.setInt(11, agenda.getServico().getCodigo());
+		
 				
 		return statement.executeUpdate() > 0;
 	}
 	
-	public boolean alterar(int id, String bairro) throws SQLException {
-		String sql = "UPDATE ENDERECO SET END_BAIRRO = ? WHERE END_CODIGO = ?";
+	public  boolean alterarObservacao(int id, String observacao) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_OBSERVACAO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, bairro);
+		statement.setString(1, observacao);
 		statement.setInt(2, id);
 
 		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarDataInicio(int id, Date datainicio) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_DATA_INICIO = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setDate(1, datainicio);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarDataTermino(int id, Date datatermino) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_DATA_TERMINO = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setDate(1, datatermino);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarHoraInicio(int id, Time horainicio) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_HORA_INICIO = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setTime(1, horainicio);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarHoraTermino(int id, Time horatermino) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_HORA_TERMINO = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setTime(1, horatermino);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarLembrete(int id, String lembrete) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_LEMBRETE = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, lembrete);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarAviso(int id, String aviso) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_AVISO = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, aviso);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarAtivo(int id, String ativo) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_ATIVO = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, ativo);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public  boolean alterarFechado(int id, String fechado) throws SQLException {
+		String sql = "UPDATE AGENDA SET AG_FECHADO = ? WHERE AG_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setString(1, fechado);
+		statement.setInt(2, id);
+
+		return statement.executeUpdate() > 0;
+	}
+	
+	public boolean excluir(int id) throws SQLException{
+		String sql = "DELETE AGENDA WHERE AG_CODIGO = ?";
+		 
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, id);
+		 
+		return statement.executeUpdate() > 0;
+	}
+	
+	public List<Agenda> lista() throws SQLException {
+		List<Agenda> agendas = new ArrayList<>();
+
+		String sql = "select * from AGENDA A INNER JOIN SERVICO S ON A.SER_CODIGO = S.SER_CODIGO";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("AG_CODIGO");
+					String observacao = rs.getString("AG_OBSERVACAO");
+					Date datasistema = rs.getDate("AG_DATA_SISTEMA");
+					Date datainicio = rs.getDate("AG_DATA_INICIO");
+					Date datatermino = rs.getDate("AG_DATA_TERMINO");
+					Time horainicio = rs.getTime("AG_HORA_INICIO");
+					Time horatermino = rs.getTime("AG_HORA_TERMINO");
+					String lembrete = rs.getString("AG_LEMBRETE");
+					String aviso = rs.getString("AG_AVISO");
+					Boolean ativo = rs.getBoolean("AG_ATIVO");
+					Boolean fechado = rs.getBoolean("AG_FECHADO");
+													
+					Agenda agenda = new Agenda(id, observacao, datasistema, datainicio, datatermino, horainicio, horatermino, lembrete, aviso, ativo, fechado);
+					agendas.add(agenda);
+				}
+			}
+		}
+
+		return agendas;
+
 	}
 	
 }

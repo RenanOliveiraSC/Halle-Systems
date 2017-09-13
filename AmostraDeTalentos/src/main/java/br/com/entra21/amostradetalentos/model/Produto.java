@@ -27,6 +27,12 @@ public class Produto extends ProdutoServico {
 		this.deposito = deposito;
 		this.fabricante = fabricante;
 	}
+	
+	@Override
+	public String toString() {
+		return "nome: " + this.getDescricao() + " familia " + this.getFamilia().getNome() + " fabricante " + this.getFabricante().getNome()
+				+ " preco " + this.getPreco() + " porUnidade " + this.getPorUnidadeDeCompra();
+	}
 
 	public void setEstoqueMax(double estoqueMax) {
 		this.estoqueMax = estoqueMax;

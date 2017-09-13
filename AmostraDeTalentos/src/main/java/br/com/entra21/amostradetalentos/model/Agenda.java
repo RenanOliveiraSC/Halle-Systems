@@ -16,12 +16,11 @@ public class Agenda {
 	private String aviso;
 	private Boolean ativo;
 	private Boolean fechado;
-	private Servico servico;
 
 	public Agenda(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino, Time horaInicio,
-			Time horaTermino, String lembrete, String aviso, Boolean ativo, Boolean fechado, String ser_codigo,
-			String atribuido_para, Servico servico) {
+			Time horaTermino, String lembrete, String aviso, Boolean ativo, Boolean fechado) {
 		super();
+		
 		this.codigo = codigo;
 		this.observacao = observacao;
 		this.dataSistema = dataSistema;
@@ -51,43 +50,43 @@ public class Agenda {
 		this.observacao = observacao;
 	}
 
-	public Date getData_do_sistema() {
+	public Date getDataSistema() {
 		return dataSistema;
 	}
 
-	public void setData_do_sistema(Date dataSistema) {
+	public void setDataSistema(Date dataSistema) {
 		this.dataSistema = dataSistema;
 	}
 
-	public Date getData_de_inicio() {
+	public Date getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setData_de_inicio(Date dataInicio) {
+	public void setDataInicio(Date dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public Date getData_de_termino() {
+	public Date getDataTermino() {
 		return dataTermino;
 	}
 
-	public void setData_de_termino(Date dataTermino) {
+	public void setDataTermino(Date dataTermino) {
 		this.dataTermino = dataTermino;
 	}
 
-	public Time getHora_inicio() {
+	public Time getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHora_inicio(Time horaInicio) {
+	public void setHoraInicio(Time horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public Time getHora_termino() {
+	public Time getHoraTermino() {
 		return horaTermino;
 	}
 
-	public void setHora_termino(Time horaTermino) {
+	public void setHoraTermino(Time horaTermino) {
 		this.horaTermino = horaTermino;
 	}
 
@@ -123,11 +122,4 @@ public class Agenda {
 		this.fechado = fechado;
 	}
 
-	public Servico getServico() {
-		return servico;
-	}
-
-	public void setServico(Servico servico) {
-		this.servico = servico;
-	}
 }

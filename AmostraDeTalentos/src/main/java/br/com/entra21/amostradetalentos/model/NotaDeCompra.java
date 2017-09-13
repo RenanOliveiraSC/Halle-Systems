@@ -10,7 +10,7 @@ public class NotaDeCompra {
 	private double quantidadeProduto;
 	private double precoProduto;
 	private FormaDePagamento formaDePagamento;
-	private double total;
+	private double valorTotal;
 	private Date dataLancamento;
 	private String obs;
 	private String anexo;
@@ -27,7 +27,7 @@ public class NotaDeCompra {
 		this.quantidadeProduto = quantidadeProduto;
 		this.precoProduto = precoProduto;
 		this.formaDePagamento = formaDePagamento;
-		this.total = total;
+		this.valorTotal = valorTotal;
 		this.dataLancamento = dataLancamento;
 		this.obs = obs;
 		this.anexo = anexo;
@@ -59,11 +59,11 @@ public class NotaDeCompra {
 		this.produto = produto;
 	}
 
-	public double getQuantidade_item() {
+	public double getQuantidade_produto() {
 		return quantidadeProduto;
 	}
 
-	public void setQuantidade_item(double quantidadeProduto) {
+	public void setQuantidade_produto(double quantidadeProduto) {
 		this.quantidadeProduto = quantidadeProduto;
 	}
 
@@ -83,12 +83,12 @@ public class NotaDeCompra {
 		this.formaDePagamento = formaDePagamento;
 	}
 
-	public double getTotal() {
-		return total;
+	public double getValorTotal() {
+		return valorTotal;
 	}
 
-	public void setTotal(double total) {
-		this.total = total;
+	public void setValorTotal(double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public Date getData_lancamento() {

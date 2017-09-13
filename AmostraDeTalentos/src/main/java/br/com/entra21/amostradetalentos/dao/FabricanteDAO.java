@@ -3,6 +3,9 @@ package br.com.entra21.amostradetalentos.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
+
+import br.com.entra21.amostradetalentos.model.Fabricante;
 
 public class FabricanteDAO {
 
@@ -38,5 +41,10 @@ public class FabricanteDAO {
 		statement.setInt(1, id);
 
 		return statement.executeUpdate() > 0;
+	}
+
+	public List<Fabricante> lista() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
