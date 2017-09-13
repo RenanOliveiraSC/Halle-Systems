@@ -30,7 +30,14 @@ public class AgendaDAO {
 		statement.setInt(1, agenda.getCodigo());
 		statement.setString(2, agenda.getObservacao());
 		statement.setDate(3, (Date) agenda.getDataSistema());
-		statement.setDate(parameterIndex, x);
+		statement.setDate(4, (Date) agenda.getDataInicio());
+		statement.setDate(5, (Date) agenda.getDataTermino());
+		statement.setTime(6, agenda.getHoraInicio());
+		statement.setTime(7, agenda.getHoraTermino());
+		statement.setString(8, agenda.getLembrete());
+		statement.setString(9, agenda.getAviso());
+		statement.setBoolean(10, agenda.getAtivo());
+		statement.setBoolean(11, agenda.getFechado());
 
 		return statement.executeUpdate() > 0;
 	}
