@@ -1,5 +1,5 @@
 package br.com.entra21.amostradetalentos.service;
 
-public class ParceiroDeNegocioService {
+public class TipoFornecedorService {
 
 }

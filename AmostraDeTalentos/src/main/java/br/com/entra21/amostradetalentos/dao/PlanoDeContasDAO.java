@@ -20,6 +20,10 @@ public class PlanoDeContasDAO {
 		statement.setString(1, planodecontas.getNome_conta());
 		statement.setInt(2, planodecontas.getSaldo());
 		statement.setString(3, planodecontas.getConta_caixa());
+		statement.setString(4, planodecontas.getConta_ativa());
+		statement.setString(5, planodecontas.getConfidencial());
+		statement.setString(6, planodecontas.getCentro_de_custo());
+		statement.setString(7, planodecontas.getCodigo_externo());		
 		
 		return statement.executeUpdate() > 0;
 	}
