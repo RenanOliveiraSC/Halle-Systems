@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.entra21.amostradetalentos.model.Servico;
+import br.com.entra21.amostradetalentos.model.SalvaAgenda;
 
 public class ServicoDAO {
 
@@ -17,7 +17,7 @@ public class ServicoDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Servico servico) throws SQLException {
+	public boolean inserir(SalvaAgenda servico) throws SQLException {
 		String sql = "INSERT INTO SERVICO (SER_CODIGO, SER_NOME, SER_PRECO, SER_ATIVO, SER_NOME_UNIDADE_COMPRA, SER_QTDE_UNIDADE_COMPRA, SER_NOME_EMBALAGEM_COMPRA, SER_NOME_UNIDADE_VENDA, SER_QTDE_UNIDADE_VENDA, SER_NOME_EMBALAGEM_VENDA, SER_QTDE_EMBALAGEM_VENDA, SER_OBSERVACAO, SER_FAM_CODIGO, SER_LP_CODIGO) VALUES (SEQ_SERVICO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -35,8 +35,8 @@ public class ServicoDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Servico> lista() throws SQLException {
-		List<Servico> lServico = new ArrayList<>();
+	public List<SalvaAgenda> lista() throws SQLException {
+		List<SalvaAgenda> lServico = new ArrayList<>();
 
 		String sql = "select * from ESTADO E INNER JOIN PAIS P ON E.EST_PAIS_CODIGO = P.PAIS_CODIGO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {

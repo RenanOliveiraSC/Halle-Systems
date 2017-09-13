@@ -1,12 +1,12 @@
 package br.com.entra21.amostradetalentos.model;
 
-public class Servico extends ProdutoServico {
+public class SalvaAgenda extends ProdutoServico {
 
-	public Servico() {
+	public SalvaAgenda() {
 		super();
 	}
 
-	public Servico(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
+	public SalvaAgenda(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
 			double preco, String nomeUnidadeDeCompra, double porUnidadeDeCompra, double qtdePorCompra,
 			String nomeUnidadeVenda, double porunidadeDeVenda, double qtdePorVenda, String observacao, String anexo) {
 
