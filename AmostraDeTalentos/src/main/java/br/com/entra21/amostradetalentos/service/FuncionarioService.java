@@ -33,4 +33,10 @@ public class FuncionarioService {
 			new FuncionarioDAO(con).alterarEmail(id, email);
 		}
 	}
+
+	public void alterarTelefone(Integer id, String telefone) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			new FuncionarioDAO(con).alterarEmail(id, telefone);
+		}
+	}
 }
