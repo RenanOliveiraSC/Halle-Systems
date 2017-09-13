@@ -169,6 +169,7 @@ public class AgendaDAO {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
+					
 					int id = rs.getInt("AG_CODIGO");
 					String observacao = rs.getString("AG_OBSERVACAO");
 					Date datasistema = rs.getDate("AG_DATA_SISTEMA");
