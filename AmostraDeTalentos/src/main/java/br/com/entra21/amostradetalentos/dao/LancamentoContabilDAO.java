@@ -3,7 +3,11 @@ package br.com.entra21.amostradetalentos.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.entra21.amostradetalentos.model.Contas_a_Pagar;
 import br.com.entra21.amostradetalentos.model.Contas_a_Receber;
 import br.com.entra21.amostradetalentos.model.LancamentoContabil;
@@ -37,11 +41,12 @@ public class LancamentoContabilDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public List<LancamentoContabil> lista() throws SQLException  {
+
+	public List<LancamentoContabil> lista() throws SQLException {
 		List<LancamentoContabil> lLancamentoContabil = new ArrayList<>();
-		
-		String sql = "select * from LANCAMENTO_CONTABIL LC INNER JOIN CONTAS_A_PAGAR CP ON CP.CAP_CODIGO = LC.LC_CAP_CODIGO"
+
+		String sql = "select * from LANCAMENTO_CONTABIL LC "
+				+ "INNER JOIN CONTAS_A_PAGAR CP ON CP.CAP_CODIGO = LC.LC_CAP_CODIGO"
 				+ "INNER JOIN CONTAS_RECEBER CR ON CR.CAR_CODIGO = LC.LC_CAR_CODIGO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
@@ -50,8 +55,9 @@ public class LancamentoContabilDAO {
 					int id = rs.getInt("LC_CODIGO");
 					String observacao = rs.getString("LC_OBSERVACAO");
 					Date dataLancamento = rs.getDate("LC_DATA_LANCAMENTO");
-					LancamentoContabil lancamentoContabil = new LancamentoContabil(codigo, contasAReceber, contasAPagar, dataLancamento, observacao);
-					lLancamentoContabil.add(lancamentoContabil);
+
+					int codigoCap = rs.getInt("LC_CAP_CODIGO");
+					int codigoCar = rs.getInt("LC_CAR_CODIGO");
 				}
 			}
 		}
