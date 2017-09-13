@@ -1,7 +1,7 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
-<<<<<<< HEAD
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,11 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
-=======
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
->>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
+
 
 import br.com.entra21.amostradetalentos.model.Agenda;
 
@@ -86,12 +82,6 @@ public class AgendaDAO {
 
 		return lListaDePreco;
 
-	}
-
-	private final Connection con;
-
-	public AgendaDAO(Connection con) {
-		this.con = con;
 	}
 	
 	public boolean inserir(Agenda agenda) throws SQLException{
