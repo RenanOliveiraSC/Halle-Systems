@@ -27,4 +27,10 @@ public class FuncionarioService {
 			new FuncionarioDAO(con).alterarSobreNome(id, sobreNome);
 		}
 	}
+
+	public void alterarEmail(Integer id, String email) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			new FuncionarioDAO(con).alterarEmail(id, email);
+		}
+	}
 }
