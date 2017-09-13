@@ -5,18 +5,18 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.com.entra21.amostradetalentos.model.Contas_a_Pagar;
+import br.com.entra21.amostradetalentos.model.ContasAPagar;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 
-public class Contas_a_PagarDAO {
+public class ContasAPagarDAO {
 
 	private final Connection con;
 
-	public Contas_a_PagarDAO(Connection con) {
+	public ContasAPagarDAO(Connection con) {
 		this.con = con;
 	}
 
-	public boolean inserir(Contas_a_Pagar aPagar, FormaDePagamento formadepagamento) throws SQLException {
+	public boolean inserir(ContasAPagar aPagar, FormaDePagamento formadepagamento) throws SQLException {
 		String sql = "INSERT INTO Contas_a_Pagar(CAP_CODIGO, CAP_COD_FORNECEDOR, CAP_COD_TIPO_PAGAMENTO, CAP_DATA_LANCAMENTO, CAP_DIAS_DE_ATRASO, CAP_TOTAL, CAP_SALDO, CAP_DESCONTO, CAP_PAGAMENTO_TOTAL) VALUES (SEQ_Contas_a_Pagar.NEXTVAL, ?,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, aPagar.getFornecedor().getCodigo());

@@ -6,17 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import br.com.entra21.amostradetalentos.model.Caixa;
-import br.com.entra21.amostradetalentos.model.Contas_a_Receber;
+import br.com.entra21.amostradetalentos.model.ContasAReceber;
 
-public class Contas_a_ReceberDAO {
+public class ContasAReceberDAO {
 
 	private final Connection con;
 
-	public Contas_a_ReceberDAO(Connection con) {
+	public ContasAReceberDAO(Connection con) {
 		this.con = con;
 	}
 
-	public boolean inserir(Contas_a_Receber aReceber, Caixa caixa) throws SQLException {
+	public boolean inserir(ContasAReceber aReceber, Caixa caixa) throws SQLException {
 		String sql = "INSERT INTO Contas_a_Pagar(CAR_CODIGO, CAR_CX_CODIGO, CAR_DATA_LANCAMENTO, CAR_DIAS_DE_ATRASO, CAR_SALDO, CAR_DECONTO, CAR_PAGAMENTO_TOTAL) VALUES (SEQ_Contas_a_Pagar.NEXTVAL, ?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, aReceber.getCaixa().getCodigo());

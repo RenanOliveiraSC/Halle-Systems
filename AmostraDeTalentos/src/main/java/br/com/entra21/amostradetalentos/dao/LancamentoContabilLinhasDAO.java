@@ -5,8 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.com.entra21.amostradetalentos.model.Contas_a_Pagar;
-import br.com.entra21.amostradetalentos.model.Contas_a_Receber;
+import br.com.entra21.amostradetalentos.model.ContasAPagar;
+import br.com.entra21.amostradetalentos.model.ContasAReceber;
 import br.com.entra21.amostradetalentos.model.LancamentoContabilLinhas;
 
 public class LancamentoContabilLinhasDAO {
@@ -17,8 +17,8 @@ public class LancamentoContabilLinhasDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(LancamentoContabilLinhas lancamentoLinha, Contas_a_Pagar contaApagar,
-			Contas_a_Receber contasAreceber) throws SQLException {
+	public boolean inserir(LancamentoContabilLinhas lancamentoLinha, ContasAPagar contaApagar,
+			ContasAReceber contasAreceber) throws SQLException {
 		String sql = "INSERT INTO LANCAMENTO_CONTABIL_LINHAS (LCL_CODIGO, LCL_DEBITO, LCL_CREDITO,LCL_DATA_LANCAMENTO, LCL_DATA_VENCIMENTO, LCL_OBSERVACAO, LCL_LC_CODIGO, LCL_CONTA_CODIGO) VALUES (SEQ_LC.NEXTVAL,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setDouble(1, lancamentoLinha.getDebito());
