@@ -1,10 +1,7 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,16 +9,13 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 
 import br.com.entra21.amostradetalentos.model.Agenda;
 
 public class AgendaDAO {
 	
-<<<<<<< HEAD
+
     private final Connection con;
 	
 	public AgendaDAO(Connection con) {
@@ -57,61 +51,6 @@ public class AgendaDAO {
 		statement.setDouble(1, fator);
 		statement.setInt(2, id);
 
-		return statement.executeUpdate() > 0;
-	}
-	
-	public boolean excluir(int id) throws SQLException {
-		String sql = "DELETE LISTA_DE_PRECO WHERE LP_CODIGO = ?";
-
-		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(1, id);
-
-		return statement.executeUpdate() > 0;
-	}
-	
-	public List<ListaDePreco> lista() throws SQLException {
-		List<ListaDePreco> lListaDePreco = new ArrayList<>();
-
-		String sql = "select * from LISTA_DE_PRECO";
-		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-			stmt.execute();
-			try (ResultSet rs = stmt.getResultSet()) {
-				while (rs.next()) {
-					int id = rs.getInt("LP_CODIGO");
-					String nome = rs.getString("LP_NOME");
-					double fator = rs.getDouble("LP_FATOR");
-					ListaDePreco listaDePreco = new ListaDePreco(id, nome, fator);
-					lListaDePreco.add(listaDePreco);
-				}
-			}
-		}
-
-		return lListaDePreco;
-
-=======
-   	private final Connection con;
-
-	public AgendaDAO(Connection con) {
-		this.con = con;
->>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
-	}
-	
-	public boolean inserir(Agenda agenda) throws SQLException{
-		String sql =  "INSERT INTO AGENDA (AG_CODIGO, AG_OBSERVACAO, AG_DATA_DO_SISTEMA, AG_DATA_DE_INICIO, AG_DATA_DE_TERMINO, AG_HORA_INICIO, AG_HORA_TERMINO, AG_LEMBRETE, AG_AVISO, AG_ATIVO, AG_FECHADO, AG_SER_CODIGO) VALUES (SEQ_AGENDA.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		 
-		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, agenda.getObservacao());
-		statement.setDate(2, (Date)agenda.getDataSistema());
-		statement.setDate(3, (Date)agenda.getDataInicio());
-		statement.setDate(4, (Date)agenda.getDataTermino());
-		statement.setTime(5, agenda.getHoraInicio());
-		statement.setTime(6, agenda.getHoraTermino());
-		statement.setString(7, agenda.getLembrete());
-		statement.setString(8, agenda.getAviso());
-		statement.setBoolean(9, agenda.getAtivo());
-		statement.setBoolean(10, agenda.getFechado());
-		
-				
 		return statement.executeUpdate() > 0;
 	}
 	
