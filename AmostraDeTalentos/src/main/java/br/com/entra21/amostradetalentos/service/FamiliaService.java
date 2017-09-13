@@ -7,11 +7,10 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dao.FamiliaDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Familia;
-import br.com.entra21.amostradetalentos.model.Estado;
 
 public class FamiliaService {
 
-	public void inserir(String nome, Estado estado) throws SQLException {
+	public void inserir(String nome) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			new FamiliaDAO(con).inserir(nome);
 		}
