@@ -1,5 +1,5 @@
 package br.com.entra21.amostradetalentos.service;
 
-public class Contas_a_PagarService {
+public class ContasAPagarService {
 
 }

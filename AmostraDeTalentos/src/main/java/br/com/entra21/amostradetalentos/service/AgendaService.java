@@ -12,9 +12,9 @@ import br.com.entra21.amostradetalentos.model.SalvaAgenda;
 
 public class AgendaService {
 
-	public void inserir(Date dataInicio, SalvaAgenda sAgenda) throws SQLException {
+	public void inserir(Agenda agenda) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new AgendaDAO(con).inserir(dataInicio, sAgenda);
+			new AgendaDAO(con).inserir(agenda);
 		}
 	}
 

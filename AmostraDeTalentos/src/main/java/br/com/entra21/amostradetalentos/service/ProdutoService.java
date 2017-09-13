@@ -7,20 +7,15 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dao.ProdutoDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Produto;
+import br.com.entra21.amostradetalentos.model.ProdutoServico;
 
 public class ProdutoService {
-	
-	// public void inserir(Produto produto) throws SQLException {
-	// try (Connection con = new ConnectionPoolOracle().getConnection()) {
-	// new ProdutoDAO(con).inserir(produto);
-	// }
-	// }
 
-//	public void alterar(Integer codigo, String nome) throws SQLException {
-//		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-//			new ProdutoDAO(con).alterar(codigo, nome);
-//		}
-//	}
+	public void inserir(Produto produto) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			new ProdutoDAO(con).inserir(produto);
+		}
+	}
 
 	public void excluir(Integer codigo) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
@@ -33,4 +28,10 @@ public class ProdutoService {
 			return new ProdutoDAO(con).lista();
 		}
 	}
+	
+//	public List<Produto> listarNomeProdutos() throws SQLException {
+//		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+//			return new ProdutoDAO(con).lista();
+//		}
+//	}
 }

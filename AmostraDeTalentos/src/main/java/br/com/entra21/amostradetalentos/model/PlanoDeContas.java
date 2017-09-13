@@ -4,7 +4,6 @@ public class PlanoDeContas {
 	
 	
 	private int codigo;
-	private int lancamento_contabil_linhas_codigo;
 	private String nome_conta;
 	private int saldo;
 	private String conta_caixa;
@@ -12,12 +11,12 @@ public class PlanoDeContas {
 	private String confidencial;
 	private String centro_de_custo;
 	private String codigo_externo;
-	public PlanoDeContas(int codigo, int lancamento_contabil_linhas_codigo, String nome_conta, int saldo,
+	
+	public PlanoDeContas(int codigo, String nome_conta, int saldo,
 			String conta_caixa, String conta_ativa, String confidencial, String centro_de_custo,
 			String codigo_externo) {
 		super();
 		this.codigo = codigo;
-		this.lancamento_contabil_linhas_codigo = lancamento_contabil_linhas_codigo;
 		this.nome_conta = nome_conta;
 		this.saldo = saldo;
 		this.conta_caixa = conta_caixa;
@@ -31,12 +30,6 @@ public class PlanoDeContas {
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
-	}
-	public int getLancamento_contabil_linhas_codigo() {
-		return lancamento_contabil_linhas_codigo;
-	}
-	public void setLancamento_contabil_linhas_codigo(int lancamento_contabil_linhas_codigo) {
-		this.lancamento_contabil_linhas_codigo = lancamento_contabil_linhas_codigo;
 	}
 	public String getNome_conta() {
 		return nome_conta;
