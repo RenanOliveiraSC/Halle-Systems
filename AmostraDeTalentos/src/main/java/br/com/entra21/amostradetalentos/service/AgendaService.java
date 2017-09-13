@@ -8,13 +8,13 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dao.AgendaDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Agenda;
-import br.com.entra21.amostradetalentos.model.Estado;
+import br.com.entra21.amostradetalentos.model.SalvaAgenda;
 
 public class AgendaService {
 
-	public void inserir(Date dataInicio, Estado estado) throws SQLException {
+	public void inserir(Date dataInicio, SalvaAgenda sAgenda) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new AgendaDAO(con).inserir(nome, estado);
+			new AgendaDAO(con).inserir(dataInicio, sAgenda);
 		}
 	}
 
