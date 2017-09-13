@@ -18,7 +18,7 @@ public class AgendaService {
 		}
 	}
 
-	public void alterar(Integer codigo, String nome) throws SQLException {
+	public void alterar(String observacao, String nome) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			new AgendaDAO(con).alterar(codigo, nome);
 		}
