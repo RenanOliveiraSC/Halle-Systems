@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.entra21.amostradetalentos.model.Contas_a_Pagar;
-import br.com.entra21.amostradetalentos.model.Contas_a_Receber;
+import br.com.entra21.amostradetalentos.model.ContasAPagar;
+import br.com.entra21.amostradetalentos.model.ContasAReceber;
 import br.com.entra21.amostradetalentos.model.LancamentoContabil;
 
 public class LancamentoContabilDAO {
@@ -20,7 +20,7 @@ public class LancamentoContabilDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(LancamentoContabil lancamento, Contas_a_Pagar contaApagar, Contas_a_Receber contasAreceber)
+	public boolean inserir(LancamentoContabil lancamento, ContasAPagar contaApagar, ContasAReceber contasAreceber)
 			throws SQLException {
 		String sql = "INSERT INTO LANCAMENTO_CONTABIL (LC_CODIGO, LC_DATA_LANCAMENTO, LC_OBSERVACAO, LC_CAP_CODIGO, LC_CAR_CODIGO) VALUES (SEQ_LC.NEXTVAL,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);

@@ -2,7 +2,7 @@ package br.com.entra21.amostradetalentos.model;
 
 import java.util.Date;
 
-public class Contas_a_Pagar {
+public class ContasAPagar {
 
 	private int codigo;
 	private Fornecedor fornecedor;
@@ -14,7 +14,7 @@ public class Contas_a_Pagar {
 	private Double desconto;
 	private Double pagamentoTotal;
 
-	public Contas_a_Pagar(int codigo, Fornecedor fornecedor, FormaDePagamento formaDePagamento, Date dataLancamento,
+	public ContasAPagar(int codigo, Fornecedor fornecedor, FormaDePagamento formaDePagamento, Date dataLancamento,
 			int diasAtraso, Double total, Double saldo, Double desconto, Double pagamentoTotal) {
 		super();
 		this.codigo = codigo;
@@ -28,7 +28,7 @@ public class Contas_a_Pagar {
 		this.pagamentoTotal = pagamentoTotal;
 	}
 
-	public Contas_a_Pagar() {
+	public ContasAPagar() {
 
 	}
 

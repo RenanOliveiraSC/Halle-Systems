@@ -2,7 +2,7 @@ package br.com.entra21.amostradetalentos.model;
 
 import java.util.Date;
 
-public class Contas_a_Receber {
+public class ContasAReceber {
 
 	private int ccodigo;
 	private Caixa caixa;
@@ -12,7 +12,7 @@ public class Contas_a_Receber {
 	private Double desconto;
 	private Double pagamentoTotal;
 
-	public Contas_a_Receber(int ccodigo, Caixa caixa, Date dataLancamento, int dias_de_atraso, Double saldo,
+	public ContasAReceber(int ccodigo, Caixa caixa, Date dataLancamento, int dias_de_atraso, Double saldo,
 			Double desconto, Double pagamentoTotal) {
 		super();
 		this.ccodigo = ccodigo;
