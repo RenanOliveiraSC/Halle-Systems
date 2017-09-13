@@ -11,7 +11,6 @@ import br.com.entra21.amostradetalentos.model.Deposito;
 import br.com.entra21.amostradetalentos.model.Fabricante;
 import br.com.entra21.amostradetalentos.model.Familia;
 import br.com.entra21.amostradetalentos.model.ListaDePreco;
-import br.com.entra21.amostradetalentos.model.Pais;
 import br.com.entra21.amostradetalentos.model.Produto;
 
 public class ProdutoDAO {
@@ -198,7 +197,11 @@ public class ProdutoDAO {
 	public List<Produto> lista() throws SQLException {
 		List<Produto> lProduto = new ArrayList<>();
 
-		//PRO_CODIGO,PRO_DESCRICAO, PRO_FAM_CODIGO,PRO_COD_LISTADEPRECO,PRO_PRECO,PRO_NOME_UNIDADE_COMPRA,PRO_PORUNIDADE_DE_COMPRA, PRO_QRTDE_POR_COMPRA,PRO_NOME_UNIDADE_VENDA, PRO_PORUNIDADE_DE_VENDA,PRO_QTDE_POR_VENDA, PRO_OBSERVACAO, PRO_ESTOQUE_MIN, PRO_ESTOQUE_MAX, PRO_ATIVO, PRO_ANEXO,PRO_FAB_CODIGO, PRO_COD_DEPOSITO
+		// PRO_CODIGO,PRO_DESCRICAO,
+		// PRO_FAM_CODIGO,PRO_COD_LISTADEPRECO,PRO_PRECO,PRO_NOME_UNIDADE_COMPRA,PRO_PORUNIDADE_DE_COMPRA,
+		// PRO_QRTDE_POR_COMPRA,PRO_NOME_UNIDADE_VENDA,
+		// PRO_PORUNIDADE_DE_VENDA,PRO_QTDE_POR_VENDA, PRO_OBSERVACAO, PRO_ESTOQUE_MIN,
+		// PRO_ESTOQUE_MAX, PRO_ATIVO, PRO_ANEXO,PRO_FAB_CODIGO, PRO_COD_DEPOSITO
 		String sql = "select * from PRODUTO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
@@ -213,4 +216,5 @@ public class ProdutoDAO {
 		}
 
 		return lProduto;
+	}
 }
