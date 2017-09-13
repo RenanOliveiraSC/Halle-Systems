@@ -25,43 +25,43 @@ public class FornecedorService {
 
 	public void alterarContato(Integer id, String contato) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FornecedorDAO(con).alterarNome(id, contato);
+			new FornecedorDAO(con).alterarContato(id, contato);
 		}
 	}
 
 	public void alterarCnpj(Integer id, String cnpj) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FornecedorDAO(con).alterarNome(id, cnpj);
+			new FornecedorDAO(con).alterarCnpj(id, cnpj);
 		}
 	}
 
 	public void alterarTelefone(Integer id, String telefone) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FornecedorDAO(con).alterarNome(id, telefone);
+			new FornecedorDAO(con).alterarTelefone(id, telefone);
 		}
 	}
 
 	public void alterarCelular(Integer id, String celular) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FornecedorDAO(con).alterarNome(id, celular);
+			new FornecedorDAO(con).alterarCelular(id, celular);
 		}
 	}
 
 	public void alterarEmail(Integer id, String email) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FornecedorDAO(con).alterarNome(id, email);
+			new FornecedorDAO(con).alterarEmail(id, email);
 		}
 	}
 
 	public void alterarTipoFornecedor(Integer id, String tipoFornecedor) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FornecedorDAO(con).alterarNome(id, tipoFornecedor);
+			new FornecedorDAO(con).alterarTipoFornecedor(id, tipoFornecedor);
 		}
 	}
 
 	public void alterarEndereco(Integer id, String endereco) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FornecedorDAO(con).alterarNome(id, endereco);
+			new FornecedorDAO(con).alterarEndereco(id, endereco);
 		}
 	}
 
