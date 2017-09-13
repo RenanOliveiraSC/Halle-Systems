@@ -27,11 +27,16 @@ public class Produto extends ProdutoServico {
 		this.deposito = deposito;
 		this.fabricante = fabricante;
 	}
-	
+
+	public Produto(Integer codigo, String descricao) {
+		super(codigo, descricao);
+	}
+
 	@Override
 	public String toString() {
-		return "nome: " + this.getDescricao() + " familia " + this.getFamilia().getNome() + " fabricante " + this.getFabricante().getNome()
-				+ " preco " + this.getPreco() + " porUnidade " + this.getPorUnidadeDeCompra();
+		return "nome: " + this.getDescricao() + " familia " + this.getFamilia().getNome() + " fabricante "
+				+ this.getFabricante().getNome() + " preco " + this.getPreco() + " porUnidade "
+				+ this.getPorUnidadeDeCompra();
 	}
 
 	public void setEstoqueMax(double estoqueMax) {

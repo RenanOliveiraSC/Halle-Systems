@@ -39,6 +39,14 @@ public abstract class ProdutoServico {
 		this.anexo = anexo;
 
 	}
+	
+	
+
+	public ProdutoServico(Integer codigo, String descricao) {
+		super();
+		this.codigo = codigo;
+		this.descricao = descricao;
+	}
 
 	public Integer getCodigo() {
 		return codigo;

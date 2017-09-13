@@ -12,6 +12,7 @@ import br.com.entra21.amostradetalentos.model.Fabricante;
 import br.com.entra21.amostradetalentos.model.Familia;
 import br.com.entra21.amostradetalentos.model.ListaDePreco;
 import br.com.entra21.amostradetalentos.model.Produto;
+import br.com.entra21.amostradetalentos.model.ProdutoServico;
 
 public class ProdutoDAO {
 
@@ -22,9 +23,9 @@ public class ProdutoDAO {
 	}
 
 	public boolean inserir(Produto produto) throws SQLException {
-		
+
 		String sql = "INSERT INTO PRODUTO (PRO_CODIGO,PRO_DESCRICAO, PRO_FAM_CODIGO,PRO_COD_LISTADEPRECO,PRO_PRECO,PRO_NOME_UNIDADE_COMPRA,PRO_POR_UNIDADE_DE_COMPRA, PRO_QRTDE_POR_COMPRA,PRO_NOME_UNIDADE_VENDA, PRO_PORUNIDADE_DE_VENDA,PRO_QTDE_POR_VENDA, PRO_OBSERVACAO, PRO_ESTOQUE_MIN, PRO_ESTOQUE_MAX, PRO_ATIVO, PRO_ANEXO,PRO_FAB_CODIGO, PRO_COD_DEPOSITO) VALUES (SEQ_PRODUTO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, produto.getDescricao());
 		statement.setInt(2, produto.getFamilia().getCodigo());
@@ -197,12 +198,11 @@ public class ProdutoDAO {
 
 	public List<Produto> lista() throws SQLException {
 		List<Produto> lProduto = new ArrayList<>();
-		
+
 		String sql = "select * from PRODUTO P INNER JOIN FABRICANTE FAB ON FAB.FAB_CODIGO = P.PRO_FAB_CODIGO "
 				+ "INNER JOIN DEPOSITO D ON D.DEP_CODIGO = P.PRO_DEP_CODIGO "
 				+ "INNER JOIN LISTA_DE_PRECO L ON L.LP_CODIGO = P.PRO_LP_CODIGO "
 				+ "INNER JOIN FAMILIA FAM ON FAM.FAM_CODIGO = P.PRO_FAM_CODIGO";
-
 
 		// PRO_CODIGO,PRO_DESCRICAO,
 		// PRO_FAM_CODIGO,PRO_COD_LISTADEPRECO,PRO_PRECO,PRO_NOME_UNIDADE_COMPRA,PRO_PORUNIDADE_DE_COMPRA,
@@ -233,15 +233,16 @@ public class ProdutoDAO {
 					double porUnidadeDeCompra = rs.getDouble("PRO_POR_UNIDADE_DE_COMPRA");
 					double qtdePorCompra = rs.getDouble("PRO_QRTDE_POR_COMPRA");
 					String nomeUnidadeVenda = rs.getString("PRO_NOME_UNIDADE_VENDA");
-					double porUnidadeDeVenda = rs.getDouble("PRO_PORUNIDADE_DE_VENDA");
+					double porUnidadeDeVenda = rs.getDouble("PRO_POR_UNIDADE_DE_VENDA");
 					double qtdePorVenda = rs.getDouble("PRO_QTDE_POR_VENDA");
 					String observacao = rs.getString("PRO_OBSERVACAO");
-					String anexo = rs.getString("PRO_ESTOQUE_MIN");
+					String anexo = rs.getString("PRO_ANEXO");
 					double estoqueMax = rs.getDouble("PRO_ESTOQUE_MAX");
 					double estoqueMin = rs.getDouble("PRO_ESTOQUE_MIN");
 					int idDeposito = rs.getInt("PRO_DEP_CODIGO");
 					int idFabricante = rs.getInt("PRO_FAB_CODIGO");
 
+					
 					Fabricante fabricante = new Fabricante(idFabricante, fabNome);
 
 					Familia familia = new Familia(idFamilia, famNome);
@@ -253,6 +254,33 @@ public class ProdutoDAO {
 					Produto produto = new Produto(idProduto, descricao, familia, ativo, listaDePreco, preco,
 							nomeUnidadeDeCompra, porUnidadeDeCompra, qtdePorCompra, nomeUnidadeVenda, porUnidadeDeVenda,
 							qtdePorVenda, observacao, anexo, estoqueMax, estoqueMin, deposito, fabricante);
+					lProduto.add(produto);
+				}
+			}
+		}
+
+		return lProduto;
+	}
+
+	public List<ProdutoServico> listaNomeProdutos() throws SQLException {
+		List<ProdutoServico> lProduto = new ArrayList<>();
+
+		String sql = "select * from PRODUTO;";
+
+		// PRO_CODIGO,PRO_DESCRICAO,
+		// PRO_FAM_CODIGO,PRO_COD_LISTADEPRECO,PRO_PRECO,PRO_NOME_UNIDADE_COMPRA,PRO_PORUNIDADE_DE_COMPRA,
+		// PRO_QRTDE_POR_COMPRA,PRO_NOME_UNIDADE_VENDA,
+		// PRO_PORUNIDADE_DE_VENDA,PRO_QTDE_POR_VENDA, PRO_OBSERVACAO, PRO_ESTOQUE_MIN,
+		// PRO_ESTOQUE_MAX, PRO_ATIVO, PRO_ANEXO,PRO_FAB_CODIGO, PRO_COD_DEPOSITO
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+
+					int idProduto = rs.getInt("PRO_CODIGO");
+					String descricao = rs.getString("PRO_DESCRICAO");
+
+					Produto produto = new Produto(idProduto, descricao);
 					lProduto.add(produto);
 				}
 			}
