@@ -22,14 +22,15 @@ public class AgendaDAO {
 		this.con = con;
 	}
 	
-	public boolean inserir(String observacao, Date dataSistema, Date dataInicio, Date dataTermino, Time horaInicio, 
-			Time horaTermino, String lembrete, String aviso, boolean ativo, boolean fechado) throws SQLException {
+	public boolean inserir(Agenda agenda) throws SQLException {
 		String sql = "INSERT INTO AGENDA (AG_CODIGO, AG_OBSERVACAO, AG_DATA_SISTEMA, AG_DATA_INICIO, AG_DATA_TERMINO, AG_HORA_INICIO, "
 				+ "AG_HORA_TERMINO, AG_LEMBRETE, AG_AVISO, AG_ATIVO, AG_FECHADO) VALUES (SEQ_AGENDA.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, observacao);
-		statement.setDate(2, dataSistema);
+		statement.setInt(1, agenda.getCodigo());
+		statement.setString(2, agenda.getObservacao());
+		statement.setDate(3, (Date) agenda.getDataSistema());
+		statement.setDate(parameterIndex, x);
 
 		return statement.executeUpdate() > 0;
 	}
