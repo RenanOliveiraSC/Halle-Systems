@@ -12,16 +12,16 @@ import br.com.entra21.amostradetalentos.model.ContasAPagar;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 
 public class ContasAPagarService {
-	
+
 	public void inserir(ContasAPagar aPagar, FormaDePagamento formadepagamento) throws SQLException {
-		try (Connection con = new ConnectionPoolOracle().getConnection()){
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			new ContasAPagarDAO(con).inserir(aPagar, formadepagamento);
 		}
 	}
 
-	public void alterar(String observacao, String nome) throws SQLException {
+	public void alterarObservacao(String observacao, String nome) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new AgendaDAO(con).alterar(codigo, nome);
+			new AgendaDAO(con).alterarObservacao(1, observacao);
 		}
 	}
 
