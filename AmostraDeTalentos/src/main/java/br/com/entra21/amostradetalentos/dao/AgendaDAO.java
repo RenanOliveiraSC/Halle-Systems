@@ -1,21 +1,13 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
-<<<<<<< HEAD
 import java.sql.Date;
-=======
-
->>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
-import java.sql.Date;
->>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 
 import br.com.entra21.amostradetalentos.model.Agenda;
 
