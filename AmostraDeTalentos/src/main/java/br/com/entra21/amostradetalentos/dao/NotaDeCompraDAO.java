@@ -44,7 +44,7 @@ public class NotaDeCompraDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarForncedor(int id, String fornecedor) throws SQLException {
+	public boolean alterarFornecedor(int id, String fornecedor) throws SQLException {
 		String sql = "UPDATE NOTA_DE_COMPRA SET NTC_FOR_CODIGO = ? WHERE NTC_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
