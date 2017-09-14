@@ -10,13 +10,13 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.model.ListaDePreco;
 
 public class ListaPrecoDAO {
-	
-    private final Connection con;
-	
+
+	private final Connection con;
+
 	public ListaPrecoDAO(Connection con) {
 		this.con = con;
 	}
-	
+
 	public boolean inserir(String nome, double fator) throws SQLException {
 		String sql = "INSERT INTO LISTA_DE_PRECO (LP_CODIGO, LP_NOME, LP_FATOR) VALUES (SEQ_LISTA_DE_PRECO.NEXTVAL, ?, ?);";
 
@@ -26,7 +26,7 @@ public class ListaPrecoDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
+
 	public boolean alterarNome(int id, String nome) throws SQLException {
 		String sql = "UPDATE LISTA_DE_PRECO SET LP_NOME = ? WHERE LP_CODIGO = ?";
 
@@ -36,7 +36,7 @@ public class ListaPrecoDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
+
 	public boolean alterarFator(int id, double fator) throws SQLException {
 		String sql = "UPDATE LISTA_DE_PRECO SET LP_FATOR = ? WHERE LP_CODIGO = ?";
 
@@ -46,7 +46,7 @@ public class ListaPrecoDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
+
 	public boolean excluir(int id) throws SQLException {
 		String sql = "DELETE LISTA_DE_PRECO WHERE LP_CODIGO = ?";
 
@@ -55,7 +55,7 @@ public class ListaPrecoDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
+
 	public List<ListaDePreco> lista() throws SQLException {
 		List<ListaDePreco> lListaDePreco = new ArrayList<>();
 

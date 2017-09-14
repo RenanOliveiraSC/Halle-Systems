@@ -1,11 +1,11 @@
 package br.com.entra21.amostradetalentos.model;
 
 public class Caixa {
-	
+
 	private int codigo;
 	private Agenda agenda;
 	private FormaDePagamento formaDePagamento;
-	
+
 	public Caixa(int codigo, Agenda agenda, FormaDePagamento formaDePagamento) {
 		super();
 		this.codigo = codigo;
@@ -36,6 +36,5 @@ public class Caixa {
 	public void setForma_codigo(FormaDePagamento formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
 	}
-	
-	
+
 }

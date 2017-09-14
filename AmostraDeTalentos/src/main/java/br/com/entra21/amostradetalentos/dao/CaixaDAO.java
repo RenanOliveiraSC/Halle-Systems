@@ -18,23 +18,23 @@ public class CaixaDAO {
 	public CaixaDAO(Connection con) {
 		this.con = con;
 	}
-	
-	public boolean inserir(Agenda agenda, FormaDePagamento formaDePagamento) throws SQLException{
+
+	public boolean inserir(Agenda agenda, FormaDePagamento formaDePagamento) throws SQLException {
 		String sql = "INSERT INTO CAIXA (CX_CODIGO, CX_AG_CODIGO, CX_FORMA_CODIGO) VALUES (SEQ_CAIXA.nextval, ?, ?)";
-		 
+
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, agenda.getCodigo());
 		statement.setInt(2, formaDePagamento.getCodigo());
-		 
+
 		return statement.executeUpdate() > 0;
 	}
-	
-	public boolean excluir(int id) throws SQLException{
+
+	public boolean excluir(int id) throws SQLException {
 		String sql = "DELETE CAIXA WHERE CX_CODIGO = ?";
-		 
+
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, id);
-		 
+
 		return statement.executeUpdate() > 0;
 	}
 
@@ -46,8 +46,16 @@ public class CaixaDAO {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
+					
+					int formaCod = rs.getInt("CX_FORMA_CODIGO");
+					String formaNome = rs.getString("FORMA_NOME");
+					
+					int agCod = rs.getInt("CX_AG_CODIGO");
+					
+					
 					int id = rs.getInt("CX_CODIGO");
-					String nome = rs.getString("CX_AG_CODIGO");
+
+					
 					Caixa caixa = new Caixa(id, null, null);
 					lCaixa.add(caixa);
 				}
@@ -57,5 +65,5 @@ public class CaixaDAO {
 		return lCaixa;
 
 	}
-	
+
 }

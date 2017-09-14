@@ -1,13 +1,21 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
+<<<<<<< HEAD
 import java.sql.Date;
+=======
+
+>>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< HEAD
+=======
+import java.sql.Date;
+>>>>>>> branch 'master' of https://github.com/RenanOliveiraSC/Halle-Systems.git
 
 import br.com.entra21.amostradetalentos.model.Agenda;
 
@@ -29,8 +37,8 @@ public class AgendaDAO {
 		statement.setDate(2, (Date) agenda.getDataSistema());
 		statement.setDate(3, (Date) agenda.getDataInicio());
 		statement.setDate(4, (Date) agenda.getDataTermino());
-		statement.setTime(5, agenda.getHoraInicio());
-		statement.setTime(6, agenda.getHoraTermino());
+		statement.setTime(5, (Time) agenda.getHoraInicio());
+		statement.setTime(6, (Time) agenda.getHoraTermino());
 		statement.setString(7, agenda.getLembrete());
 		statement.setString(8, agenda.getAviso());
 		statement.setBoolean(9, agenda.getAtivo());
