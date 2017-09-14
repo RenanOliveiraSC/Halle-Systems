@@ -10,15 +10,24 @@ public class Agenda {
 	private Date dataSistema;
 	private Date dataInicio;
 	private Date dataTermino;
-	private Time horaInicio;
-	private Time horaTermino;
+	private Date horaInicio;
+	private Date horaTermino;
 	private String lembrete;
 	private String aviso;
 	private Boolean ativo;
 	private Boolean fechado;
 
-	public Agenda(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino, Time horaInicio,
-			Time horaTermino, String lembrete, String aviso, Boolean ativo, Boolean fechado) {
+	public Agenda(int codigo, 
+			String observacao, 
+			Date dataSistema, 
+			Date dataInicio, 
+			Date dataTermino, 
+			Date horaInicio,
+			Date horaTermino, 
+			String lembrete, 
+			String aviso, 
+			Boolean ativo, 
+			Boolean fechado) {
 		super();
 		
 		this.codigo = codigo;
@@ -79,16 +88,20 @@ public class Agenda {
 		this.dataTermino = dataTermino;
 	}
 
-	public Time getHoraInicio() {
+	public Date getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
+	public void setHoraInicio(Date horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public Time getHoraTermino() {
+	public Date getHoraTermino() {
 		return horaTermino;
+	}
+
+	public void setHoraTermino(Date horaTermino) {
+		this.horaTermino = horaTermino;
 	}
 
 	public void setHoraTermino(Time horaTermino) {
