@@ -7,13 +7,13 @@ import java.util.Date;
 
 public class TimeUtils {
 	
-	public static final String PATTERN_DATA_PADRAO = "dd/MM/yyyy";
+	public static final String PATTERN_TIME_PADRAO = "hh:mm";
 
 	private TimeUtils() {
 		throw new UnsupportedOperationException();
 	}
 
-	public static Time parseData(String time, String pattern) {
+	public static Date parseTime(String time, String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		try {
 			return sdf.parse(time);
@@ -23,8 +23,8 @@ public class TimeUtils {
 		}
 	}
 
-	public static String formatData(Time data, String pattern) {
+	public static String formatData(Time time, String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-		return sdf.format(data);
+		return sdf.format(time);
 	}
 }
