@@ -22,6 +22,7 @@ public class ContasAPagarService {
 //			new ContasAPagarDAO(con).alterarObservacao(1, observacao);
 //		}
 //	}
+	
 
 	public void excluir(Integer codigo) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
