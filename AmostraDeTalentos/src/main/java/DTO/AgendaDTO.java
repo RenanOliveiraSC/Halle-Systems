@@ -130,7 +130,7 @@ public class AgendaDTO {
 	}
 
 	public Agenda toAgenda() {
-		return new Agenda(this.codigo, this.observacao, DateUtils.parseData(this.dataSistema, this.dataInicio, this.dataTermino), this.horaInicio, this.horaTermino, this.lembrete,this.aviso,this.ativo, this.fechado),
+		return new Agenda(this.codigo, this.observacao, DateUtils.parseData(this.dataInicio, DateUtils.PATTERN_DATA_PADRAO), this.horaInicio, this.horaTermino, this.lembrete,this.aviso,this.ativo, this.fechado),
 				null);
 	}
 }
