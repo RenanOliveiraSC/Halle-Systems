@@ -23,7 +23,7 @@ public class TimeUtils {
 		}
 	}
 
-	public static String formatData(Time time, String pattern) {
+	public static String formatTime(Time time, String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		return sdf.format(time);
 	}
