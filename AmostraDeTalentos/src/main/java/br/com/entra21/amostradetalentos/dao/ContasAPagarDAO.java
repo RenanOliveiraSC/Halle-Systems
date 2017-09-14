@@ -35,7 +35,7 @@ public class ContasAPagarDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<ContasAPagar> lista() throws SQLException {
+	public List<ContasAPagar> listaContasAPagar() throws SQLException {
 		List<ContasAPagar> lContasAPagar = new ArrayList<>();
 
 		String sql = "select * from CONTAS_A_PAGAR";
@@ -44,21 +44,21 @@ public class ContasAPagarDAO {
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
 
-					int codFornecedor = rs.getInt("CAP_FOR_CODIGO ");
+					int codFornecedor = rs.getInt("CAP_FOR_CODIGO");
 
 					Fornecedor fornecedor = new Fornecedor();
 
-					int codFormaDePagamento = rs.getInt("CAP_FORMA_CODIGO ");
+					int codFormaDePagamento = rs.getInt("CAP_FORMA_CODIGO");
 
 					FormaDePagamento formaDePagamento = new FormaDePagamento();
 
-					int codigo = rs.getInt("CAP_CODIGO ");
-					int diasAtraso = rs.getInt("CAP_DIAS_ATRASO ");
-					double saldo = rs.getDouble("CAP_SALDO ");
-					double total = rs.getDouble("CAP_VALOR_TOTAL ");
-					Date dataLancamento = rs.getDate("CAP_DATA_LANCAMENTO ");
-					double pagamentoTotal = rs.getDouble("CAP_PAGAMENTO_TOTAL ");
-					double desconto = rs.getDouble("CAP_DESCONTO ");
+					int codigo = rs.getInt("CAP_CODIGO");
+					int diasAtraso = rs.getInt("CAP_DIAS_ATRASO");
+					double saldo = rs.getDouble("CAP_SALDO");
+					double total = rs.getDouble("CAP_VALOR_TOTAL");
+					Date dataLancamento = rs.getDate("CAP_DATA_LANCAMENTO");
+					double pagamentoTotal = rs.getDouble("CAP_PAGAMENTO_TOTAL");
+					double desconto = rs.getDouble("CAP_DESCONTO");
 
 					ContasAPagar contasAPagar = new ContasAPagar(codigo, fornecedor, formaDePagamento, dataLancamento,
 							diasAtraso, total, saldo, desconto, pagamentoTotal);
