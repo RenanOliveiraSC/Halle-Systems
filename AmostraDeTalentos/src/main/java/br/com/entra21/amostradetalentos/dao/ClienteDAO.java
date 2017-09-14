@@ -46,7 +46,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreNome(int id, String sobreNome) throws SQLException {
+	public boolean alterarSobrenome(int id, String sobreNome) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_SOBRENOME = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, sobreNome);
@@ -54,7 +54,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreCpf(int id, String cpf) throws SQLException {
+	public boolean alterarCpf(int id, String cpf) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_CPF = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, cpf);
@@ -62,7 +62,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreTelefone(int id, String telefone) throws SQLException {
+	public boolean alterarTelefone(int id, String telefone) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_TELEFONE = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, telefone);
@@ -70,7 +70,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreCelular(int id, String celular) throws SQLException {
+	public boolean alterarCelular(int id, String celular) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_CELULAR = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, celular);
@@ -78,7 +78,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreEmail(int id, String email) throws SQLException {
+	public boolean alterarEmail(int id, String email) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_EMAIL = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, email);
@@ -86,7 +86,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreDataNascimento(int id, String dataNascimento) throws SQLException {
+	public boolean alterarDataNascimento(int id, String dataNascimento) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_DATA_NASCIMENTO = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, dataNascimento);
@@ -94,7 +94,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreSexo(int id, String sexo) throws SQLException {
+	public boolean alterarSexo(int id, String sexo) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_SEXO = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, sexo);
@@ -102,7 +102,7 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarsobreProfissao(int id, String profissao) throws SQLException {
+	public boolean alterarProfissao(int id, String profissao) throws SQLException {
 		String sql = "UPDATE CLIENTE SET CLI_PROFISSAO = ? WHERE CLI_CODIGO = ?";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, profissao);
