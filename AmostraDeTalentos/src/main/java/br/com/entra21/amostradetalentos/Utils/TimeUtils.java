@@ -3,10 +3,9 @@ package br.com.entra21.amostradetalentos.Utils;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class TimeUtils {
-	
+
 	public static final String PATTERN_DATA_PADRAO = "dd/MM/yyyy";
 
 	private TimeUtils() {
