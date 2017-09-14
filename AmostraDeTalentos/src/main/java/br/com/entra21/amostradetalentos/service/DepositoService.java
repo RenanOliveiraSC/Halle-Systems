@@ -28,7 +28,7 @@ public class DepositoService {
 		}
 	}
 
-	public List<Deposito> listarFabricante() throws SQLException {
+	public List<Deposito> listarDeposito() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new DepositoDAO(con).lista();
 		}

@@ -28,7 +28,7 @@ public class ListaDePrecoService {
 		}
 	}
 
-	public List<ListaDePreco> listarFabricante() throws SQLException {
+	public List<ListaDePreco> listarListaDePreco() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new ListaPrecoDAO(con).lista();
 		}
