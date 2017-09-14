@@ -115,8 +115,15 @@ p {
 
 .logo {
 	color: #fff;
-	font-size: 50px;
-	line-height: 125px;
+	font-size: 35px;
+}
+
+.img-logo{
+	height: 105px;
+}
+
+.img-logo > img{
+	width: 110px;
 }
 
 #login form span.fa {
@@ -210,6 +217,16 @@ html, body {
 	bottom: 0;
 	width: 100%;
 	background: Black;
+	height: 50px;
+	padding-top: 15px;
+}
+
+.footer > div.left{
+	float: left;
+}
+
+.footer > div.right{
+	float: right;
 }
 
 .content {
