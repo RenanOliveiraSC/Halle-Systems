@@ -16,11 +16,11 @@ public class AgendaService {
 		}
 	}
 
-//	public void alterar(String observacao, String nome) throws SQLException {
-//		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-//			new AgendaDAO(con).alterar(codigo, nome);
-//		}
-//	}
+	// public void alterarNome(Agenda agenda) throws SQLException {
+	// try (Connection con = new ConnectionPoolOracle().getConnection()) {
+	// new AgendaDAO(con).alterarNome(id, nome);
+	// }
+	// }
 
 	public void excluir(Integer codigo) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {

@@ -17,6 +17,18 @@ public class ContasAPagarService {
 		}
 	}
 
+//	public void alterarObservacao(String observacao, String nome) throws SQLException {
+//		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+//			new ContasAPagarDAO(con).alterarObservacao(1, observacao);
+//		}
+//	}
+
+	public void excluir(Integer codigo) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			new ContasAPagarDAO(con).excluir(codigo);
+		}
+	}
+
 	public List<ContasAPagar> listarContasAPagar() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new ContasAPagarDAO(con).listaContasAPagar();

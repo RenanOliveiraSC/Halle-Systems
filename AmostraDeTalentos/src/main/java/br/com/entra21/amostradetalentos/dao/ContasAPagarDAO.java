@@ -72,4 +72,13 @@ public class ContasAPagarDAO {
 
 	}
 
+	public boolean excluir(int id) throws SQLException {
+		String sql = "DELETE CONTAS_A_PAGAR WHERE CP_CODIGO = ?";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, id);
+
+		return statement.executeUpdate() > 0;
+	}
+
 }

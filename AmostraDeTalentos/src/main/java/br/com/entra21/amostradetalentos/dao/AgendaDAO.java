@@ -1,14 +1,13 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
-
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Date;
 
 import br.com.entra21.amostradetalentos.model.Agenda;
 
@@ -41,7 +40,7 @@ public class AgendaDAO {
 	}
 
 	public boolean alterarNome(int id, String nome) throws SQLException {
-		String sql = "UPDATE LISTA_DE_PRECO SET LP_NOME = ? WHERE LP_CODIGO = ?";
+		String sql = "UPDATE AGENDA SET LP_NOME = ? WHERE LP_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
