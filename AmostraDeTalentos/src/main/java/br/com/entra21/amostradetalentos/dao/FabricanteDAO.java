@@ -44,7 +44,6 @@ public class FabricanteDAO {
 	}
 
 	public List<Fabricante> lista() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -27,17 +27,17 @@ public class AgendaDAO {
 				+ "AG_HORA_TERMINO, AG_LEMBRETE, AG_AVISO, AG_ATIVO, AG_FECHADO) VALUES (SEQ_AGENDA.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(1, agenda.getCodigo());
-		statement.setString(2, agenda.getObservacao());
-		statement.setDate(3, (Date) agenda.getDataSistema());
-		statement.setDate(4, (Date) agenda.getDataInicio());
-		statement.setDate(5, (Date) agenda.getDataTermino());
-		statement.setTime(6, agenda.getHoraInicio());
-		statement.setTime(7, agenda.getHoraTermino());
-		statement.setString(8, agenda.getLembrete());
-		statement.setString(9, agenda.getAviso());
-		statement.setBoolean(10, agenda.getAtivo());
-		statement.setBoolean(11, agenda.getFechado());
+
+		statement.setString(1, agenda.getObservacao());
+		statement.setDate(2, (Date) agenda.getDataSistema());
+		statement.setDate(3, (Date) agenda.getDataInicio());
+		statement.setDate(4, (Date) agenda.getDataTermino());
+		statement.setTime(5, agenda.getHoraInicio());
+		statement.setTime(6, agenda.getHoraTermino());
+		statement.setString(7, agenda.getLembrete());
+		statement.setString(8, agenda.getAviso());
+		statement.setBoolean(9, agenda.getAtivo());
+		statement.setBoolean(10, agenda.getFechado());
 
 		return statement.executeUpdate() > 0;
 	}
@@ -47,16 +47,6 @@ public class AgendaDAO {
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, nome);
-		statement.setInt(2, id);
-
-		return statement.executeUpdate() > 0;
-	}
-	
-	public boolean alterarFator(int id, double fator) throws SQLException {
-		String sql = "UPDATE LISTA_DE_PRECO SET LP_FATOR = ? WHERE LP_CODIGO = ?";
-
-		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setDouble(1, fator);
 		statement.setInt(2, id);
 
 		return statement.executeUpdate() > 0;
@@ -164,7 +154,7 @@ public class AgendaDAO {
 	public List<Agenda> lista() throws SQLException {
 		List<Agenda> agendas = new ArrayList<>();
 
-		String sql = "select * from AGENDA A INNER JOIN SERVICO S ON A.SER_CODIGO = S.SER_CODIGO";
+		String sql = "select * from AGENDA";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {

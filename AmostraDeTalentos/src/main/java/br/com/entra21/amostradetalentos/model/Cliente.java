@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Cliente {
 
-	private int cliente;
+	private Integer codigo;
 	private String nome;
 	private String sobrenome;
 	private TipoCliente grupocliente;
@@ -19,11 +19,11 @@ public class Cliente {
 	private String profissao;
 	private int pai_mae;
 
-	public Cliente(int cliente, String nome, String sobrenome, TipoCliente grupocliente, int limite_de_credito,
+	public Cliente(Integer codigo, String nome, String sobrenome, TipoCliente grupocliente, int limite_de_credito,
 			String cpf, Endereco endereco, String telefone, String celular, String email, Date data_nascimento,
 			String sexo, String profissao, int pai_mae) {
 		super();
-		this.cliente = cliente;
+		this.codigo = codigo;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.grupocliente = grupocliente;
@@ -39,12 +39,12 @@ public class Cliente {
 		this.pai_mae = pai_mae;
 	}
 
-	public int getCliente() {
-		return cliente;
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public void setCliente(int cliente) {
-		this.cliente = cliente;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNome() {

@@ -7,7 +7,6 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dao.ProdutoDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Produto;
-import br.com.entra21.amostradetalentos.model.ProdutoServico;
 
 public class ProdutoService {
 

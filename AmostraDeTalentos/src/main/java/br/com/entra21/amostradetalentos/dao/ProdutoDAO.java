@@ -12,7 +12,6 @@ import br.com.entra21.amostradetalentos.model.Fabricante;
 import br.com.entra21.amostradetalentos.model.Familia;
 import br.com.entra21.amostradetalentos.model.ListaDePreco;
 import br.com.entra21.amostradetalentos.model.Produto;
-import br.com.entra21.amostradetalentos.model.ProdutoServico;
 
 public class ProdutoDAO {
 

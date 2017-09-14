@@ -33,6 +33,11 @@ public class Agenda {
 		this.ativo = ativo;
 		this.fechado = fechado;
 	}
+	
+	@Override
+	public String toString() {
+		return this.getCodigo() + " " + this.getAviso() + " " + this.getDataInicio() + " " + this.getHoraInicio();
+	}
 
 	public int getCodigo() {
 		return codigo;
