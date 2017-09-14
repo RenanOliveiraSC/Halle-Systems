@@ -1,20 +1,18 @@
 package DTO;
 
-import java.sql.Time;
-import java.util.Date;
-
 import br.com.entra21.amostradetalentos.Utils.DateUtils;
+import br.com.entra21.amostradetalentos.Utils.TimeUtils;
 import br.com.entra21.amostradetalentos.model.Agenda;
 
 public class AgendaDTO {
 
 	private int codigo;
 	private String observacao;
-	private Date dataSistema;
-	private Date dataInicio;
-	private Date dataTermino;
-	private Time horaInicio;
-	private Time horaTermino;
+	private String dataSistema;
+	private String dataInicio;
+	private String dataTermino;
+	private String horaInicio;
+	private String horaTermino;
 	private String lembrete;
 	private String aviso;
 	private Boolean ativo;
@@ -24,8 +22,8 @@ public class AgendaDTO {
 
 	}
 
-	public AgendaDTO(int codigo, String observacao, Date dataSistema, Date dataInicio, Date dataTermino,
-			Time horaInicio, Time horaTermino, String lembrete, String aviso, Boolean ativo, Boolean fechado) {
+	public AgendaDTO(int codigo, String observacao, String dataSistema, String dataInicio, String dataTermino,
+			String horaInicio, String horaTermino, String lembrete, String aviso, Boolean ativo, Boolean fechado) {
 		super();
 
 		this.codigo = codigo;
@@ -40,6 +38,8 @@ public class AgendaDTO {
 		this.ativo = ativo;
 		this.fechado = fechado;
 	}
+
+	
 
 	public int getCodigo() {
 		return codigo;
@@ -57,43 +57,43 @@ public class AgendaDTO {
 		this.observacao = observacao;
 	}
 
-	public Date getDataSistema() {
+	public String getDataSistema() {
 		return dataSistema;
 	}
 
-	public void setDataSistema(Date dataSistema) {
+	public void setDataSistema(String dataSistema) {
 		this.dataSistema = dataSistema;
 	}
 
-	public Date getDataInicio() {
+	public String getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(Date dataInicio) {
+	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public Date getDataTermino() {
+	public String getDataTermino() {
 		return dataTermino;
 	}
 
-	public void setDataTermino(Date dataTermino) {
+	public void setDataTermino(String dataTermino) {
 		this.dataTermino = dataTermino;
 	}
 
-	public Time getHoraInicio() {
+	public String getHoraInicio() {
 		return horaInicio;
 	}
 
-	public void setHoraInicio(Time horaInicio) {
+	public void setHoraInicio(String horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
-	public Time getHoraTermino() {
+	public String getHoraTermino() {
 		return horaTermino;
 	}
 
-	public void setHoraTermino(Time horaTermino) {
+	public void setHoraTermino(String horaTermino) {
 		this.horaTermino = horaTermino;
 	}
 
@@ -130,7 +130,18 @@ public class AgendaDTO {
 	}
 
 	public Agenda toAgenda() {
-		return new Agenda(this.codigo, this.observacao, DateUtils.parseData(this.dataSistema, this.dataInicio, this.dataTermino), this.horaInicio, this.horaTermino, this.lembrete,this.aviso,this.ativo, this.fechado),
-				null);
+		return new Agenda(
+				this.codigo, 
+				this.observacao,
+				DateUtils.parseData(this.dataSistema, DateUtils.PATTERN_DATA_PADRAO),
+				DateUtils.parseData(this.dataInicio, DateUtils.PATTERN_DATA_PADRAO), 
+				DateUtils.parseData(this.dataTermino, DateUtils.PATTERN_DATA_PADRAO),
+				TimeUtils.parseTime(this.horaInicio, TimeUtils.PATTERN_TIME_PADRAO),
+				TimeUtils.parseTime(this.horaTermino, TimeUtils.PATTERN_TIME_PADRAO),
+				this.lembrete,
+				this.aviso,
+				this.ativo, 
+				this.fechado
+				);
 	}
 }
