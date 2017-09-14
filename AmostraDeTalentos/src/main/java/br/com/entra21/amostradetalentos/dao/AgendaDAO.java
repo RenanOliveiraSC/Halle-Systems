@@ -10,18 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
 
-
 import br.com.entra21.amostradetalentos.model.Agenda;
 
 public class AgendaDAO {
-	
 
-    private final Connection con;
-	
+	private final Connection con;
+
 	public AgendaDAO(Connection con) {
 		this.con = con;
 	}
-	
+
 	public boolean inserir(Agenda agenda) throws SQLException {
 		String sql = "INSERT INTO AGENDA (AG_CODIGO, AG_OBSERVACAO, AG_DATA_SISTEMA, AG_DATA_INICIO, AG_DATA_TERMINO, AG_HORA_INICIO, "
 				+ "AG_HORA_TERMINO, AG_LEMBRETE, AG_AVISO, AG_ATIVO, AG_FECHADO) VALUES (SEQ_AGENDA.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -32,8 +30,8 @@ public class AgendaDAO {
 		statement.setDate(2, (Date) agenda.getDataSistema());
 		statement.setDate(3, (Date) agenda.getDataInicio());
 		statement.setDate(4, (Date) agenda.getDataTermino());
-		statement.setTime(5, agenda.getHoraInicio());
-		statement.setTime(6, agenda.getHoraTermino());
+		statement.setTime(5, (Time) agenda.getHoraInicio());
+		statement.setTime(6, (Time) agenda.getHoraTermino());
 		statement.setString(7, agenda.getLembrete());
 		statement.setString(8, agenda.getAviso());
 		statement.setBoolean(9, agenda.getAtivo());
@@ -41,7 +39,7 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
+
 	public boolean alterarNome(int id, String nome) throws SQLException {
 		String sql = "UPDATE LISTA_DE_PRECO SET LP_NOME = ? WHERE LP_CODIGO = ?";
 
@@ -51,8 +49,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarObservacao(int id, String observacao) throws SQLException {
+
+	public boolean alterarObservacao(int id, String observacao) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_OBSERVACAO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -61,8 +59,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarDataInicio(int id, Date datainicio) throws SQLException {
+
+	public boolean alterarDataInicio(int id, Date datainicio) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_DATA_INICIO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -71,8 +69,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarDataTermino(int id, Date datatermino) throws SQLException {
+
+	public boolean alterarDataTermino(int id, Date datatermino) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_DATA_TERMINO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -81,8 +79,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarHoraInicio(int id, Time horainicio) throws SQLException {
+
+	public boolean alterarHoraInicio(int id, Time horainicio) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_HORA_INICIO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -91,8 +89,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarHoraTermino(int id, Time horatermino) throws SQLException {
+
+	public boolean alterarHoraTermino(int id, Time horatermino) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_HORA_TERMINO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -101,8 +99,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarLembrete(int id, String lembrete) throws SQLException {
+
+	public boolean alterarLembrete(int id, String lembrete) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_LEMBRETE = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -111,8 +109,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarAviso(int id, String aviso) throws SQLException {
+
+	public boolean alterarAviso(int id, String aviso) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_AVISO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -121,8 +119,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarAtivo(int id, String ativo) throws SQLException {
+
+	public boolean alterarAtivo(int id, String ativo) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_ATIVO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -131,8 +129,8 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public  boolean alterarFechado(int id, String fechado) throws SQLException {
+
+	public boolean alterarFechado(int id, String fechado) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_FECHADO = ? WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
@@ -141,16 +139,16 @@ public class AgendaDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
-	public boolean excluir(int id) throws SQLException{
+
+	public boolean excluir(int id) throws SQLException {
 		String sql = "DELETE AGENDA WHERE AG_CODIGO = ?";
-		 
+
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, id);
-		 
+
 		return statement.executeUpdate() > 0;
 	}
-	
+
 	public List<Agenda> lista() throws SQLException {
 		List<Agenda> agendas = new ArrayList<>();
 
@@ -159,7 +157,7 @@ public class AgendaDAO {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					
+
 					int id = rs.getInt("AG_CODIGO");
 					String observacao = rs.getString("AG_OBSERVACAO");
 					Date datasistema = rs.getDate("AG_DATA_SISTEMA");
@@ -171,8 +169,9 @@ public class AgendaDAO {
 					String aviso = rs.getString("AG_AVISO");
 					Boolean ativo = rs.getBoolean("AG_ATIVO");
 					Boolean fechado = rs.getBoolean("AG_FECHADO");
-													
-					Agenda agenda = new Agenda(id, observacao, datasistema, datainicio, datatermino, horainicio, horatermino, lembrete, aviso, ativo, fechado);
+
+					Agenda agenda = new Agenda(id, observacao, datasistema, datainicio, datatermino, horainicio,
+							horatermino, lembrete, aviso, ativo, fechado);
 					agendas.add(agenda);
 				}
 			}
@@ -181,5 +180,5 @@ public class AgendaDAO {
 		return agendas;
 
 	}
-	
+
 }
