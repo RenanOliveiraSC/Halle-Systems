@@ -29,8 +29,8 @@ public class AgendaDAO {
 		statement.setDate(2, (Date) agenda.getDataSistema());
 		statement.setDate(3, (Date) agenda.getDataInicio());
 		statement.setDate(4, (Date) agenda.getDataTermino());
-		statement.setTime(5, (Time) agenda.getHoraInicio());
-		statement.setTime(6, (Time) agenda.getHoraTermino());
+		statement.setDate(5, (Date) agenda.getHoraInicio());
+		statement.setDate(6, (Date) agenda.getHoraTermino());
 		statement.setString(7, agenda.getLembrete());
 		statement.setString(8, agenda.getAviso());
 		statement.setBoolean(9, agenda.getAtivo());
