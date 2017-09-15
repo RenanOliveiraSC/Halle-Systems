@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
-import br.com.entra21.amostradetalentos.model.Pais;
 
 public class FormaPagamentoDAO {
 

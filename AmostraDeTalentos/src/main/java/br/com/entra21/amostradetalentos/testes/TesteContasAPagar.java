@@ -14,7 +14,7 @@ public class TesteContasAPagar {
 		
 		List<ContasAPagar> lContasAPagar = contasAPagarService.listarContasAPagar();
 		for (ContasAPagar cont : lContasAPagar) {
-			System.out.println(cont.toString());
+			System.out.println(cont.getCodigo() + " "+ cont.getDiasAtraso() + " " + cont.getDataLancamento() + " " + cont.getFornecedor().getCodigo());
 		}
 	}
 }

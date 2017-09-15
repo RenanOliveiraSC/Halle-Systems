@@ -43,13 +43,13 @@ public class ServicoDAO {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					String nomePais = rs.getString("PAIS_NOME");
 
-					int idEst = rs.getInt("EST_CODIGO");
-					String nomeEst = rs.getString("EST_NOME");
-					String sigla = rs.getString("EST_SIGLA");
-					int idPais = rs.getInt("EST_PAIS_CODIGO");
-
+					int codigo = rs.getInt("SER_CODIGO");
+					String descricao = rs.getString("SER_NOME");
+					
+					Servico servico = new Servico(codigo, descricao);
+					
+					lServico.add(servico);
 				}
 			}
 		}

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import br.com.entra21.amostradetalentos.model.Funcionario;
-import br.com.entra21.amostradetalentos.model.TipoFuncionario;
 
 public class FuncionarioDAO {
 
@@ -15,7 +14,7 @@ public class FuncionarioDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Funcionario funcionario, TipoFuncionario tipofuncionario) throws SQLException {
+	public boolean inserir(Funcionario funcionario) throws SQLException {
 		String sql = "INSERT INTO FUNCIONARIO (FUN_CODIGO, FUN_NOME, FUN_SOBRENOME, FUN_EMAIL, FUN_TELEFONE, FUN_USU_CODIGO) VALUES (SEQ_FUNCIONARIO.NEXTVAL,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, funcionario.getNome());

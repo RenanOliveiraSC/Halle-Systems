@@ -20,8 +20,7 @@ public class LancamentoContabilDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(LancamentoContabil lancamento, ContasAPagar contaApagar, ContasAReceber contasAreceber)
-			throws SQLException {
+	public boolean inserir(LancamentoContabil lancamento) throws SQLException {
 		String sql = "INSERT INTO LANCAMENTO_CONTABIL (LC_CODIGO, LC_DATA_LANCAMENTO, LC_OBSERVACAO, LC_CAP_CODIGO, LC_CAR_CODIGO) VALUES (SEQ_LC.NEXTVAL,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setDate(1, (Date) lancamento.getDataLancamento());
@@ -45,19 +44,24 @@ public class LancamentoContabilDAO {
 	public List<LancamentoContabil> lista() throws SQLException {
 		List<LancamentoContabil> lLancamentoContabil = new ArrayList<>();
 
-		String sql = "select * from LANCAMENTO_CONTABIL LC "
-				+ "INNER JOIN CONTAS_A_PAGAR CP ON CP.CAP_CODIGO = LC.LC_CAP_CODIGO"
-				+ "INNER JOIN CONTAS_RECEBER CR ON CR.CAR_CODIGO = LC.LC_CAR_CODIGO";
+		String sql = "select * from LANCAMENTO_CONTABIL LC ";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
+
 					int id = rs.getInt("LC_CODIGO");
 					String observacao = rs.getString("LC_OBSERVACAO");
 					Date dataLancamento = rs.getDate("LC_DATA_LANCAMENTO");
 
-					int codigoCap = rs.getInt("LC_CAP_CODIGO");
-					int codigoCar = rs.getInt("LC_CAR_CODIGO");
+					ContasAReceber contasAReceber = new ContasAReceber();
+
+					ContasAPagar contasAPagar = new ContasAPagar();
+
+					LancamentoContabil lancamentoContabil = new LancamentoContabil(id, contasAReceber, contasAPagar,
+							dataLancamento, observacao);
+
+					lLancamentoContabil.add(lancamentoContabil);
 				}
 			}
 		}

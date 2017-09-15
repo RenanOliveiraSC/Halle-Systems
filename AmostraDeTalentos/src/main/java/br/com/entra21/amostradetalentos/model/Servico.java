@@ -14,4 +14,8 @@ public class Servico extends ProdutoServico {
 				qtdePorCompra, nomeUnidadeVenda, porunidadeDeVenda, qtdePorVenda, observacao, anexo);
 	}
 
+	public Servico(Integer codigo, String descricao) {
+		super(codigo, descricao);
+	}
+
 }
