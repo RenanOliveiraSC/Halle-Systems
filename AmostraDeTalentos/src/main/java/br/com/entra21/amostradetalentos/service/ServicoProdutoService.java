@@ -3,21 +3,21 @@ package br.com.entra21.amostradetalentos.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import br.com.entra21.amostradetalentos.dao.SalvaAgendaDAO;
+import br.com.entra21.amostradetalentos.dao.ServicoProdutoDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
-import br.com.entra21.amostradetalentos.model.SalvaAgenda;
+import br.com.entra21.amostradetalentos.model.ServicoProduto;
 
-public class SalvaAgendaService {
+public class ServicoProdutoService {
 	
-	public void inserirSalvaAgenda(SalvaAgenda salvaAgenda) throws SQLException {
+	public void inserirSalvaAgenda(ServicoProduto servicoProduto) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()){
-			new SalvaAgendaDAO(con).inserirSalvaAgenda(salvaAgenda);
+			new ServicoProdutoDAO(con).inserirServicoProduto(servicoProduto);
 		}
 	}
 	
 	public void excluir(int id) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()){
-			new SalvaAgendaDAO(con).excluir(id);
+			new ServicoProdutoDAO(con).excluir(id);
 		}
 	}
 

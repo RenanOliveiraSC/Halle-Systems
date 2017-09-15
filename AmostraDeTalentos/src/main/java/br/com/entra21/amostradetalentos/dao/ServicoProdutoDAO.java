@@ -14,7 +14,7 @@ public class ServicoProdutoDAO {
 		this.con = con;
 	}
 
-	public boolean inserirSalvaAgenda(ServicoProduto servicoProduto) throws SQLException {
+	public boolean inserirServicoProduto(ServicoProduto servicoProduto) throws SQLException {
 		String sql = "INSERT INTO SALVA_AGENDA (SP_CODIGO, SP_SER_CODIGO, SP_PRO_CODIGO) VALUES (SEQ_SERVICO_PRODUTO.NEXTVAL, ?, ?);";
 
 		PreparedStatement statement = con.prepareStatement(sql);
