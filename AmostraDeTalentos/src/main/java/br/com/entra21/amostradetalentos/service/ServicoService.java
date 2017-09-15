@@ -22,7 +22,7 @@ public class ServicoService {
 		}
 	}
 	
-	public List<Servico> lista() throws SQLException {
+	public List<Servico> listar() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new ServicoDAO(con).lista();
 		}
