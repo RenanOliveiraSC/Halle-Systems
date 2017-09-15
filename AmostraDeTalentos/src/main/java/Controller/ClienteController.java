@@ -23,7 +23,7 @@ public class ClienteController {
 	public Response create(ClienteDTO cliente) {
 		ClienteService ClienteService = new ClienteService();
 		try {
-			ClienteService.inserir(Cliente.toCliente());
+			ClienteService.inserir(Cliente.toCliente(), null, null);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class ClienteController {
 	public Response update(ClienteDTO Cliente) {
 		ClienteService ClienteService = new ClienteService();
 		try {
-			ClienteService.inserir(Cliente.toCliente());
+			ClienteService.inserir(Cliente.toCliente(), null, null);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public class ClienteController {
 	public Response Delete(ClienteDTO Cliente) {
 		ClienteService ClienteService = new ClienteService();
 		try {
-			ClienteService.inserir(Cliente.toCliente());
+			ClienteService.inserir(Cliente.toCliente(), null, null);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();

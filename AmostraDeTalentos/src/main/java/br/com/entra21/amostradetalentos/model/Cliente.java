@@ -151,4 +151,8 @@ public class Cliente {
 		this.pai_mae = pai_mae;
 	}
 
+	public static Cliente toCliente() {
+		return null;
+	}
+
 }
