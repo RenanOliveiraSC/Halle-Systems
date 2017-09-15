@@ -1,4 +1,4 @@
-package DTO;
+package dto;
 
 import br.com.entra21.amostradetalentos.model.Familia;
 import br.com.entra21.amostradetalentos.model.ListaDePreco;
