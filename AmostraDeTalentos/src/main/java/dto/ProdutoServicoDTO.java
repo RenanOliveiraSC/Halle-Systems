@@ -1,4 +1,4 @@
-package DTO;
+package dto;
 
 import br.com.entra21.amostradetalentos.model.Familia;
 import br.com.entra21.amostradetalentos.model.ListaDePreco;
@@ -161,7 +161,5 @@ public abstract class ProdutoServicoDTO {
 	public void setAnexo(String anexo) {
 		this.anexo = anexo;
 	}
-	
-	
 
 }

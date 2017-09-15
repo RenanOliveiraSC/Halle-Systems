@@ -9,8 +9,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import DTO.ProdutoDTO;
 import br.com.entra21.amostradetalentos.service.ProdutoService;
+import dto.ProdutoDTO;
 
 @Path("Produto")
 

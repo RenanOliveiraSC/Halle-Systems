@@ -11,9 +11,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import DTO.ClienteDTO;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.service.ClienteService;
+import dto.ClienteDTO;
 
 @Path("cliente")
 

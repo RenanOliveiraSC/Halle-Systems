@@ -1,4 +1,4 @@
-package DTO;
+package dto;
 
 import br.com.entra21.amostradetalentos.model.UsuarioLogin;
 

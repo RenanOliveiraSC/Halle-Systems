@@ -9,8 +9,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import DTO.AgendaDTO;
 import br.com.entra21.amostradetalentos.service.AgendaService;
+import dto.AgendaDTO;
 
 @Path("agenda")
 
