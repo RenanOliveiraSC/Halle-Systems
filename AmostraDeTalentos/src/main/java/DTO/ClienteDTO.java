@@ -1,8 +1,12 @@
-package br.com.entra21.amostradetalentos.model;
+package DTO;
 
 import java.util.Date;
 
-public class Cliente {
+import br.com.entra21.amostradetalentos.model.Cliente;
+import br.com.entra21.amostradetalentos.model.Endereco;
+import br.com.entra21.amostradetalentos.model.TipoCliente;
+
+public class ClienteDTO {
 
 	private Integer codigo;
 	private String nome;
@@ -19,7 +23,11 @@ public class Cliente {
 	private String profissao;
 	private int pai_mae;
 
-	public Cliente(Integer codigo, String nome, String sobrenome, TipoCliente grupocliente, int limite_de_credito,
+	public ClienteDTO() {
+
+	}
+
+	public ClienteDTO(int codigo, String nome, String sobrenome, TipoCliente grupocliente, int limite_de_credito,
 			String cpf, Endereco endereco, String telefone, String celular, String email, Date data_nascimento,
 			String sexo, String profissao, int pai_mae) {
 		super();
@@ -99,8 +107,8 @@ public class Cliente {
 		return telefone;
 	}
 
-	public void setTelefone(String elefone) {
-		this.telefone = elefone;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getCelular() {
@@ -151,8 +159,9 @@ public class Cliente {
 		this.pai_mae = pai_mae;
 	}
 
-	public static Cliente toCliente() {
-		return null;
+	public Cliente toCliente() {
+		return new Cliente(this.codigo, this.nome, this.sobrenome, this.grupocliente, this.limite_de_credito, this.cpf,
+				this.endereco, this.telefone, this.celular, this.email, this.data_nascimento, this.sexo, this.profissao,
+				this.pai_mae);
 	}
-
 }
