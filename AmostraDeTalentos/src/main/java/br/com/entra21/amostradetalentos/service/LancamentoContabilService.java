@@ -6,16 +6,14 @@ import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.LancamentoContabilDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
-import br.com.entra21.amostradetalentos.model.ContasAPagar;
-import br.com.entra21.amostradetalentos.model.ContasAReceber;
 import br.com.entra21.amostradetalentos.model.LancamentoContabil;
 
 public class LancamentoContabilService {
 	
-	public void inserir(LancamentoContabil lancamento, ContasAPagar contaApagar, ContasAReceber contasAreceber)
+	public void inserir(LancamentoContabil lancamento)
 			throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()){
-			new LancamentoContabilDAO(con).inserir(lancamento, contaApagar, contasAreceber);
+			new LancamentoContabilDAO(con).inserir(lancamento);
 		}
 	}
 	

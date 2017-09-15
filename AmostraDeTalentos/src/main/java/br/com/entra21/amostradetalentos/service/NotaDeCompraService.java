@@ -7,17 +7,13 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dao.NotaDeCompraDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Estado;
-import br.com.entra21.amostradetalentos.model.FormaDePagamento;
-import br.com.entra21.amostradetalentos.model.Fornecedor;
 import br.com.entra21.amostradetalentos.model.NotaDeCompra;
-import br.com.entra21.amostradetalentos.model.Produto;
 
 public class NotaDeCompraService {
 	
-	public void inserir(NotaDeCompra notaDeCompra, Fornecedor fornecedor, Produto produto,
-			FormaDePagamento formaPagamento) throws SQLException {
+	public void inserir(NotaDeCompra notaDeCompra) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()){
-			new NotaDeCompraDAO(con).inserir(notaDeCompra, fornecedor, produto, formaPagamento);
+			new NotaDeCompraDAO(con).inserir(notaDeCompra);
 		}
 	}
 	

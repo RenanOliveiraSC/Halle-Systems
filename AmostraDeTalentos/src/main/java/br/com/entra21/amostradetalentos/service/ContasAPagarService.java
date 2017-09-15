@@ -7,13 +7,12 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dao.ContasAPagarDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.ContasAPagar;
-import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 
 public class ContasAPagarService {
 
-	public void inserir(ContasAPagar aPagar, FormaDePagamento formadepagamento) throws SQLException {
+	public void inserir(ContasAPagar aPagar) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new ContasAPagarDAO(con).inserir(aPagar, formadepagamento);
+			new ContasAPagarDAO(con).inserir(aPagar);
 		}
 	}
 

@@ -11,9 +11,9 @@ import br.com.entra21.amostradetalentos.model.TipoCliente;
 
 public class ClienteService {
 	
-	public void inserir(Cliente cliente, TipoCliente grupocliente, Endereco endereco) throws SQLException {
+	public void inserir(Cliente cliente) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()){
-			new ClienteDAO(con).inserir(cliente, grupocliente, endereco);
+			new ClienteDAO(con).inserir(cliente);
 		}
 	}
 	

@@ -6,13 +6,12 @@ import java.sql.SQLException;
 import br.com.entra21.amostradetalentos.dao.FuncionarioDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Funcionario;
-import br.com.entra21.amostradetalentos.model.TipoFuncionario;
 
 public class FuncionarioService {
 
-	public void inserir(Funcionario funcionario, TipoFuncionario tipofuncionario) throws SQLException {
+	public void inserir(Funcionario funcionario) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FuncionarioDAO(con).inserir(funcionario, tipofuncionario);
+			new FuncionarioDAO(con).inserir(funcionario);
 		}
 	}
 

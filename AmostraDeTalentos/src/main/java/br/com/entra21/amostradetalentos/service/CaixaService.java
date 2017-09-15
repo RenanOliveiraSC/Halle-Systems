@@ -1,22 +1,20 @@
 package br.com.entra21.amostradetalentos.service;
 
-import java.util.List;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.CaixaDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
-import br.com.entra21.amostradetalentos.model.Agenda;
 import br.com.entra21.amostradetalentos.model.Caixa;
-import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 
 
 public class CaixaService {
 
 	
-	public void inserir(Agenda agenda, FormaDePagamento formaDePagamento) throws SQLException {
+	public void inserir(Caixa caixa) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new CaixaDAO(con).inserir(agenda, formaDePagamento);
+			new CaixaDAO(con).inserir(caixa);
 		}
 	}
 	

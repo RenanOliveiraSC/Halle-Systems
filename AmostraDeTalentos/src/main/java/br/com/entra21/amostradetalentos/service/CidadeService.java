@@ -1,20 +1,18 @@
 package br.com.entra21.amostradetalentos.service;
 
 import java.sql.Connection;
-
 import java.sql.SQLException;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.CidadeDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Cidade;
-import br.com.entra21.amostradetalentos.model.Estado;
 
 public class CidadeService {
 
-	public void inserir(String nome, Estado estado) throws SQLException {
+	public void inserir(Cidade cidade) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new CidadeDAO(con).inserir(nome, estado);
+			new CidadeDAO(con).inserir(cidade);
 		}
 	}
 
