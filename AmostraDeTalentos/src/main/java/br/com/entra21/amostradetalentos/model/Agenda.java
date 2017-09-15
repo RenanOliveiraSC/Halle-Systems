@@ -3,6 +3,10 @@ package br.com.entra21.amostradetalentos.model;
 import java.sql.Time;
 import java.util.Date;
 
+import DTO.AgendaDTO;
+import br.com.entra21.amostradetalentos.Utils.DateUtils;
+import br.com.entra21.amostradetalentos.Utils.TimeUtils;
+
 public class Agenda {
 
 	private int codigo;
@@ -138,6 +142,20 @@ public class Agenda {
 
 	public void setFechado(Boolean fechado) {
 		this.fechado = fechado;
+	}
+	
+	public AgendaDTO toDTO() {
+		return new AgendaDTO(this.getCodigo(), 
+				this.getObservacao(),
+				DateUtils.formatData(this.getDataSistema(), DateUtils.PATTERN_DATA_PADRAO),
+				DateUtils.formatData(this.getDataInicio(), DateUtils.PATTERN_DATA_PADRAO), 
+				DateUtils.formatData(this.getDataTermino(), DateUtils.PATTERN_DATA_PADRAO),
+				TimeUtils.formatTime(this.getHoraInicio(), TimeUtils.PATTERN_TIME_PADRAO),
+				TimeUtils.formatTime(this.getHoraTermino(), TimeUtils.PATTERN_TIME_PADRAO),
+				this.getLembrete(),
+				this.getAviso(),
+				this.getAtivo(), 
+				this.getFechado());
 	}
 
 }
