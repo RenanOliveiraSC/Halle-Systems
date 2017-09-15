@@ -24,6 +24,9 @@ public class ContasAReceber {
 		this.pagamentoTotal = pagamentoTotal;
 	}
 
+	public ContasAReceber() {
+	}
+
 	public int getCcodigo() {
 		return ccodigo;
 	}

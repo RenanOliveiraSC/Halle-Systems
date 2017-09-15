@@ -9,11 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.model.Estado;
-import br.com.entra21.amostradetalentos.model.FormaDePagamento;
-import br.com.entra21.amostradetalentos.model.Fornecedor;
 import br.com.entra21.amostradetalentos.model.NotaDeCompra;
 import br.com.entra21.amostradetalentos.model.Pais;
-import br.com.entra21.amostradetalentos.model.Produto;
 
 public class NotaDeCompraDAO {
 
@@ -23,8 +20,7 @@ public class NotaDeCompraDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(NotaDeCompra notaDeCompra, Fornecedor fornecedor, Produto produto,
-			FormaDePagamento formaPagamento) throws SQLException {
+	public boolean inserir(NotaDeCompra notaDeCompra) throws SQLException {
 		String sql = "INSERT INTO NOTA_DE_COMPRA (NTC_CODIGO, NTC_FOR_CODIGO, NTC_PRO_CODIGO, NTC_QTDE, NTC_PRECO_PRODUTO, NTC_DESCONTO, NTC_VALOR_TOTAL, NTC_NUMERO_NOTA, NTC_DATA_LANCAMENTO, NTC_OBSERVACAO, NTC_ANEXO, NTC_FORMA_CODIGO) VALUES (SEQ_ESTADO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, notaDeCompra.getCodigo());

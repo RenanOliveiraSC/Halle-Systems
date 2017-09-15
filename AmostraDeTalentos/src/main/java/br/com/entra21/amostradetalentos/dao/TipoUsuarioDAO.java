@@ -38,4 +38,6 @@ public class TipoUsuarioDAO {
 
 		return statement.executeUpdate() > 0;
 	}
+	
+	
 }

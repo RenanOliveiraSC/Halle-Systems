@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.model.Cidade;
-import br.com.entra21.amostradetalentos.model.Estado;
 
 public class CidadeDAO {
 
@@ -18,12 +17,12 @@ public class CidadeDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(String nome, Estado estado) throws SQLException {
+	public boolean inserir(Cidade cidade) throws SQLException {
 		String sql = "INSERT INTO CIDADE (CID_CODIGO, CID_NOME, CID_EST_CODIGO) VALUES (SEQ_CIDADE.NEXTVAL, ?, ?);";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, nome);
-		statement.setInt(2, estado.getCodigo());
+		statement.setString(1, cidade.getNome());
+		statement.setInt(2, cidade.getEstado().getCodigo());
 
 		return statement.executeUpdate() > 0;
 	}

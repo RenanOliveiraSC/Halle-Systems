@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.entra21.amostradetalentos.model.Agenda;
 import br.com.entra21.amostradetalentos.model.ContasAPagar;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 import br.com.entra21.amostradetalentos.model.Fornecedor;
@@ -21,7 +20,7 @@ public class ContasAPagarDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(ContasAPagar aPagar, FormaDePagamento formadepagamento) throws SQLException {
+	public boolean inserir(ContasAPagar aPagar) throws SQLException {
 		String sql = "INSERT INTO Contas_a_Pagar(CAP_CODIGO, CAP_COD_FORNECEDOR, CAP_COD_TIPO_PAGAMENTO, CAP_DATA_LANCAMENTO, CAP_DIAS_DE_ATRASO, CAP_TOTAL, CAP_SALDO, CAP_DESCONTO, CAP_PAGAMENTO_TOTAL) VALUES (SEQ_Contas_a_Pagar.NEXTVAL, ?,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setInt(1, aPagar.getFornecedor().getCodigo());
@@ -43,12 +42,8 @@ public class ContasAPagarDAO {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-
-					int codFornecedor = rs.getInt("CAP_FOR_CODIGO");
-
+					
 					Fornecedor fornecedor = new Fornecedor();
-
-					int codFormaDePagamento = rs.getInt("CAP_FORMA_CODIGO");
 
 					FormaDePagamento formaDePagamento = new FormaDePagamento();
 

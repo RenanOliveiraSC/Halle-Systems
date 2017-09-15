@@ -7,10 +7,13 @@ public class Caixa {
 	private FormaDePagamento formaDePagamento;
 
 	public Caixa(int codigo, Agenda agenda, FormaDePagamento formaDePagamento) {
-		super();
 		this.codigo = codigo;
 		this.agenda = agenda;
 		this.formaDePagamento = formaDePagamento;
+	}
+
+	public Caixa(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public int getCodigo() {
@@ -29,11 +32,11 @@ public class Caixa {
 		this.agenda = agenda;
 	}
 
-	public FormaDePagamento getForma_codigo() {
+	public FormaDePagamento getFormaPag() {
 		return formaDePagamento;
 	}
 
-	public void setForma_codigo(FormaDePagamento formaDePagamento) {
+	public void setFormaPag(FormaDePagamento formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
 	}
 

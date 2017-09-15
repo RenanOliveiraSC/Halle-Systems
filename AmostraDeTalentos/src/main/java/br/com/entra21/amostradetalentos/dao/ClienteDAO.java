@@ -17,7 +17,7 @@ public class ClienteDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Cliente cliente, TipoCliente grupocliente, Endereco endereco) throws SQLException {
+	public boolean inserir(Cliente cliente) throws SQLException {
 		String sql = "INSERT INTO CLIENTE (CLI_CODIGO, CLI_NOME, CLI_SOBRENOME, CLI_CPF, CLI_TELEFONE, CLI_CELULAR, CLI_EMAIL, CLI_DATA_NASCIMENTO, CLI_SEXO, CLI_PROFISSAO, CLI_PAI_MAE, CLI_GRU_CODIGO, CLI_END_CODIGO) VALUES (SEQ_CLIENTE.NEXTVAL, ?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement statement = con.prepareStatement(sql);

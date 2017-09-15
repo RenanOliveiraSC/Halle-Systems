@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.entra21.amostradetalentos.model.Agenda;
-import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 import br.com.entra21.amostradetalentos.model.Caixa;
 
 public class CaixaDAO {
@@ -19,12 +17,12 @@ public class CaixaDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Agenda agenda, FormaDePagamento formaDePagamento) throws SQLException {
+	public boolean inserir(Caixa caixa) throws SQLException {
 		String sql = "INSERT INTO CAIXA (CX_CODIGO, CX_AG_CODIGO, CX_FORMA_CODIGO) VALUES (SEQ_CAIXA.nextval, ?, ?)";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(1, agenda.getCodigo());
-		statement.setInt(2, formaDePagamento.getCodigo());
+		statement.setInt(1, caixa.getAgenda().getCodigo());
+		statement.setInt(2, caixa.getFormaPag().getCodigo());
 
 		return statement.executeUpdate() > 0;
 	}
@@ -47,16 +45,10 @@ public class CaixaDAO {
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
 					
-					int formaCod = rs.getInt("CX_FORMA_CODIGO");
-					String formaNome = rs.getString("FORMA_NOME");
-					
-					int agCod = rs.getInt("CX_AG_CODIGO");
-					
-					
 					int id = rs.getInt("CX_CODIGO");
 
 					
-					Caixa caixa = new Caixa(id, null, null);
+					Caixa caixa = new Caixa(id);
 					lCaixa.add(caixa);
 				}
 			}

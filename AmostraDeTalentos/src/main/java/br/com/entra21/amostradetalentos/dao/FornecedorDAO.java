@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import br.com.entra21.amostradetalentos.model.Endereco;
 import br.com.entra21.amostradetalentos.model.Fornecedor;
-import br.com.entra21.amostradetalentos.model.TipoFornecedor;
 
 public class FornecedorDAO {
 
@@ -16,7 +14,7 @@ public class FornecedorDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Fornecedor fornecedor, TipoFornecedor tipofornecedor, Endereco endereco)
+	public boolean inserir(Fornecedor fornecedor)
 			throws SQLException {
 		String sql = "INSERT INTO FORNECEDOR(FOR_CODIGO, FOR_NOME, FOR_CONTATO, FOR_CNPJ, FOR_TELEFONE, FOR_CELULAR, FOR_EMAIL, FOR_TIPF_CODIGO, FOR_END_CODIGO) VALUES (SEQ_FORNECEDOR.NEXTVAL,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(sql);
