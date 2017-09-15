@@ -1,4 +1,4 @@
-package dto;
+package DTO;
 
 import br.com.entra21.amostradetalentos.Utils.DateUtils;
 import br.com.entra21.amostradetalentos.Utils.TimeUtils;

@@ -7,6 +7,7 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dao.AgendaDAO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Agenda;
+import dto.AgendaDTO;
 
 public class AgendaService {
 
@@ -28,7 +29,7 @@ public class AgendaService {
 		}
 	}
 
-	public List<Agenda> listarAgenda() throws SQLException {
+	public List<AgendaDTO> listarAgenda() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new AgendaDAO(con).lista();
 		}
