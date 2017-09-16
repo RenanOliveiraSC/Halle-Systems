@@ -1,6 +1,12 @@
-package br.com.entra21.amostradetalentos.model;
+package dto;
 
-public class Produto extends ProdutoServico {
+import br.com.entra21.amostradetalentos.model.Deposito;
+import br.com.entra21.amostradetalentos.model.Fabricante;
+import br.com.entra21.amostradetalentos.model.Familia;
+import br.com.entra21.amostradetalentos.model.ListaDePreco;
+import br.com.entra21.amostradetalentos.model.Produto;
+
+public class ProdutoDTO extends ProdutoServicoDTO {
 
 	private double estoqueMax;
 	private double estoqueMin;
@@ -11,10 +17,10 @@ public class Produto extends ProdutoServico {
 		return estoqueMax;
 	}
 
-	public Produto() {
+	public ProdutoDTO() {
 	}
 
-	public Produto(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
+	public ProdutoDTO(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
 			double preco, String nomeUnidadeDeCompra, double porUnidadeDeCompra, double qtdePorCompra,
 			String nomeUnidadeVenda, double porUnidadeDeVenda, double qtdePorVenda, String observacao, String anexo,
 			double estoqueMax, double estoqueMin, Deposito deposito, Fabricante fabricante) {
@@ -26,7 +32,7 @@ public class Produto extends ProdutoServico {
 		this.fabricante = fabricante;
 	}
 
-	public Produto(Integer codigo, String descricao) {
+	public ProdutoDTO(Integer codigo, String descricao) {
 		super(codigo, descricao);
 	}
 
@@ -65,4 +71,11 @@ public class Produto extends ProdutoServico {
 		this.fabricante = fabricante;
 	}
 
+	public Produto toProduto() {
+		return new Produto(this.getCodigo(), this.getDescricao(), this.getFamilia(), this.isAtivo(),
+				this.getListaDePreco(), this.getPreco(), this.getNomeUnidadeDeCompra(), this.getPorUnidadeDeCompra(),
+				this.getQtdePorCompra(), this.getNomeUnidadeVenda(), this.getPorUnidadeDeVenda(),
+				this.getQtdePorVenda(), this.getObservacao(), this.getAnexo(), this.estoqueMax, this.estoqueMin,
+				this.deposito, this.fabricante);
+	}
 }

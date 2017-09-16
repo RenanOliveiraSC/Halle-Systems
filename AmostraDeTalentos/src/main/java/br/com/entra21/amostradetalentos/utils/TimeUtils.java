@@ -1,6 +1,5 @@
-package br.com.entra21.amostradetalentos.Utils;
+package br.com.entra21.amostradetalentos.utils;
 
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +22,7 @@ public class TimeUtils {
 		}
 	}
 
-	public static String formatTime(Time time, String pattern) {
+	public static String formatTime(Date time, String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		return sdf.format(time);
 	}

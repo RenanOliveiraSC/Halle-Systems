@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.model.Agenda;
+import dto.AgendaDTO;
 
 public class AgendaDAO {
 
@@ -29,8 +30,8 @@ public class AgendaDAO {
 		statement.setDate(2, (Date) agenda.getDataSistema());
 		statement.setDate(3, (Date) agenda.getDataInicio());
 		statement.setDate(4, (Date) agenda.getDataTermino());
-		statement.setTime(5, (Time) agenda.getHoraInicio());
-		statement.setTime(6, (Time) agenda.getHoraTermino());
+		statement.setDate(5, (Date) agenda.getHoraInicio());
+		statement.setDate(6, (Date) agenda.getHoraTermino());
 		statement.setString(7, agenda.getLembrete());
 		statement.setString(8, agenda.getAviso());
 		statement.setBoolean(9, agenda.getAtivo());
@@ -39,15 +40,6 @@ public class AgendaDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public boolean alterarNome(int id, String nome) throws SQLException {
-		String sql = "UPDATE AGENDA SET LP_NOME = ? WHERE LP_CODIGO = ?";
-
-		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1, nome);
-		statement.setInt(2, id);
-
-		return statement.executeUpdate() > 0;
-	}
 
 	public boolean alterarObservacao(int id, String observacao) throws SQLException {
 		String sql = "UPDATE AGENDA SET AG_OBSERVACAO = ? WHERE AG_CODIGO = ?";
@@ -148,8 +140,8 @@ public class AgendaDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Agenda> lista() throws SQLException {
-		List<Agenda> agendas = new ArrayList<>();
+	public List<AgendaDTO> lista() throws SQLException {
+		List<AgendaDTO> lAgenda = new ArrayList<>();
 
 		String sql = "select * from AGENDA";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -169,14 +161,14 @@ public class AgendaDAO {
 					Boolean ativo = rs.getBoolean("AG_ATIVO");
 					Boolean fechado = rs.getBoolean("AG_FECHADO");
 
-					Agenda agenda = new Agenda(id, observacao, datasistema, datainicio, datatermino, horainicio,
-							horatermino, lembrete, aviso, ativo, fechado);
-					agendas.add(agenda);
+					lAgenda.add(new Agenda(id, observacao, datasistema, datainicio, datatermino, horainicio,
+							horatermino, lembrete, aviso, ativo, fechado).toDTO());
+				
 				}
 			}
 		}
 
-		return agendas;
+		return lAgenda;
 
 	}
 

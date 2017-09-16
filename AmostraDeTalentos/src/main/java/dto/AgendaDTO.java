@@ -1,8 +1,8 @@
-package DTO;
+package dto;
 
-import br.com.entra21.amostradetalentos.Utils.DateUtils;
-import br.com.entra21.amostradetalentos.Utils.TimeUtils;
 import br.com.entra21.amostradetalentos.model.Agenda;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
+import br.com.entra21.amostradetalentos.utils.TimeUtils;
 
 public class AgendaDTO {
 
