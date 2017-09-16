@@ -12,6 +12,7 @@
 		.module('app')
 		.run(run);
 
+	// AQUI CRIA E CONFIGURA A ROTA DO SITE //
 	function config($routeProvider, $httpProvider, $locationProvider) {
 		$locationProvider.hashPrefix('');
 		$routeProvider.when('/', {

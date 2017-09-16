@@ -4,18 +4,12 @@ import br.com.entra21.amostradetalentos.model.UsuarioLogin;
 
 public class UsuarioLoginDTO {
 
-	private Integer codigo;
-	private String login;
+	private String usuario;
 	private String senha;
 
-	public UsuarioLoginDTO(Integer codigo, String login, String senha) {
-		this.codigo = codigo;
-		this.login = login;
-		this.senha = senha;
-	}
 
-	public UsuarioLoginDTO(String login, String senha) {
-		this.login = login;
+	public UsuarioLoginDTO(String usuario, String senha) {
+		this.usuario = usuario;
 		this.senha = senha;
 	}
 
@@ -23,20 +17,13 @@ public class UsuarioLoginDTO {
 
 	}
 
-	public Integer getCodigo() {
-		return codigo;
+	
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
@@ -48,7 +35,7 @@ public class UsuarioLoginDTO {
 	}
 
 	public UsuarioLogin toUsuarioLogin() {
-		return new UsuarioLogin(this.codigo, this.login, this.senha);
+		return new UsuarioLogin(this.usuario, this.senha);
 	}
 
 }
