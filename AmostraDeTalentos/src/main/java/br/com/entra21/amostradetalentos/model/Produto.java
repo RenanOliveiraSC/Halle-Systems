@@ -12,8 +12,6 @@ public class Produto extends ProdutoServico {
 	}
 
 	public Produto() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Produto(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
