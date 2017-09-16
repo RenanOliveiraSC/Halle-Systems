@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.sql.SQLException;
 
@@ -9,21 +9,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.entra21.amostradetalentos.service.ProdutoService;
-import dto.ProdutoDTO;
+import br.com.entra21.amostradetalentos.model.Cliente;
+import br.com.entra21.amostradetalentos.service.ClienteService;
+import dto.ClienteDTO;
 
-@Path("Produto")
-
-public class ProdutoController {
+public class ContasAPagarController {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
-
-	public Response create(ProdutoDTO produto) {
-		ProdutoService produtoService = new ProdutoService();
+	public Response create(ClienteDTO cliente) {
+		ClienteService ClienteService = new ClienteService();
 		try {
-			produtoService.inserir(produto.toProduto());
+			ClienteService.inserir(Cliente.toCliente());
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -34,10 +32,10 @@ public class ProdutoController {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public Response update(ProdutoDTO produto) {
-		ProdutoService produtoService = new ProdutoService();
+	public Response update(ClienteDTO Cliente) {
+		ClienteService ClienteService = new ClienteService();
 		try {
-			produtoService.inserir(produto.toProduto());
+			ClienteService.inserir(Cliente.toCliente());
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,10 +46,10 @@ public class ProdutoController {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public Response Delete(ProdutoDTO produto) {
-		ProdutoService produtoService = new ProdutoService();
+	public Response Delete(ClienteDTO Cliente) {
+		ClienteService ClienteService = new ClienteService();
 		try {
-			produtoService.inserir(produto.toProduto());
+			ClienteService.inserir(Cliente.toCliente());
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -3,8 +3,8 @@ package br.com.entra21.amostradetalentos.model;
 import java.sql.Time;
 import java.util.Date;
 
-import br.com.entra21.amostradetalentos.Utils.DateUtils;
-import br.com.entra21.amostradetalentos.Utils.TimeUtils;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
+import br.com.entra21.amostradetalentos.utils.TimeUtils;
 import dto.AgendaDTO;
 
 public class Agenda {
