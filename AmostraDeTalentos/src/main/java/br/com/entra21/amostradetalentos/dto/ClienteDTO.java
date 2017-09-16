@@ -1,4 +1,4 @@
-package dto;
+package br.com.entra21.amostradetalentos.dto;
 
 import java.util.Date;
 

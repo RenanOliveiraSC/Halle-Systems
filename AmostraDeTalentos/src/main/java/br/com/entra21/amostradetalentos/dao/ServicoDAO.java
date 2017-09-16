@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entra21.amostradetalentos.dto.ServicosDTO;
 import br.com.entra21.amostradetalentos.model.Servico;
 
 public class ServicoDAO {
@@ -35,20 +36,17 @@ public class ServicoDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<Servico> lista() throws SQLException {
-		List<Servico> lServico = new ArrayList<>();
+	public List<ServicosDTO> lista() throws SQLException {
+		List<ServicosDTO> lServico = new ArrayList<>();
 
 		String sql = "select * from SERVICO";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-
 					int codigo = rs.getInt("SER_CODIGO");
 					String descricao = rs.getString("SER_NOME");
-					
-					Servico servico = new Servico(codigo, descricao);
-					
+					ServicosDTO servico = new ServicosDTO(/*codigo, descricao*/);
 					lServico.add(servico);
 				}
 			}

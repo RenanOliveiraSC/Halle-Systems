@@ -3,7 +3,7 @@ package br.com.entra21.amostradetalentos.testes;
 import java.sql.SQLException;
 import java.util.List;
 
-import br.com.entra21.amostradetalentos.model.Agenda;
+import br.com.entra21.amostradetalentos.dto.AgendaDTO;
 import br.com.entra21.amostradetalentos.service.AgendaService;
 
 public class AgendaTeste {
@@ -12,8 +12,8 @@ public class AgendaTeste {
 
 		AgendaService agendaService = new AgendaService();
 		
-		List<Agenda> agendas = agendaService.listarAgenda();
-		for (Agenda age : agendas) {
+		List<AgendaDTO> agendas = agendaService.listarAgenda();
+		for (AgendaDTO age : agendas) {
 			System.out.println(age.toString());
 		}
 	}

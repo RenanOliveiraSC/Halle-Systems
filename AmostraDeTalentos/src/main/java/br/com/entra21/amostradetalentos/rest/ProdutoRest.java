@@ -1,4 +1,4 @@
-package controller;
+package br.com.entra21.amostradetalentos.rest;
 
 import java.sql.SQLException;
 
@@ -9,12 +9,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.com.entra21.amostradetalentos.dto.ProdutoDTO;
 import br.com.entra21.amostradetalentos.service.ProdutoService;
-import dto.ProdutoDTO;
 
-@Path("Produto")
-
-public class ProdutoController {
+@Path("/rest/produto")
+public class ProdutoRest {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <header>
 	<link rel="stylesheet"
 		href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
@@ -8,7 +8,7 @@
 </header>
 
 <body>
-	<div class="main">
+	<div ng-controller="LoginController" class="main">
 		<div class="container">
 			<center>
 				<div class="middle">
@@ -61,6 +61,11 @@
 		<div class="left">Halle Systems Co.</div>
 		<div class="right">All right reserved (full trollis)</div>
 	</div>
-
+	<script src="././resources/js/angular.js"></script>
+    <script src="././resources/js/angular-cookies.js"></script>
+    <script src="././resources/js/angular-route.js"></script>
+    <script src="././resources/js/app.js"></script>
+    <script src="././resources/js/controller/login.controller.js"></script>
+    <script src="././resources/js/service/login.service.js"></script>
 </body>
 </html>

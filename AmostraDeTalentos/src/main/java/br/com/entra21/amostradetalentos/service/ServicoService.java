@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.ServicoDAO;
+import br.com.entra21.amostradetalentos.dto.ServicosDTO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Servico;
 
@@ -22,7 +23,7 @@ public class ServicoService {
 		}
 	}
 	
-	public List<Servico> listar() throws SQLException {
+	public List<ServicosDTO> listar() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new ServicoDAO(con).lista();
 		}

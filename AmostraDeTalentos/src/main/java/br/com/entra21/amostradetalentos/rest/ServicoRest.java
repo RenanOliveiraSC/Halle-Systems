@@ -1,6 +1,8 @@
-package controller;
+package br.com.entra21.amostradetalentos.rest;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -8,24 +10,23 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.entra21.amostradetalentos.model.Cliente;
-import br.com.entra21.amostradetalentos.service.ClienteService;
-import dto.ClienteDTO;
+import br.com.entra21.amostradetalentos.dto.ServicosDTO;
+import br.com.entra21.amostradetalentos.service.ServicoService;
 
-@Path("cliente")
-
-public class ClienteController {
+@Path("/rest/servico")
+public class ServicoRest {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public Response create(ClienteDTO cliente) {
-		ClienteService ClienteService = new ClienteService();
+	public Response create(ServicosDTO servico) {
+		ServicoService servicoService = new ServicoService();
 		try {
-			ClienteService.inserir(Cliente.toCliente());
+			servicoService.inserir(servico.toServico());
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -33,13 +34,15 @@ public class ClienteController {
 		}
 	}
 
+	
+//	alterar AAAA
 //	@PUT
 //	@Consumes(MediaType.APPLICATION_JSON)
 //	@Path("/")
-//	public Response update(ClienteDTO Cliente) {
-//		ClienteService ClienteService = new ClienteService();
+//	public Response update(ServicosDTO2 servico) {
+//		ServicoService servicoService = new ServicoService();
 //		try {
-//			ClienteService.alterar(Cliente.toCliente());
+//			servicoService.inserir(servico.toServico());
 //			return Response.status(Response.Status.OK).build();
 //		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -50,9 +53,9 @@ public class ClienteController {
 	@DELETE
 	@Path("{codigo}/")
 	public Response Delete(@PathParam ("codigo") int codigo) {
-		ClienteService ClienteService = new ClienteService();
+		ServicoService servicoService = new ServicoService();
 		try {
-			ClienteService.excluir(codigo);
+			servicoService.excluir(codigo);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,19 +63,16 @@ public class ClienteController {
 		}
 	}
 	
-	//listar AAAAAAAAAAA
 	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public Response Get(ClienteDTO Cliente) {
-		ClienteService ClienteService = new ClienteService();
+	public List<ServicosDTO> listPessoas() {
+		ServicoService servicoService = new ServicoService();
 		try {
-			ClienteService.inserir(Cliente.toCliente());
-			return Response.status(Response.Status.OK).build();
+			return servicoService.listar();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+			return new ArrayList<>();
 		}
 	}
-	
 }

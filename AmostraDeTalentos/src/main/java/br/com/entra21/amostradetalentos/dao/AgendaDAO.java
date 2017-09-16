@@ -9,8 +9,8 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entra21.amostradetalentos.dto.AgendaDTO;
 import br.com.entra21.amostradetalentos.model.Agenda;
-import dto.AgendaDTO;
 
 public class AgendaDAO {
 

@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.AgendaDAO;
+import br.com.entra21.amostradetalentos.dto.AgendaDTO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Agenda;
-import dto.AgendaDTO;
 
 public class AgendaService {
 
