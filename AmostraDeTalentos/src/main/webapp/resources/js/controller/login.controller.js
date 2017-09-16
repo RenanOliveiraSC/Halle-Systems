@@ -20,16 +20,13 @@
 		function efetuarLogin() {
 			var credencial = {usuario: login.usuario, senha: login.senha};
 			LoginService.login(credencial)
-			.success(
-				function(data) {
+			.then(
+				function(data) { //success
 					$cookies.putObject('autorizacao', data);
 					$location.path('/home');
-				})
-			.error(
-				function() {
+				}, function() { //error
 					alert("Login invalido");
-				}
-			);
+				});
 		};
 	}
 })();

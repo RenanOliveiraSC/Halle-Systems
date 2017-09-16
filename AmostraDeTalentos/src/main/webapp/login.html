@@ -1,0 +1,38 @@
+<div ng-controller="LoginController as ctrl" class="main">
+	<div class="container">
+		<form name="login" ng-submit="ctrl.efetuarLogin()">
+			<div style="width: 55%">
+				<div class="left col-lg-6">
+					<div class="row">
+						<span class="login fa fa-user"></span>
+						<input class="login" type="text" placeholder="Username" ng-model="ctrl.usuario" required>
+					</div>
+					<div class="row">
+						<span class="login fa fa-lock"></span>
+						<input class="login" type="password" placeholder="Password" ng-model="ctrl.senha" required>
+					</div>
+					<div class="row">
+						<span class="col-lg-6" style="text-align: left; display: inline-block;">
+							<a class="small-text" href="#">Forgot password?</a>
+						</span> 
+						<span class="col-lg-5" style="text-align: right; display: inline-block;">
+							<input class="login" type="submit" value="Login"/>
+						</span>
+					</div>
+				</div>
+				<div class="right border-left col-lg-6">
+					<div  class="row space-Left">
+						<img class="img-logo" src="././resources/img/img-logo.png" />
+					</div>
+					<div class="row space-Left">
+						<p class="logo">Halle Systems</p>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="footer">
+	<div class="left">Halle Systems Co.</div>
+	<div class="right">All right reserved (full trollis)</div>
+</div>

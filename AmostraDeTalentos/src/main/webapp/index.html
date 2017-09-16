@@ -1,71 +1,49 @@
 <!DOCTYPE html>
 <html ng-app="app">
-<header>
-	<link rel="stylesheet"
-		href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-	<link href="././resources/css/Login.css" rel="stylesheet" />  
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-</header>
+	<title>Halle</title>
+	<link rel="icon" href="././resources/img/img-logo.png">
+
+	<!-- Bootstrap Core CSS -->
+	<link rel="stylesheet" href="././resources/css/bootstrap.min.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="././resources/css/TemplateCSS/sb-admin.css">
+
+	<!-- Custom Fonts -->
+	<link rel="stylesheet" type="text/css" href="././resources/css/font-awesome.min.css">
+	
+	<!-- Custom Halle CSS -->
+	<link href="././resources/fonts/fontawesome-webfont.woff" />
+	<link href="././resources/fonts/fontawesome-webfont.woff2" />
+	<link rel="stylesheet" href="././resources/css/login.css" />
+</head>
 
 <body>
-	<div ng-controller="LoginController" class="main">
-		<div class="container">
-			<center>
-				<div class="middle">
-					<div id="login">
+	<div ng-view></div>
 
-						<form action="javascript:void(0);" method="get">
+	<!-- jQuery -->
+	<script src="././resources/js/jquery.js"></script>
 
-							<fieldset class="clearfix">
+	<!-- Bootstrap Core JavaScript -->
+	<script src="././resources/js/bootstrap.min.js"></script>
 
-								<p>
-									<span class="fa fa-user"></span><input type="text"
-										Placeholder="Username" required>
-								</p> 
-								<!-- JS because of IE support; better: placeholder="Username" -->
-								<p>
-									<span class="fa fa-lock"></span><input type="password"
-										Placeholder="Password" required>
-								</p>
-								<!-- JS because of IE support; better: placeholder="Password" -->
-
-								<div>
-									<span
-										style="width: 48%; text-align: left; display: inline-block;"><a
-										class="small-text" href="#">Forgot password?</a></span> <span
-										style="width: 50%; text-align: right; display: inline-block;"><input
-										type="submit" value="Sign In"></span>
-
-								</div>
-
-							</fieldset>
-							<div class="clearfix"></div>
-						</form>
-
-						<div class="clearfix"></div>
-
-					</div>
-					<!-- end login -->
-
-					<div class="logo">
-						<div class="img-logo">
-							<img src="././resources/img/img-logo.png" />
-						</div>
-						<p>Halle Systems</p>
-					</div>
-				</div>
-			</center>
-		</div>
-	</div>
-	<div class="footer">
-		<div class="left">Halle Systems Co.</div>
-		<div class="right">All right reserved (full trollis)</div>
-	</div>
-	<script src="././resources/js/angular.js"></script>
-    <script src="././resources/js/angular-cookies.js"></script>
-    <script src="././resources/js/angular-route.js"></script>
+	<!-- AngularJS -->
+	<script src="././resources/js/angular.min.js"></script>
+    <script src="././resources/js/angular-cookies.min.js"></script>
+    <script src="././resources/js/angular-route.min.js"></script>
     <script src="././resources/js/app.js"></script>
-    <script src="././resources/js/controller/login.controller.js"></script>
+    
+    <!-- Controllers -->
+	<script src="././resources/js/controller/login.controller.js"></script>    
+    
+    <!-- Services -->
     <script src="././resources/js/service/login.service.js"></script>
-</body>
+    
 </html>

@@ -5,16 +5,16 @@
 		.module('app')
 		.service('LoginService', LoginService);
 		
-	function LoginService(URL_APP, $http) {
+	function LoginService($http) {
 		var service = {
 		    login : login
 		}
 		
 		return service;
 		
-		function logins(credenciais) {
+		function login(credenciais) {
 			return $http({
-				url : URL_APP + '/login',
+				url : 'http://localhost:8080/AmostraDeTalentos/#/rest/login',
 				method : 'POST',
 				data : JSON.stringify(credenciais),
 				headers : {

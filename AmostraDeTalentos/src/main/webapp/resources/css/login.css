@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-@import
-url//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css)
-;
-
 div.main {
 	background: #238E68; /* Old browsers */
 	background: -moz-radial-gradient(center, ellipse cover, #238E68 1%, #70DB93 100%);
@@ -93,25 +89,11 @@ p {
 .container {
 	left: 50%;
 	position: fixed;
-	top: 50%;
+	top: 40%;
 	transform: translate(-50%, -50%);
 }
 
 /* ---------- LOGIN ---------- */
-#login form {
-	width: 250px;
-}
-
-#login, .logo {
-	display: inline-block;
-	width: 40%;
-}
-
-#login {
-	border-right: 1px solid #fff;
-	padding: 0px 22px;
-	width: 59%;
-}
 
 .logo {
 	color: #fff;
@@ -126,7 +108,15 @@ p {
 	width: 110px;
 }
 
-#login form span.fa {
+.border-left{
+	border-left: 2px solid #fff;
+}
+
+.spaceLeft{
+	padding-left: 10px;
+}
+
+span.login.fa {
 	background-color: #fff;
 	border-radius: 3px 0px 0px 3px;
 	color: #000;
@@ -139,17 +129,12 @@ p {
 	width: 50px;
 }
 
-#login form input {
+input.login {
 	height: 50px;
 }
 
-fieldset {
-	padding: 0;
-	border: 0;
-	margin: 0;
-}
 
-#login form input[type="text"], input[type="password"] {
+input.login[type="text"], input.login[type="password"] {
 	background-color: #fff;
 	border-radius: 0px 3px 3px 0px;
 	color: #000;
@@ -158,7 +143,7 @@ fieldset {
 	width: 200px;
 }
 
-#login form input[type="submit"] {
+input.login[type="submit"] {
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
@@ -171,36 +156,15 @@ fieldset {
 	height: 30px;
 }
 
-#login form input[type="submit"]:hover {
-	background-color: #d44179;
+input.login[type="submit"]:hover {
+	background-color: #2E8B57;
 }
 
-#login>p {
-	text-align: center;
+.small-text{
+	font-size: 14px;
 }
 
-#login>p span {
-	padding-left: 5px;
-}
-
-.middle {
-	display: flex;
-	width: 600px;
-}
-
-{
-margin
-:
-0;
-
-    
-padding
-:
-0;
-
-
-}
-			/*---------------------- Rodapé --------------------*/
+/*---------------------- Rodapé --------------------*/
 
 html, body {
 	height: 100%;
@@ -221,11 +185,11 @@ html, body {
 	padding-top: 15px;
 }
 
-.footer > div.left{
+div.left{
 	float: left;
 }
 
-.footer > div.right{
+div.right{
 	float: right;
 }
 
