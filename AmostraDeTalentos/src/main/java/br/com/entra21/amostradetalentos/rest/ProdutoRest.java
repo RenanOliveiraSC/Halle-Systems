@@ -12,13 +12,12 @@ import javax.ws.rs.core.Response;
 import br.com.entra21.amostradetalentos.dto.ProdutoDTO;
 import br.com.entra21.amostradetalentos.service.ProdutoService;
 
-@Path("/rest/produto")
+@Path("/produto")
 public class ProdutoRest {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
-
+	@Path("/create")
 	public Response create(ProdutoDTO produto) {
 		ProdutoService produtoService = new ProdutoService();
 		try {
@@ -32,7 +31,7 @@ public class ProdutoRest {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
+	@Path("/update")
 	public Response update(ProdutoDTO produto) {
 		ProdutoService produtoService = new ProdutoService();
 		try {
@@ -46,8 +45,8 @@ public class ProdutoRest {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
-	public Response Delete(ProdutoDTO produto) {
+	@Path("/delete")
+	public Response delete(ProdutoDTO produto) {
 		ProdutoService produtoService = new ProdutoService();
 		try {
 			produtoService.inserir(produto.toProduto());

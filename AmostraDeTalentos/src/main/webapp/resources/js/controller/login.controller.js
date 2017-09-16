@@ -25,6 +25,7 @@
 					$cookies.putObject('autorizacao', data);
 					$location.path('/home');
 				}, function() { //error
+					$cookies.putObject('autorizacao', undefined);
 					alert("Login invalido");
 				});
 		};

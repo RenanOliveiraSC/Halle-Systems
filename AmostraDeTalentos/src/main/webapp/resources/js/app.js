@@ -21,23 +21,23 @@
 			templateUrl : 'home.html'
 		}).when('/nao-autorizado', {
 			templateUrl : 'naoAutorizado.html'
-		}).when('/agenda', {
-			templateUrl : 'agenda.html'
+//		}).when('/agenda', {
+//			templateUrl : 'agenda.html'
 		}).otherwise({
 			redirectTo : '/'
 		});
 	}
 	
 	function run($rootScope, $cookies, $location) {
-//		$rootScope.$on("$routeChangeStart", function(event, next, current) {
-//			if ($cookies.get('autorizacao') != null) {
-//				var autorizacao = $cookies.getObject('autorizacao');
-//				if(!autorizacao) {
-//					$location.path('/nao-autorizado');
-//				}				
-//			} else {
-//				$location.path("/");
-//			}
-//		});
+		$rootScope.$on("$routeChangeStart", function(event, next, current) {
+			if ($cookies.get('autorizacao') != null) {
+				var autorizacao = $cookies.getObject('autorizacao');
+				if(!autorizacao) {
+					$location.path('/nao-autorizado');
+				}				
+			} else {
+				$location.path("/");
+			}
+		});
 	}
 })();

@@ -15,12 +15,12 @@ import br.com.entra21.amostradetalentos.dto.ClienteDTO;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.service.ClienteService;
 
-@Path("/rest/cliente")
+@Path("/cliente")
 public class ClienteRest {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
+	@Path("/create")
 	public Response create(ClienteDTO cliente) {
 		ClienteService ClienteService = new ClienteService();
 		try {
@@ -47,8 +47,8 @@ public class ClienteRest {
 //	}
 
 	@DELETE
-	@Path("{codigo}/")
-	public Response Delete(@PathParam ("codigo") int codigo) {
+	@Path("delete/{codigo}")
+	public Response delete(@PathParam ("codigo") int codigo) {
 		ClienteService ClienteService = new ClienteService();
 		try {
 			ClienteService.excluir(codigo);
@@ -60,10 +60,10 @@ public class ClienteRest {
 	}
 	
 	//listar AAAAAAAAAAA
-	@GET
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
-	public Response Get(ClienteDTO Cliente) {
+	@Path("/cliente")
+	public Response getCliente(ClienteDTO Cliente) {
 		ClienteService ClienteService = new ClienteService();
 		try {
 			ClienteService.inserir(Cliente.toCliente());

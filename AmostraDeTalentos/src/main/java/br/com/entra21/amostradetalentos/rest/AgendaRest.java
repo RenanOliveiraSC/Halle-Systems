@@ -17,13 +17,13 @@ import br.com.entra21.amostradetalentos.dto.AgendaDTO;
 import br.com.entra21.amostradetalentos.service.AgendaService;
 
 
-@Path("/rest/agenda")
+@Path("/agenda")
 public class AgendaRest {
 	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/")
+	@Path("/listar")
 	public List<AgendaDTO> listAgenda() {
 		AgendaService agendaService = new AgendaService();
 		try {
@@ -37,7 +37,7 @@ public class AgendaRest {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
+	@Path("/create")
 	public Response create(AgendaDTO agenda) {
 		AgendaService agendaService = new AgendaService();
 		try {

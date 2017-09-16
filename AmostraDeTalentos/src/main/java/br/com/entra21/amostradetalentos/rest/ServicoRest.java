@@ -17,12 +17,12 @@ import javax.ws.rs.core.Response;
 import br.com.entra21.amostradetalentos.dto.ServicosDTO;
 import br.com.entra21.amostradetalentos.service.ServicoService;
 
-@Path("/rest/servico")
+@Path("/servico")
 public class ServicoRest {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
+	@Path("/create")
 	public Response create(ServicosDTO servico) {
 		ServicoService servicoService = new ServicoService();
 		try {
@@ -51,8 +51,8 @@ public class ServicoRest {
 //	}
 
 	@DELETE
-	@Path("{codigo}/")
-	public Response Delete(@PathParam ("codigo") int codigo) {
+	@Path("/delete/{codigo}")
+	public Response delete(@PathParam ("codigo") int codigo) {
 		ServicoService servicoService = new ServicoService();
 		try {
 			servicoService.excluir(codigo);
@@ -65,7 +65,7 @@ public class ServicoRest {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/")
+	@Path("/listar")
 	public List<ServicosDTO> listPessoas() {
 		ServicoService servicoService = new ServicoService();
 		try {

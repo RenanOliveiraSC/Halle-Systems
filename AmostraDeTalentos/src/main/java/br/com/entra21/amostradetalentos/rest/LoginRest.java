@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import br.com.entra21.amostradetalentos.dto.UsuarioLoginDTO;
 import br.com.entra21.amostradetalentos.service.UsuarioService;
 
-@Path("/rest/login")
+@Path("/login")
 public class LoginRest {
 
 	@POST
@@ -19,6 +19,7 @@ public class LoginRest {
 	@Path("/efetuarlogin")
 	public Response login(UsuarioLoginDTO usuario) {
 		UsuarioService usuarioService = new UsuarioService();
+//		return Response.status(Response.Status.OK).build();
 		try {
 			boolean retorno = usuarioService.login(usuario.toUsuarioLogin());
 			if (retorno) {
