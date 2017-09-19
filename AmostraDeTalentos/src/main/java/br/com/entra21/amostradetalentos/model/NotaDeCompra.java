@@ -18,7 +18,7 @@ public class NotaDeCompra {
 	private double desconto;
 
 	public NotaDeCompra(int codigo, Fornecedor fornecedor, Produto produto, double quantidadeProduto,
-			double precoProduto, FormaDePagamento formaDePagamento, double total, Date dataLancamento, String obs,
+			double precoProduto, FormaDePagamento formaDePagamento, double valorTotal, Date dataLancamento, String obs,
 			String anexo, String numNota, double desconto) {
 		super();
 		this.codigo = codigo;
