@@ -15,7 +15,7 @@ public class LancamentoContabilLinhas {
 	private String observacao;
 
 	public LancamentoContabilLinhas(int codigo, int lancamentoCodigo, String codigoConta, double debito, double credito,
-			Date dataLancamento, String observacao) {
+			Date dataLancamento, Date dataVencimento, String observacao) {
 		super();
 		this.codigo = codigo;
 		this.lancamentoCodigo = lancamentoCodigo;
