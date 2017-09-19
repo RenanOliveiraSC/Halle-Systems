@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TimeUtils {
-	
+
 	public static final String PATTERN_TIME_PADRAO = "hh:mm";
 
 	private TimeUtils() {
