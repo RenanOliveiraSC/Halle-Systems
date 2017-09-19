@@ -1,8 +1,12 @@
-package br.com.entra21.amostradetalentos.model;
+package br.com.entra21.amostradetalentos.dto;
 
 import java.util.Date;
 
-public class ContasAPagar {
+import br.com.entra21.amostradetalentos.model.ContasAPagar;
+import br.com.entra21.amostradetalentos.model.FormaDePagamento;
+import br.com.entra21.amostradetalentos.model.Fornecedor;
+
+public class ContasAPagarDTO {
 
 	private int codigo;
 	private Fornecedor fornecedor;
@@ -14,7 +18,10 @@ public class ContasAPagar {
 	private Double desconto;
 	private Double pagamentoTotal;
 
-	public ContasAPagar(int codigo, Fornecedor fornecedor, FormaDePagamento formaDePagamento, Date dataLancamento,
+	public ContasAPagarDTO() {
+	}
+
+	public ContasAPagarDTO(int codigo, Fornecedor fornecedor, FormaDePagamento formaDePagamento, Date dataLancamento,
 			int diasAtraso, Double total, Double saldo, Double desconto, Double pagamentoTotal) {
 		super();
 		this.codigo = codigo;
@@ -26,15 +33,6 @@ public class ContasAPagar {
 		this.saldo = saldo;
 		this.desconto = desconto;
 		this.pagamentoTotal = pagamentoTotal;
-	}
-
-	public ContasAPagar() {
-
-	}
-
-	public ContasAPagar(int codigo2, Integer codigo3, Integer codigo4, Date dataLancamento2, int diasAtraso2,
-			Double total2, Double saldo2, Double saldo3, Double pagamentoTotal2) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getCodigo() {
@@ -53,11 +51,11 @@ public class ContasAPagar {
 		this.fornecedor = fornecedor;
 	}
 
-	public FormaDePagamento getForneceFormaDePagamentodor() {
+	public FormaDePagamento getFormaDePagamento() {
 		return formaDePagamento;
 	}
 
-	public void setForneceFormaDePagamentodor(FormaDePagamento formaDePagamento) {
+	public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
 	}
 
@@ -67,14 +65,6 @@ public class ContasAPagar {
 
 	public void setDataLancamento(Date dataLancamento) {
 		this.dataLancamento = dataLancamento;
-	}
-
-	public FormaDePagamento getFormaDePagamento() {
-		return formaDePagamento;
-	}
-
-	public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
-		this.formaDePagamento = formaDePagamento;
 	}
 
 	public int getDiasAtraso() {
@@ -115,6 +105,12 @@ public class ContasAPagar {
 
 	public void setPagamentoTotal(Double pagamentoTotal) {
 		this.pagamentoTotal = pagamentoTotal;
+	}
+
+	public ContasAPagar toContasAPagar() {
+		return new ContasAPagar(this.codigo, this.fornecedor.getCodigo(), this.formaDePagamento.getCodigo(),
+				this.getDataLancamento(), this.getDiasAtraso(), this.getTotal(), this.getSaldo(), this.getSaldo(),
+				this.getPagamentoTotal());
 	}
 
 }
