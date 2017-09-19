@@ -133,7 +133,8 @@ public class AgendaDTO {
 				DateUtils.parseData(this.dataInicio, DateUtils.PATTERN_DATA_PADRAO),
 				DateUtils.parseData(this.dataTermino, DateUtils.PATTERN_DATA_PADRAO),
 				TimeUtils.parseTime(this.horaInicio, TimeUtils.PATTERN_TIME_PADRAO),
-				TimeUtils.parseTime(this.horaTermino, TimeUtils.PATTERN_TIME_PADRAO), this.lembrete, this.aviso,
+				TimeUtils.parseTime(this.horaTermino, TimeUtils.PATTERN_TIME_PADRAO),
+				this.lembrete, this.aviso,
 				this.ativo, this.fechado);
 	}
 }
