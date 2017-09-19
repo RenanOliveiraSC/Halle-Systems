@@ -13,10 +13,11 @@ public class DecimalFormatUtils {
 		return numFormatado;
 	}
 
-	public static double formatToDouble(String numeroS) {
+	public static double parseDouble(String numeroS) {
 
 		double numeroD = Double.parseDouble(numeroS);
 
 		return numeroD;
 	}
+	
 }
