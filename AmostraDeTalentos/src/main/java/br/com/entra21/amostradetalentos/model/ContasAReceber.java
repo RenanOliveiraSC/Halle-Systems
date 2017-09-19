@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ContasAReceber {
 
-	private int ccodigo;
+	private int codigo;
 	private Caixa caixa;
 	private Date dataLancamento;
 	private int dias_de_atraso;
@@ -12,10 +12,10 @@ public class ContasAReceber {
 	private Double desconto;
 	private Double pagamentoTotal;
 
-	public ContasAReceber(int ccodigo, Caixa caixa, Date dataLancamento, int dias_de_atraso, Double saldo,
+	public ContasAReceber(int codigo, Caixa caixa, Date dataLancamento, int dias_de_atraso, Double saldo,
 			Double desconto, Double pagamentoTotal) {
 		super();
-		this.ccodigo = ccodigo;
+		this.codigo = codigo;
 		this.caixa = caixa;
 		this.dataLancamento = dataLancamento;
 		this.dias_de_atraso = dias_de_atraso;
@@ -27,12 +27,17 @@ public class ContasAReceber {
 	public ContasAReceber() {
 	}
 
-	public int getCcodigo() {
-		return ccodigo;
+	public ContasAReceber(int codigo2, int codigo3, Date dataLancamento2, int dias_de_atraso2, Double saldo2,
+			Double pagamentoTotal2) {
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setCcodigo(int ccodigo) {
-		this.ccodigo = ccodigo;
+	public int getCcodigo() {
+		return codigo;
+	}
+
+	public void setCcodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public Caixa getCaixa() {
