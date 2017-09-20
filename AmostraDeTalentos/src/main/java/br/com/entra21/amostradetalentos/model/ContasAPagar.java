@@ -117,4 +117,9 @@ public class ContasAPagar {
 		this.pagamentoTotal = pagamentoTotal;
 	}
 
+	public static Object toContasAPagar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
