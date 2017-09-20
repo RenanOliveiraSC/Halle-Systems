@@ -2,6 +2,10 @@ package br.com.entra21.amostradetalentos.model;
 
 import java.util.Date;
 
+import br.com.entra21.amostradetalentos.dto.ContasAPagarDTO;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
+import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
+
 public class ContasAPagar {
 
 	private int codigo;
@@ -117,9 +121,11 @@ public class ContasAPagar {
 		this.pagamentoTotal = pagamentoTotal;
 	}
 
-	public static Object toContasAPagar() {
-		// TODO Auto-generated method stub
-		return null;
+	public ContasAPagarDTO toDTO() {
+		return new ContasAPagarDTO(this.codigo, this.fornecedor, this.formaDePagamento,
+				DateUtils.formatData(this.dataLancamento, DateUtils.PATTERN_DATA_PADRAO), this.diasAtraso,
+				DecimalFormatUtils.formatDecimal(this.total), DecimalFormatUtils.formatDecimal(this.saldo),
+				this.desconto, DecimalFormatUtils.formatDecimal(this.pagamentoTotal));
 	}
 
 }
