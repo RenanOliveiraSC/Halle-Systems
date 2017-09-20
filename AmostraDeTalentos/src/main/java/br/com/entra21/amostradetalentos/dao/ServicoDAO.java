@@ -46,7 +46,7 @@ public class ServicoDAO {
 				while (rs.next()) {
 					int codigo = rs.getInt("SER_CODIGO");
 					String descricao = rs.getString("SER_NOME");
-					ServicosDTO servico = new ServicosDTO(/*codigo, descricao*/);
+					ServicosDTO servico = new ServicosDTO(codigo, descricao);
 					lServico.add(servico);
 				}
 			}
