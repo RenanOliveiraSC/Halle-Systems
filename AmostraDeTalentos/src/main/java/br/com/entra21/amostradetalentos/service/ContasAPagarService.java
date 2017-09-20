@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.ContasAPagarDAO;
-import br.com.entra21.amostradetalentos.dto.ContasAPagarDTO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.ContasAPagar;
 
@@ -30,7 +29,7 @@ public class ContasAPagarService {
 		}
 	}
 
-	public List<ContasAPagarDTO> listarContasAPagar() throws SQLException {
+	public List<ContasAPagar> listarContasAPagar() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new ContasAPagarDAO(con).listaContasAPagar();
 		}
