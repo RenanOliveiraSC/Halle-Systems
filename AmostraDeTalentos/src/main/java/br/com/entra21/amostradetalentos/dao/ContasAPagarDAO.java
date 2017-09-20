@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entra21.amostradetalentos.dto.ContasAPagarDTO;
 import br.com.entra21.amostradetalentos.model.ContasAPagar;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 import br.com.entra21.amostradetalentos.model.Fornecedor;
@@ -34,15 +35,15 @@ public class ContasAPagarDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<ContasAPagar> listaContasAPagar() throws SQLException {
-		List<ContasAPagar> lContasAPagar = new ArrayList<>();
+	public List<ContasAPagarDTO> listaContasAPagar() throws SQLException {
+		List<ContasAPagarDTO> lContasAPagar = new ArrayList<>();
 
 		String sql = "select * from CONTAS_A_PAGAR";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					
+
 					Fornecedor fornecedor = new Fornecedor();
 
 					FormaDePagamento formaDePagamento = new FormaDePagamento();
@@ -55,10 +56,8 @@ public class ContasAPagarDAO {
 					double pagamentoTotal = rs.getDouble("CAP_PAGAMENTO_TOTAL");
 					double desconto = rs.getDouble("CAP_DESCONTO");
 
-					ContasAPagar contasAPagar = new ContasAPagar(codigo, fornecedor, formaDePagamento, dataLancamento,
-							diasAtraso, total, saldo, desconto, pagamentoTotal);
-
-					lContasAPagar.add(contasAPagar);
+					lContasAPagar.add(new ContasAPagar(codigo, fornecedor, formaDePagamento, dataLancamento, diasAtraso,
+							total, saldo, desconto, pagamentoTotal).toDTO());
 				}
 
 				return lContasAPagar;
