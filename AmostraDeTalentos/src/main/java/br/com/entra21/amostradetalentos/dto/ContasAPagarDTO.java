@@ -1,28 +1,28 @@
 package br.com.entra21.amostradetalentos.dto;
 
-import java.util.Date;
-
 import br.com.entra21.amostradetalentos.model.ContasAPagar;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 import br.com.entra21.amostradetalentos.model.Fornecedor;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
+import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
 
 public class ContasAPagarDTO {
 
 	private int codigo;
 	private Fornecedor fornecedor;
 	private FormaDePagamento formaDePagamento;
-	private Date dataLancamento;
+	private String dataLancamento;
 	private int diasAtraso;
-	private Double total;
-	private Double saldo;
+	private String total;
+	private String saldo;
 	private Double desconto;
-	private Double pagamentoTotal;
+	private String pagamentoTotal;
 
 	public ContasAPagarDTO() {
 	}
 
-	public ContasAPagarDTO(int codigo, Fornecedor fornecedor, FormaDePagamento formaDePagamento, Date dataLancamento,
-			int diasAtraso, Double total, Double saldo, Double desconto, Double pagamentoTotal) {
+	public ContasAPagarDTO(int codigo, Fornecedor fornecedor, FormaDePagamento formaDePagamento, String dataLancamento,
+			int diasAtraso, String total, String saldo, Double desconto, String pagamentoTotal) {
 		super();
 		this.codigo = codigo;
 		this.fornecedor = fornecedor;
@@ -59,11 +59,11 @@ public class ContasAPagarDTO {
 		this.formaDePagamento = formaDePagamento;
 	}
 
-	public Date getDataLancamento() {
+	public String getDataLancamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(Date dataLancamento) {
+	public void setDataLancamento(String dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 
@@ -75,19 +75,19 @@ public class ContasAPagarDTO {
 		this.diasAtraso = diasAtraso;
 	}
 
-	public Double getTotal() {
+	public String getTotal() {
 		return total;
 	}
 
-	public void setTotal(Double total) {
+	public void setTotal(String total) {
 		this.total = total;
 	}
 
-	public Double getSaldo() {
+	public String getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(Double saldo) {
+	public void setSaldo(String saldo) {
 		this.saldo = saldo;
 	}
 
@@ -99,18 +99,19 @@ public class ContasAPagarDTO {
 		this.desconto = desconto;
 	}
 
-	public Double getPagamentoTotal() {
+	public String getPagamentoTotal() {
 		return pagamentoTotal;
 	}
 
-	public void setPagamentoTotal(Double pagamentoTotal) {
+	public void setPagamentoTotal(String pagamentoTotal) {
 		this.pagamentoTotal = pagamentoTotal;
 	}
 
 	public ContasAPagar toContasAPagar() {
-		return new ContasAPagar(this.codigo, this.fornecedor.getCodigo(), this.formaDePagamento.getCodigo(),
-				this.getDataLancamento(), this.getDiasAtraso(), this.getTotal(), this.getSaldo(), this.getSaldo(),
-				this.getPagamentoTotal());
+		return new ContasAPagar(this.codigo, this.fornecedor, this.formaDePagamento,
+				DateUtils.parseData(this.dataLancamento, DateUtils.PATTERN_DATA_PADRAO), this.diasAtraso,
+				DecimalFormatUtils.parseDouble(this.total), DecimalFormatUtils.parseDouble(this.saldo), this.desconto,
+				DecimalFormatUtils.parseDouble(this.pagamentoTotal));
 	}
 
 }
