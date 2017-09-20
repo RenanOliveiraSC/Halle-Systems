@@ -1,5 +1,8 @@
 package br.com.entra21.amostradetalentos.model;
 
+import br.com.entra21.amostradetalentos.dto.ServicosDTO;
+import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
+
 public class Servico extends ProdutoServico {
 
 	public Servico() {
@@ -18,4 +21,13 @@ public class Servico extends ProdutoServico {
 		super(codigo, descricao);
 	}
 
+	public ServicosDTO toDTO() {
+
+		return new ServicosDTO(this.getCodigo(), this.getDescricao(), this.getFamilia(), this.isAtivo(),
+				this.getListaDePreco(), DecimalFormatUtils.formatDecimal(this.getPreco()),
+				this.getNomeUnidadeDeCompra(), DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeCompra()),
+				this.getQtdePorCompra(), this.getNomeUnidadeVenda(),
+				DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeVenda()), this.getQtdePorVenda(),
+				this.getObservacao(), this.getAnexo());
+	}
 }

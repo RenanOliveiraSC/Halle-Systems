@@ -39,8 +39,6 @@ public class AgendaDTO {
 		this.fechado = fechado;
 	}
 
-	
-
 	public int getCodigo() {
 		return codigo;
 	}
@@ -130,18 +128,13 @@ public class AgendaDTO {
 	}
 
 	public Agenda toAgenda() {
-		return new Agenda(
-				this.codigo, 
-				this.observacao,
+		return new Agenda(this.codigo, this.observacao,
 				DateUtils.parseData(this.dataSistema, DateUtils.PATTERN_DATA_PADRAO),
-				DateUtils.parseData(this.dataInicio, DateUtils.PATTERN_DATA_PADRAO), 
+				DateUtils.parseData(this.dataInicio, DateUtils.PATTERN_DATA_PADRAO),
 				DateUtils.parseData(this.dataTermino, DateUtils.PATTERN_DATA_PADRAO),
 				TimeUtils.parseTime(this.horaInicio, TimeUtils.PATTERN_TIME_PADRAO),
 				TimeUtils.parseTime(this.horaTermino, TimeUtils.PATTERN_TIME_PADRAO),
-				this.lembrete,
-				this.aviso,
-				this.ativo, 
-				this.fechado
-				);
+				this.lembrete, this.aviso,
+				this.ativo, this.fechado);
 	}
 }

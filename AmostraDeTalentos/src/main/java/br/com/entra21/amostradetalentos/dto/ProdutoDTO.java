@@ -5,6 +5,7 @@ import br.com.entra21.amostradetalentos.model.Fabricante;
 import br.com.entra21.amostradetalentos.model.Familia;
 import br.com.entra21.amostradetalentos.model.ListaDePreco;
 import br.com.entra21.amostradetalentos.model.Produto;
+import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
 
 public class ProdutoDTO extends ProdutoServicoDTO {
 
@@ -21,8 +22,8 @@ public class ProdutoDTO extends ProdutoServicoDTO {
 	}
 
 	public ProdutoDTO(Integer codigo, String descricao, Familia familia, boolean ativo, ListaDePreco listaDePreco,
-			double preco, String nomeUnidadeDeCompra, double porUnidadeDeCompra, double qtdePorCompra,
-			String nomeUnidadeVenda, double porUnidadeDeVenda, double qtdePorVenda, String observacao, String anexo,
+			String preco, String nomeUnidadeDeCompra, String porUnidadeDeCompra, double qtdePorCompra,
+			String nomeUnidadeVenda, String porUnidadeDeVenda, double qtdePorVenda, String observacao, String anexo,
 			double estoqueMax, double estoqueMin, Deposito deposito, Fabricante fabricante) {
 		super(codigo, descricao, familia, ativo, listaDePreco, preco, nomeUnidadeDeCompra, porUnidadeDeCompra,
 				qtdePorCompra, nomeUnidadeVenda, porUnidadeDeVenda, qtdePorVenda, observacao, anexo);
@@ -73,8 +74,9 @@ public class ProdutoDTO extends ProdutoServicoDTO {
 
 	public Produto toProduto() {
 		return new Produto(this.getCodigo(), this.getDescricao(), this.getFamilia(), this.isAtivo(),
-				this.getListaDePreco(), this.getPreco(), this.getNomeUnidadeDeCompra(), this.getPorUnidadeDeCompra(),
-				this.getQtdePorCompra(), this.getNomeUnidadeVenda(), this.getPorUnidadeDeVenda(),
+				this.getListaDePreco(), DecimalFormatUtils.parseDouble(this.getPreco()), this.getNomeUnidadeDeCompra(),
+				DecimalFormatUtils.parseDouble(this.getPorUnidadeDeCompra()), this.getQtdePorCompra(),
+				this.getNomeUnidadeVenda(), DecimalFormatUtils.parseDouble(this.getPorUnidadeDeVenda()),
 				this.getQtdePorVenda(), this.getObservacao(), this.getAnexo(), this.estoqueMax, this.estoqueMin,
 				this.deposito, this.fabricante);
 	}

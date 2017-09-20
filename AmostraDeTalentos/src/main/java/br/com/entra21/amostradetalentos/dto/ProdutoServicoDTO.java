@@ -10,12 +10,12 @@ public abstract class ProdutoServicoDTO {
 	private Familia familia;
 	private boolean ativo;
 	private ListaDePreco listaDePreco;
-	private double preco;
+	private String preco;
 	private String nomeUnidadeDeCompra;
-	private double porUnidadeDeCompra;
+	private String porUnidadeDeCompra;
 	private double qtdePorCompra;
 	private String nomeUnidadeVenda;
-	private double porUnidadeDeVenda;
+	private String porUnidadeDeVenda;
 	private double qtdePorVenda;
 	private String observacao;
 	private String anexo;
@@ -25,8 +25,8 @@ public abstract class ProdutoServicoDTO {
 	}
 
 	public ProdutoServicoDTO(Integer codigo, String descricao, Familia familia, boolean ativo,
-			ListaDePreco listaDePreco, double preco, String nomeUnidadeDeCompra, double porUnidadeDeCompra,
-			double qtdePorCompra, String nomeUnidadeVenda, double porUnidadeDeVenda, double qtdePorVenda,
+			ListaDePreco listaDePreco, String preco, String nomeUnidadeDeCompra, String porUnidadeDeCompra,
+			double qtdePorCompra, String nomeUnidadeVenda, String porUnidadeDeVenda, double qtdePorVenda,
 			String observacao, String anexo) {
 		this.codigo = codigo;
 		this.descricao = descricao;
@@ -90,11 +90,11 @@ public abstract class ProdutoServicoDTO {
 		this.listaDePreco = listaDePreco;
 	}
 
-	public double getPreco() {
+	public String getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(String preco) {
 		this.preco = preco;
 	}
 
@@ -106,11 +106,11 @@ public abstract class ProdutoServicoDTO {
 		this.nomeUnidadeDeCompra = nomeUnidadeDeCompra;
 	}
 
-	public double getPorUnidadeDeCompra() {
+	public String getPorUnidadeDeCompra() {
 		return porUnidadeDeCompra;
 	}
 
-	public void setPorUnidadeDeCompra(double porUnidadeDeCompra) {
+	public void setPorUnidadeDeCompra(String porUnidadeDeCompra) {
 		this.porUnidadeDeCompra = porUnidadeDeCompra;
 	}
 
@@ -130,11 +130,11 @@ public abstract class ProdutoServicoDTO {
 		this.nomeUnidadeVenda = nomeUnidadeVenda;
 	}
 
-	public double getPorUnidadeDeVenda() {
+	public String getPorUnidadeDeVenda() {
 		return porUnidadeDeVenda;
 	}
 
-	public void setPorUnidadeDeVenda(double porUnidadeDeVenda) {
+	public void setPorUnidadeDeVenda(String porUnidadeDeVenda) {
 		this.porUnidadeDeVenda = porUnidadeDeVenda;
 	}
 
