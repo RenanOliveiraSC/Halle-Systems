@@ -32,6 +32,7 @@ public class ClienteRest {
 		}
 	}
 
+	
 //	@PUT
 //	@Consumes(MediaType.APPLICATION_JSON)
 //	@Path("/")
