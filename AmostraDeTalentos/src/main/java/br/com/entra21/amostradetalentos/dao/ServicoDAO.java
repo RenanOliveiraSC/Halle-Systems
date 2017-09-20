@@ -46,13 +46,36 @@ public class ServicoDAO {
 				while (rs.next()) {
 					int codigo = rs.getInt("SER_CODIGO");
 					String descricao = rs.getString("SER_NOME");
-					
+
 					lServico.add(new Servico(codigo, descricao).toDTO());
 				}
 			}
 		}
 
 		return lServico;
+
+	}
+
+	public Servico buscarServicoPorCodigo(int codigo) throws SQLException {
+		Servico servico = null;
+		
+		String sql = "SELECT SER_NOME FROM SERVICO WHERE SER_CODIGO = ?;";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setInt(1, codigo);
+
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int id = rs.getInt("SER_CODIGO");
+					String descricao = rs.getString("SER_NOME");
+
+					servico = new Servico(id, descricao);
+				}
+			}
+		}
+		return servico;
 
 	}
 }

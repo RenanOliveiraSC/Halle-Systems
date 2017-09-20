@@ -16,6 +16,8 @@ import javax.ws.rs.core.Response;
 
 import br.com.entra21.amostradetalentos.dto.ServicosDTO;
 import br.com.entra21.amostradetalentos.service.ServicoService;
+import br.com.vinicius.signo.dto.PessoaDTO;
+import br.com.vinicius.signo.service.PessoaService;
 
 @Path("/servico")
 public class ServicoRest {
@@ -73,6 +75,19 @@ public class ServicoRest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return new ArrayList<>();
+		}
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{codigo}/")
+	public ServicosDTO getPessoa(@PathParam("codigo") int codigo) {
+		ServicoService servicoService = new ServicoService();
+		try {
+			return servicoService.buscarServicoPorCodigo(codigo).toDTO();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ServicosDTO();
 		}
 	}
 }
