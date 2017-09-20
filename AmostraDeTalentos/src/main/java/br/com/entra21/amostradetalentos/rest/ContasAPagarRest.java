@@ -1,7 +1,6 @@
 package br.com.entra21.amostradetalentos.rest;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -13,28 +12,30 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.entra21.amostradetalentos.dto.AgendaDTO;
+import br.com.entra21.amostradetalentos.dto.ContasAPagarDTO;
 import br.com.entra21.amostradetalentos.model.ContasAPagar;
+import br.com.entra21.amostradetalentos.service.ContasAPagarService;
 
-@Path("/agenda")
+@Path("/contasAPagar")
 public class ContasAPagarRest {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/listar")
-	public List<AgendaDTO> listAgenda() {
-		ContasAPagarRest contasAPagarService = new ContasAPagarRest();
+	public List<ContasAPagarDTO> listContasAPagar() {
+		ContasAPagarService contasAPagarService = new ContasAPagarService();
 		try {
 			return contasAPagarService.listarContasAPagar();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return new ArrayList<>();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 
-	private List<AgendaDTO> listarContasAPagar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// private List<AgendaDTO> listarContasAPagar() {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
