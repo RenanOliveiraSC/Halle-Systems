@@ -2,6 +2,8 @@ package br.com.entra21.amostradetalentos.model;
 
 import java.util.Date;
 
+import br.com.entra21.amostradetalentos.dto.ContasAReceberDTO;
+
 public class ContasAReceber {
 
 	private int codigo;
@@ -86,6 +88,11 @@ public class ContasAReceber {
 
 	public void setPagamento_total(Double pagamentoTotal) {
 		this.pagamentoTotal = pagamentoTotal;
+	}
+
+	public ContasAReceberDTO toDTO() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

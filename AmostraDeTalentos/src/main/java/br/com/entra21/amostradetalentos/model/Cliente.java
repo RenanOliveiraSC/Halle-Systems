@@ -39,6 +39,10 @@ public class Cliente {
 		this.pai_mae = pai_mae;
 	}
 
+	public Cliente() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}
