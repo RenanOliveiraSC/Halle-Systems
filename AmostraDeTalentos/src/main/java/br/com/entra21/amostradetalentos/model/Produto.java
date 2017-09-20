@@ -1,5 +1,8 @@
 package br.com.entra21.amostradetalentos.model;
 
+import br.com.entra21.amostradetalentos.dto.ProdutoDTO;
+import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
+
 public class Produto extends ProdutoServico {
 
 	private double estoqueMax;
@@ -63,6 +66,14 @@ public class Produto extends ProdutoServico {
 
 	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
+	}
+
+	public ProdutoDTO toDTO() {
+		return new ProdutoDTO(getCodigo(), getDescricao(), getFamilia(), isAtivo(), getListaDePreco(),
+				DecimalFormatUtils.formatDecimal(this.getPreco()), getNomeUnidadeDeCompra(),
+				DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeCompra()), getQtdePorCompra(), getNomeUnidadeVenda(),
+				DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeVenda()), getQtdePorVenda(), getObservacao(),
+				getAnexo(), this.estoqueMax, this.estoqueMin, this.deposito, this.fabricante);
 	}
 
 }
