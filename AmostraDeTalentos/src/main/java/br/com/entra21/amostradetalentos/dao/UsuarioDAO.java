@@ -19,8 +19,8 @@ public class UsuarioDAO {
 	public boolean login(UsuarioLogin usuario){
 		String sql = "select * from USUARIO_LOGIN WHERE USUL_LOGIN = ? AND USUL_SENHA = ?";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-			stmt.setString(0,usuario.getLogin());
-			stmt.setString(1, usuario.getSenha());
+			stmt.setString(1,usuario.getLogin());
+			stmt.setString(2, usuario.getSenha());
 			stmt.execute();
 			ResultSet rs = stmt.getResultSet();
 			if (rs.next()) {
