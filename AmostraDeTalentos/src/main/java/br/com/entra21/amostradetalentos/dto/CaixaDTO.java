@@ -1,22 +1,24 @@
 package br.com.entra21.amostradetalentos.dto;
 
+import br.com.entra21.amostradetalentos.model.Caixa;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 import br.com.entra21.amostradetalentos.model.SalvaAgenda;
+import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
 
 public class CaixaDTO {
 
 	private int codigo;
-	private SalvaAgenda salvaAgenda;
-	private FormaDePagamento formaDePagamento;
+	private String precoDaAgenda;
+	private String formaDePagamento;
 
 	public CaixaDTO() {
 	}
 
-	public CaixaDTO(int codigo, Integer i, FormaDePagamento integer) {
+	public CaixaDTO(int codigo, String precoDaAgenda, String formaDePagamento) {
 		super();
 		this.codigo = codigo;
-		this.salvaAgenda = i;
-		this.formaDePagamento = integer;
+		this.precoDaAgenda = precoDaAgenda;
+		this.formaDePagamento = formaDePagamento;
 	}
 
 	public int getCodigo() {
@@ -27,20 +29,24 @@ public class CaixaDTO {
 		this.codigo = codigo;
 	}
 
-	public SalvaAgenda getSalvaAgenda() {
-		return salvaAgenda;
+	public String getPrecoDaAgenda() {
+		return precoDaAgenda;
 	}
 
-	public void setSalvaAgenda(SalvaAgenda salvaAgenda) {
-		this.salvaAgenda = salvaAgenda;
+	public void setPrecoDaAgenda(String precoDaAgenda) {
+		this.precoDaAgenda = precoDaAgenda;
 	}
 
-	public FormaDePagamento getFormaDePagamento() {
+	public String getFormaDePagamento() {
 		return formaDePagamento;
 	}
 
-	public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+	public void setFormaDePagamento(String formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
 	}
 
+	public Caixa toCaixa() {
+		return new Caixa(this.codigo, DecimalFormatUtils.formatDecimal(new SalvaAgenda().getServicoProduto().getServico().getPreco()), new FormaDePagamento().getForma());
+	}
+	
 }

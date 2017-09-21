@@ -8,7 +8,7 @@ public class Caixa {
 	private SalvaAgenda salvaAgenda;
 	private FormaDePagamento formaDePagamento;
 
-	public Caixa(int codigo, Agenda agenda, FormaDePagamento formaDePagamento) {
+	public Caixa(int codigo, SalvaAgenda salvaAgenda, FormaDePagamento formaDePagamento) {
 		this.codigo = codigo;
 		this.salvaAgenda = salvaAgenda;
 		this.formaDePagamento = formaDePagamento;
@@ -43,7 +43,7 @@ public class Caixa {
 	}
 
 	public CaixaDTO toDTO() {
-		return new CaixaDTO(this.getCodigo(), this.salvaAgenda.getCodigo(), this.formaDePagamento.getCodigo());
+		return new CaixaDTO(this.getCodigo(), this.salvaAgenda.getCodigo(), this.formaDePagamento.getNome());
 	}
 
 }
