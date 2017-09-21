@@ -1,14 +1,16 @@
 package br.com.entra21.amostradetalentos.model;
 
+import br.com.entra21.amostradetalentos.dto.CaixaDTO;
+
 public class Caixa {
 
 	private int codigo;
-	private Agenda agenda;
+	private SalvaAgenda salvaAgenda;
 	private FormaDePagamento formaDePagamento;
 
 	public Caixa(int codigo, Agenda agenda, FormaDePagamento formaDePagamento) {
 		this.codigo = codigo;
-		this.agenda = agenda;
+		this.salvaAgenda = salvaAgenda;
 		this.formaDePagamento = formaDePagamento;
 	}
 
@@ -24,12 +26,12 @@ public class Caixa {
 		this.codigo = codigo;
 	}
 
-	public Agenda getAgenda() {
-		return agenda;
+	public SalvaAgenda getSalvaAgenda() {
+		return salvaAgenda;
 	}
 
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
+	public void setSalvaAgenda(SalvaAgenda salvaAgenda) {
+		this.salvaAgenda = salvaAgenda;
 	}
 
 	public FormaDePagamento getFormaPag() {
@@ -38,6 +40,10 @@ public class Caixa {
 
 	public void setFormaPag(FormaDePagamento formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
+	}
+
+	public CaixaDTO toDTO() {
+		return new CaixaDTO(this.getCodigo(), this.salvaAgenda.getCodigo(), this.formaDePagamento.getCodigo());
 	}
 
 }
