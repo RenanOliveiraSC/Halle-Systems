@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dto.ContasAReceberDTO;
+import br.com.entra21.amostradetalentos.model.Caixa;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.ContasAReceber;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
@@ -36,15 +37,11 @@ public class ContasAReceberDAO {
 	public List<ContasAReceberDTO> listaContasAReceber() throws SQLException {
 		List<ContasAReceberDTO> lContasAReceber = new ArrayList<>();
 
-		String sql = "select * from CONTAS_A_RECEBER";
+		String sql = "select CAR_CODIGO, CAR_DIAS_ATRASO, CAR_SALDO, CAR_VALOR_TOTAL, CAR_DATA_LANCAMENTO, CAR_PAGAMENTO_TOTAL, CAR_DESCONTO from CONTAS_A_RECEBER";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-
-					Cliente cliente = new Cliente();
-
-					FormaDePagamento formaDePagamento = new FormaDePagamento();
 
 					int codigo = rs.getInt("CAR_CODIGO");
 					int diasAtraso = rs.getInt("CAR_DIAS_ATRASO");
@@ -53,8 +50,10 @@ public class ContasAReceberDAO {
 					Date dataLancamento = rs.getDate("CAR_DATA_LANCAMENTO");
 					double pagamentoTotal = rs.getDouble("CAR_PAGAMENTO_TOTAL");
 					double desconto = rs.getDouble("CAR_DESCONTO");
+					
+					Caixa caixa = new Caixa(codigo);
 
-					lContasAReceber.add(new ContasAReceber().toDTO());
+					lContasAReceber.add(new ContasAReceber(codigo, caixa, dataLancamento, diasAtraso, saldo, desconto, pagamentoTotal).toDTO());
 				}
 
 				return lContasAReceber;

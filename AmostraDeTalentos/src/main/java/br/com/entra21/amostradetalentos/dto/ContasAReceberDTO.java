@@ -1,25 +1,25 @@
 package br.com.entra21.amostradetalentos.dto;
 
-import java.util.Date;
-
 import br.com.entra21.amostradetalentos.model.Caixa;
 import br.com.entra21.amostradetalentos.model.ContasAReceber;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
+import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
 
 public class ContasAReceberDTO {
 
 	private int codigo;
 	private Caixa caixa;
-	private Date dataLancamento;
+	private String dataLancamento;
 	private int dias_de_atraso;
-	private Double saldo;
+	private String saldo;
 	private Double desconto;
-	private Double pagamentoTotal;
+	private String pagamentoTotal;
 
 	public ContasAReceberDTO() {
 	}
 
-	public ContasAReceberDTO(int codigo, Caixa caixa, Date dataLancamento, int dias_de_atraso, Double saldo,
-			Double desconto, Double pagamentoTotal) {
+	public ContasAReceberDTO(int codigo, Caixa caixa, String dataLancamento, int dias_de_atraso, String saldo,
+			Double desconto, String pagamentoTotal) {
 		super();
 		this.codigo = codigo;
 		this.caixa = caixa;
@@ -46,11 +46,11 @@ public class ContasAReceberDTO {
 		this.caixa = caixa;
 	}
 
-	public Date getDataLancamento() {
+	public String getDataLancamento() {
 		return dataLancamento;
 	}
 
-	public void setDataLancamento(Date dataLancamento) {
+	public void setDataLancamento(String dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
 
@@ -62,11 +62,11 @@ public class ContasAReceberDTO {
 		this.dias_de_atraso = dias_de_atraso;
 	}
 
-	public Double getSaldo() {
+	public String getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(Double saldo) {
+	public void setSaldo(String saldo) {
 		this.saldo = saldo;
 	}
 
@@ -78,17 +78,19 @@ public class ContasAReceberDTO {
 		this.desconto = desconto;
 	}
 
-	public Double getPagamentoTotal() {
+	public String getPagamentoTotal() {
 		return pagamentoTotal;
 	}
 
-	public void setPagamentoTotal(Double pagamentoTotal) {
+	public void setPagamentoTotal(String pagamentoTotal) {
 		this.pagamentoTotal = pagamentoTotal;
 	}
 
 	public ContasAReceber toContasAReceber() {
-		return new ContasAReceber(this.codigo, this.caixa.getCodigo(), this.getDataLancamento(),
-				this.getDias_de_atraso(), this.getSaldo(), this.getPagamentoTotal());
+		return new ContasAReceber(this.codigo, this.caixa,
+				DateUtils.parseData(this.dataLancamento, DateUtils.PATTERN_DATA_PADRAO), this.dias_de_atraso,
+				DecimalFormatUtils.parseDouble(this.saldo), this.desconto,
+				DecimalFormatUtils.parseDouble(this.pagamentoTotal));
 	}
 
 }
