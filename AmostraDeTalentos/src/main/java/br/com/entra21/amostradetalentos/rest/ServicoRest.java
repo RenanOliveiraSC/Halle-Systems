@@ -34,24 +34,25 @@ public class ServicoRest {
 		}
 	}
 
-	// alterar AAAA
-	// @PUT
-	// @Consumes(MediaType.APPLICATION_JSON)
-	// @Path("/")
-	// public Response update(ServicosDTO2 servico) {
-	// ServicoService servicoService = new ServicoService();
-	// try {
-	// servicoService.inserir(servico.toServico());
-	// return Response.status(Response.Status.OK).build();
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-	// }
-	// }
+	
+//	alterar AAAA
+//	@PUT
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	@Path("/")
+//	public Response update(ServicosDTO2 servico) {
+//		ServicoService servicoService = new ServicoService();
+//		try {
+//			servicoService.inserir(servico.toServico());
+//			return Response.status(Response.Status.OK).build();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+//		}
+//	}
 
 	@DELETE
 	@Path("/delete/{codigo}")
-	public Response delete(@PathParam("codigo") int codigo) {
+	public Response delete(@PathParam ("codigo") int codigo) {
 		ServicoService servicoService = new ServicoService();
 		try {
 			servicoService.excluir(codigo);
@@ -61,7 +62,7 @@ public class ServicoRest {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/listar")
@@ -74,17 +75,20 @@ public class ServicoRest {
 			return new ArrayList<>();
 		}
 	}
-
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{codigo}/")
-	public ServicosDTO getServico(@PathParam("codigo") int codigo) {
+	@Path("/{codigo}")
+	public Response getPessoa(@PathParam("codigo") int codigo) {
 		ServicoService servicoService = new ServicoService();
 		try {
-			return servicoService.buscarServicoPorCodigo(codigo).toDTO();
+			ServicosDTO servicoDTO = servicoService.buscarServicoPorCodigo(codigo).toDTO();
+			//Aqui diz que retornou OK e retorna pro front end o servicoDTO 
+			return Response.ok(servicoDTO).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return new ServicosDTO();
+			//Se deu erro, vai retornar pro front end um erro interno
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 }
