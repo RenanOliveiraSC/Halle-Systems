@@ -14,7 +14,7 @@
 		
 		function login(credenciais) {
 			return $http({
-				url : 'http://localhost:9080/AmostraDeTalentos/rest/login/efetuarlogin',
+				url : 'http://localhost:8080/AmostraDeTalentos/rest/login/efetuarlogin',
 				method : 'POST',
 				data : JSON.stringify(credenciais),
 				headers : {
