@@ -15,21 +15,21 @@ public class UsuarioDAO {
 		this.con = con;
 	}
 
-
-	public boolean login(UsuarioLogin usuario){
+	public UsuarioLogin login(UsuarioLogin usuario) {
 		String sql = "select * from USUARIO_LOGIN WHERE USUL_LOGIN = ? AND USUL_SENHA = ?";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-			stmt.setString(1,usuario.getLogin());
+			stmt.setString(1, usuario.getLogin());
 			stmt.setString(2, usuario.getSenha());
 			stmt.execute();
 			ResultSet rs = stmt.getResultSet();
 			if (rs.next()) {
-				return true;
+				usuario.setSenha(null);
+				return usuario;
 			}
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
-			return false;
+			return null;
 		}
-		return false;
+		return null;
 	}
 }

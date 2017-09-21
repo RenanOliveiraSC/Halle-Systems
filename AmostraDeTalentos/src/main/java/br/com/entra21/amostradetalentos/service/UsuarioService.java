@@ -9,7 +9,7 @@ import br.com.entra21.amostradetalentos.model.UsuarioLogin;
 
 public class UsuarioService {
 
-	public boolean login(UsuarioLogin usuario) throws SQLException{
+	public UsuarioLogin login(UsuarioLogin usuario) throws SQLException{
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new UsuarioDAO(con).login(usuario);
 		}

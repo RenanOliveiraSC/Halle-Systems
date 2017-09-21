@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.entra21.amostradetalentos.dto.UsuarioLoginDTO;
+import br.com.entra21.amostradetalentos.model.UsuarioLogin;
 import br.com.entra21.amostradetalentos.service.UsuarioService;
 
 @Path("/login")
@@ -19,16 +20,18 @@ public class LoginRest {
 	@Path("/efetuarlogin")
 	public Response login(UsuarioLoginDTO usuario) {
 		UsuarioService usuarioService = new UsuarioService();
-//		return Response.status(Response.Status.OK).build();
-		try {
-			boolean retorno = usuarioService.login(usuario.toUsuarioLogin());
-			if (retorno) {
-				return Response.status(Response.Status.OK).build();
-			}
-			return Response.status(Response.Status.UNAUTHORIZED).build();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-		}
+		UsuarioLogin usuarioLogin = usuario.toUsuarioLogin();
+		usuarioLogin.setSenha(null);
+		return Response.ok(usuarioLogin).build();
+//		try {
+//			UsuarioLogin usuarioLogin = usuarioService.login(usuario.toUsuarioLogin());
+//			if (usuarioLogin != null) {
+//				return Response.ok(usuarioLogin).build();
+//			}
+//			return Response.status(Response.Status.UNAUTHORIZED).build();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+//		}
 	}
 }
