@@ -1,6 +1,5 @@
 package br.com.entra21.amostradetalentos.rest;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +15,9 @@ import javax.ws.rs.core.Response;
 import br.com.entra21.amostradetalentos.dto.AgendaDTO;
 import br.com.entra21.amostradetalentos.service.AgendaService;
 
-
 @Path("/agenda")
 public class AgendaRest {
-	
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/listar")
@@ -33,7 +30,6 @@ public class AgendaRest {
 			return new ArrayList<>();
 		}
 	}
-	
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
