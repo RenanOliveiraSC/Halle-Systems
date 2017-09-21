@@ -29,6 +29,10 @@ public class ServicoService {
 		}
 	}
 	
-	
+	public Servico buscarServicoPorCodigo(int codigo) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			return new ServicoDAO(con).buscarServicoPorCodigo(codigo);
+		}
+	}
 
 }

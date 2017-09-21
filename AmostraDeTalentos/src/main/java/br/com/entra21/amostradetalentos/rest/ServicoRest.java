@@ -16,8 +16,6 @@ import javax.ws.rs.core.Response;
 
 import br.com.entra21.amostradetalentos.dto.ServicosDTO;
 import br.com.entra21.amostradetalentos.service.ServicoService;
-import br.com.vinicius.signo.dto.PessoaDTO;
-import br.com.vinicius.signo.service.PessoaService;
 
 @Path("/servico")
 public class ServicoRest {
@@ -36,25 +34,24 @@ public class ServicoRest {
 		}
 	}
 
-	
-//	alterar AAAA
-//	@PUT
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Path("/")
-//	public Response update(ServicosDTO2 servico) {
-//		ServicoService servicoService = new ServicoService();
-//		try {
-//			servicoService.inserir(servico.toServico());
-//			return Response.status(Response.Status.OK).build();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-//		}
-//	}
+	// alterar AAAA
+	// @PUT
+	// @Consumes(MediaType.APPLICATION_JSON)
+	// @Path("/")
+	// public Response update(ServicosDTO2 servico) {
+	// ServicoService servicoService = new ServicoService();
+	// try {
+	// servicoService.inserir(servico.toServico());
+	// return Response.status(Response.Status.OK).build();
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+	// }
+	// }
 
 	@DELETE
 	@Path("/delete/{codigo}")
-	public Response delete(@PathParam ("codigo") int codigo) {
+	public Response delete(@PathParam("codigo") int codigo) {
 		ServicoService servicoService = new ServicoService();
 		try {
 			servicoService.excluir(codigo);
@@ -64,7 +61,7 @@ public class ServicoRest {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/listar")
@@ -77,11 +74,11 @@ public class ServicoRest {
 			return new ArrayList<>();
 		}
 	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{codigo}/")
-	public ServicosDTO getPessoa(@PathParam("codigo") int codigo) {
+	public ServicosDTO getServico(@PathParam("codigo") int codigo) {
 		ServicoService servicoService = new ServicoService();
 		try {
 			return servicoService.buscarServicoPorCodigo(codigo).toDTO();
