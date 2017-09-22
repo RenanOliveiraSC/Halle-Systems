@@ -6,8 +6,8 @@
 
 		var menu = this;
 
-		/* declaração das variáveis */
-		menu.usuario = $cookies.get('nomeusuario');
+		/* declaração das variáveis  */
+		menu.usuario = $cookies.get('nomeusuario');hjl
 
 	}
 })();
