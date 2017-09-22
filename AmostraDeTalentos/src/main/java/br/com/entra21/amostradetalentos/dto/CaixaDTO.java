@@ -15,7 +15,6 @@ public class CaixaDTO {
 	}
 
 	public CaixaDTO(int codigo, String precoDaAgenda, String formaDePagamento) {
-		super();
 		this.codigo = codigo;
 		this.precoDaAgenda = precoDaAgenda;
 		this.formaDePagamento = formaDePagamento;
@@ -46,7 +45,7 @@ public class CaixaDTO {
 	}
 
 	public Caixa toCaixa() {
-		return new Caixa(this.codigo, DecimalFormatUtils.formatDecimal(new SalvaAgenda().getServicoProduto().getServico().getPreco()), new FormaDePagamento().getForma());
+		return new Caixa(this.codigo, null, null);
 	}
 	
 }

@@ -18,10 +18,10 @@ public class CaixaDAO {
 	}
 
 	public boolean inserir(Caixa caixa) throws SQLException {
-		String sql = "INSERT INTO CAIXA (CX_CODIGO, CX_AG_CODIGO, CX_FORMA_CODIGO) VALUES (SEQ_CAIXA.nextval, ?, ?)";
+		String sql = "INSERT INTO CAIXA (CX_CODIGO, CX_SAL_CODIGO, CX_FORMA_CODIGO) VALUES (SEQ_CAIXA.nextval, ?, ?)";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(1, caixa.getAgenda().getCodigo());
+		statement.setInt(1, caixa.getSalvaAgenda().getCodigo());
 		statement.setInt(2, caixa.getFormaPag().getCodigo());
 
 		return statement.executeUpdate() > 0;

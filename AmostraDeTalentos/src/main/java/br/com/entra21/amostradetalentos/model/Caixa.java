@@ -43,7 +43,7 @@ public class Caixa {
 	}
 
 	public CaixaDTO toDTO() {
-		return new CaixaDTO(this.getCodigo(), this.salvaAgenda.getCodigo(), this.formaDePagamento.getNome());
+		return new CaixaDTO(this.getCodigo(), this.salvaAgenda.getCodigo(), this.formaDePagamento.getForma());
 	}
 
 }
