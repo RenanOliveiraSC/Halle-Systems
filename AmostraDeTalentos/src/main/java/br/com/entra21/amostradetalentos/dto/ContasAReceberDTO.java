@@ -89,8 +89,8 @@ public class ContasAReceberDTO {
 	public ContasAReceber toContasAReceber() {
 		return new ContasAReceber(this.codigo, this.caixa,
 				DateUtils.parseData(this.dataLancamento, DateUtils.PATTERN_DATA_PADRAO), this.dias_de_atraso,
-				DecimalFormatUtils.parseDouble(this.saldo), this.desconto,
-				DecimalFormatUtils.parseDouble(this.pagamentoTotal));
+				DecimalFormatUtils.parseDecimal(this.saldo), this.desconto,
+				DecimalFormatUtils.parseDecimal(this.pagamentoTotal));
 	}
 
 }

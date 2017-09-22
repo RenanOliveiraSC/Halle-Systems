@@ -110,8 +110,8 @@ public class ContasAPagarDTO {
 	public ContasAPagar toContasAPagar() {
 		return new ContasAPagar(this.codigo, this.fornecedor, this.formaDePagamento,
 				DateUtils.parseData(this.dataLancamento, DateUtils.PATTERN_DATA_PADRAO), this.diasAtraso,
-				DecimalFormatUtils.parseDouble(this.total), DecimalFormatUtils.parseDouble(this.saldo), this.desconto,
-				DecimalFormatUtils.parseDouble(this.pagamentoTotal));
+				DecimalFormatUtils.parseDecimal(this.total), DecimalFormatUtils.parseDecimal(this.saldo), this.desconto,
+				DecimalFormatUtils.parseDecimal(this.pagamentoTotal));
 	}
 
 }

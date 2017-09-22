@@ -3,7 +3,7 @@ package br.com.entra21.amostradetalentos.model;
 public class SalvaAgenda {
 	
 	private int codigo;
-	private Agenda agenda;
+	private Agendamento agenda;
 	private Cliente cliente;
 	private Funcionario funcionario;
 	private ServicoProduto servicoProduto;
@@ -14,7 +14,7 @@ public class SalvaAgenda {
 	}
 
 
-	public SalvaAgenda(int codigo, Agenda agenda, Cliente cliente, Funcionario funcionario,
+	public SalvaAgenda(int codigo, Agendamento agenda, Cliente cliente, Funcionario funcionario,
 			ServicoProduto servicoProduto) {
 		super();
 		this.codigo = codigo;
@@ -35,12 +35,12 @@ public class SalvaAgenda {
 	}
 
 
-	public Agenda getAgenda() {
+	public Agendamento getAgenda() {
 		return agenda;
 	}
 
 
-	public void setAgenda(Agenda agenda) {
+	public void setAgenda(Agendamento agenda) {
 		this.agenda = agenda;
 	}
 

@@ -22,14 +22,14 @@ public class CaixaRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/create")
 	public Response create(CaixaDTO caixa) {
-		ClienteService CaixaService = new CaixaService();
-		try {
-			CaixaService.inserir(Caixa.toCaixa());
+//		ClienteService CaixaService = new CaixaService();
+//		try {
+//			CaixaService.inserir(Caixa.toCaixa());
 			return Response.status(Response.Status.OK).build();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-		}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+//		}
 	}
 
 	@DELETE

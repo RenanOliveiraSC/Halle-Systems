@@ -70,9 +70,9 @@ public class Produto extends ProdutoServico {
 
 	public ProdutoDTO toDTO() {
 		return new ProdutoDTO(getCodigo(), getDescricao(), getFamilia(), isAtivo(), getListaDePreco(),
-				DecimalFormatUtils.formatDecimal(this.getPreco()), getNomeUnidadeDeCompra(),
-				DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeCompra()), getQtdePorCompra(), getNomeUnidadeVenda(),
-				DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeVenda()), getQtdePorVenda(), getObservacao(),
+				DecimalFormatUtils.formatDouble(this.getPreco()), getNomeUnidadeDeCompra(),
+				DecimalFormatUtils.formatDouble(this.getPorUnidadeDeCompra()), getQtdePorCompra(), getNomeUnidadeVenda(),
+				DecimalFormatUtils.formatDouble(this.getPorUnidadeDeVenda()), getQtdePorVenda(), getObservacao(),
 				getAnexo(), this.estoqueMax, this.estoqueMin, this.deposito, this.fabricante);
 	}
 

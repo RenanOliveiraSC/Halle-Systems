@@ -74,9 +74,9 @@ public class ProdutoDTO extends ProdutoServicoDTO {
 
 	public Produto toProduto() {
 		return new Produto(this.getCodigo(), this.getDescricao(), this.getFamilia(), this.isAtivo(),
-				this.getListaDePreco(), DecimalFormatUtils.parseDouble(this.getPreco()), this.getNomeUnidadeDeCompra(),
-				DecimalFormatUtils.parseDouble(this.getPorUnidadeDeCompra()), this.getQtdePorCompra(),
-				this.getNomeUnidadeVenda(), DecimalFormatUtils.parseDouble(this.getPorUnidadeDeVenda()),
+				this.getListaDePreco(), DecimalFormatUtils.parseDecimal(this.getPreco()), this.getNomeUnidadeDeCompra(),
+				DecimalFormatUtils.parseDecimal(this.getPorUnidadeDeCompra()), this.getQtdePorCompra(),
+				this.getNomeUnidadeVenda(), DecimalFormatUtils.parseDecimal(this.getPorUnidadeDeVenda()),
 				this.getQtdePorVenda(), this.getObservacao(), this.getAnexo(), this.estoqueMax, this.estoqueMin,
 				this.deposito, this.fabricante);
 	}

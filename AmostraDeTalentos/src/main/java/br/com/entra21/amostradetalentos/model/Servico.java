@@ -24,10 +24,10 @@ public class Servico extends ProdutoServico {
 	public ServicosDTO toDTO() {
 
 		return new ServicosDTO(this.getCodigo(), this.getDescricao(), this.getFamilia(), this.isAtivo(),
-				this.getListaDePreco(), DecimalFormatUtils.formatDecimal(this.getPreco()),
-				this.getNomeUnidadeDeCompra(), DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeCompra()),
+				this.getListaDePreco(), DecimalFormatUtils.formatDouble(this.getPreco()),
+				this.getNomeUnidadeDeCompra(), DecimalFormatUtils.formatDouble(this.getPorUnidadeDeCompra()),
 				this.getQtdePorCompra(), this.getNomeUnidadeVenda(),
-				DecimalFormatUtils.formatDecimal(this.getPorUnidadeDeVenda()), this.getQtdePorVenda(),
+				DecimalFormatUtils.formatDouble(this.getPorUnidadeDeVenda()), this.getQtdePorVenda(),
 				this.getObservacao(), this.getAnexo());
 	}
 }

@@ -25,9 +25,9 @@ public class ServicosDTO extends ProdutoServicoDTO {
 
 	public Servico toServico() {
 		return new Servico(this.getCodigo(), this.getDescricao(), this.getFamilia(), this.isAtivo(),
-				this.getListaDePreco(), DecimalFormatUtils.parseDouble(this.getPreco()), this.getNomeUnidadeDeCompra(),
-				DecimalFormatUtils.parseDouble(this.getPorUnidadeDeCompra()), this.getQtdePorCompra(),
-				this.getNomeUnidadeVenda(), DecimalFormatUtils.parseDouble(this.getPorUnidadeDeVenda()),
+				this.getListaDePreco(), DecimalFormatUtils.parseDecimal(this.getPreco()), this.getNomeUnidadeDeCompra(),
+				DecimalFormatUtils.parseDecimal(this.getPorUnidadeDeCompra()), this.getQtdePorCompra(),
+				this.getNomeUnidadeVenda(), DecimalFormatUtils.parseDecimal(this.getPorUnidadeDeVenda()),
 				this.getQtdePorVenda(), this.getObservacao(), this.getAnexo());
 	}
 

@@ -1,39 +1,71 @@
-<div id="wrapper" >
+<div id="wrapper" class="calendario" >
 	<ng-include src="'menu.html'"></ng-include>
 	<div id="page-wrapper">
-		<div class="container-fluid">
+		<div class="container-fluid" ng-controller="CalendarioController as calendario" id="controller">
 			<div id='calendar'></div>
+			
+			<!-- Modal que abre quando clica em algum dia -->
+			<div id="calendarModal" class="modal fade" >
+				<div class="modal-dialog">
+				    <div class="modal-content">
+				        <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+				            <h4 id="modalTitle" class="modal-title"></h4>
+				        </div>
+				        <div id="modalBody" class="modal-body"> </div>
+				        <div class="modal-footer">
+				            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				    </div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 <script>
 	$(document).ready(function() {
-		
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+
+		if(dd<10) {
+		    dd = '0'+dd;
+		} 
+
+		if(mm<10) {
+		    mm = '0'+mm;
+		} 
+
+		today = mm + '/' + dd + '/' + yyyy;
+
 		$('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			defaultDate: '2017-09-12',
-			navLinks: true, // can click day/week names to navigate views
+			defaultDate: today,
 			selectable: true,
 			selectHelper: true,
 			select: function(start, end) {
-				var title = prompt('Event Title:');
-				var eventData;
-				if (title) {
-					eventData = {
-						title: title,
-						start: start,
-						end: end
-					};
-					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				var day = moment(start).get('date');
+				var month = moment(start).get('month')+1;
+				var year = moment(start).get('year');
+				if(day<10) {
+					day = '0'+day;
 				}
-				$('#calendar').fullCalendar('unselect');
+				if(month<10) {
+					month = '0'+month;
+				}
+				angular.element('#controller').scope().calendario.carregarAgendamento(day+"/"+month+"/"+year);
+				$('#calendarModal').modal();
 			},
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
+			eventClick:  function(event, jsEvent, view) {
+	            $('#calendarModal').modal();
+	        },
 			events: [
 				{
 					title: 'All Day Event',
@@ -43,51 +75,6 @@
 					title: 'Long Event',
 					start: '2017-09-07',
 					end: '2017-09-10'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2017-09-09T16:00:00'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2017-09-16T16:00:00'
-				},
-				{
-					title: 'Conference',
-					start: '2017-09-11',
-					end: '2017-09-13'
-				},
-				{
-					title: 'Meeting',
-					start: '2017-09-12T10:30:00',
-					end: '2017-09-12T12:30:00'
-				},
-				{
-					title: 'Lunch',
-					start: '2017-09-12T12:00:00'
-				},
-				{
-					title: 'Meeting',
-					start: '2017-09-12T14:30:00'
-				},
-				{
-					title: 'Happy Hour',
-					start: '2017-09-12T17:30:00'
-				},
-				{
-					title: 'Dinner',
-					start: '2017-09-12T20:00:00'
-				},
-				{
-					title: 'Birthday Party',
-					start: '2017-09-13T07:00:00'
-				},
-				{
-					title: 'Click for Google',
-					url: 'http://google.com/',
-					start: '2017-09-28'
 				}
 			]
 		});

@@ -124,8 +124,8 @@ public class ContasAPagar {
 	public ContasAPagarDTO toDTO() {
 		return new ContasAPagarDTO(this.codigo, this.fornecedor, this.formaDePagamento,
 				DateUtils.formatData(this.dataLancamento, DateUtils.PATTERN_DATA_PADRAO), this.diasAtraso,
-				DecimalFormatUtils.formatDecimal(this.total), DecimalFormatUtils.formatDecimal(this.saldo),
-				this.desconto, DecimalFormatUtils.formatDecimal(this.pagamentoTotal));
+				DecimalFormatUtils.formatDouble(this.total), DecimalFormatUtils.formatDouble(this.saldo),
+				this.desconto, DecimalFormatUtils.formatDouble(this.pagamentoTotal));
 	}
 
 }

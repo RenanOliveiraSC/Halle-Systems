@@ -11,8 +11,8 @@ public class DecimalFormatUtils {
 		throw new UnsupportedOperationException();
 	}
 
-	public static double parseDecimal(String numero, String pattern) {
-		DecimalFormat df = new DecimalFormat(pattern);
+	public static double parseDecimal(String numero) {
+		DecimalFormat df = new DecimalFormat(PATTERN_DECIMAL_PADRAO);
 		try {
 			return (double) df.parse(numero);
 		} catch (ParseException e) {
@@ -21,8 +21,8 @@ public class DecimalFormatUtils {
 		}
 	}
 	
-	public static String formatDouble(Double numero, String pattern) {
-		DecimalFormat df = new DecimalFormat(pattern);
+	public static String formatDouble(Double numero) {
+		DecimalFormat df = new DecimalFormat(PATTERN_DECIMAL_PADRAO);
 		return df.format(numero);
 	}
 	
