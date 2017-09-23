@@ -1,5 +1,6 @@
 package br.com.entra21.amostradetalentos.dto;
 
+import br.com.entra21.amostradetalentos.model.Agendamento;
 import br.com.entra21.amostradetalentos.model.Caixa;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 import br.com.entra21.amostradetalentos.model.SalvaAgenda;
@@ -45,7 +46,7 @@ public class CaixaDTO {
 	}
 
 	public Caixa toCaixa() {
-		return new Caixa(this.codigo, null, null);
+		return new Caixa(this.codigo, new Agendamento(), new FormaDePagamento());
 	}
 	
 }

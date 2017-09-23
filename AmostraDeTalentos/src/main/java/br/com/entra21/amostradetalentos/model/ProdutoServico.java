@@ -39,8 +39,10 @@ public abstract class ProdutoServico {
 		this.anexo = anexo;
 
 	}
-	
-	
+
+	public ProdutoServico(double preco) {
+		this.preco = preco;
+	}
 
 	public ProdutoServico(Integer codigo, String descricao) {
 		super();

@@ -21,13 +21,16 @@ public class Servico extends ProdutoServico {
 		super(codigo, descricao);
 	}
 
+	public Servico(double preco) {
+		super(preco);
+	}
+
 	public ServicosDTO toDTO() {
 
 		return new ServicosDTO(this.getCodigo(), this.getDescricao(), this.getFamilia(), this.isAtivo(),
-				this.getListaDePreco(), DecimalFormatUtils.formatDouble(this.getPreco()),
-				this.getNomeUnidadeDeCompra(), DecimalFormatUtils.formatDouble(this.getPorUnidadeDeCompra()),
-				this.getQtdePorCompra(), this.getNomeUnidadeVenda(),
-				DecimalFormatUtils.formatDouble(this.getPorUnidadeDeVenda()), this.getQtdePorVenda(),
-				this.getObservacao(), this.getAnexo());
+				this.getListaDePreco(), DecimalFormatUtils.formatDouble(this.getPreco()), this.getNomeUnidadeDeCompra(),
+				DecimalFormatUtils.formatDouble(this.getPorUnidadeDeCompra()), this.getQtdePorCompra(),
+				this.getNomeUnidadeVenda(), DecimalFormatUtils.formatDouble(this.getPorUnidadeDeVenda()),
+				this.getQtdePorVenda(), this.getObservacao(), this.getAnexo());
 	}
 }

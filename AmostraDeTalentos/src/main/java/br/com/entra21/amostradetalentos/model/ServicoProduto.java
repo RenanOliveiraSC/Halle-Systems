@@ -16,6 +16,10 @@ public class ServicoProduto {
 		this.servico = servico;
 		this.produto = produto;
 	}
+	
+	public ServicoProduto(Servico servico) {
+		this.servico = servico;
+	}
 
 	public int getCodigo() {
 		return codigo;
