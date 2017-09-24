@@ -24,6 +24,8 @@ public class UsuarioDAO {
 			ResultSet rs = stmt.getResultSet();
 			if (rs.next()) {
 				usuario.setSenha(null);
+				usuario.setNome(rs.getString("USUL_NOME_LOGIN"));
+				usuario.setAdministrador(rs.getBoolean("USUL_ADMIN"));
 				return usuario;
 			}
 		} catch (SQLException e) {

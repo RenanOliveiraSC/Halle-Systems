@@ -23,7 +23,7 @@
 			.then(
 				function(data) { //success
 					$cookies.putObject('autorizacao', data);
-					$cookies.putObject('nomeusuario', data.data.login);
+					$cookies.putObject('nomeusuario', data.data.nome);
 					$location.path('/home');
 				}, function() { //error
 					$cookies.putObject('autorizacao', undefined);
