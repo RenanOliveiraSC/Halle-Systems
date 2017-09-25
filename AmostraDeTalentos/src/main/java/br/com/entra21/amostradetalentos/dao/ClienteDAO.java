@@ -167,7 +167,7 @@ public class ClienteDAO {
 					Date dataNascimento = rs.getDate("CLI_DATA_NASCIMENTO");
 					String sexo = rs.getString("CLI_SEXO");
 					String profissao = rs.getString("CLI_PROFISSAO");
-					boolean paiMae = rs.getBoolean("CLI_PAI_MAE");
+					int paiMae = rs.getInt("CLI_PAI_MAE");
 					
 					
 					ClienteDTO cliente = new ClienteDTO(id, nome, sobreNome, cpf, telefone, celular, email, dataNascimento, sexo, profissao, paiMae);

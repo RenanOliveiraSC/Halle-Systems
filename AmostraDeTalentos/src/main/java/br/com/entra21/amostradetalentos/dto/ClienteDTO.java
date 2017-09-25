@@ -48,7 +48,18 @@ public class ClienteDTO {
 	}
 
 	public ClienteDTO(int id, String nome2, String sobreNome2, String cpf2, String telefone2, String celular2,
-			String email2, java.sql.Date dataNascimento, String sexo2, String profissao2, boolean paiMae) {
+			String email2, java.sql.Date dataNascimento, String sexo2, String profissao2, int paiMae) {
+		this.codigo = id;
+		this.nome = nome2;
+		this.sobrenome = sobreNome2;
+		this.cpf = cpf2;
+		this.telefone = telefone2;
+		this.celular = celular2;
+		this.email = email2;
+		this.data_nascimento = dataNascimento;
+		this.sexo = sexo2;
+		this.profissao = profissao2;
+		this.pai_mae = paiMae;
 	}
 
 	public Integer getCodigo() {
