@@ -1,23 +1,8 @@
 @charset "utf-8";
 
 div.main {
-	background: #238E68; /* Old browsers */
-	background: -moz-radial-gradient(center, ellipse cover, #238E68 1%, #70DB93 100%);
-	/* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%,
-		color-stop(1%, #238E68), color-stop(100%, #70DB93));
-	/* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover, #238E68 1%, #70DB93 100%);
-	/* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover, #238E68 1%, #70DB93 100%);
-	/* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover, #238E68 1%, #70DB93 100%);
-	/* IE10+ */
-	background: radial-gradient(ellipse at center, #238E68 1%, #70DB93 100%);
-	/* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#238E68',
-		endColorstr='#70DB93', GradientType=1);
-	/* IE6-9 fallback on horizontal gradient */
+
+	background-image: url("../img/background.jpg");
 	height: calc(100vh);
 	width: 100%;
 }
@@ -101,7 +86,8 @@ p {
 }
 
 .img-logo{
-	height: 105px;
+	height: 160px;
+	padding-left: 20px;
 }
 
 .img-logo > img{
@@ -157,7 +143,7 @@ input.login[type="submit"] {
 }
 
 input.login[type="submit"]:hover {
-	background-color: #2E8B57;
+	background-color: #004040;
 }
 
 .small-text{

@@ -16,6 +16,14 @@
 			templateUrl : 'naoAutorizado.html'
 		}).when('/agenda', {
 			templateUrl : 'calendario.html'
+		}).when('/cliente', {
+			templateUrl : 'calendario.html'
+		}).when('/fornecedor', {
+			templateUrl : 'calendario.html'
+		}).when('/perfil', {
+			templateUrl : 'calendario.html'
+		}).when('/configuracoes', {
+			templateUrl : 'calendario.html'
 		}).otherwise({
 			redirectTo : '/'
 		});

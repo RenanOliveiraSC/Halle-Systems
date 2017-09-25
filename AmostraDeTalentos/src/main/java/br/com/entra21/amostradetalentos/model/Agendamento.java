@@ -17,10 +17,7 @@ public class Agendamento {
 	private ServicoProduto servicoPrestado;
 	
 	public Agendamento() {
-	}
-	
-	public Agendamento(ServicoProduto servicoPrestado) {
-		this.servicoPrestado = servicoPrestado;
+		// TODO Auto-generated constructor stub
 	}
 
 	public Agendamento(int codigo, Date dataHoraInicio, Date dataHoraFim, String observacao,
