@@ -148,8 +148,8 @@ public class ClienteDAO {
 		return statement.executeUpdate() > 0;
 	}
 	
-	public List<Cliente> listarClientes() throws SQLException {
-		List<Cliente> lCliente = new ArrayList<>();
+	public List<ClienteDTO> listarClientes() throws SQLException {
+		List<ClienteDTO> lCliente = new ArrayList<>();
 
 		String sql = "select * from CLIENTE";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
