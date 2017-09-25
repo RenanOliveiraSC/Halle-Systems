@@ -113,7 +113,7 @@ public class AgendamentoDAO {
 	public AgendamentoDTO getAgendamentoPeloCodigo(int codigo) throws SQLException {
 		String sql = "select * from AGENDAMENTO WHERE AG_CODIGO = ?";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-			stmt.setInt(0, codigo);
+			stmt.setInt(1, codigo);
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				if (rs.next()) {
