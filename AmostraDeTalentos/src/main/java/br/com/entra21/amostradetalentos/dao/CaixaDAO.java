@@ -21,7 +21,7 @@ public class CaixaDAO {
 		String sql = "INSERT INTO CAIXA (CX_CODIGO, CX_SAL_CODIGO, CX_FORMA_CODIGO) VALUES (SEQ_CAIXA.nextval, ?, ?)";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(1, caixa.getSalvaAgenda().getCodigo());
+		statement.setInt(1, caixa.getAgendamento().getCodigo());
 		statement.setInt(2, caixa.getFormaPag().getCodigo());
 
 		return statement.executeUpdate() > 0;
@@ -46,7 +46,7 @@ public class CaixaDAO {
 				while (rs.next()) {
 					
 					int id = rs.getInt("CX_CODIGO");
-
+					
 					
 					Caixa caixa = new Caixa(id);
 					lCaixa.add(caixa);

@@ -47,6 +47,10 @@ public class ClienteDTO {
 		this.pai_mae = pai_mae;
 	}
 
+	public ClienteDTO(int id, String nome2, String sobreNome2, String cpf2, String telefone2, String celular2,
+			String email2, java.sql.Date dataNascimento, String sexo2, String profissao2, boolean paiMae) {
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}

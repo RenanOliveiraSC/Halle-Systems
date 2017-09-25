@@ -5,12 +5,12 @@ import br.com.entra21.amostradetalentos.dto.CaixaDTO;
 public class Caixa {
 
 	private int codigo;
-	private SalvaAgenda salvaAgenda;
+	private Agendamento agendamento;
 	private FormaDePagamento formaDePagamento;
 
-	public Caixa(int codigo, SalvaAgenda salvaAgenda, FormaDePagamento formaDePagamento) {
+	public Caixa(int codigo, Agendamento agendamento, FormaDePagamento formaDePagamento) {
 		this.codigo = codigo;
-		this.salvaAgenda = salvaAgenda;
+		this.agendamento = agendamento;
 		this.formaDePagamento = formaDePagamento;
 	}
 
@@ -26,12 +26,12 @@ public class Caixa {
 		this.codigo = codigo;
 	}
 
-	public SalvaAgenda getSalvaAgenda() {
-		return salvaAgenda;
+	public Agendamento getAgendamento() {
+		return agendamento;
 	}
 
-	public void setSalvaAgenda(SalvaAgenda salvaAgenda) {
-		this.salvaAgenda = salvaAgenda;
+	public void setSalvaAgenda(Agendamento agendamento) {
+		this.agendamento = agendamento;
 	}
 
 	public FormaDePagamento getFormaPag() {
@@ -43,7 +43,7 @@ public class Caixa {
 	}
 
 	public CaixaDTO toDTO() {
-		return new CaixaDTO(this.getCodigo(), String.valueOf(this.salvaAgenda.getCodigo()), 
+		return new CaixaDTO(this.getCodigo(), String.valueOf(this.agendamento.getCodigo()), 
 				String.valueOf(this.formaDePagamento.getForma()));
 	}
 

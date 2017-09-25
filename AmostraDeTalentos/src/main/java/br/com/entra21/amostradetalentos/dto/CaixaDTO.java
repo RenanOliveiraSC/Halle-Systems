@@ -3,8 +3,6 @@ package br.com.entra21.amostradetalentos.dto;
 import br.com.entra21.amostradetalentos.model.Agendamento;
 import br.com.entra21.amostradetalentos.model.Caixa;
 import br.com.entra21.amostradetalentos.model.FormaDePagamento;
-import br.com.entra21.amostradetalentos.model.SalvaAgenda;
-import br.com.entra21.amostradetalentos.utils.DecimalFormatUtils;
 
 public class CaixaDTO {
 

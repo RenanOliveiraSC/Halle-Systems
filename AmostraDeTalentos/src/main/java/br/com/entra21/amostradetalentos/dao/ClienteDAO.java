@@ -3,8 +3,13 @@ package br.com.entra21.amostradetalentos.dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import br.com.entra21.amostradetalentos.dto.ClienteDTO;
+import br.com.entra21.amostradetalentos.model.Caixa;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.Endereco;
 import br.com.entra21.amostradetalentos.model.TipoCliente;
@@ -141,6 +146,38 @@ public class ClienteDAO {
 		statement.setInt(1, id);
 
 		return statement.executeUpdate() > 0;
+	}
+	
+	public List<Cliente> listarClientes() throws SQLException {
+		List<Cliente> lCliente = new ArrayList<>();
+
+		String sql = "select * from CLIENTE";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					
+					int id = rs.getInt("CLI_CODIGO");
+					String nome = rs.getString("CLI_NOME");
+					String sobreNome = rs.getString("CLI_SOBRENOME");
+					String cpf = rs.getString("CLI_CPF");
+					String telefone = rs.getString("CLI_TELEFONE");
+					String celular = rs.getString("CLI_CELULAR");
+					String email = rs.getString("CLI_EMAIL");
+					Date dataNascimento = rs.getDate("CLI_DATA_NASCIMENTO");
+					String sexo = rs.getString("CLI_SEXO");
+					String profissao = rs.getString("CLI_PROFISSAO");
+					boolean paiMae = rs.getBoolean("CLI_PAI_MAE");
+					
+					
+					ClienteDTO cliente = new ClienteDTO(id, nome, sobreNome, cpf, telefone, celular, email, dataNascimento, sexo, profissao, paiMae);
+					lCliente.add(cliente);
+				}
+			}
+		}
+
+		return lCliente;
+
 	}
 
 }

@@ -61,9 +61,9 @@ public class ClienteRest {
 	}
 	
 	//listar AAAAAAAAAAA
-	@POST
+	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/cliente")
+	@Path("{codigo}/")
 	public Response getCliente(ClienteDTO Cliente) {
 		ClienteService ClienteService = new ClienteService();
 		try {
