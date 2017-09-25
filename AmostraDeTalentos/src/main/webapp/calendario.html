@@ -1,8 +1,8 @@
-<div id="wrapper" class="calendario" >
+<div id="wrapper" >
 	<ng-include src="'menu.html'"></ng-include>
-	<div id="page-wrapper">
+	<div id="page-wrapper" class="calendario">
 		<div class="container-fluid" ng-controller="CalendarioController as calendario" id="controller">
-			<div id='calendar'></div>
+			<div id="calendar"></div>
 			
 			<!-- Modal que abre quando clica em algum dia -->
 			<div id="calendarModal" class="modal fade" >
@@ -10,9 +10,18 @@
 				    <div class="modal-content">
 				        <div class="modal-header">
 				            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
-				            <h4 id="modalTitle" class="modal-title"></h4>
+				            <h4 id="modalTitle" class="modal-title">Agendamento</h4>
 				        </div>
-				        <div id="modalBody" class="modal-body"> </div>
+				        <div id="modalBody" class="modal-body">
+				        	<div class="row">
+					        	<label for="cliente" >Cliente:</label>
+					        	<input id="cliente" type="text" ng-model="calendario.agendamento.codigoCliente"/>
+							</div>
+							<div class="row">
+					        	<label for="funcionario" >Funcionário:</label>
+					        	<input id="funcionario" type="text" ng-model="calendario.agendamento.codigoFuncionario"/>
+							</div>
+				        </div>
 				        <div class="modal-footer">
 				            <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
 				        </div>
@@ -58,25 +67,36 @@
 				if(month<10) {
 					month = '0'+month;
 				}
-				angular.element('#controller').scope().calendario.carregarAgendamento(day+"/"+month+"/"+year);
+				angular.element('#controller').scope().calendario.carregarNovoAgendamento(day+"/"+month+"/"+year);
 				$('#calendarModal').modal();
 			},
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			eventClick:  function(event, jsEvent, view) {
+				angular.element('#controller').scope().calendario.carregarAgendamentoPeloCodigo(event.id);
 	            $('#calendarModal').modal();
 	        },
-			events: [
-				{
-					title: 'All Day Event',
-					start: '2017-09-01'
-				},
-				{
-					title: 'Long Event',
-					start: '2017-09-07',
-					end: '2017-09-10'
-				}
-			]
+			events: function( start, end, timezone, callback ) {
+				$.ajax({ 
+		            type: "GET",
+		            dataType: "json",
+		            url: "http://localhost:9080/AmostraDeTalentos/rest/agendamento/listar",
+		            success: function(data){        
+		            	var events = [];
+		            	for (i = 0; i < data.length; i++) { 
+		            	    var value = data[i];
+		                    events.push({
+		                    	id: value.id,
+		                        title: value.title,
+		                        start: value.start,
+		                        end: value.end
+		                    });
+		                }
+		                callback(events);
+		            }
+		        });
+			}
+	        
 		});
 		
 	});

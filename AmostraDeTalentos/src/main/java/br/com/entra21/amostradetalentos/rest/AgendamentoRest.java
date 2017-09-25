@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
+import br.com.entra21.amostradetalentos.dto.AgendamentoMiniDTO;
 import br.com.entra21.amostradetalentos.service.AgendamentoService;
 
 @Path("/agendamento")
@@ -23,9 +24,10 @@ public class AgendamentoRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/listar")
 	public Response listAgenda() {
+		/*Tem que retornar uma lista de AgendamentoMiniDTO, pra ser exibido no calendario*/
 		AgendamentoService agendaService = new AgendamentoService();
 		try {
-			List<AgendamentoDTO> agendamentos = agendaService.listarAgenda();
+			List<AgendamentoMiniDTO> agendamentos = agendaService.listarAgenda();
 			return Response.ok(agendamentos).build();
 		} catch (SQLException e) {
 			e.printStackTrace();

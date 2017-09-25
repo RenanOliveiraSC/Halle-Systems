@@ -23,7 +23,7 @@
 		};
 		
 		function pegarNotificacoes(){
-			menu.notificacoes = [{titulo : '14:00h - Cabelo Cliente X', tipo : 'warning'},{titulo : '14:00h - Unha Cliente X', tipo : 'warning'}]
+			menu.notificacoes = [{titulo : '14:00h - Cabelo Cliente X', tipo : 'warning'},{titulo : '14:00h - Unha Cliente X', tipo : 'warning'}];
 		};
 	}
 })();

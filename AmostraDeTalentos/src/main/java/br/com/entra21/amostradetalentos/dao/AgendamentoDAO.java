@@ -5,11 +5,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
+import br.com.entra21.amostradetalentos.dto.AgendamentoMiniDTO;
 import br.com.entra21.amostradetalentos.model.Agendamento;
 
 public class AgendamentoDAO {
@@ -85,27 +85,25 @@ public class AgendamentoDAO {
 		return statement.executeUpdate() > 0;
 	}
 
-	public List<AgendamentoDTO> lista() throws SQLException {
-		List<AgendamentoDTO> lAgenda = new ArrayList<>();
+	public List<AgendamentoMiniDTO> lista() throws SQLException {
+		List<AgendamentoMiniDTO> lAgenda = new ArrayList<>();
 
-		String sql = "select * from AGENDAMENTO";
+		String sql = "select AG_CODIGO, AG_DATA_INICIO, AG_DATA_TERMINO, "
+				+ " (SER_NOME || ' - ' || CLI_NOME) AS DESCRICAO_AGENDAMENTO "
+				+ " from AGENDAMENTO "
+				+ " INNER JOIN CLIENTE ON CLIENTE.CLI_CODIGO = AGENDAMENTO.AG_CLI_CODIGO "
+				+ " INNER JOIN SERVICO_PRODUTO ON SERVICO_PRODUTO.SP_CODIGO = AGENDAMENTO.AG_SP_CODIGO "
+				+ " INNER JOIN SERVICO ON SERVICO.SER_CODIGO = SERVICO_PRODUTO.SP_SER_CODIGO ";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
 					int id = rs.getInt("AG_CODIGO");
-					String observacao = rs.getString("AG_OBSERVACAO");
 					Date dataHoraInicio = rs.getDate("AG_DATA_INICIO");
 					Date dataHoraFim = rs.getDate("AG_DATA_TERMINO");
-					boolean ativo = rs.getBoolean("AG_ATIVO");
-					boolean concluido = rs.getBoolean("AG_CONCLUIDO");
-					Long codigoCliente = rs.getLong("AG_CLI_CODIGO"); 
-					Long codigoFuncionario = rs.getLong("AG_FUN_CODIGO");
-					Long codigoServico = rs.getLong("AG_SP_CODIGO");
+					String descricao = rs.getString("DESCRICAO_AGENDAMENTO"); 
 
-//					lAgenda.add(new Agendamento(id, dataHoraInicio, dataHoraFim, observacao, 
-//							ativo, concluido, cliente, funcionario, servicoPrestado).toDTO);
-				
+					lAgenda.add(new AgendamentoMiniDTO(id, descricao, dataHoraInicio, dataHoraFim));
 				}
 			}
 		}
@@ -129,8 +127,8 @@ public class AgendamentoDAO {
 					Long codigoFuncionario = rs.getLong("AG_FUN_CODIGO");
 					Long codigoServico = rs.getLong("AG_SP_CODIGO");
 
-//					return new Agendamento(id, dataHoraInicio, dataHoraFim, observacao, 
-//							ativo, concluido, cliente, funcionario, servicoPrestado).toDTO();
+					return new AgendamentoDTO(id, dataHoraInicio, dataHoraFim, observacao, codigoCliente, 
+							codigoFuncionario, codigoServico, ativo, concluido);
 				
 				}
 			}

@@ -3,6 +3,7 @@ package br.com.entra21.amostradetalentos.dto;
 import java.util.Date;
 
 import br.com.entra21.amostradetalentos.model.Agendamento;
+import br.com.entra21.amostradetalentos.model.ServicoProduto;
 
 public class AgendamentoDTO {
 
@@ -12,9 +13,23 @@ public class AgendamentoDTO {
 	private String observacao;
 	private Long codigoCliente;
 	private Long codigoFuncionario;
+	private Long codigoServico;
 	private boolean ativo;
 	private boolean concluido;
 
+	public AgendamentoDTO(int codigo, Date horarioAgendadoInicio, Date horarioAgendadoFim, String observacao, 
+			Long codigoCliente, Long codigoFuncionario, Long codigoServico, boolean ativo, boolean concluido) {
+		this.codigo = codigo;
+		this.horarioAgendadoInicio = horarioAgendadoInicio;
+		this.horarioAgendadoFim = horarioAgendadoFim;
+		this.observacao = observacao;
+		this.codigoCliente = codigoCliente;
+		this.codigoFuncionario = codigoFuncionario;
+		this.codigoServico = codigoServico;
+		this.ativo = ativo;
+		this.concluido = concluido;
+	}
+	
 	public AgendamentoDTO() {
 
 	}
@@ -65,6 +80,14 @@ public class AgendamentoDTO {
 
 	public void setCodigoFuncionario(Long codigoFuncionario) {
 		this.codigoFuncionario = codigoFuncionario;
+	}
+
+	public Long getCodigoServico() {
+		return codigoServico;
+	}
+
+	public void setCodigoServico(Long codigoServico) {
+		this.codigoServico = codigoServico;
 	}
 
 	public boolean isAtivo() {
