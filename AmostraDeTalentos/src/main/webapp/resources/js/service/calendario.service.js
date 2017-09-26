@@ -11,7 +11,8 @@
 		    getAgendamento : getAgendamento,
 		    create : create,
 		    update : update,
-		    deletar : deletar
+		    deletar : deletar,
+		    novo : novo
 		}
 		
 		return service;
@@ -56,6 +57,13 @@
 			return $http({
 				url : 'http://localhost:9080/AmostraDeTalentos/rest/agendamento/delete/'+codigo,
 				method : 'DELETE'
+			});
+		}
+		
+		function novo(){
+			return $http({
+				url : 'http://localhost:9080/AmostraDeTalentos/rest/agendamento/novo',
+				method : 'GET'
 			});
 		}
 	}

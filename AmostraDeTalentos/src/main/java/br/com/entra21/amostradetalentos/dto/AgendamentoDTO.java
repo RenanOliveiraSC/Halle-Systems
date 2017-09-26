@@ -1,32 +1,33 @@
 package br.com.entra21.amostradetalentos.dto;
 
+import java.util.Date;
+
 import br.com.entra21.amostradetalentos.model.Agendamento;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.Funcionario;
 import br.com.entra21.amostradetalentos.model.ServicoProduto;
-import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class AgendamentoDTO {
 
 	private int codigo;
-	private String horarioAgendadoInicio;
-	private String horarioAgendadoFim;
+	private Date horarioAgendadoInicio;
+	private Date horarioAgendadoFim;
 	private String observacao;
-	private String nomeCliente;
-	private String nomeFuncionario;
-	private String descricaoServico;
+	private Long codigoCliente;
+	private Long codigoFuncionario;
+	private Long codigoServico;
 	private boolean ativo;
 	private boolean concluido;
 
-	public AgendamentoDTO(int codigo, String horarioAgendadoInicio, String horarioAgendadoFim, String observacao,
-			String nomeCliente, String nomeFuncionario, String descricaoServico, boolean ativo, boolean concluido) {
+	public AgendamentoDTO(int codigo, Date horarioAgendadoInicio, Date horarioAgendadoFim, String observacao,
+			Long codigoCliente, Long codigoFuncionario, Long codigoServico, boolean ativo, boolean concluido) {
 		this.codigo = codigo;
 		this.horarioAgendadoInicio = horarioAgendadoInicio;
 		this.horarioAgendadoFim = horarioAgendadoFim;
 		this.observacao = observacao;
-		this.nomeCliente = nomeCliente;
-		this.nomeFuncionario = nomeFuncionario;
-		this.descricaoServico = descricaoServico;
+		this.codigoCliente = codigoCliente;
+		this.codigoFuncionario = codigoFuncionario;
+		this.codigoServico = codigoServico;
 		this.ativo = ativo;
 		this.concluido = concluido;
 	}
@@ -43,19 +44,19 @@ public class AgendamentoDTO {
 		this.codigo = codigo;
 	}
 
-	public String getHorarioAgendadoInicio() {
+	public Date getHorarioAgendadoInicio() {
 		return horarioAgendadoInicio;
 	}
 
-	public void setHorarioAgendadoInicio(String horarioAgendadoInicio) {
+	public void setHorarioAgendadoInicio(Date horarioAgendadoInicio) {
 		this.horarioAgendadoInicio = horarioAgendadoInicio;
 	}
 
-	public String getHorarioAgendadoFim() {
+	public Date getHorarioAgendadoFim() {
 		return horarioAgendadoFim;
 	}
 
-	public void setHorarioAgendadoFim(String horarioAgendadoFim) {
+	public void setHorarioAgendadoFim(Date horarioAgendadoFim) {
 		this.horarioAgendadoFim = horarioAgendadoFim;
 	}
 
@@ -67,28 +68,28 @@ public class AgendamentoDTO {
 		this.observacao = observacao;
 	}
 
-	public String getNomeCliente() {
-		return nomeCliente;
+	public Long getCodigoCliente() {
+		return codigoCliente;
 	}
 
-	public void setnomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
+	public void setCodigoCliente(Long codigoCliente) {
+		this.codigoCliente = codigoCliente;
 	}
 
-	public String getNomeFuncionario() {
-		return nomeFuncionario;
+	public Long getCodigoFuncionario() {
+		return codigoFuncionario;
 	}
 
-	public void setNomeFuncionario(String nomeFuncionario) {
-		this.nomeFuncionario = nomeFuncionario;
+	public void setCodigoFuncionario(Long codigoFuncionario) {
+		this.codigoFuncionario = codigoFuncionario;
 	}
 
-	public String getDescricaoServico() {
-		return descricaoServico;
+	public Long getCodigoServico() {
+		return codigoServico;
 	}
 
-	public void setDescricaoServico(String descricaoServico) {
-		this.descricaoServico = descricaoServico;
+	public void setCodigoServico(Long codigoServico) {
+		this.codigoServico = codigoServico;
 	}
 
 	public boolean isAtivo() {
@@ -108,9 +109,7 @@ public class AgendamentoDTO {
 	}
 
 	public Agendamento toAgenda() {
-		return new Agendamento(this.codigo,
-				DateUtils.parseData(this.horarioAgendadoInicio, DateUtils.PATTERN_DATA_PADRAO),
-				DateUtils.parseData(this.horarioAgendadoFim, DateUtils.PATTERN_DATA_PADRAO), this.observacao,
+		return new Agendamento(this.codigo, this.horarioAgendadoInicio, this.horarioAgendadoFim, this.observacao,
 				this.ativo, this.concluido, new Cliente(), new Funcionario(), new ServicoProduto());
 	}
 }

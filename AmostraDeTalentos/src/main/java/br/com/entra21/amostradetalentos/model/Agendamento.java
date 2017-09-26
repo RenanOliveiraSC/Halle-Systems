@@ -3,7 +3,6 @@ package br.com.entra21.amostradetalentos.model;
 import java.util.Date;
 
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
-import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class Agendamento {
 
@@ -114,10 +113,11 @@ public class Agendamento {
 	}
 
 	public AgendamentoDTO toDTO() {
-		return new AgendamentoDTO(this.codigo, DateUtils.formatData(this.dataHoraInicio, DateUtils.PATTERN_DATA_PADRAO),
-				DateUtils.formatData(this.dataHoraFim, DateUtils.PATTERN_DATA_PADRAO), this.observacao,
-				new Cliente().getNome(), new Funcionario().getNome(), new Servico().getDescricao(), this.ativo,
-				this.concluido);
+		Long codigoCliente = null != this.cliente ? Long.valueOf(this.cliente.getCodigo()) : null;
+		Long codigoFuncionario = null != this.funcionario ? Long.valueOf(this.funcionario.getCodigo()) : null;
+		Long codigoServico = null != this.servicoPrestado ? Long.valueOf(this.servicoPrestado.getCodigo()) : null;
+		return new AgendamentoDTO(this.codigo, this.dataHoraInicio, this.dataHoraFim, this.observacao,
+				codigoCliente, codigoFuncionario, codigoServico, this.ativo, this.concluido);
 	}
 
 }

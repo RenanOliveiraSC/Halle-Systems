@@ -88,5 +88,12 @@ public class AgendamentoRest {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+	@GET
+	@Path("/novo")
+	public Response getNovo() {
+		AgendamentoDTO agendamento = new AgendamentoDTO();
+		return Response.ok(agendamento).build();
+	}
 
 }

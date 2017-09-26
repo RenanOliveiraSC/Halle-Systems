@@ -13,21 +13,53 @@
 				            <h4 id="modalTitle" class="modal-title">Agendamento</h4>
 				        </div>
 				        <div id="modalBody" class="modal-body">
-				        	<div class="row">
-					        	<label for="cliente" >Cliente:</label>
-					        	<input id="cliente" type="text" ng-model="calendario.agendamento.codigoCliente"/>
+				        	<div class="table-modal"> 
+			        			<div class="row">
+									<div class="col-md-6">
+										<label for="cliente">Cliente</label> 
+										<select class="form-control" ng-model="calendario.agendamento.codigoCliente" id="cliente">
+											<option ng-repeat="cliente in calendario.getClientes()" value="{{cliente.codigo}}">{{cliente.nome}}</option>
+										</select>
+									</div>
+									<div class="col-md-6">
+										<label for="servico">Serviço</label> 
+										<select class="form-control" ng-model="calendario.agendamento.codigoServico" id="servico">
+											<option ng-repeat="serv in calendario.getServicos()" value="{{serv.codigo}}">{{serv.servico}}</option>
+										</select>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-4">
+										<label for="funcionario">Funcionário</label> 
+										<select class="form-control" ng-model="calendario.agendamento.codigoFuncionario" id="funcionario">
+											<option ng-repeat="fun in calendario.getFuncionarios()" value="{{fun.codigo}}">{{fun.nome}}</option>
+										</select>
+									</div>
+									<div class="col-md-4">
+										<label for="horaInicio">Horário de agendamento</label> 
+										<input id="horaInicio" class="form-control" type="date" placeholder="Enter date" >
+									</div>
+									<div class="col-md-4">
+										<label for="horaFim">Previsão de término</label> 
+										<input class="form-control" id="horaFim" type="date" placeholder="Enter date">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<label for="observacao">Observações</label> 
+										<textarea class="form-control" id="observacao" placeholder="Observação" rows="3" />
+									</div>
+								</div>
 							</div>
-							<div class="row">
-					        	<label for="funcionario" >Funcionário:</label>
-					        	<input id="funcionario" type="text" ng-model="calendario.agendamento.codigoFuncionario"/>
-							</div>
-				        </div>
+						</div>
 				        <div class="modal-footer">
 				            <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
 				        </div>
 				    </div>
 				</div>
 			</div>
+			
+			
 		</div>
 	</div>
 </div>
