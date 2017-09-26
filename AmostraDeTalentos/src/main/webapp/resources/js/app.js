@@ -17,7 +17,7 @@
 		}).when('/agenda', {
 			templateUrl : 'calendario.html'
 		}).when('/cliente', {
-			templateUrl : 'calendario.html'
+			templateUrl : 'clientes.html'
 		}).when('/fornecedor', {
 			templateUrl : 'calendario.html'
 		}).when('/perfil', {
