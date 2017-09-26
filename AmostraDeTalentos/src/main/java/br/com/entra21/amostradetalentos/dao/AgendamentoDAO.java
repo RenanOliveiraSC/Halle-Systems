@@ -123,9 +123,9 @@ public class AgendamentoDAO {
 					Date dataHoraFim = rs.getDate("AG_DATA_TERMINO");
 					boolean ativo = rs.getBoolean("AG_ATIVO");
 					boolean concluido = rs.getBoolean("AG_CONCLUIDO");
-					Long codigoCliente = rs.getLong("AG_CLI_CODIGO"); 
-					Long codigoFuncionario = rs.getLong("AG_FUN_CODIGO");
-					Long codigoServico = rs.getLong("AG_SP_CODIGO");
+					int codigoCliente = rs.getInt("AG_CLI_CODIGO"); 
+					int codigoFuncionario = rs.getInt("AG_FUN_CODIGO");
+					int codigoServico = rs.getInt("AG_SP_CODIGO");
 
 					return new AgendamentoDTO(id, dataHoraInicio, dataHoraFim, observacao, codigoCliente, 
 							codigoFuncionario, codigoServico, ativo, concluido);

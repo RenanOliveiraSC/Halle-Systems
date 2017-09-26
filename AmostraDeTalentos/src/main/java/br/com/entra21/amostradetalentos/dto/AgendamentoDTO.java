@@ -110,7 +110,7 @@ public class AgendamentoDTO {
 	public Agendamento toAgenda() {
 		return new Agendamento(this.codigo,
 				DateUtils.parseData(this.horarioAgendadoInicio, DateUtils.PATTERN_DATA_PADRAO),
-				DateUtils.parseData(this.horarioAgendadoFim, DateUtils.PATTERN_DATA_PADRAO), observacao, ativo,
-				concluido, new Cliente(), new Funcionario(), new ServicoProduto());
+				DateUtils.parseData(this.horarioAgendadoFim, DateUtils.PATTERN_DATA_PADRAO), this.observacao,
+				this.ativo, this.concluido, new Cliente(), new Funcionario(), new ServicoProduto());
 	}
 }
