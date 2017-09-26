@@ -1,31 +1,28 @@
 package br.com.entra21.amostradetalentos.dto;
 
-import java.util.Date;
-
 import br.com.entra21.amostradetalentos.model.Agendamento;
-import br.com.entra21.amostradetalentos.model.ServicoProduto;
 
 public class AgendamentoDTO {
 
 	private int codigo;
-	private Date horarioAgendadoInicio;
-	private Date horarioAgendadoFim;
+	private String horarioAgendadoInicio;
+	private String horarioAgendadoFim;
 	private String observacao;
-	private Long codigoCliente;
-	private Long codigoFuncionario;
-	private Long codigoServico;
+	private String nomeCliente;
+	private String nomeFuncionario;
+	private String descricaoServico;
 	private boolean ativo;
 	private boolean concluido;
 
-	public AgendamentoDTO(int codigo, Date horarioAgendadoInicio, Date horarioAgendadoFim, String observacao, 
-			Long codigoCliente, Long codigoFuncionario, Long codigoServico, boolean ativo, boolean concluido) {
+	public AgendamentoDTO(int codigo, String horarioAgendadoInicio, String horarioAgendadoFim, String observacao, 
+			String nomeCliente, String nomeFuncionario, String descricaoServico, boolean ativo, boolean concluido) {
 		this.codigo = codigo;
 		this.horarioAgendadoInicio = horarioAgendadoInicio;
 		this.horarioAgendadoFim = horarioAgendadoFim;
 		this.observacao = observacao;
-		this.codigoCliente = codigoCliente;
-		this.codigoFuncionario = codigoFuncionario;
-		this.codigoServico = codigoServico;
+		this.nomeCliente = nomeCliente;
+		this.nomeFuncionario = nomeFuncionario;
+		this.descricaoServico = descricaoServico;
 		this.ativo = ativo;
 		this.concluido = concluido;
 	}
@@ -42,19 +39,19 @@ public class AgendamentoDTO {
 		this.codigo = codigo;
 	}
 
-	public Date getHorarioAgendadoInicio() {
+	public String getHorarioAgendadoInicio() {
 		return horarioAgendadoInicio;
 	}
 
-	public void setHorarioAgendadoInicio(Date horarioAgendadoInicio) {
+	public void setHorarioAgendadoInicio(String horarioAgendadoInicio) {
 		this.horarioAgendadoInicio = horarioAgendadoInicio;
 	}
 
-	public Date getHorarioAgendadoFim() {
+	public String getHorarioAgendadoFim() {
 		return horarioAgendadoFim;
 	}
 
-	public void setHorarioAgendadoFim(Date horarioAgendadoFim) {
+	public void setHorarioAgendadoFim(String horarioAgendadoFim) {
 		this.horarioAgendadoFim = horarioAgendadoFim;
 	}
 
@@ -66,28 +63,28 @@ public class AgendamentoDTO {
 		this.observacao = observacao;
 	}
 
-	public Long getCodigoCliente() {
-		return codigoCliente;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
-	public void setCodigoCliente(Long codigoCliente) {
-		this.codigoCliente = codigoCliente;
+	public void setnomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
 	}
 
-	public Long getCodigoFuncionario() {
-		return codigoFuncionario;
+	public String getNomeFuncionario() {
+		return nomeFuncionario;
 	}
 
-	public void setCodigoFuncionario(Long codigoFuncionario) {
-		this.codigoFuncionario = codigoFuncionario;
+	public void setNomeFuncionario(String nomeFuncionario) {
+		this.nomeFuncionario = nomeFuncionario;
 	}
 
-	public Long getCodigoServico() {
-		return codigoServico;
+	public String getDescricaoServico() {
+		return descricaoServico;
 	}
 
-	public void setCodigoServico(Long codigoServico) {
-		this.codigoServico = codigoServico;
+	public void setDescricaoServico(String descricaoServico) {
+		this.descricaoServico = descricaoServico;
 	}
 
 	public boolean isAtivo() {

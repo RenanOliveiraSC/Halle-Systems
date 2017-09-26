@@ -3,6 +3,7 @@ package br.com.entra21.amostradetalentos.model;
 import java.util.Date;
 
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class Agendamento {
 
@@ -15,13 +16,13 @@ public class Agendamento {
 	private Cliente cliente;
 	private Funcionario funcionario;
 	private ServicoProduto servicoPrestado;
-	
+
 	public Agendamento() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Agendamento(int codigo, Date dataHoraInicio, Date dataHoraFim, String observacao,
-			boolean ativo, boolean concluido, Cliente cliente, Funcionario funcionario, ServicoProduto servicoPrestado) {
+	public Agendamento(int codigo, Date dataHoraInicio, Date dataHoraFim, String observacao, boolean ativo,
+			boolean concluido, Cliente cliente, Funcionario funcionario, ServicoProduto servicoPrestado) {
 		super();
 		this.codigo = codigo;
 		this.dataHoraInicio = dataHoraInicio;
@@ -33,10 +34,11 @@ public class Agendamento {
 		this.funcionario = funcionario;
 		this.servicoPrestado = servicoPrestado;
 	}
-	
+
 	@Override
 	public String toString() {
-		return this.getCodigo() + " " + this.getObservacao() + " " + this.getDataHoraInicio() + " " + this.getDataHoraFim();
+		return this.getCodigo() + " " + this.getObservacao() + " " + this.getDataHoraInicio() + " "
+				+ this.getDataHoraFim();
 	}
 
 	public int getCodigo() {
@@ -110,9 +112,12 @@ public class Agendamento {
 	public void setServicoPrestado(ServicoProduto servicoPrestado) {
 		this.servicoPrestado = servicoPrestado;
 	}
-	
+
 	public AgendamentoDTO toDTO() {
-		return new AgendamentoDTO();
+		return new AgendamentoDTO(this.codigo, DateUtils.formatData(this.dataHoraInicio, DateUtils.PATTERN_DATA_PADRAO),
+				DateUtils.formatData(this.dataHoraFim, DateUtils.PATTERN_DATA_PADRAO), this.observacao,
+				new Cliente().getNome(), new Funcionario().getNome(), new Servico().getDescricao(), this.ativo,
+				this.concluido);
 	}
-	
+
 }

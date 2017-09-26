@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dto.ClienteDTO;
-import br.com.entra21.amostradetalentos.model.Caixa;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.Endereco;
 import br.com.entra21.amostradetalentos.model.TipoCliente;
@@ -24,9 +23,9 @@ public class ClienteDAO {
 
 	public boolean inserir(Cliente cliente) throws SQLException {
 		String sql = "INSERT INTO CLIENTE (CLI_CODIGO, CLI_NOME, CLI_SOBRENOME, CLI_CPF, CLI_TELEFONE, CLI_CELULAR, CLI_EMAIL, CLI_DATA_NASCIMENTO, CLI_SEXO, CLI_PROFISSAO, CLI_PAI_MAE, CLI_GRU_CODIGO, CLI_END_CODIGO) VALUES (SEQ_CLIENTE.NEXTVAL, ?,?,?,?,?,?,?,?,?,?,?,?)";
-		
+
 		PreparedStatement statement = con.prepareStatement(sql);
-		
+
 		statement.setString(1, cliente.getNome());
 		statement.setString(2, cliente.getSobrenome());
 		statement.setString(3, cliente.getCpf());
@@ -147,7 +146,7 @@ public class ClienteDAO {
 
 		return statement.executeUpdate() > 0;
 	}
-	
+
 	public List<ClienteDTO> listarClientes() throws SQLException {
 		List<ClienteDTO> lCliente = new ArrayList<>();
 
@@ -156,7 +155,7 @@ public class ClienteDAO {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
-					
+
 					int id = rs.getInt("CLI_CODIGO");
 					String nome = rs.getString("CLI_NOME");
 					String sobreNome = rs.getString("CLI_SOBRENOME");
@@ -168,9 +167,9 @@ public class ClienteDAO {
 					String sexo = rs.getString("CLI_SEXO");
 					String profissao = rs.getString("CLI_PROFISSAO");
 					int paiMae = rs.getInt("CLI_PAI_MAE");
-					
-					
-					ClienteDTO cliente = new ClienteDTO(id, nome, sobreNome, cpf, telefone, celular, email, dataNascimento, sexo, profissao, paiMae);
+
+					ClienteDTO cliente = new ClienteDTO(id, nome, sobreNome, cpf, telefone, celular, email,
+							dataNascimento, sexo, profissao, paiMae);
 					lCliente.add(cliente);
 				}
 			}
@@ -180,4 +179,33 @@ public class ClienteDAO {
 
 	}
 
+	public ClienteDTO buscaPorId() throws SQLException {
+		ClienteDTO cliente = null;
+		String sql = "select * from CLIENTE";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+
+					int id = rs.getInt("CLI_CODIGO");
+					String nome = rs.getString("CLI_NOME");
+					String sobreNome = rs.getString("CLI_SOBRENOME");
+					String cpf = rs.getString("CLI_CPF");
+					String telefone = rs.getString("CLI_TELEFONE");
+					String celular = rs.getString("CLI_CELULAR");
+					String email = rs.getString("CLI_EMAIL");
+					Date dataNascimento = rs.getDate("CLI_DATA_NASCIMENTO");
+					String sexo = rs.getString("CLI_SEXO");
+					String profissao = rs.getString("CLI_PROFISSAO");
+					int paiMae = rs.getInt("CLI_PAI_MAE");
+
+					cliente = new ClienteDTO(id, nome, sobreNome, cpf, telefone, celular, email,
+							dataNascimento, sexo, profissao, paiMae);
+				}
+			}
+		}
+
+		return cliente;
+
+	}
 }
