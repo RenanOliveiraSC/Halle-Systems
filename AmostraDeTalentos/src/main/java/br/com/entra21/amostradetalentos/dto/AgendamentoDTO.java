@@ -1,6 +1,10 @@
 package br.com.entra21.amostradetalentos.dto;
 
 import br.com.entra21.amostradetalentos.model.Agendamento;
+import br.com.entra21.amostradetalentos.model.Cliente;
+import br.com.entra21.amostradetalentos.model.Funcionario;
+import br.com.entra21.amostradetalentos.model.ServicoProduto;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class AgendamentoDTO {
 
@@ -14,7 +18,7 @@ public class AgendamentoDTO {
 	private boolean ativo;
 	private boolean concluido;
 
-	public AgendamentoDTO(int codigo, String horarioAgendadoInicio, String horarioAgendadoFim, String observacao, 
+	public AgendamentoDTO(int codigo, String horarioAgendadoInicio, String horarioAgendadoFim, String observacao,
 			String nomeCliente, String nomeFuncionario, String descricaoServico, boolean ativo, boolean concluido) {
 		this.codigo = codigo;
 		this.horarioAgendadoInicio = horarioAgendadoInicio;
@@ -26,7 +30,7 @@ public class AgendamentoDTO {
 		this.ativo = ativo;
 		this.concluido = concluido;
 	}
-	
+
 	public AgendamentoDTO() {
 
 	}
@@ -102,8 +106,11 @@ public class AgendamentoDTO {
 	public void setConcluido(boolean concluido) {
 		this.concluido = concluido;
 	}
-	
+
 	public Agendamento toAgenda() {
-		return new Agendamento(); 
+		return new Agendamento(this.codigo,
+				DateUtils.parseData(this.horarioAgendadoInicio, DateUtils.PATTERN_DATA_PADRAO),
+				DateUtils.parseData(this.horarioAgendadoFim, DateUtils.PATTERN_DATA_PADRAO), observacao, ativo,
+				concluido, new Cliente(), new Funcionario(), new ServicoProduto());
 	}
 }
