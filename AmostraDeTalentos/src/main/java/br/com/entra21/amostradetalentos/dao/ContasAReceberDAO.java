@@ -10,9 +10,7 @@ import java.util.List;
 
 import br.com.entra21.amostradetalentos.dto.ContasAReceberDTO;
 import br.com.entra21.amostradetalentos.model.Caixa;
-import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.ContasAReceber;
-import br.com.entra21.amostradetalentos.model.FormaDePagamento;
 
 public class ContasAReceberDAO {
 
@@ -46,14 +44,14 @@ public class ContasAReceberDAO {
 					int codigo = rs.getInt("CAR_CODIGO");
 					int diasAtraso = rs.getInt("CAR_DIAS_ATRASO");
 					double saldo = rs.getDouble("CAR_SALDO");
-					double total = rs.getDouble("CAR_VALOR_TOTAL");
 					Date dataLancamento = rs.getDate("CAR_DATA_LANCAMENTO");
 					double pagamentoTotal = rs.getDouble("CAR_PAGAMENTO_TOTAL");
 					double desconto = rs.getDouble("CAR_DESCONTO");
-					
+
 					Caixa caixa = new Caixa(codigo);
 
-					lContasAReceber.add(new ContasAReceber(codigo, caixa, dataLancamento, diasAtraso, saldo, desconto, pagamentoTotal).toDTO());
+					lContasAReceber.add(new ContasAReceber(codigo, caixa, dataLancamento, diasAtraso, saldo, desconto,
+							pagamentoTotal).toDTO());
 				}
 
 				return lContasAReceber;
