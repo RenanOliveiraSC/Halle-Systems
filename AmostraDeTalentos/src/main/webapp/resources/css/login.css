@@ -194,3 +194,202 @@ div.right{
 .fright {
 	float: right;
 }
+
+@media screen and (max-width: 768px) {
+	div.main {
+
+	background-image: url("../img/background.jpg");
+	height: calc(100vh);
+	width: 100%;
+}
+
+[class*="fontawesome-"]:before {
+	font-family: 'FontAwesome', sans-serif;
+}
+
+/* ---------- GENERAL ---------- */
+* {
+	box-sizing: border-box;
+	margin: 0px auto;
+	&:
+	before
+	,
+	&
+	:
+	after
+	{
+	
+    
+	box-sizing
+	:
+	 
+	border-box;
+}
+
+}
+body {
+	color: #606468;
+	font: 87.5%/1.5em 'Open Sans', sans-serif;
+	margin: 0;
+}
+a {
+	color: #eee;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+input {
+	border: none;
+	font-family: 'Open Sans', Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.5em;
+	padding: 0;
+	-webkit-appearance: none;
+}
+
+p {
+	line-height: 1.5em;
+}
+
+.clearfix {
+	*zoom: 1; &: before , & : after {
+    content : ' ';
+	display: table;
+}
+
+&
+:after {
+	clear: both;
+}
+
+}
+.container {
+	left: 50%;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* ---------- LOGIN ---------- */
+/*
+.logo {
+	color: #fff;
+	font-size: 2%;
+}
+
+.img-logo{
+	aling: center;
+	height: 0%;
+	padding-left: 22%;
+}
+
+.img-logo > img{
+	width: 2%;
+}
+*/
+
+.border-left{
+	border-left: 2px solid #fff;
+}
+
+.spaceLeft{
+	padding-left: 3%;
+}
+
+span.login.fa {
+	background-color: #fff;
+	border-radius: 30px 10px 10px 30px;
+	color: #000;
+	display: block;
+	float: left;
+	height: 100%;
+	font-size: 100%;
+	line-height: 100%;
+	text-align: center;
+	width: 100%;
+}
+
+input.login {
+	height: 100%;
+}
+
+
+input.login[type="text"], input.login[type="password"] {
+	background-color: #fff;
+	border-radius: 5px 20px 20px 5px;
+	color: #000;
+	margin-bottom: 1em;
+	padding: 0 16px;
+	width: 100%;
+}
+
+input.login[type="submit"] {
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 3px;
+	background-color: #000000;
+	color: #eee;
+	font-weight: bold;
+	/* margin-bottom: 2em; */
+	text-transform: uppercase;
+	padding: 3px 5px;
+	height: 100%;
+}
+
+input.login[type="submit"]:hover {
+	background-color: #004040;
+}
+
+.small-text{
+	font-size: 100%;
+}
+
+/*---------------------- Rodapé --------------------*/
+
+html, body {
+	height: 100%;
+}
+
+.geral {
+	min-height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background: Black;
+	height: 50px;
+	padding-top: 15px;
+}
+
+div.left{
+	float: left;
+}
+
+div.right{
+	float: right;
+}
+
+.content {
+	overflow: hidden;
+}
+
+.aside {
+	width: 100px;
+}
+
+.fleft {
+	float: left;
+}
+
+.fright {
+	float: right;
+}
+
+}
