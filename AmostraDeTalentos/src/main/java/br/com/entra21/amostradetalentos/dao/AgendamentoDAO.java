@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
@@ -21,20 +22,26 @@ public class AgendamentoDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(Agendamento agendamento) throws SQLException {
+	public boolean inserir(AgendamentoDTO agendamento) throws SQLException {
 		String sql = "INSERT INTO AGENDAMENTO (AG_CODIGO, AG_OBSERVACAO, AG_DATA_INICIO, AG_DATA_TERMINO, AG_ATIVO, "
 				+ "AG_CONCLUIDO, AG_CLI_CODIGO, AG_FUN_CODIGO, AG_SP_CODIGO) VALUES (SEQ_AGENDA.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 
 		statement.setString(0, agendamento.getObservacao());
-		statement.setDate(1, (Date) agendamento.getDataHoraInicio());
-		statement.setDate(2, (Date) agendamento.getDataHoraFim());
-		statement.setBoolean(3, agendamento.isAtivo());
-		statement.setBoolean(4, agendamento.isConcluido());
-		statement.setLong(5, agendamento.getCliente().getCodigo());
-		statement.setLong(6, agendamento.getFuncionario().getCodigo());
-		statement.setLong(7, agendamento.getServicoPrestado().getCodigo());
+		Date dataInicio = (Date) DateUtils.parseData(agendamento.getData(), "yyy-MM-dd HH:mm");
+		statement.setDate(1, dataInicio);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dataInicio);
+		int hour = calendar.get(Calendar.HOUR);
+		calendar.set(Calendar.HOUR, hour+1);
+		Date dataFinal = (Date) calendar.getTime();
+		statement.setDate(2, dataFinal);
+		statement.setBoolean(3, "S".equals(agendamento.getAtivo()));
+		statement.setBoolean(4, "S".equals(agendamento.getConcluido()));
+		statement.setLong(5, Long.valueOf(agendamento.getCodigoCliente()));
+		statement.setLong(6, Long.valueOf(agendamento.getCodigoFuncionario()));
+		statement.setLong(7, Long.valueOf(agendamento.getCodigoServico()));
 
 		return statement.executeUpdate() > 0;
 	}

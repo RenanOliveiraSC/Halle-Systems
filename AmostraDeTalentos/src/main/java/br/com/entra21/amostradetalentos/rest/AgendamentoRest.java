@@ -54,7 +54,7 @@ public class AgendamentoRest {
 	public Response create(AgendamentoDTO agenda) {
 		AgendamentoService agendaService = new AgendamentoService();
 		try {
-			agendaService.inserir(agenda.toAgenda());
+			agendaService.inserir(agenda);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,6 +82,32 @@ public class AgendamentoRest {
 		AgendamentoService agendaService = new AgendamentoService();
 		try {
 			agendaService.excluir(codigo);
+			return Response.status(Response.Status.OK).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@POST
+	@Path("/concluir/{id}")
+	public Response concluir(@PathParam("id") int codigo) {
+		AgendamentoService agendaService = new AgendamentoService();
+		try {
+			agendaService.concluirAgendamento(codigo);
+			return Response.status(Response.Status.OK).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@POST
+	@Path("/cancelar/{id}")
+	public Response cancelar(@PathParam("id") int codigo) {
+		AgendamentoService agendaService = new AgendamentoService();
+		try {
+			agendaService.cancelarAgendamento(codigo);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();

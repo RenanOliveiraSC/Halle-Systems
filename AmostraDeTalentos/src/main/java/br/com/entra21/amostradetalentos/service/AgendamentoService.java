@@ -12,7 +12,7 @@ import br.com.entra21.amostradetalentos.model.Agendamento;
 
 public class AgendamentoService {
 
-	public void inserir(Agendamento agenda) throws SQLException {
+	public void inserir(AgendamentoDTO agenda) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			new AgendamentoDAO(con).inserir(agenda);
 		}
@@ -27,6 +27,18 @@ public class AgendamentoService {
 	public void excluir(Integer codigo) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			new AgendamentoDAO(con).excluir(codigo);
+		}
+	}
+	
+	public boolean cancelarAgendamento(int id) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			return new AgendamentoDAO(con).cancelarAgendamento(id);
+		}
+	}
+	
+	public boolean concluirAgendamento(int id) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			return new AgendamentoDAO(con).concluirAgendamento(id);
 		}
 	}
 

@@ -24,9 +24,19 @@
 		calendario.getClientes = getClientes;
 		calendario.getServicos = getServicos;
 		calendario.getFuncionarios = getFuncionarios;
+		calendario.concluir = concluir;
+		calendario.cancelar = cancelar;
+		calendario.salvar = salvar;
+		calendario.excluir = excluir;
 		calendario.limpar = limpar;
 		
 		/*implementação dos métodos*/
+		
+		function init(){
+			calendario.getClientes();
+			calendario.getServicos();
+			calendario.getFuncionarios();
+		};
 		
 		function carregarAgendamentoPeloCodigo(codigo){
 			CalendarioService.getAgendamento(codigo).then(
@@ -44,53 +54,80 @@
 		};
 		
 		function getClientes(){
-			if(calendario.clientes && '' != calendario.clientes){
-				ClienteService.listarSelect().then(
-					function(data) { //success
-						calendario.clientes = data.data;
-					},
-					function() { //error
-						alert("Não foi possível carregar a listagem de clientes");
-					}
-				);
-			}
+			ClienteService.listarSelect().then(
+				function(data) { //success
+					calendario.clientes = data.data;
+				},
+				function() {}
+			);
 		};
 		
 		function getServicos(){
-			if(calendario.servicos && '' != calendario.servicos){
-				ServicoService.listarSelect().then(
-					function(data) { //success
-						calendario.servicos = data.data;
-					},
-					function() { //error
-						alert("Não foi possível carregar a listagem de serviços");
-					}
-				);
-			}
+			ServicoService.listarSelect().then(
+				function(data) { //success
+					calendario.servicos = data.data;
+				},
+				function() {}
+			);
 		};
 		
 		function getFuncionarios(){
-			if(calendario.funcionarios && '' != calendario.funcionarios){
-				FuncionarioService.listarSelect().then(
-					function(data) { //success
-						calendario.funcionarios = data.data;
-					},
-					function() { //error
-						alert("Não foi possível carregar a listagem de funcionários");
-					}
-				);
-			}
-		};
-		
-		function init(){
-			calendario.getClientes();
-			calendario.getServicos();
-			calendario.getFuncionarios();
+			FuncionarioService.listarSelect().then(
+				function(data) { //success
+					calendario.funcionarios = data.data;
+				},
+				function() {}
+			);
 		};
 		
 		function limpar(){
 			calendario.agendamento = [];
 		}
+		
+		function concluir(){
+			CalendarioService.concluir(codigo).then(
+				function(data) { //success
+					alert('Concluído com sucesso');
+				},
+				function() {}
+			);
+		};
+		
+		function cancelar(){
+			CalendarioService.cancelar(codigo).then(
+				function(data) { //success
+					alert('Cancelado com sucesso');
+				},
+				function() {}
+			);
+		};
+		
+		function salvar(){
+			if(calendario.agendamento && calendario.agendamento.codigo){
+				CalendarioService.update(calendario.agendamento).then(
+					function(data) { //success
+						alert('Alterado com sucesso');
+					},
+					function() {}
+				);
+			}else{
+				CalendarioService.create(calendario.agendamento).then(
+					function(data) { //success
+						alert('Criado com sucesso');
+					},
+					function() {}
+				);
+			}
+		};
+		
+		function excluir(){
+			CalendarioService.deletar(codigo).then(
+				function(data) { //success
+					alert('Removido com sucesso');
+				},
+				function() {}
+			);
+		};
 		
 		calendario.init();
 		
