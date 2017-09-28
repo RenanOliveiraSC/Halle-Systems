@@ -11,15 +11,14 @@
 		    getAgendamento : getAgendamento,
 		    create : create,
 		    update : update,
-		    deletar : deletar,
-		    novo : novo
+		    deletar : deletar
 		}
 		
 		return service;
 		
-		function listar() {
+		function listar(start, end) {
 			return $http({
-				url : 'http://localhost:9080/AmostraDeTalentos/rest/agendamento/listar',
+				url : 'http://localhost:9080/AmostraDeTalentos/rest/agendamento/listar/'+start+'/'+end,
 				method : 'GET'
 			});
 		}
@@ -60,12 +59,6 @@
 			});
 		}
 		
-		function novo(){
-			return $http({
-				url : 'http://localhost:9080/AmostraDeTalentos/rest/agendamento/novo',
-				method : 'GET'
-			});
-		}
 	}
 
 })();

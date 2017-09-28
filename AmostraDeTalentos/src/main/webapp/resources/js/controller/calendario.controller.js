@@ -4,7 +4,8 @@
 		.module('app')
 		.controller('CalendarioController', CalendarioController);
 	
-	function CalendarioController($location, $cookies, $http, CalendarioService) {
+	function CalendarioController($location, $cookies, $http, CalendarioService, ClienteService, 
+			FuncionarioService, ServicoService) {
 		
 		var calendario = this;
 		
@@ -12,56 +13,86 @@
 		calendario.dataInicio;
 		calendario.dataFim;
 		calendario.agendamento;
+		calendario.clientes;
+		calendario.servicos;
+		calendario.funcionarios;
 		
 		/*declaração dos métodos*/
+		calendario.init = init; 
 		calendario.carregarAgendamentoPeloCodigo = carregarAgendamentoPeloCodigo;
 		calendario.carregarNovoAgendamento = carregarNovoAgendamento;
 		calendario.getClientes = getClientes;
 		calendario.getServicos = getServicos;
 		calendario.getFuncionarios = getFuncionarios;
+		calendario.limpar = limpar;
 		
 		/*implementação dos métodos*/
 		
 		function carregarAgendamentoPeloCodigo(codigo){
-			console.log(codigo);
-			CalendarioService.getAgendamento(codigo)
-			.then(
+			CalendarioService.getAgendamento(codigo).then(
 				function(data) { //success
-					console.log(data.data);
 					calendario.agendamento = data.data;
-				}, function() { //error
+				},
+				function() { //error
 					alert("Não foi possível carregar o agendamento");
-				});
+				}
+			);
 		};
 		
-		function carregarNovoAgendamento(dataAgendamento){
-			CalendarioService.novo()
-			.then(
-				function(data) { //success
-					console.log(data.data);
-					calendario.agendamento = data.data;
-				}, function() { //error
-					alert("Não foi possível carregar novo agendamento");
-				});
-			
+		function carregarNovoAgendamento(date){
+			calendario.agendamento.data = new Date(date);
 		};
 		
 		function getClientes(){
-			return [{codigo : '1', nome : 'Maria', cpf : '789.999.987-99'},
-					{codigo : '2', nome : 'Fulano', cpf : '789.999.987-98'},
-					{codigo : '3', nome : 'José', cpf : '789.999.987-97'}]
+			if(calendario.clientes && '' != calendario.clientes){
+				ClienteService.listarSelect().then(
+					function(data) { //success
+						calendario.clientes = data.data;
+					},
+					function() { //error
+						alert("Não foi possível carregar a listagem de clientes");
+					}
+				);
+			}
 		};
 		
 		function getServicos(){
-			return [{codigo : '1', servico : 'Unhas'},
-				{codigo : '2', servico : 'Cabelo Feminino'},
-				{codigo : '3', servico : 'Cabelo Masculino'}]
+			if(calendario.servicos && '' != calendario.servicos){
+				ServicoService.listarSelect().then(
+					function(data) { //success
+						calendario.servicos = data.data;
+					},
+					function() { //error
+						alert("Não foi possível carregar a listagem de serviços");
+					}
+				);
+			}
 		};
 		
 		function getFuncionarios(){
-			return [{codigo : '1', nome : 'Marlene'},
-				{codigo : '2', nome : 'Adriana'}]
+			if(calendario.funcionarios && '' != calendario.funcionarios){
+				FuncionarioService.listarSelect().then(
+					function(data) { //success
+						calendario.funcionarios = data.data;
+					},
+					function() { //error
+						alert("Não foi possível carregar a listagem de funcionários");
+					}
+				);
+			}
 		};
+		
+		function init(){
+			calendario.getClientes();
+			calendario.getServicos();
+			calendario.getFuncionarios();
+		};
+		
+		function limpar(){
+			calendario.agendamento = [];
+		}
+		
+		calendario.init();
 		
 	}
 })();

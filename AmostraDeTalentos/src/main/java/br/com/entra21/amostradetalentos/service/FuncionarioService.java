@@ -2,8 +2,10 @@ package br.com.entra21.amostradetalentos.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.FuncionarioDAO;
+import br.com.entra21.amostradetalentos.dto.FuncionarioMiniDTO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Funcionario;
 
@@ -15,27 +17,21 @@ public class FuncionarioService {
 		}
 	}
 
-	public void alterarNome(Integer id, String nome) throws SQLException {
+	public void alterar(Funcionario funcionario) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FuncionarioDAO(con).alterarNome(id, nome);
+			new FuncionarioDAO(con).alterar(funcionario);
+		}
+	}
+	
+	public boolean excluir(int id) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			return new FuncionarioDAO(con).excluir(id);
 		}
 	}
 
-	public void alterarSobreNome(Integer id, String sobreNome) throws SQLException {
+	public List<FuncionarioMiniDTO> listarSelect() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FuncionarioDAO(con).alterarSobreNome(id, sobreNome);
-		}
-	}
-
-	public void alterarEmail(Integer id, String email) throws SQLException {
-		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FuncionarioDAO(con).alterarEmail(id, email);
-		}
-	}
-
-	public void alterarTelefone(Integer id, String telefone) throws SQLException {
-		try (Connection con = new ConnectionPoolOracle().getConnection()) {
-			new FuncionarioDAO(con).alterarEmail(id, telefone);
+			return new FuncionarioDAO(con).listarSelect();
 		}
 	}
 }

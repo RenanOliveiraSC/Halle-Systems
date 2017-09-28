@@ -3,6 +3,7 @@ package br.com.entra21.amostradetalentos.model;
 import java.util.Date;
 
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class Agendamento {
 
@@ -113,11 +114,13 @@ public class Agendamento {
 	}
 
 	public AgendamentoDTO toDTO() {
-		Long codigoCliente = null != this.cliente ? Long.valueOf(this.cliente.getCodigo()) : null;
-		Long codigoFuncionario = null != this.funcionario ? Long.valueOf(this.funcionario.getCodigo()) : null;
-		Long codigoServico = null != this.servicoPrestado ? Long.valueOf(this.servicoPrestado.getCodigo()) : null;
-		return new AgendamentoDTO(this.codigo, this.dataHoraInicio, this.dataHoraFim, this.observacao,
-				codigoCliente, codigoFuncionario, codigoServico, this.ativo, this.concluido);
+		String codigoCliente = null != this.cliente ? String.valueOf(this.cliente.getCodigo()) : null;
+		String codigoFuncionario = null != this.funcionario ? String.valueOf(this.funcionario.getCodigo()) : null;
+		String codigoServico = null != this.servicoPrestado ? String.valueOf(this.servicoPrestado.getCodigo()) : null;
+		String ativo = this.ativo ? "S" : "N";
+		String concluido = this.concluido ? "S" : "N"; 
+		return new AgendamentoDTO(String.valueOf(this.codigo), DateUtils.formatData(this.dataHoraInicio, "yyy-MM-dd HH:mm"), this.observacao,
+				codigoCliente, codigoFuncionario, codigoServico, ativo, concluido);
 	}
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoMiniDTO;
 import br.com.entra21.amostradetalentos.model.Agendamento;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class AgendamentoDAO {
 
@@ -120,15 +121,15 @@ public class AgendamentoDAO {
 					int id = rs.getInt("AG_CODIGO");
 					String observacao = rs.getString("AG_OBSERVACAO");
 					Date dataHoraInicio = rs.getDate("AG_DATA_INICIO");
-					Date dataHoraFim = rs.getDate("AG_DATA_TERMINO");
 					boolean ativo = rs.getBoolean("AG_ATIVO");
 					boolean concluido = rs.getBoolean("AG_CONCLUIDO");
 					Long codigoCliente = rs.getLong("AG_CLI_CODIGO"); 
 					Long codigoFuncionario = rs.getLong("AG_FUN_CODIGO");
 					Long codigoServico = rs.getLong("AG_SP_CODIGO");
 
-					return new AgendamentoDTO(id, dataHoraInicio, dataHoraFim, observacao, 
-							codigoCliente, codigoFuncionario, codigoServico, ativo, concluido);
+					return new AgendamentoDTO(String.valueOf(id), DateUtils.formatData(dataHoraInicio, "yyyy-MM-dd HH:mm"), observacao,
+							codigoCliente.toString(), codigoFuncionario.toString(), codigoServico.toString(), 
+							(ativo ? "S" : "N"), (concluido ? "S" : "N"));
 				
 				}
 			}

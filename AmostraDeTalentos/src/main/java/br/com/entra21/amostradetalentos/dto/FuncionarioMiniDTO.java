@@ -1,15 +1,15 @@
 package br.com.entra21.amostradetalentos.dto;
 
-public class ClienteMiniDTO {
+public class FuncionarioMiniDTO {
 
 	private Integer codigo;
 	private String nome;
 
-	public ClienteMiniDTO() {
+	public FuncionarioMiniDTO() {
 
 	}
 
-	public ClienteMiniDTO(int codigo, String nome) {
+	public FuncionarioMiniDTO(int codigo, String nome) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;

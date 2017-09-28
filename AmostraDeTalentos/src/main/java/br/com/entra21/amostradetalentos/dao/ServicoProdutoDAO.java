@@ -2,8 +2,12 @@ package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import br.com.entra21.amostradetalentos.dto.ServicoPrestadoMiniDTO;
 import br.com.entra21.amostradetalentos.model.ServicoProduto;
 
 public class ServicoProdutoDAO {
@@ -32,6 +36,25 @@ public class ServicoProdutoDAO {
 		statement.setInt(1, id);
 
 		return statement.executeUpdate() > 0;
+	}
+	
+	public List<ServicoPrestadoMiniDTO> listarSelect() throws SQLException {
+		List<ServicoPrestadoMiniDTO> lista = new ArrayList<>();
+		String sql = "SELECT SP_CODIGO, SER_NOME FROM SERVICO_PRODUTO "
+				+ " INNER JOIN SERVICO ON SP_SER_CODIGO = SER_CODIGO ";
+
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int codigo = rs.getInt("SP_CODIGO");
+					String descricaoServico = rs.getString("SER_NOME");
+
+					lista.add(new ServicoPrestadoMiniDTO(codigo, descricaoServico));
+				}
+			}
+		}
+		return lista;
 	}
 
 }

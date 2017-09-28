@@ -12,7 +12,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.entra21.amostradetalentos.dto.ClienteDTO;
-import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.service.ClienteService;
 
 @Path("/cliente")
@@ -22,37 +21,36 @@ public class ClienteRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/create")
 	public Response create(ClienteDTO cliente) {
-		ClienteService ClienteService = new ClienteService();
+		ClienteService clienteService = new ClienteService();
 		try {
-			ClienteService.inserir(Cliente.toCliente());
+			clienteService.inserir(cliente.toCliente());
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-
 	
-//	@PUT
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	@Path("/")
-//	public Response update(ClienteDTO Cliente) {
-//		ClienteService ClienteService = new ClienteService();
-//		try {
-//			ClienteService.alterar(Cliente.toCliente());
-//			return Response.status(Response.Status.OK).build();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-//		}
-//	}
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/update")
+	public Response update(ClienteDTO cliente) {
+		ClienteService clienteService = new ClienteService();
+		try {
+			clienteService.alterar(cliente);
+			return Response.status(Response.Status.OK).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
 
 	@DELETE
-	@Path("delete/{codigo}")
+	@Path("/delete/{codigo}")
 	public Response delete(@PathParam ("codigo") int codigo) {
-		ClienteService ClienteService = new ClienteService();
+		ClienteService clienteService = new ClienteService();
 		try {
-			ClienteService.excluir(codigo);
+			clienteService.excluir(codigo);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,15 +58,26 @@ public class ClienteRest {
 		}
 	}
 	
-	//listar AAAAAAAAAAA
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("{codigo}/")
-	public Response getCliente(ClienteDTO Cliente) {
-		ClienteService ClienteService = new ClienteService();
+	@Path("/clientes")
+	public Response getClientes() {
+		ClienteService clienteService = new ClienteService();
 		try {
-			ClienteService.inserir(Cliente.toCliente());
-			return Response.status(Response.Status.OK).build();
+			return Response.ok(clienteService.listar()).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/clientesSelecionar")
+	public Response getClientesSelecionar() {
+		ClienteService clienteService = new ClienteService();
+		try {
+			return Response.ok(clienteService.listarSelect()).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

@@ -26,5 +26,18 @@ public final class DateUtils {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		return sdf.format(data);
 	}
-
+	
+	public static Date parseData(String data, String patternData, String hora, String patternHora) {
+		String dataConverter = data+" "+hora;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(patternData+" "+patternHora);
+        try{
+            Date date = simpleDateFormat.parse(dataConverter);
+            System.out.println("date : "+simpleDateFormat.format(date));
+            return date;
+        }catch (ParseException ex){
+            System.out.println("Exception "+ex);
+            return null;
+        }
+	}
+	
 }

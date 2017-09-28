@@ -22,8 +22,8 @@ public class AgendamentoRest {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/listar")
-	public Response listAgenda() {
+	@Path("/listar/{start}/{end}")
+	public Response listAgenda(@PathParam("start") String dateStart, @PathParam("end") String dateEnd) {
 		/*Tem que retornar uma lista de AgendamentoMiniDTO, pra ser exibido no calendario*/
 		AgendamentoService agendaService = new AgendamentoService();
 		try {
@@ -87,13 +87,6 @@ public class AgendamentoRest {
 			e.printStackTrace();
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
-	}
-	
-	@GET
-	@Path("/novo")
-	public Response getNovo() {
-		AgendamentoDTO agendamento = new AgendamentoDTO();
-		return Response.ok(agendamento).build();
 	}
 
 }

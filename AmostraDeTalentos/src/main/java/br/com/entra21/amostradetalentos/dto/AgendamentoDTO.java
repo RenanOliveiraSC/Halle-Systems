@@ -1,29 +1,26 @@
 package br.com.entra21.amostradetalentos.dto;
 
-import java.util.Date;
-
 import br.com.entra21.amostradetalentos.model.Agendamento;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.Funcionario;
 import br.com.entra21.amostradetalentos.model.ServicoProduto;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class AgendamentoDTO {
 
-	private int codigo;
-	private Date horarioAgendadoInicio;
-	private Date horarioAgendadoFim;
+	private String codigo;
+	private String data;
 	private String observacao;
-	private Long codigoCliente;
-	private Long codigoFuncionario;
-	private Long codigoServico;
-	private boolean ativo;
-	private boolean concluido;
+	private String codigoCliente;
+	private String codigoFuncionario;
+	private String codigoServico;
+	private String ativo;
+	private String concluido;
 
-	public AgendamentoDTO(int codigo, Date horarioAgendadoInicio, Date horarioAgendadoFim, String observacao,
-			Long codigoCliente, Long codigoFuncionario, Long codigoServico, boolean ativo, boolean concluido) {
+	public AgendamentoDTO(String codigo, String data, String observacao, String codigoCliente, 
+			String codigoFuncionario, String codigoServico, String ativo, String concluido) {
 		this.codigo = codigo;
-		this.horarioAgendadoInicio = horarioAgendadoInicio;
-		this.horarioAgendadoFim = horarioAgendadoFim;
+		this.data = data;
 		this.observacao = observacao;
 		this.codigoCliente = codigoCliente;
 		this.codigoFuncionario = codigoFuncionario;
@@ -36,28 +33,20 @@ public class AgendamentoDTO {
 
 	}
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
-	public Date getHorarioAgendadoInicio() {
-		return horarioAgendadoInicio;
+	public String getData() {
+		return data;
 	}
 
-	public void setHorarioAgendadoInicio(Date horarioAgendadoInicio) {
-		this.horarioAgendadoInicio = horarioAgendadoInicio;
-	}
-
-	public Date getHorarioAgendadoFim() {
-		return horarioAgendadoFim;
-	}
-
-	public void setHorarioAgendadoFim(Date horarioAgendadoFim) {
-		this.horarioAgendadoFim = horarioAgendadoFim;
+	public void setData(String data) {
+		this.data = data;
 	}
 
 	public String getObservacao() {
@@ -68,48 +57,48 @@ public class AgendamentoDTO {
 		this.observacao = observacao;
 	}
 
-	public Long getCodigoCliente() {
+	public String getCodigoCliente() {
 		return codigoCliente;
 	}
 
-	public void setCodigoCliente(Long codigoCliente) {
+	public void setCodigoCliente(String codigoCliente) {
 		this.codigoCliente = codigoCliente;
 	}
 
-	public Long getCodigoFuncionario() {
+	public String getCodigoFuncionario() {
 		return codigoFuncionario;
 	}
 
-	public void setCodigoFuncionario(Long codigoFuncionario) {
+	public void setCodigoFuncionario(String codigoFuncionario) {
 		this.codigoFuncionario = codigoFuncionario;
 	}
 
-	public Long getCodigoServico() {
+	public String getCodigoServico() {
 		return codigoServico;
 	}
 
-	public void setCodigoServico(Long codigoServico) {
+	public void setCodigoServico(String codigoServico) {
 		this.codigoServico = codigoServico;
 	}
 
-	public boolean isAtivo() {
+	public String getAtivo() {
 		return ativo;
 	}
 
-	public void setAtivo(boolean ativo) {
+	public void setAtivo(String ativo) {
 		this.ativo = ativo;
 	}
 
-	public boolean isConcluido() {
+	public String getConcluido() {
 		return concluido;
 	}
 
-	public void setConcluido(boolean concluido) {
+	public void setConcluido(String concluido) {
 		this.concluido = concluido;
 	}
 
 	public Agendamento toAgenda() {
-		return new Agendamento(this.codigo, this.horarioAgendadoInicio, this.horarioAgendadoFim, this.observacao,
-				this.ativo, this.concluido, new Cliente(), new Funcionario(), new ServicoProduto());
+		return new Agendamento(Integer.valueOf(this.codigo), DateUtils.parseData(this.data, "yyyy-MM-dd HH:mm"), null, this.observacao, 
+			"S".equals(this.ativo), "S".equals(this.concluido), new Cliente(), new Funcionario(), new ServicoProduto());
 	}
 }

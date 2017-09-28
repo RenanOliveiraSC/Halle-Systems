@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.com.entra21.amostradetalentos.dto.ServicosDTO;
+import br.com.entra21.amostradetalentos.service.ServicoProdutoService;
 import br.com.entra21.amostradetalentos.service.ServicoService;
 
 @Path("/servico")
@@ -35,11 +36,10 @@ public class ServicoRest {
 	}
 
 	
-//	alterar AAAA
-//	@PUT
+//	@POST
 //	@Consumes(MediaType.APPLICATION_JSON)
-//	@Path("/")
-//	public Response update(ServicosDTO2 servico) {
+//	@Path("/update")
+//	public Response update(ServicosDTO servico) {
 //		ServicoService servicoService = new ServicoService();
 //		try {
 //			servicoService.inserir(servico.toServico());
@@ -78,8 +78,8 @@ public class ServicoRest {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{codigo}")
-	public Response getPessoa(@PathParam("codigo") int codigo) {
+	@Path("/servico/{codigo}")
+	public Response getServico(@PathParam("codigo") int codigo) {
 		ServicoService servicoService = new ServicoService();
 		try {
 			ServicosDTO servicoDTO = servicoService.buscarServicoPorCodigo(codigo).toDTO();
@@ -88,6 +88,19 @@ public class ServicoRest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			//Se deu erro, vai retornar pro front end um erro interno
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/servicosSelecionar")
+	public Response getServicosSelecionar() {
+		ServicoProdutoService service = new ServicoProdutoService();
+		try {
+			return Response.ok(service.listarSelect()).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 	}

@@ -20,18 +20,18 @@ public class LoginRest {
 	@Path("/efetuarlogin")
 	public Response login(UsuarioLoginDTO usuario) {
 		UsuarioService usuarioService = new UsuarioService();
-//		UsuarioLogin usuarioLogin = usuario.toUsuarioLogin();
-//		usuarioLogin.setSenha(null);
-//		return Response.ok(usuarioLogin).build();
-		try {
-			UsuarioLogin usuarioLogin = usuarioService.login(usuario.toUsuarioLogin());
-			if (usuarioLogin != null) {
-				return Response.ok(usuarioLogin).build();
-			}
-			return Response.status(Response.Status.UNAUTHORIZED).build();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-		}
+		UsuarioLogin usuarioLogin = usuario.toUsuarioLogin();
+		usuarioLogin.setSenha(null);
+		return Response.ok(usuarioLogin).build();
+//		try {
+//			UsuarioLogin usuarioLogin = usuarioService.login(usuario.toUsuarioLogin());
+//			if (usuarioLogin != null) {
+//				return Response.ok(usuarioLogin).build();
+//			}
+//			return Response.status(Response.Status.UNAUTHORIZED).build();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+//		}
 	}
 }

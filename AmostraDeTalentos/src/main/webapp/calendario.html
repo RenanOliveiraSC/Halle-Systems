@@ -18,42 +18,46 @@
 									<div class="col-md-6">
 										<label for="cliente">Cliente</label> 
 										<select class="form-control" ng-model="calendario.agendamento.codigoCliente" id="cliente">
-											<option ng-repeat="cliente in calendario.getClientes()" value="{{cliente.codigo}}">{{cliente.nome}}</option>
+											<option value="" disabled selected>Selecione</option>
+											<option ng-repeat="cliente in calendario.clientes" value="{{cliente.codigo}}">{{cliente.nome}}</option>
 										</select>
 									</div>
 									<div class="col-md-6">
 										<label for="servico">Serviço</label> 
 										<select class="form-control" ng-model="calendario.agendamento.codigoServico" id="servico">
-											<option ng-repeat="serv in calendario.getServicos()" value="{{serv.codigo}}">{{serv.servico}}</option>
+											<option value="" disabled selected>Selecione</option>
+											<option ng-repeat="serv in calendario.servicos" value="{{serv.codigo}}">{{serv.descricao}}</option>
 										</select>
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-4">
+									<div class="col-md-5">
 										<label for="funcionario">Funcionário</label> 
 										<select class="form-control" ng-model="calendario.agendamento.codigoFuncionario" id="funcionario">
-											<option ng-repeat="fun in calendario.getFuncionarios()" value="{{fun.codigo}}">{{fun.nome}}</option>
+											<option value="" disabled selected>Selecione</option>
+											<option ng-repeat="fun in calendario.funcionarios" value="{{fun.codigo}}">{{fun.nome}}</option>
 										</select>
 									</div>
 									<div class="col-md-4">
-										<label for="horaInicio">Horário de agendamento</label> 
-										<input id="horaInicio" class="form-control" type="date" placeholder="Enter date" >
+										<label for="diaAgendamento">Data de agendamento</label> 
+										<input id="diaAgendamento" class="form-control" type="date" ng-model="calendario.agendamento.data"/>
 									</div>
-									<div class="col-md-4">
-										<label for="horaFim">Previsão de término</label> 
-										<input class="form-control" id="horaFim" type="date" placeholder="Enter date">
+									<div class="col-md-3">
+										<label for="horario">Horário</label> 
+										<input class="form-control col-md-6" id="horario" type="time" ng-model="calendario.agendamento.data"/>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
 										<label for="observacao">Observações</label> 
-										<textarea class="form-control" id="observacao" placeholder="Observação" rows="3" />
+										<textarea class="form-control" id="observacao" placeholder="Observação" rows="3" 
+											ng-model="calendario.agendamento.observacao"/>
 									</div>
 								</div>
 							</div>
 						</div>
 				        <div class="modal-footer">
-				            <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+				            <button type="button" ng-click="calendario.limpar()" class="btn btn-default" data-dismiss="modal">Ok</button>
 				        </div>
 				    </div>
 				</div>
@@ -77,7 +81,7 @@
 		if(mm<10) {
 		    mm = '0'+mm;
 		} 
-
+		
 		today = mm + '/' + dd + '/' + yyyy;
 
 		$('#calendar').fullCalendar({
@@ -99,7 +103,8 @@
 				if(month<10) {
 					month = '0'+month;
 				}
-				angular.element('#controller').scope().calendario.carregarNovoAgendamento(day+"/"+month+"/"+year);
+				var dateEvent = day + '/' + month + '/' + year;
+				angular.element('#controller').scope().calendario.carregarNovoAgendamento(dateEvent);
 				$('#calendarModal').modal();
 			},
 			editable: true,
@@ -109,11 +114,35 @@
 	            $('#calendarModal').modal();
 	        },
 			events: function( start, end, timezone, callback ) {
+				var day = moment(start).get('date');
+				var month = moment(start).get('month')+1;
+				var year = moment(start).get('year');
+				if(day<10) {
+					day = '0'+day;
+				}
+				if(month<10) {
+					month = '0'+month;
+				}
+				var dateStart = day + '-' + month + '-' + year;
+				
+				day = moment(end).get('date');
+				month = moment(end).get('month')+1;
+				year = moment(end).get('year');
+				if(day<10) {
+					day = '0'+day;
+				}
+				if(month<10) {
+					month = '0'+month;
+				}
+				var dateEnd = day + '-' + month + '-' + year;
+				
+				var url = "http://localhost:9080/AmostraDeTalentos/rest/agendamento/listar/"+dateStart+"/"+dateEnd;
 				$.ajax({ 
 		            type: "GET",
 		            dataType: "json",
-		            url: "http://localhost:9080/AmostraDeTalentos/rest/agendamento/listar",
-		            success: function(data){        
+		            url: url,
+		            async: false,
+		            done: function(data){        
 		            	var events = [];
 		            	for (i = 0; i < data.length; i++) { 
 		            	    var value = data[i];
