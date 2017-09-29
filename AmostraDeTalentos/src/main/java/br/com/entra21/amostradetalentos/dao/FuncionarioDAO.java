@@ -69,5 +69,5 @@ public class FuncionarioDAO {
 		}
 		return lista;
 	}
-
+	
 }

@@ -10,7 +10,9 @@
 				create : create,
 			    update : update,
 			    deletar : deletar,
-				listarSelect : listarSelect
+			    listar : listar,
+				listarSelect : listarSelect,
+				getFuncionario : getFuncionario,
 		}
 		
 		return service;
@@ -44,9 +46,23 @@
 			});
 		}
 		
+		function listar() {
+			return $http({
+				url : 'http://localhost:9080/AmostraDeTalentos/rest/funcionario/funcionarios',
+				method : 'GET'
+			});
+		}
+		
 		function listarSelect() {
 			return $http({
 				url : 'http://localhost:9080/AmostraDeTalentos/rest/funcionario/funcionariosSelecionar',
+				method : 'GET'
+			});
+		}
+		
+		function getFuncionario(codigo){
+			return $http({
+				url : 'http://localhost:9080/AmostraDeTalentos/rest/funcionario/funcionario/'+codigo,
 				method : 'GET'
 			});
 		}

@@ -38,6 +38,12 @@ public class ClienteService {
 		}
 	}
 	
+	public ClienteDTO getClientePeloCodigo(int codigo) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			return new ClienteDAO(con).getClientePeloCodigo(codigo);
+		}
+	}
+	
 	public List<ClienteMiniDTO> listarSelect() throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new ClienteDAO(con).listarSelect();

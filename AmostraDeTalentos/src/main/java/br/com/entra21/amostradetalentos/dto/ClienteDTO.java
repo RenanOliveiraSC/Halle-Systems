@@ -1,43 +1,42 @@
 package br.com.entra21.amostradetalentos.dto;
 
-import java.util.Date;
-
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.Endereco;
 import br.com.entra21.amostradetalentos.model.TipoCliente;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class ClienteDTO {
 
-	private Integer codigo;
+	private String codigo;
 	private String nome;
 	private String sobrenome;
-	private TipoCliente grupocliente;
-	private int limite_de_credito;
+	private String codigoGrupocliente;
+	private String limite_de_credito;
 	private String cpf;
-	private Endereco endereco;
+	private String codigoEndereco;
 	private String telefone;
 	private String celular;
 	private String email;
-	private Date data_nascimento;
+	private String data_nascimento;
 	private String sexo;
 	private String profissao;
-	private int pai_mae;
+	private String pai_mae;
 
 	public ClienteDTO() {
 
 	}
 
-	public ClienteDTO(int codigo, String nome, String sobrenome, TipoCliente grupocliente, int limite_de_credito,
-			String cpf, Endereco endereco, String telefone, String celular, String email, Date data_nascimento,
-			String sexo, String profissao, int pai_mae) {
+	public ClienteDTO(String codigo, String nome, String sobrenome, String codigoGrupocliente, String limite_de_credito,
+			String cpf, String codigoEndereco, String telefone, String celular, String email, String data_nascimento,
+			String sexo, String profissao, String pai_mae) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
-		this.grupocliente = grupocliente;
+		this.codigoGrupocliente = codigoGrupocliente;
 		this.limite_de_credito = limite_de_credito;
 		this.cpf = cpf;
-		this.endereco = endereco;
+		this.codigoEndereco = codigoEndereco;
 		this.telefone = telefone;
 		this.celular = celular;
 		this.email = email;
@@ -47,8 +46,8 @@ public class ClienteDTO {
 		this.pai_mae = pai_mae;
 	}
 
-	public ClienteDTO(int id, String nome2, String sobreNome2, String cpf2, String telefone2, String celular2,
-			String email2, java.sql.Date dataNascimento, String sexo2, String profissao2, int paiMae) {
+	public ClienteDTO(String id, String nome2, String sobreNome2, String cpf2, String telefone2, String celular2,
+			String email2, String dataNascimento, String sexo2, String profissao2, String paiMae) {
 		this.codigo = id;
 		this.nome = nome2;
 		this.sobrenome = sobreNome2;
@@ -62,11 +61,12 @@ public class ClienteDTO {
 		this.pai_mae = paiMae;
 	}
 
-	public Integer getCodigo() {
+
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
@@ -86,19 +86,19 @@ public class ClienteDTO {
 		this.sobrenome = sobrenome;
 	}
 
-	public TipoCliente getGrupocliente() {
-		return grupocliente;
+	public String getCodigoGrupocliente() {
+		return codigoGrupocliente;
 	}
 
-	public void setGrupocliente(TipoCliente grupocliente) {
-		this.grupocliente = grupocliente;
+	public void setCodigoGrupocliente(String codigoGrupocliente) {
+		this.codigoGrupocliente = codigoGrupocliente;
 	}
 
-	public int getLimite_de_credito() {
+	public String getLimite_de_credito() {
 		return limite_de_credito;
 	}
 
-	public void setLimite_de_credito(int limite_de_credito) {
+	public void setLimite_de_credito(String limite_de_credito) {
 		this.limite_de_credito = limite_de_credito;
 	}
 
@@ -110,12 +110,12 @@ public class ClienteDTO {
 		this.cpf = cpf;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public String getCodigoEndereco() {
+		return codigoEndereco;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setCodigoEndereco(String codigoEndereco) {
+		this.codigoEndereco = codigoEndereco;
 	}
 
 	public String getTelefone() {
@@ -142,11 +142,11 @@ public class ClienteDTO {
 		this.email = email;
 	}
 
-	public Date getData_nascimento() {
+	public String getData_nascimento() {
 		return data_nascimento;
 	}
 
-	public void setData_nascimento(Date data_nascimento) {
+	public void setData_nascimento(String data_nascimento) {
 		this.data_nascimento = data_nascimento;
 	}
 
@@ -166,17 +166,18 @@ public class ClienteDTO {
 		this.profissao = profissao;
 	}
 
-	public int getPai_mae() {
+	public String getPai_mae() {
 		return pai_mae;
 	}
 
-	public void setPai_mae(int pai_mae) {
+	public void setPai_mae(String pai_mae) {
 		this.pai_mae = pai_mae;
 	}
 
 	public Cliente toCliente() {
-		return new Cliente(this.codigo, this.nome, this.sobrenome, this.grupocliente, this.limite_de_credito, this.cpf,
-				this.endereco, this.telefone, this.celular, this.email, this.data_nascimento, this.sexo, this.profissao,
-				this.pai_mae);
+		return new Cliente(Integer.valueOf(this.codigo), this.nome, this.sobrenome, new TipoCliente(), 
+				Integer.valueOf(this.limite_de_credito).intValue(), this.cpf, new Endereco(), this.telefone, 
+				this.celular, this.email, DateUtils.parseData(this.data_nascimento, "dd/MM/yyyy"), 
+				this.sexo, this.profissao, Integer.valueOf(this.pai_mae).intValue());
 	}
 }

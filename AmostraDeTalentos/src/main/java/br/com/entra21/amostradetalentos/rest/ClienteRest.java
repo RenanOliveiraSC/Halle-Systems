@@ -73,6 +73,19 @@ public class ClienteRest {
 	
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/cliente/{codigo}")
+	public Response getClientePeloCodigo(@PathParam ("codigo") int codigo) {
+		ClienteService clienteService = new ClienteService();
+		try {
+			return Response.ok(clienteService.getClientePeloCodigo(codigo)).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/clientesSelecionar")
 	public Response getClientesSelecionar() {
 		ClienteService clienteService = new ClienteService();

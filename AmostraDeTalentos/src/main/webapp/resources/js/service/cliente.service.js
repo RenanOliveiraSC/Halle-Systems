@@ -11,7 +11,8 @@
 			    update : update,
 			    deletar : deletar,
 				listar : listar,
-			    listarSelect : listarSelect
+			    listarSelect : listarSelect,
+			    getCliente : getCliente
 		}
 		
 		return service;
@@ -55,6 +56,13 @@
 		function listarSelect() {
 			return $http({
 				url : 'http://localhost:9080/AmostraDeTalentos/rest/cliente/clientesSelecionar',
+				method : 'GET'
+			});
+		}
+		
+		function getCliente(codigo){
+			return $http({
+				url : 'http://localhost:9080/AmostraDeTalentos/rest/cliente/cliente/'+codigo,
 				method : 'GET'
 			});
 		}

@@ -11,6 +11,7 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dto.ClienteDTO;
 import br.com.entra21.amostradetalentos.dto.ClienteMiniDTO;
 import br.com.entra21.amostradetalentos.model.Cliente;
+import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class ClienteDAO {
 
@@ -53,13 +54,14 @@ public class ClienteDAO {
 		statement.setString(4, cliente.getTelefone());
 		statement.setString(5, cliente.getCelular());
 		statement.setString(6, cliente.getEmail());
-		statement.setDate(7, (Date) cliente.getData_nascimento());
+		java.util.Date data = DateUtils.parseData(cliente.getData_nascimento(), "dd/MM/yyyy");
+		statement.setDate(7, new Date(data.getTime()));
 		statement.setString(8, cliente.getSexo());
 		statement.setString(9, cliente.getProfissao());
-		statement.setInt(10, cliente.getPai_mae());
-		statement.setInt(11, cliente.getGrupocliente().getCodigo());
-		statement.setInt(12, cliente.getEndereco().getCodigo());
-		statement.setInt(13, cliente.getCodigo());
+		statement.setInt(10, Integer.valueOf(cliente.getPai_mae()));
+		statement.setInt(11, Integer.valueOf(cliente.getCodigoGrupocliente()));
+		statement.setInt(12, Integer.valueOf(cliente.getCodigoEndereco()));
+		statement.setInt(13, Integer.valueOf(cliente.getCodigo()));
 		return statement.executeUpdate() > 0;
 	}
 
@@ -93,8 +95,9 @@ public class ClienteDAO {
 					String profissao = rs.getString("CLI_PROFISSAO");
 					int paiMae = rs.getInt("CLI_PAI_MAE");
 
-					ClienteDTO cliente = new ClienteDTO(id, nome, sobreNome, cpf, telefone, celular, email,
-							dataNascimento, sexo, profissao, paiMae);
+					ClienteDTO cliente = new ClienteDTO(String.valueOf(id), nome, sobreNome, cpf, 
+							telefone, celular, email, DateUtils.formatData(dataNascimento, "dd/MM/yyyy"), 
+							sexo, profissao, String.valueOf(paiMae));
 					lCliente.add(cliente);
 				}
 			}
@@ -102,6 +105,34 @@ public class ClienteDAO {
 
 		return lCliente;
 
+	}
+	
+	public ClienteDTO getClientePeloCodigo(int codigo) throws SQLException {
+		String sql = "select * from CLIENTE where CLI_CODIGO = ? ";
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.setInt(1, codigo);
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				if (rs.next()) {
+					int id = rs.getInt("CLI_CODIGO");
+					String nome = rs.getString("CLI_NOME");
+					String sobreNome = rs.getString("CLI_SOBRENOME");
+					String cpf = rs.getString("CLI_CPF");
+					String telefone = rs.getString("CLI_TELEFONE");
+					String celular = rs.getString("CLI_CELULAR");
+					String email = rs.getString("CLI_EMAIL");
+					Date dataNascimento = rs.getDate("CLI_DATA_NASCIMENTO");
+					String sexo = rs.getString("CLI_SEXO");
+					String profissao = rs.getString("CLI_PROFISSAO");
+					int paiMae = rs.getInt("CLI_PAI_MAE");
+
+					return new ClienteDTO(String.valueOf(id), nome, sobreNome, cpf, 
+							telefone, celular, email, DateUtils.formatData(dataNascimento, "dd/MM/yyyy"), 
+							sexo, profissao, String.valueOf(paiMae));
+				}
+			}
+		}
+		return new ClienteDTO();
 	}
 	
 	public List<ClienteMiniDTO> listarSelect() throws SQLException {
@@ -126,34 +157,4 @@ public class ClienteDAO {
 
 	}
 
-	public ClienteDTO buscaPorId() throws SQLException {
-		ClienteDTO cliente = null;
-		String sql = "select * from CLIENTE";
-		try (PreparedStatement stmt = con.prepareStatement(sql)) {
-			stmt.execute();
-			try (ResultSet rs = stmt.getResultSet()) {
-				while (rs.next()) {
-
-					int id = rs.getInt("CLI_CODIGO");
-					String nome = rs.getString("CLI_NOME");
-					String sobreNome = rs.getString("CLI_SOBRENOME");
-					String cpf = rs.getString("CLI_CPF");
-					String telefone = rs.getString("CLI_TELEFONE");
-					String celular = rs.getString("CLI_CELULAR");
-					String email = rs.getString("CLI_EMAIL");
-					Date dataNascimento = rs.getDate("CLI_DATA_NASCIMENTO");
-					String sexo = rs.getString("CLI_SEXO");
-					String profissao = rs.getString("CLI_PROFISSAO");
-					int paiMae = rs.getInt("CLI_PAI_MAE");
-
-					cliente = new ClienteDTO(id, nome, sobreNome, cpf, telefone, celular, email,
-							dataNascimento, sexo, profissao, paiMae);
-				}
-			}
-		}
-
-		return cliente;
-
-	}
-	
 }
