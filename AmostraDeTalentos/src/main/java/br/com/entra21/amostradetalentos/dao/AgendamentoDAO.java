@@ -73,7 +73,7 @@ public class AgendamentoDAO {
 		String sql = "UPDATE AGENDAMENTO SET AG_ATIVO = 1 WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(0, id);
+		statement.setInt(1, id);
 
 		return statement.executeUpdate() > 0;
 	}
@@ -82,7 +82,7 @@ public class AgendamentoDAO {
 		String sql = "UPDATE AGENDAMENTO SET AG_CONCLUIDO = 0 WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(0, id);
+		statement.setInt(1, id);
 
 		return statement.executeUpdate() > 0;
 	}
@@ -91,7 +91,7 @@ public class AgendamentoDAO {
 		String sql = "DELETE AGENDAMENTO WHERE AG_CODIGO = ?";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setInt(0, id);
+		statement.setInt(1, id);
 
 		return statement.executeUpdate() > 0;
 	}
@@ -104,7 +104,8 @@ public class AgendamentoDAO {
 				+ " from AGENDAMENTO "
 				+ " INNER JOIN CLIENTE ON CLIENTE.CLI_CODIGO = AGENDAMENTO.AG_CLI_CODIGO "
 				+ " INNER JOIN SERVICO_PRODUTO ON SERVICO_PRODUTO.SP_CODIGO = AGENDAMENTO.AG_SP_CODIGO "
-				+ " INNER JOIN SERVICO ON SERVICO.SER_CODIGO = SERVICO_PRODUTO.SP_SER_CODIGO ";
+				+ " INNER JOIN SERVICO ON SERVICO.SER_CODIGO = SERVICO_PRODUTO.SP_SER_CODIGO "
+				+ " where AG_ATIVO = 1 AND AG_CONCLUIDO = 1 ";
 		try (PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.execute();
 			try (ResultSet rs = stmt.getResultSet()) {

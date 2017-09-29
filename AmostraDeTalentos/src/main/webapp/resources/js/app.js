@@ -19,7 +19,7 @@
 		}).when('/cliente', {
 			templateUrl : 'clientes.html'
 		}).when('/fornecedor', {
-			templateUrl : 'calendario.html'
+			templateUrl : 'funcionarios.html'
 		}).when('/perfil', {
 			templateUrl : 'calendario.html'
 		}).when('/configuracoes', {

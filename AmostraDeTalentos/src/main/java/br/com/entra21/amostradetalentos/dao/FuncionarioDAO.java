@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.entra21.amostradetalentos.dto.FuncionarioDTO;
 import br.com.entra21.amostradetalentos.dto.FuncionarioMiniDTO;
 import br.com.entra21.amostradetalentos.model.Funcionario;
 
@@ -64,6 +65,27 @@ public class FuncionarioDAO {
 					String nome = rs.getString("FUN_NOME");
 
 					lista.add(new FuncionarioMiniDTO(codigo, nome));
+				}
+			}
+		}
+		return lista;
+	}
+	
+	public List<FuncionarioDTO> listar() throws SQLException {
+		List<FuncionarioDTO> lista = new ArrayList<>();
+		String sql = "SELECT FUN_CODIGO, FUN_NOME, FUN_SOBRENOME, FUN_EMAIL, FUN_TELEFONE FROM FUNCIONARIO ";
+
+		try (PreparedStatement stmt = con.prepareStatement(sql)) {
+			stmt.execute();
+			try (ResultSet rs = stmt.getResultSet()) {
+				while (rs.next()) {
+					int codigo = rs.getInt("FUN_CODIGO");
+					String nome = rs.getString("FUN_NOME");
+					String sobrenome = rs.getString("FUN_SOBRENOME");
+					String email = rs.getString("FUN_EMAIL");
+					String telefone = rs.getString("FUN_TELEFONE");
+
+					lista.add(new FuncionarioDTO(codigo, nome, sobrenome, email, telefone));
 				}
 			}
 		}

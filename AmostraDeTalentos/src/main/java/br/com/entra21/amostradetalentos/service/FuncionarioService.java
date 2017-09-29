@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.FuncionarioDAO;
+import br.com.entra21.amostradetalentos.dto.FuncionarioDTO;
 import br.com.entra21.amostradetalentos.dto.FuncionarioMiniDTO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
 import br.com.entra21.amostradetalentos.model.Funcionario;
@@ -26,6 +27,12 @@ public class FuncionarioService {
 	public boolean excluir(int id) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			return new FuncionarioDAO(con).excluir(id);
+		}
+	}
+	
+	public List<FuncionarioDTO> listar() throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			return new FuncionarioDAO(con).listar();
 		}
 	}
 

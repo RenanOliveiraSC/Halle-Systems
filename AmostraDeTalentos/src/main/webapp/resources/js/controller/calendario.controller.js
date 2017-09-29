@@ -88,13 +88,15 @@
 		function concluir() {
 			CalendarioService.concluir(calendario.agendamento.codigo).then(
 					function(data) {
+						$("#calendar").fullCalendar("refetchEvents");
 						alert('Concluído com sucesso');
 					}, function() {
 					});
 		};
 
 		function cancelar() {
-			CalendarioService.cancelar(codigo).then(function(data) { // success
+			CalendarioService.cancelar(calendario.agendamento.codigo).then(function(data) { // success
+				$("#calendar").fullCalendar("refetchEvents");
 				alert('Cancelado com sucesso');
 			}, function() {
 			});
@@ -121,7 +123,7 @@
 		};
 
 		function excluir() {
-			CalendarioService.deletar(codigo).then(function(data) { // success
+			CalendarioService.deletar(calendario.agendamento.codigo).then(function(data) { // success
 				$("#calendar").fullCalendar("refetchEvents");
 				alert('Removido com sucesso');
 			}, function() {

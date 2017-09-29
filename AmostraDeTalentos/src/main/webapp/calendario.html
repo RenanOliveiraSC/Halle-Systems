@@ -58,10 +58,10 @@
 						</div>
 				        <div class="modal-footer">
 				        	<button type="button" ng-click="calendario.concluir()" class="btn btn-info" data-dismiss="modal">Concluir</button>
-				        	<button type="button" onclick="$('#confirmaCancelarModal').show()" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				        	<button type="button" onclick="$('#confirmaCancelarModal').modal('show');" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 				        	<button type="button" ng-click="calendario.salvar()" class="btn btn-success" data-dismiss="modal"><i class="fa fa-floppy-o fa-2x"></i></button>
-				        	<button type="button" onclick="$('#confirmaExcluirModal').show()" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash-o fa-2x"></i></button>
-				            <button type="button" ng-click="calendario.limpar()" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times-o fa-2x"></button>
+				        	<button type="button" onclick="$('#confirmaExcluirModal').modal('show');" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash-o fa-2x"></i></button>
+				            <button type="button" ng-click="calendario.limpar()" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-close fa-2x"></i></button>
 				        </div>
 				    </div>
 				</div>
@@ -70,13 +70,24 @@
 			<!-- Modal confirmar que quer excluir -->
 			<div id="confirmaExcluirModal" class="modal fade" >
 				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-body" style="padding: 5px 25px;">
-							<p>Confirma a exclusão do agendamento?</p>
-							<button type="button" ng-click="calendario.excluir()" class="btn btn-success" data-dismiss="modal">Sim</i></button>
-							<button type="button" onclick="$('#calendarModal').show()" class="btn btn-danger" data-dismiss="modal">Não</i></button>
+				    <div class="modal-content">
+				        <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+				        </div>
+				        <div id="modalBody" class="modal-body">
+				        	<div class="table-modal"> 
+			        			<div class="row">
+									<div class="col-md-12">
+										<p class="col-lg-12" style="font-size: 16px;">Confirma a exclusão do agendamento?</p>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
+				        <div class="modal-footer">
+				        	<button type="button" ng-click="calendario.excluir()" class="btn btn-success" data-dismiss="modal">Sim</button>
+							<button type="button" onclick="$('#calendarModal').show()" class="btn btn-danger" data-dismiss="modal">Não</button>
+				        </div>
+				    </div>
 				</div>
 			</div>
 			
@@ -84,11 +95,22 @@
 			<div id="confirmaCancelarModal" class="modal fade" >
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<div class="modal-body" style="padding: 5px 25px;">
-							<p>Confirma o cancelamento deste agendamento?</p>
-							<button type="button" ng-click="calendario.cancelar()" class="btn btn-success" data-dismiss="modal">Sim</i></button>
-							<button type="button" onclick="$('#calendarModal').show()" class="btn btn-danger" data-dismiss="modal">Não</i></button>
+						<div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+				        </div>
+				        <div id="modalBody" class="modal-body">
+				        	<div class="table-modal"> 
+			        			<div class="row">
+									<div class="col-md-12">
+										<p class="col-lg-12" style="font-size: 16px;">Confirma o cancelamento deste agendamento?</p>
+									</div>
+								</div>
+							</div>
 						</div>
+				        <div class="modal-footer">
+				        	<button type="button" ng-click="calendario.cancelar()" class="btn btn-success" data-dismiss="modal">Sim</button>
+							<button type="button" onclick="$('#calendarModal').show()" class="btn btn-danger" data-dismiss="modal">Não</button>
+				        </div>
 					</div>
 				</div>
 			</div>

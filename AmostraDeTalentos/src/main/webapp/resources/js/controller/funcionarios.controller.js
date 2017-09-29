@@ -13,12 +13,17 @@
 		funcionario.listaFuncionarios;
 		
 		/* declaração dos métodos */
+		funcionario.init = init;
 		funcionario.carregarFuncionarioPeloCodigo = carregarFuncionarioPeloCodigo;
 		funcionario.carregarNovoFuncionario = carregarNovoFuncionario;
 		funcionario.getFuncionarios = getFuncionarios;
 		funcionario.salvar = salvar;
 		funcionario.excluir = excluir;
 		funcionario.limpar = limpar;
+		
+		function init(){
+			getFuncionarios();
+		};
 
 		function carregarFuncionarioPeloCodigo(codigo) {
 			FuncionarioService.getFuncionario(codigo).then(function(data) { // success
@@ -68,6 +73,8 @@
 			}, function() {
 			});
 		};
+		
+		funcionario.init();
 
 	}
 })();

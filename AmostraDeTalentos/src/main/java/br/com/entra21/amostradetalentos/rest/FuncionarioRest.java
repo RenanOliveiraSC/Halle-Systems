@@ -62,10 +62,23 @@ public class FuncionarioRest {
 	@GET
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/funcionariosSelecionar")
-	public Response getClientesSelecionar() {
+	public Response getFuncionariosSelecionar() {
 		FuncionarioService funcionarioService = new FuncionarioService();
 		try {
 			return Response.ok(funcionarioService.listarSelect()).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/funcionarios")
+	public Response getFuncionarios() {
+		FuncionarioService funcionarioService = new FuncionarioService();
+		try {
+			return Response.ok(funcionarioService.listar()).build();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();

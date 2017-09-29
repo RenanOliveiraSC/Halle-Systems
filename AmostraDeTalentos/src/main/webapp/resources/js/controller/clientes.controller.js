@@ -13,6 +13,7 @@
 		cliente.listaClientes;
 		
 		/* declaração dos métodos */
+		cliente.init = init;
 		cliente.carregarClientePeloCodigo = carregarClientePeloCodigo;
 		cliente.carregarNovoCliente = carregarNovoCliente;
 		cliente.getClientes = getClientes;
@@ -20,6 +21,10 @@
 		cliente.excluir = excluir;
 		cliente.limpar = limpar;
 
+		function init(){
+			getClientes();
+		};
+		
 		function carregarClientePeloCodigo(codigo) {
 			ClienteService.getCliente(codigo).then(function(data) { // success
 				cliente.cliente = data.data;
@@ -68,6 +73,8 @@
 			}, function() {
 			});
 		};
+		
+		cliente.init();
 
 	}
 })();
