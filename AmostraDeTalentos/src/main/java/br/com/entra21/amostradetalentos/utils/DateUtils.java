@@ -8,10 +8,6 @@ public final class DateUtils {
 
 	public static final String PATTERN_DATA_PADRAO = "dd/MM/yyyy";
 
-	private DateUtils() {
-		throw new UnsupportedOperationException();
-	}
-
 	public static Date parseData(String data, String pattern) {
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		try {

@@ -3,7 +3,6 @@ package br.com.entra21.amostradetalentos.model;
 import java.util.Date;
 
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
-import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class Agendamento {
 
@@ -119,7 +118,7 @@ public class Agendamento {
 		String codigoServico = null != this.servicoPrestado ? String.valueOf(this.servicoPrestado.getCodigo()) : null;
 		String ativo = this.ativo ? "S" : "N";
 		String concluido = this.concluido ? "S" : "N"; 
-		return new AgendamentoDTO(String.valueOf(this.codigo), DateUtils.formatData(this.dataHoraInicio, "yyy-MM-dd HH:mm"), this.observacao,
+		return new AgendamentoDTO(String.valueOf(this.codigo), this.dataHoraInicio, this.observacao,
 				codigoCliente, codigoFuncionario, codigoServico, ativo, concluido);
 	}
 

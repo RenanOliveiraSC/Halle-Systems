@@ -1,5 +1,7 @@
 package br.com.entra21.amostradetalentos.dto;
 
+import java.util.Date;
+
 import br.com.entra21.amostradetalentos.model.Agendamento;
 import br.com.entra21.amostradetalentos.model.Cliente;
 import br.com.entra21.amostradetalentos.model.Funcionario;
@@ -9,7 +11,7 @@ import br.com.entra21.amostradetalentos.utils.DateUtils;
 public class AgendamentoDTO {
 
 	private String codigo;
-	private String data;
+	private Date data;
 	private String observacao;
 	private String codigoCliente;
 	private String codigoFuncionario;
@@ -17,7 +19,7 @@ public class AgendamentoDTO {
 	private String ativo;
 	private String concluido;
 
-	public AgendamentoDTO(String codigo, String data, String observacao, String codigoCliente, 
+	public AgendamentoDTO(String codigo, Date data, String observacao, String codigoCliente, 
 			String codigoFuncionario, String codigoServico, String ativo, String concluido) {
 		this.codigo = codigo;
 		this.data = data;
@@ -41,11 +43,11 @@ public class AgendamentoDTO {
 		this.codigo = codigo;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
@@ -98,7 +100,7 @@ public class AgendamentoDTO {
 	}
 
 	public Agendamento toAgenda() {
-		return new Agendamento(Integer.valueOf(this.codigo), DateUtils.parseData(this.data, "yyyy-MM-dd HH:mm"), null, this.observacao, 
+		return new Agendamento(Integer.valueOf(this.codigo), this.data, null, this.observacao, 
 			"S".equals(this.ativo), "S".equals(this.concluido), new Cliente(), new Funcionario(), new ServicoProduto());
 	}
 }

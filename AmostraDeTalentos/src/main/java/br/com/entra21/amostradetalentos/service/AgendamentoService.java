@@ -5,20 +5,20 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.entra21.amostradetalentos.dao.AgendamentoDAO;
+import br.com.entra21.amostradetalentos.dto.AgendamentoCriarDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoMiniDTO;
 import br.com.entra21.amostradetalentos.jdbc.oracle.ConnectionPoolOracle;
-import br.com.entra21.amostradetalentos.model.Agendamento;
 
 public class AgendamentoService {
 
-	public void inserir(AgendamentoDTO agenda) throws SQLException {
+	public void inserir(AgendamentoCriarDTO agenda) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			new AgendamentoDAO(con).inserir(agenda);
 		}
 	}
 	
-	public void alterar(Agendamento agenda) throws SQLException {
+	public void alterar(AgendamentoDTO agenda) throws SQLException {
 		try (Connection con = new ConnectionPoolOracle().getConnection()) {
 			new AgendamentoDAO(con).alterarAgendamento(agenda);
 		}

@@ -110,7 +110,7 @@
 		if(mm<10) {
 		    mm = '0'+mm;
 		} 
-		
+
 		today = mm + '/' + dd + '/' + yyyy;
 
 		$('#calendar').fullCalendar({
@@ -119,11 +119,11 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			defaultDate: today,
+			defaultDate: new Date(),
 			selectable: true,
 			selectHelper: true,
 			select: function(start, end) {
-				var day = moment(start).get('date');
+				var day = moment(start).get('date')+1;
 				var month = moment(start).get('month')+1;
 				var year = moment(start).get('year');
 				if(day<10) {
@@ -132,8 +132,7 @@
 				if(month<10) {
 					month = '0'+month;
 				}
-				var dateEvent = day + '/' + month + '/' + year;
-				angular.element('#controller').scope().calendario.carregarNovoAgendamento(dateEvent);
+				angular.element('#controller').scope().calendario.carregarNovoAgendamento(day, month, year);
 				$('#calendarModal').modal();
 			},
 			editable: true,
@@ -142,7 +141,7 @@
 				angular.element('#controller').scope().calendario.carregarAgendamentoPeloCodigo(event.id);
 	            $('#calendarModal').modal();
 	        },
-			events: function( start, end, timezone, callback ) {
+	        events: function( start, end, timezone, callback ) {
 				var day = moment(start).get('date');
 				var month = moment(start).get('month')+1;
 				var year = moment(start).get('year');
@@ -170,8 +169,7 @@
 		            type: "GET",
 		            dataType: "json",
 		            url: url,
-		            async: false,
-		            done: function(data){        
+		            success: function(data){
 		            	var events = [];
 		            	for (i = 0; i < data.length; i++) { 
 		            	    var value = data[i];

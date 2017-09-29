@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.com.entra21.amostradetalentos.dto.AgendamentoCriarDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoMiniDTO;
 import br.com.entra21.amostradetalentos.service.AgendamentoService;
@@ -51,7 +52,7 @@ public class AgendamentoRest {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/create")
-	public Response create(AgendamentoDTO agenda) {
+	public Response create(AgendamentoCriarDTO agenda) {
 		AgendamentoService agendaService = new AgendamentoService();
 		try {
 			agendaService.inserir(agenda);
@@ -65,10 +66,10 @@ public class AgendamentoRest {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/update")
-	public Response pdate(AgendamentoDTO agenda) {
+	public Response update(AgendamentoDTO agenda) {
 		AgendamentoService agendaService = new AgendamentoService();
 		try {
-			agendaService.alterar(agenda.toAgenda());
+			agendaService.alterar(agenda);
 			return Response.status(Response.Status.OK).build();
 		} catch (SQLException e) {
 			e.printStackTrace();

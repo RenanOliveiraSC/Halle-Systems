@@ -3,7 +3,7 @@
 	angular.module('app').controller('CalendarioController',
 			CalendarioController);
 
-	function CalendarioController($location, $cookies, $http,
+	function CalendarioController($location, $cookies, $http, $scope,
 			CalendarioService, ClienteService, FuncionarioService,
 			ServicoService) {
 
@@ -36,49 +36,54 @@
 			calendario.getClientes();
 			calendario.getServicos();
 			calendario.getFuncionarios();
-		}
-		;
+		};
 
 		function carregarAgendamentoPeloCodigo(codigo) {
 			CalendarioService.getAgendamento(codigo).then(function(data) { // success
 				calendario.agendamento = data.data;
+				var date = data.data.data;
+				var arraydate = date.split("-");
+				var intday = 1+parseInt(arraydate[2]);
+				date = arraydate[0]+"-"+arraydate[1]+"-"+intday+"T00:00:00.000Z";
+				calendario.agendamento.data = new Date(date);
 			}, function() { // error
 				alert("Não foi possível carregar o agendamento");
 			});
-		}
-		;
+		};
 
-		function carregarNovoAgendamento(date) {
-		}
-		;
+		function carregarNovoAgendamento(day, month, year) {
+			if(day && month && year){
+				calendario.agendamento = [];
+				var date = year+"-"+month+"-"+day+"T00:00:00.000Z";
+				calendario.agendamento.data = new Date(date);
+				$scope.$apply();
+			}
+		};
 
 		function getClientes() {
 			ClienteService.listarSelect().then(function(data) { // success
 				calendario.clientes = data.data;
 			}, function() {
 			});
-		}
-		;
+		};
 
 		function getServicos() {
 			ServicoService.listarSelect().then(function(data) { // success
 				calendario.servicos = data.data;
 			}, function() {
 			});
-		}
-		;
+		};
 
 		function getFuncionarios() {
 			FuncionarioService.listarSelect().then(function(data) { // success
 				calendario.funcionarios = data.data;
 			}, function() {
 			});
-		}
-		;
+		};
 
 		function limpar() {
 			calendario.agendamento = [];
-		}
+		};
 
 		function concluir() {
 			CalendarioService.concluir(calendario.agendamento.codigo).then(
@@ -86,41 +91,42 @@
 						alert('Concluído com sucesso');
 					}, function() {
 					});
-		}
-		;
+		};
 
 		function cancelar() {
 			CalendarioService.cancelar(codigo).then(function(data) { // success
 				alert('Cancelado com sucesso');
 			}, function() {
 			});
-		}
-		;
+		};
 
 		function salvar() {
 			if (calendario.agendamento && calendario.agendamento.codigo) {
 				CalendarioService.update(calendario.agendamento).then(
-						function(data) { // success
-							alert('Alterado com sucesso');
-						}, function() {
-						});
+					function(data) { // success
+						$("#calendar").fullCalendar("refetchEvents");
+						alert('Alterado com sucesso');
+					}, function() {
+					});
 			} else {
-				CalendarioService.create(calendario.agendamento).then(
-						function(data) { // success
-							alert('Criado com sucesso');
-						}, function() {
-						});
+				var agendamento = {codigoCliente : calendario.agendamento.codigoCliente, codigoFuncionario : calendario.agendamento.codigoFuncionario, 
+					codigoServico : calendario.agendamento.codigoServico, data : calendario.agendamento.data.toString(), observacao : calendario.agendamento.observacao};
+				CalendarioService.create(agendamento).then(
+					function(data) { // success
+						$("#calendar").fullCalendar("refetchEvents");
+						alert('Criado com sucesso');
+					}, function() {
+					});
 			}
-		}
-		;
+		};
 
 		function excluir() {
 			CalendarioService.deletar(codigo).then(function(data) { // success
+				$("#calendar").fullCalendar("refetchEvents");
 				alert('Removido com sucesso');
 			}, function() {
 			});
-		}
-		;
+		};
 
 		calendario.init();
 

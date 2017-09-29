@@ -2,7 +2,7 @@
 	angular.module('app', [ 'ngRoute', 'ngCookies' ]);
 
 	angular.module('app').config(config);
-
+	
 	angular.module('app').run(run);
 
 	// AQUI CRIA E CONFIGURA A ROTA DO SITE //

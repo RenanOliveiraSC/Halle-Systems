@@ -1,17 +1,17 @@
 package br.com.entra21.amostradetalentos.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import br.com.entra21.amostradetalentos.dto.AgendamentoCriarDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoMiniDTO;
-import br.com.entra21.amostradetalentos.model.Agendamento;
 import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class AgendamentoDAO {
@@ -22,34 +22,32 @@ public class AgendamentoDAO {
 		this.con = con;
 	}
 
-	public boolean inserir(AgendamentoDTO agendamento) throws SQLException {
+	public boolean inserir(AgendamentoCriarDTO agendamento) throws SQLException {
 		String sql = "INSERT INTO AGENDAMENTO (AG_CODIGO, AG_OBSERVACAO, AG_DATA_INICIO, AG_DATA_TERMINO, AG_ATIVO, "
-				+ "AG_CONCLUIDO, AG_CLI_CODIGO, AG_FUN_CODIGO, AG_SP_CODIGO) VALUES (SEQ_AGENDA.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?);";
+				+ "AG_CONCLUIDO, AG_CLI_CODIGO, AG_FUN_CODIGO, AG_SP_CODIGO) VALUES (SEQ_AGENDAMENTO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement statement = con.prepareStatement(sql);
 
-		statement.setString(0, agendamento.getObservacao());
-		Date dataInicio = (Date) DateUtils.parseData(agendamento.getData(), "yyy-MM-dd HH:mm");
-		statement.setDate(1, dataInicio);
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(dataInicio);
-		int hour = calendar.get(Calendar.HOUR);
-		calendar.set(Calendar.HOUR, hour+1);
-		Date dataFinal = (Date) calendar.getTime();
-		statement.setDate(2, dataFinal);
-		statement.setBoolean(3, "S".equals(agendamento.getAtivo()));
-		statement.setBoolean(4, "S".equals(agendamento.getConcluido()));
-		statement.setLong(5, Long.valueOf(agendamento.getCodigoCliente()));
-		statement.setLong(6, Long.valueOf(agendamento.getCodigoFuncionario()));
-		statement.setLong(7, Long.valueOf(agendamento.getCodigoServico()));
+		statement.setString(1, agendamento.getObservacao());
+		Date dataInicio = new Date(agendamento.getData());
+		statement.setDate(2, new java.sql.Date(dataInicio.getTime()));
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(dataInicio);
+		cal.add(Calendar.HOUR_OF_DAY, 1);
+		Date dataFinal = (Date) cal.getTime();
+		statement.setDate(3, new java.sql.Date(dataFinal.getTime()));
+		statement.setBoolean(4, true);
+		statement.setBoolean(5, true);
+		statement.setLong(6, Long.valueOf(agendamento.getCodigoCliente()));
+		statement.setLong(7, Long.valueOf(agendamento.getCodigoFuncionario()));
+		statement.setLong(8, Long.valueOf(agendamento.getCodigoServico()));
 
 		return statement.executeUpdate() > 0;
 	}
 
 
-	public boolean alterarAgendamento(Agendamento agendamento) throws SQLException {
+	public boolean alterarAgendamento(AgendamentoDTO agendamento) throws SQLException {
 		String sql = "UPDATE AGENDAMENTO SET AG_OBSERVACAO = ?, "
-				+ " AG_OBSERVACAO = ?, "
 				+ " AG_DATA_INICIO = ?, "
 				+ " AG_DATA_TERMINO = ?, "
 				+ " AG_FUN_CODIGO = ?, "
@@ -57,11 +55,16 @@ public class AgendamentoDAO {
 				+ " WHERE AG_CODIGO = ? ";
 
 		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(0, agendamento.getObservacao());
-		statement.setDate(1, (Date) agendamento.getDataHoraInicio());
-		statement.setDate(2, (Date) agendamento.getDataHoraFim());
-		statement.setLong(3, agendamento.getFuncionario().getCodigo());
-		statement.setLong(4, agendamento.getServicoPrestado().getCodigo());
+		statement.setString(1, agendamento.getObservacao());
+		statement.setDate(2, new java.sql.Date(agendamento.getData().getTime()));
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(agendamento.getData());
+		cal.add(Calendar.HOUR_OF_DAY, 1);
+		Date dataFinal = (Date) cal.getTime();
+		statement.setDate(3, new java.sql.Date(dataFinal.getTime()));
+		statement.setLong(4, Long.valueOf(agendamento.getCodigoFuncionario()));
+		statement.setLong(5, Long.valueOf(agendamento.getCodigoServico()));
+		statement.setLong(6, Long.valueOf(agendamento.getCodigo()));
 
 		return statement.executeUpdate() > 0;
 	}
@@ -134,7 +137,7 @@ public class AgendamentoDAO {
 					Long codigoFuncionario = rs.getLong("AG_FUN_CODIGO");
 					Long codigoServico = rs.getLong("AG_SP_CODIGO");
 
-					return new AgendamentoDTO(String.valueOf(id), DateUtils.formatData(dataHoraInicio, "yyyy-MM-dd HH:mm"), observacao,
+					return new AgendamentoDTO(String.valueOf(id), dataHoraInicio, observacao,
 							codigoCliente.toString(), codigoFuncionario.toString(), codigoServico.toString(), 
 							(ativo ? "S" : "N"), (concluido ? "S" : "N"));
 				
