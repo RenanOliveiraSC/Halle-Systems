@@ -1,24 +1,45 @@
-#page-wrapper{
+#page-wrapper {
 	padding-top: 80px;
 }
 
-.navBarHeader{
+@media ( max-width : 768px) {
+	#page-wrapper {
+		padding-top: 120px;
+	}
+}
+
+.navBarHeader {
 	font-size: 24px;
 }
 
-.navBarHeaderRight{
+.navBarHeaderRight {
 	padding: 15px;
 }
 
-.notificacoes{
+.notificacoes {
 	padding: 10px;
 }
 
-.item-menu-lateral{
+.item-menu-lateral {
 	padding-left: 10px;
-    font-size: 14px;
+	font-size: 14px;
 }
 
-.table-modal > div.row{
+.table-modal>div.row {
 	padding-bottom: 15px;
+}
+
+@media ( min-width : 768px) {
+	.align-div-right {
+		float: right;
+		padding-right: 10px;
+	}
+}
+
+.paddin-top-check{
+	padding-top: 20px;
+}
+
+.corperfil{
+	color: #ffffff;
 }

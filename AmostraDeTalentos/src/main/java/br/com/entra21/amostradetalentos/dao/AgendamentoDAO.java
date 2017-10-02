@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,7 +13,6 @@ import java.util.List;
 import br.com.entra21.amostradetalentos.dto.AgendamentoCriarDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoDTO;
 import br.com.entra21.amostradetalentos.dto.AgendamentoMiniDTO;
-import br.com.entra21.amostradetalentos.utils.DateUtils;
 
 public class AgendamentoDAO {
 
@@ -30,12 +30,12 @@ public class AgendamentoDAO {
 
 		statement.setString(1, agendamento.getObservacao());
 		Date dataInicio = new Date(agendamento.getData());
-		statement.setDate(2, new java.sql.Date(dataInicio.getTime()));
+		statement.setTimestamp(2, new Timestamp(dataInicio.getTime()));
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(dataInicio);
 		cal.add(Calendar.HOUR_OF_DAY, 1);
 		Date dataFinal = (Date) cal.getTime();
-		statement.setDate(3, new java.sql.Date(dataFinal.getTime()));
+		statement.setTimestamp(3, new Timestamp(dataFinal.getTime()));
 		statement.setBoolean(4, true);
 		statement.setBoolean(5, true);
 		statement.setLong(6, Long.valueOf(agendamento.getCodigoCliente()));
@@ -56,12 +56,12 @@ public class AgendamentoDAO {
 
 		PreparedStatement statement = con.prepareStatement(sql);
 		statement.setString(1, agendamento.getObservacao());
-		statement.setDate(2, new java.sql.Date(agendamento.getData().getTime()));
+		statement.setTimestamp(2, new Timestamp(agendamento.getData().getTime()));
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(agendamento.getData());
 		cal.add(Calendar.HOUR_OF_DAY, 1);
 		Date dataFinal = (Date) cal.getTime();
-		statement.setDate(3, new java.sql.Date(dataFinal.getTime()));
+		statement.setTimestamp(3, new Timestamp(dataFinal.getTime()));
 		statement.setLong(4, Long.valueOf(agendamento.getCodigoFuncionario()));
 		statement.setLong(5, Long.valueOf(agendamento.getCodigoServico()));
 		statement.setLong(6, Long.valueOf(agendamento.getCodigo()));
@@ -100,7 +100,7 @@ public class AgendamentoDAO {
 		List<AgendamentoMiniDTO> lAgenda = new ArrayList<>();
 
 		String sql = "select AG_CODIGO, AG_DATA_INICIO, AG_DATA_TERMINO, "
-				+ " (SER_NOME || ' - ' || CLI_NOME) AS DESCRICAO_AGENDAMENTO "
+				+ " (CLI_NOME || ' ' || CLI_SOBRENOME || ' - ' || SER_NOME) AS DESCRICAO_AGENDAMENTO "
 				+ " from AGENDAMENTO "
 				+ " INNER JOIN CLIENTE ON CLIENTE.CLI_CODIGO = AGENDAMENTO.AG_CLI_CODIGO "
 				+ " INNER JOIN SERVICO_PRODUTO ON SERVICO_PRODUTO.SP_CODIGO = AGENDAMENTO.AG_SP_CODIGO "
@@ -111,8 +111,8 @@ public class AgendamentoDAO {
 			try (ResultSet rs = stmt.getResultSet()) {
 				while (rs.next()) {
 					int id = rs.getInt("AG_CODIGO");
-					Date dataHoraInicio = rs.getDate("AG_DATA_INICIO");
-					Date dataHoraFim = rs.getDate("AG_DATA_TERMINO");
+					Date dataHoraInicio = rs.getTimestamp("AG_DATA_INICIO");
+					Date dataHoraFim = rs.getTimestamp("AG_DATA_TERMINO");
 					String descricao = rs.getString("DESCRICAO_AGENDAMENTO"); 
 
 					lAgenda.add(new AgendamentoMiniDTO(id, descricao, dataHoraInicio, dataHoraFim));
@@ -131,7 +131,7 @@ public class AgendamentoDAO {
 				if (rs.next()) {
 					int id = rs.getInt("AG_CODIGO");
 					String observacao = rs.getString("AG_OBSERVACAO");
-					Date dataHoraInicio = rs.getDate("AG_DATA_INICIO");
+					Date dataHoraInicio = rs.getTimestamp("AG_DATA_INICIO");
 					boolean ativo = rs.getBoolean("AG_ATIVO");
 					boolean concluido = rs.getBoolean("AG_CONCLUIDO");
 					Long codigoCliente = rs.getLong("AG_CLI_CODIGO"); 
@@ -146,6 +146,23 @@ public class AgendamentoDAO {
 			}
 		}
 		return null;
+	}
+	
+	public boolean alterarHorario(AgendamentoMiniDTO agendamento) throws SQLException {
+		String sql = "UPDATE AGENDAMENTO SET AG_DATA_INICIO = ?, "
+				+ " AG_DATA_TERMINO = ? "
+				+ " WHERE AG_CODIGO = ? ";
+
+		PreparedStatement statement = con.prepareStatement(sql);
+		statement.setTimestamp(1, new Timestamp(agendamento.getStart().getTime()));
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(agendamento.getStart());
+		cal.add(Calendar.HOUR_OF_DAY, 1);
+		Date dataFinal = (Date) cal.getTime();
+		statement.setTimestamp(2, new Timestamp(dataFinal.getTime()));
+		statement.setLong(3, Long.valueOf(agendamento.getId()));
+
+		return statement.executeUpdate() > 0;
 	}
 
 }

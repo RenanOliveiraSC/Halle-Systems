@@ -18,10 +18,10 @@
 			templateUrl : 'calendario.html'
 		}).when('/cliente', {
 			templateUrl : 'clientes.html'
-		}).when('/fornecedor', {
+		}).when('/funcionario', {
 			templateUrl : 'funcionarios.html'
 		}).when('/perfil', {
-			templateUrl : 'calendario.html'
+			templateUrl : 'perfil.html'
 		}).when('/configuracoes', {
 			templateUrl : 'calendario.html'
 		}).otherwise({

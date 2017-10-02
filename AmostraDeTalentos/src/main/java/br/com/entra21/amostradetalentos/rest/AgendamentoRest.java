@@ -77,6 +77,20 @@ public class AgendamentoRest {
 		}
 	}
 	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/updateHorario")
+	public Response updateHorario(AgendamentoMiniDTO agenda) {
+		AgendamentoService agendaService = new AgendamentoService();
+		try {
+			agendaService.alterarHorario(agenda);
+			return Response.status(Response.Status.OK).build();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
 	@DELETE
 	@Path("/delete/{id}")
 	public Response delete(@PathParam("id") int codigo) {

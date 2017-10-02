@@ -53,4 +53,10 @@ public class AgendamentoService {
 			return new AgendamentoDAO(con).getAgendamentoPeloCodigo(codigo.intValue());
 		}
 	}
+	
+	public boolean alterarHorario(AgendamentoMiniDTO agendamento) throws SQLException {
+		try (Connection con = new ConnectionPoolOracle().getConnection()) {
+			return new AgendamentoDAO(con).alterarHorario(agendamento);
+		}
+	}
 }

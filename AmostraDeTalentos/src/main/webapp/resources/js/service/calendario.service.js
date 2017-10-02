@@ -13,7 +13,8 @@
 		    update : update,
 		    deletar : deletar,
 		    concluir : concluir,
-		    cancelar : cancelar
+		    cancelar : cancelar,
+		    updateHorario : updateHorario
 		}
 		
 		return service;
@@ -72,6 +73,17 @@
 			return $http({
 				url : 'http://localhost:9080/AmostraDeTalentos/rest/agendamento/cancelar/'+codigo,
 				method : 'POST'
+			});
+		}
+		
+		function updateHorario(agendamento) {
+			return $http({
+				url : 'http://localhost:9080/AmostraDeTalentos/rest/agendamento/updateHorario',
+				method : 'POST',
+				data : JSON.stringify(agendamento),
+				headers : {
+					'Content-Type' : 'application/json'
+				}
 			});
 		}
 		

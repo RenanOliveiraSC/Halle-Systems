@@ -7,63 +7,68 @@
 			<!-- Modal que abre quando clica em algum dia -->
 			<div id="calendarModal" class="modal fade" >
 				<div class="modal-dialog">
-				    <div class="modal-content">
-				        <div class="modal-header">
-				            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
-				            <h4 id="modalTitle" class="modal-title">Agendamento</h4>
-				        </div>
-				        <div id="modalBody" class="modal-body">
-				        	<div class="table-modal"> 
-			        			<div class="row">
-									<div class="col-md-6">
-										<label for="cliente">Cliente</label> 
-										<select class="form-control" ng-model="calendario.agendamento.codigoCliente" id="cliente" required>
-											<option value="" disabled selected>Selecione</option>
-											<option ng-repeat="cliente in calendario.clientes" value="{{cliente.codigo}}">{{cliente.nome}}</option>
-										</select>
+					<form name="calendario.formCalendario" ng-submit="calendario.salvar(calendario.formCalendario.$valid)">
+					    <div class="modal-content">
+					        <div class="modal-header">
+					            <button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button>
+					            <h4 id="modalTitle" class="modal-title">Agendamento</h4>
+					        </div>
+					        <div id="modalBody" class="modal-body">
+					        	<div class="table-modal"> 
+					        		<div class="row">
+										<div class="col-md-6">
+											<label for="cliente">Cliente</label> 
+											<select class="form-control" ng-model="calendario.agendamento.codigoCliente" id="cliente" required>
+												<option value="" disabled selected>Selecione</option>
+												<option ng-repeat="cliente in calendario.clientes" value="{{cliente.codigo}}">{{cliente.nome}}</option>
+											</select>
+										</div>
+										<div class="col-md-6">
+											<label for="servico">Serviço</label> 
+											<select class="form-control" ng-model="calendario.agendamento.codigoServico" id="servico" required>
+												<option value="" disabled selected>Selecione</option>
+												<option ng-repeat="serv in calendario.servicos" value="{{serv.codigo}}">{{serv.descricao}}</option>
+											</select>
+										</div>
 									</div>
-									<div class="col-md-6">
-										<label for="servico">Serviço</label> 
-										<select class="form-control" ng-model="calendario.agendamento.codigoServico" id="servico" required>
-											<option value="" disabled selected>Selecione</option>
-											<option ng-repeat="serv in calendario.servicos" value="{{serv.codigo}}">{{serv.descricao}}</option>
-										</select>
+									<div class="row">
+										<div class="col-md-5">
+											<label for="funcionario">Funcionário</label> 
+											<select class="form-control" ng-model="calendario.agendamento.codigoFuncionario" id="funcionario" required>
+												<option value="" disabled selected>Selecione</option>
+												<option ng-repeat="fun in calendario.funcionarios" value="{{fun.codigo}}">{{fun.nome}}</option>
+											</select>
+										</div>
+										<div class="col-md-4">
+											<label for="diaAgendamento">Data de agendamento</label> 
+											<input id="diaAgendamento" class="form-control" type="date" ng-model="calendario.agendamento.data" required/>
+										</div>
+										<div class="col-md-3">
+											<label for="horario">Horário</label> 
+											<input class="form-control col-md-6" id="horario" type="time" ng-model="calendario.agendamento.data" required/>
+										</div>
 									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-5">
-										<label for="funcionario">Funcionário</label> 
-										<select class="form-control" ng-model="calendario.agendamento.codigoFuncionario" id="funcionario" required>
-											<option value="" disabled selected>Selecione</option>
-											<option ng-repeat="fun in calendario.funcionarios" value="{{fun.codigo}}">{{fun.nome}}</option>
-										</select>
-									</div>
-									<div class="col-md-4">
-										<label for="diaAgendamento">Data de agendamento</label> 
-										<input id="diaAgendamento" class="form-control" type="date" ng-model="calendario.agendamento.data" required/>
-									</div>
-									<div class="col-md-3">
-										<label for="horario">Horário</label> 
-										<input class="form-control col-md-6" id="horario" type="time" ng-model="calendario.agendamento.data" required/>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<label for="observacao">Observações</label> 
-										<textarea class="form-control" id="observacao" placeholder="Observação" rows="3" 
-											ng-model="calendario.agendamento.observacao"/>
+									<div class="row">
+										<div class="col-md-12">
+											<label for="observacao">Observações</label> 
+											<textarea class="form-control" id="observacao" placeholder="Observação" rows="3" 
+												ng-model="calendario.agendamento.observacao"/>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-				        <div class="modal-footer">
-				        	<button type="button" ng-click="calendario.concluir()" class="btn btn-info" data-dismiss="modal">Concluir</button>
-				        	<button type="button" onclick="$('#confirmaCancelarModal').modal('show');" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				        	<button type="button" ng-click="calendario.salvar()" class="btn btn-success" data-dismiss="modal"><i class="fa fa-floppy-o fa-2x"></i></button>
-				        	<button type="button" onclick="$('#confirmaExcluirModal').modal('show');" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash-o fa-2x"></i></button>
-				            <button type="button" ng-click="calendario.limpar()" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-close fa-2x"></i></button>
-				        </div>
-				    </div>
+					        <div class="modal-footer">
+					        	<div class="left">
+					        		<button type="button" title="Concluir este agendamento" ng-click="calendario.concluir()" class="btn btn-info" data-dismiss="modal"><i class="fa fa-check fa-2x"></i></button>
+					        		<button type="button" title="Cancelar este agendamento" onclick="$('#confirmaCancelarModal').modal('show');" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close fa-2x"></i></button>
+					        	</div>
+					        	<div class="right">
+						        	<button type="submit" title="Salvar alterações" class="btn btn-success"><i class="fa fa-floppy-o fa-2x"></i></button>
+						        	<button type="button" title="Excluir este agendamento" onclick="$('#confirmaExcluirModal').modal('show');" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash-o fa-2x"></i></button>
+						        </div>
+					        </div>
+					    </div>
+				    </form>
 				</div>
 			</div>
 			
@@ -141,6 +146,19 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			ignoreTimezone: false,
+		    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+		    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+		    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
+		    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+		    buttonText: {
+		        prev: "<",
+		        next: ">",
+		        today: "Hoje",
+		        month: "Mês",
+		        week: "Semana",
+		        day: "Dia"
+		    },
 			defaultDate: new Date(),
 			selectable: true,
 			selectHelper: true,
@@ -195,17 +213,45 @@
 		            	var events = [];
 		            	for (i = 0; i < data.length; i++) { 
 		            	    var value = data[i];
-		                    events.push({
+		            	    events.push({
 		                    	id: value.id,
 		                        title: value.title,
-		                        start: value.start,
-		                        end: value.end
+		                        start: new Date(value.start),
+		                        end: new Date(value.end)
 		                    });
 		                }
 		                callback(events);
 		            }
 		        });
-			}
+			},
+			eventDrop: function(event, delta, revertFunc) {
+				var day = moment(event.start).get('date');
+				var month = moment(event.start).get('month')+1;
+				var year = moment(event.start).get('year');
+				var hour = moment(event.start).get('hour');
+				var minute = moment(event.start).get('minute');
+				if(day<10) {
+					day = '0'+day;
+				}
+				if(month<10) {
+					month = '0'+month;
+				}
+				if(hour<10) {
+					hour = '0'+hour;
+				}
+				if(minute<10) {
+					minute = '0'+minute;
+				}
+				var dateStart = day + '/' + month + '/' + year;
+				var hourStart = hour+':'+minute;
+				
+		        if (!confirm("Deseja mover "+ event.title + " para " + dateStart+" às "+hourStart +"?")) {
+		            revertFunc();
+		        }else{
+		        	angular.element('#controller').scope().calendario.updateHorario(event, new Date(year+"-"+month+"-"+day+"T"+hourStart+":00"));
+		        }
+
+		    }
 	        
 		});
 		
